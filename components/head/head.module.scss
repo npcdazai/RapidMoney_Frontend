@@ -1,0 +1,42 @@
+.header {
+  transition: background 0.3s ease;
+}
+
+.light {
+  background-color: white;
+
+  a, span, button {
+    color: #000 !important;
+  }
+
+  .ant-btn-primary {
+    background-color: #22c55e !important;
+    color: #000;
+  }
+
+  .ant-dropdown-menu {
+    background: white;
+    color: black;
+  }
+}
+
+.dark {
+  background-color: #000;
+
+  a {
+    color: #fff !important;
+  }
+  span {
+    color:#000 !important;
+
+  }
+
+  .ant-btn-primary {
+    color: black;
+  }
+
+  .ant-dropdown-menu {
+    background: #111;
+    color: white;
+  }
+}

@@ -1,0 +1,53 @@
+{
+  "footer": {
+    "companyInfo": {
+      "logo": {
+        "textPrimary": "Rapid",
+        "textSecondary": "Money"
+      },
+      "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+      "socialLinks": [
+        { "platform": "LinkedIn", "icon": "linkedin", "url": "https://linkedin.com/company/rapidmoney" },
+        { "platform": "X", "icon": "x-twitter", "url": "https://twitter.com/rapidmoney" },
+        { "platform": "YouTube", "icon": "youtube", "url": "https://youtube.com/rapidmoney" },
+        { "platform": "Instagram", "icon": "instagram", "url": "https://instagram.com/rapidmoney" },
+        { "platform": "Facebook", "icon": "facebook", "url": "https://facebook.com/rapidmoney" },
+        { "platform": "Google", "icon": "google", "url": "https://google.com/rapidmoney", "rating": 4.7 }
+      ]
+    },
+    "sections": [
+      {
+        "title": "Company",
+        "links": [
+          { "label": "About Us", "url": "/about" },
+          { "label": "Lending Partners", "url": "/partners" },
+          { "label": "Our Team", "url": "/team" },
+          { "label": "Career", "url": "/career" },
+          { "label": "FAQs", "url": "/faq" }
+        ]
+      },
+      {
+        "title": "Products",
+        "links": [
+          { "label": "Product Overview", "url": "/products" },
+          { "label": "Personal Loan", "url": "/products/personal-loan" }
+        ]
+      },
+      {
+        "title": "Support",
+        "description": "Get Answers and Assistance Right Where You Need It",
+        "contact": {
+          "type": "email",
+          "label": "support@rapidmoney.in",
+          "icon": "mail"
+        }
+      }
+    ],
+    "bottomNote": "MoneyTime Technology Solutions Pvt. Ltd.",
+    "legalLinks": [
+      { "label": "Disclaimer", "url": "/disclaimer" },
+      { "label": "Terms of Conditions", "url": "/terms" },
+      { "label": "Privacy Policy", "url": "/privacy" }
+    ]
+  }
+}

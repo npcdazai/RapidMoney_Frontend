@@ -1,0 +1,71 @@
+{
+    "header": {
+        "logo": {
+            "textPrimary": "Rapid",
+            "textSecondary": "Money",
+            "tagline": "Money when you need it - Rapidly and Reliably"
+        },
+        "menu": [
+            {
+                "label": "Home",
+                "link": "/"
+            },
+            {
+                "label": "About Us",
+                "submenu": [
+                    {
+                        "label": "Company",
+                        "link": "/about/company"
+                    },
+                    {
+                        "label": "Team",
+                        "link": "/about/team"
+                    }
+                ]
+            },
+            {
+                "label": "Products",
+                "submenu": [
+                    {
+                        "label": "Personal Loan",
+                        "link": "/products/personal"
+                    },
+                    {
+                        "label": "Business Loan",
+                        "link": "/products/business"
+                    }
+                ]
+            },
+            {
+                "label": "Education & Blogs",
+                "link": "/blogs"
+            },
+            {
+                "label": "Contact Us",
+                "link": "/contact"
+            }
+        ],
+        "cta": {
+            "applyLabel": "Apply Loan",
+            "download": {
+                "apple": true,
+                "android": true
+            }
+        }
+    },
+    "heroSection": {
+        "title": "Flexible Loans for Your Perfect Celebration",
+        "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been.",
+        "ctaButton": {
+            "label": "Apply Now",
+            "link": "/apply"
+        },
+        "image": "happy-man-phone.png",
+        "floatingCoins": [
+            "coin-left.png",
+            "coin-top-right.png",
+            "coin-bottom-right.png",
+            "note-float.png"
+        ]
+    }
+}
