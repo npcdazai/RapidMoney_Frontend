@@ -3,7 +3,7 @@
 import { useState } from "react";
 import styles from './head.module.scss'
 import { Button, Dropdown, Menu } from 'antd'
-import headerData from "@/json/homepage/home.json";
+import homePageData from "@/json/homepage/home.json";
 import Link from 'next/link';
 import Image from 'next/image';
 import lightRapidMoneyLogo from './assets/light_rapid_money_logo.png'
@@ -11,7 +11,7 @@ import darkRapidMoneyLogo from './assets/dark_rapid_money_logo.png'
 import iphone from "./assets/iphone.svg"
 import playStore from "./assets/playstore.svg"
 
-const header = headerData.header;
+const header = homePageData.header;
 
 const Header = ({ isDark = false }) => {
     const [mobileOpen, setMobileOpen] = useState(false);

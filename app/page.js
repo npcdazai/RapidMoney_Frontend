@@ -1,10 +1,12 @@
 import Header from "@/components/head/head";
+import HeroSection from "@/components/hero-section/heroSection";
 import Image from "next/image";
 
 export default function Home() {
   return (
     <>
-      <Header isDark={false} />
+      <Header isDark={true} />
+      <HeroSection />
       {/* <Header isDark={!true } /> */}
     </>
 

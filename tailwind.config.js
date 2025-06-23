@@ -17,6 +17,9 @@ module.exports = {
       },
     },
   },
+  container: {
+    center: true, // Enables auto-centering by default
+  },
   plugins: {
     tailwindcss: {},
     autoprefixer: {},
