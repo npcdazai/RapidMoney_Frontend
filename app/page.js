@@ -7,7 +7,7 @@ export default function Home() {
     <>
       <Header isDark={true} />
       <HeroSection />
-      {/* <Header isDark={!true } /> */}
+      <Header isDark={!true } />
     </>
 
   );

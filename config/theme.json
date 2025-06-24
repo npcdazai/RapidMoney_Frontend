@@ -71,6 +71,9 @@
       "colorBgElevated": "#ffffff",
       "colorBorder": "#e0e0e0",
       "borderRadius": 16
+    },
+    "Dropdown": {
+      "borderRadiusLG": 4
     }
   }
 }

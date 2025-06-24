@@ -2,133 +2,197 @@
 
 import { useState } from "react";
 import styles from './head.module.scss'
-import { Button, Dropdown, Menu } from 'antd'
+import { Button, Drawer, Dropdown, Flex, Menu } from 'antd'
 import homePageData from "@/json/homepage/home.json";
 import Link from 'next/link';
 import Image from 'next/image';
 import lightRapidMoneyLogo from './assets/light_rapid_money_logo.png'
 import darkRapidMoneyLogo from './assets/dark_rapid_money_logo.png'
-import iphone from "./assets/iphone.svg"
-import playStore from "./assets/playstore.svg"
+import lightIphone from "./assets/light_iphone.svg"
+import darkIphone from "./assets/dark_iphone.svg"
+import playStore from "./assets/playstore.svg";
+import { RiAlignJustify, RiArrowDownSLine, RiArrowDropDownLine } from "react-icons/ri";
 
 const header = homePageData.header;
 
 const Header = ({ isDark = false }) => {
-    const [mobileOpen, setMobileOpen] = useState(false);
+    const [open, setOpen] = useState(false);
+    const showDrawer = () => {
+        setOpen(true);
+    };
+    const onClose = () => {
+        setOpen(false);
+    };
 
     return (
         <header className={`${styles.header} ${isDark ? styles.dark : styles.light}`}>
-            <div className="container mx-auto flex items-center py-2">
+            <div className="container mx-auto flex justify-between items-center py-2">
                 {/* Logo */}
-                <div className="flex">
+                <div className="">
                     <Link href="/">
-                        <Image src={isDark ? darkRapidMoneyLogo : lightRapidMoneyLogo} alt="RapidMoney Logo" width={225} height={50} className="object-contain max-w-[225px]" />
+                        <Image
+                            src={isDark ? darkRapidMoneyLogo : lightRapidMoneyLogo}
+                            alt="RapidMoney Logo"
+                            width={220}
+                            height={50}
+                            className="max-w-full h-auto object-contain"
+                        />
+
                     </Link>
                 </div>
 
-                {/* Desktop Menu */}    
-                <nav className="hidden md:flex ml-[60px] items-center gap-6 text-white">
+                {/* Desktop Menu */}
+                <nav className="hidden xl:flex items-center gap-5">
                     {header.menu.map((item, idx) =>
-                        item.submenu ? (
+                        item.type === "dropdown" ? (
                             <Dropdown
-                                arrow
+                                trigger="click"
+                                menu={{
+                                    items: item.option.map((sub) => ({
+                                        key: sub.link,
+                                        label: (
+                                            <Link
+                                                href={sub.link}
+                                                className="font-16 font-weight-medium"
+                                                target={sub.link_type === "external" ? "_blank" : "_self"}
+                                            >
+                                                {sub.label}
+                                            </Link>
+                                        ),
+                                    })),
+                                }}
+                                className={[
+                                    'navBarDropDown',
+                                    styles.dropdownWithArrow,
+                                ].join(" ")}
                                 key={idx}
-                                overlay={
-                                    <Menu>
-                                        {item.submenu.map((sub, subIdx) => (
-                                            <Menu.Item key={subIdx}>
-                                                <a href={sub.link}>{sub.label}</a>
-                                            </Menu.Item>
-                                        ))}
-                                    </Menu>
-                                }
-
                             >
-                                <a className="cursor-pointer">{item.label}</a>
+                                <div>
+                                    <Flex align="center" gap={10}>
+                                        <span className={styles.dropDownLink}>{item.label}</span>
+                                        <RiArrowDownSLine size={18} color={isDark ? "#fff" : "#000"} />
+                                    </Flex>
+                                </div>
                             </Dropdown>
                         ) : (
-                            <a key={idx} className="hover:text-green-400" href={item.link}>
-                                {item.label}
-                            </a>
+                            <Link key={idx} className="" href={item.link}>
+                                <span className={styles.navLink}>{item.label}</span>
+                            </Link>
                         )
                     )}
                 </nav>
 
                 {/* CTA Buttons */}
-                <div className="hidden md:flex ml-[30px] items-center gap-3">
-                    <Button
-                        type="primary"
-                        className="bg-green-400 border-none font-semibold"
-                        href="/apply"
-                        size="large"
-                    >
-                        {header.cta.applyLabel}
-                    </Button>
-                    {/* <div className="flex items-center gap-1 bg-white rounded-full px-3 py-1"> */}
-                    {/* <span className="font-medium text-black">Download</span>
-                        {header.cta.download.apple && (
-                            <a href="#" aria-label="Download on Apple">
-                     
-                            </a>
-                        )}
-                        {header.cta.download.android && (
-                            <a href="#" aria-label="Download on Android">
-                       
-                            </a>
-                        )} */}
-                    <Button
-                        type="default"
-                        className="bg-green-400 border-none font-semibold"
-                        href="/apply"
-                        size="large"
-                        classNames="flex item-center"
+                <div className="flex items-center gap-3">
+                    <div className="hidden md:flex items-center gap-3">
+                        <button
+                            // type="primary"
+                            className={`apply-btn ${isDark ? 'apply-btn-green' : 'apply-btn-blue'}`}
+                        >
+                            {header.cta.applyLabel}
+                        </button>
+                        <button
+                            // type="default"
+                            className={`apply-btn ${isDark ? 'apply-btn-dark' : 'apply-btn-light'} flex item-center gap-3`}
 
-                    >
-                        Download
-                        <div className="flex items-center gap-2">
-                            <Image src={iphone} width={24} height={24} alt="iphone"></Image>
+
+
+                        >
+                            <span>Download</span>
+                            <Image src={isDark ? darkIphone : lightIphone} width={24} height={24} alt="iphone"></Image>
                             <Image src={playStore} width={24} height={24} alt="playstore"></Image>
-                        </div>
-                    </Button>
-                    {/* </div> */}
+                        </button>
+                    </div>
+                    <button
+                        className="xl:hidden text-white"
+                        onClick={() => showDrawer(!open)}
+                    >
+                        {/* Hamburger icon */}
+                        <span className="material-icons">
+                            <RiAlignJustify color={isDark ? "#fff" : "#000"} />
+                        </span>
+                    </button>
+
                 </div>
 
                 {/* Mobile Hamburger */}
-                <button
-                    className="md:hidden text-white"
-                    onClick={() => setMobileOpen(!mobileOpen)}
-                >
-                    {/* Hamburger icon */}
-                    <span className="material-icons">menu</span>
-                </button>
-            </div>
 
-            {/* Mobile Menu */}
-            {mobileOpen && (
-                <nav className="md:hidden bg-black text-white px-4 py-2">
+            </div>
+            {/* <div className={styles.navBarDrawer}> */}
+            <Drawer
+                closable={{ 'aria-label': 'Close Button' }}
+                onClose={onClose}
+                open={open}
+                className="navbarDrawer"
+            //   rootClassName={styles.navBarDrawer} 
+
+            >
+                <nav className='px-4 py-2 flex flex-col gap-2'>
                     {header.menu.map((item, idx) =>
-                        item.submenu ? (
-                            <div key={idx}>
-                                <span>{item.label}</span>
-                                <div className="pl-4">
-                                    {item.submenu.map((sub, subIdx) => (
-                                        <a key={subIdx} href={sub.link} className="block py-1">{sub.label}</a>
-                                    ))}
+                        item.type === "dropdown" ? (
+                            <Dropdown
+                                key={idx}
+                                menu={{
+                                    items: item.option.map((sub) => ({
+                                        key: sub.link,
+                                        label: (
+                                            <Link
+                                                href={sub.link}
+                                                // className={styles.dropDownWithContent}
+                                                className="font-16 font-weight-medium"
+                                                target={sub.link_type === "external" ? "_blank" : "_self"}
+                                            >
+                                                {sub.label}
+                                            </Link>
+                                        ),
+                                    })),
+                                }}
+                                placement="bottomLeft"
+                                trigger={['click']}
+                                className="navBarDropDown"
+                            >
+                                <div className="cursor-pointer flex items-center justify-between px-2 py-2 rounded">
+                                    <span className={styles.drawerDropDownLink}>{item.label}</span>
+                                    <RiArrowDropDownLine size={22} />
                                 </div>
-                            </div>
+                            </Dropdown>
                         ) : (
-                            <a key={idx} href={item.link} className="block py-1">{item.label}</a>
+                            <Link
+                                key={idx}
+                                href={item.link}
+                                className="block py-2 px-2 rounded"
+                            >
+                                <span className={styles.drawerNavLink}>{item.label}</span>
+                            </Link>
                         )
                     )}
-                    <Button
-                        type="primary"
-                        className="bg-green-400 border-none font-semibold w-full mt-2"
-                        href="/apply"
-                    >
-                        {header.cta.applyLabel}
-                    </Button>
+                    {
+                        <div className="md:hidden block">
+                            <Button
+                                type="primary"
+                                className="bg-green-400 border-none font-semibold w-full mt-2"
+                                href="/apply"
+                            >
+                                {header.cta.applyLabel}
+                            </Button>
+
+                            <Button
+                                type="default"
+                                href="/apply"
+                                className="flex justify-between items-center gap-2 border w-full mt-2"
+                            >
+                                <span>Download</span>
+                                <div className="flex items-center gap-2">
+                                    <Image src={lightIphone} width={20} height={20} alt="iphone" />
+                                    <Image src={playStore} width={20} height={20} alt="playstore" />
+                                </div>
+                            </Button>
+                        </div>
+                    }
+
                 </nav>
-            )}
+            </Drawer>
+            {/* </div> */}
         </header>
     );
 };

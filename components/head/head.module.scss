@@ -1,42 +1,37 @@
 .header {
   transition: background 0.3s ease;
+
+  .logo img {
+    max-width: 100%;
+    height: auto;
+    object-fit: contain;
+  }
+
 }
 
 .light {
-  background-color: white;
 
-  a, span, button {
-    color: #000 !important;
-  }
+  .dropDownLink,
+  .navLink {
+    color: var(--dark-color);
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 140%;
+    // color: #333333;
 
-  .ant-btn-primary {
-    background-color: #22c55e !important;
-    color: #000;
-  }
-
-  .ant-dropdown-menu {
-    background: white;
-    color: black;
   }
 }
 
 .dark {
   background-color: #000;
-
-  a {
-    color: #fff !important;
-  }
-  span {
-    color:#000 !important;
-
-  }
-
-  .ant-btn-primary {
-    color: black;
+  .dropDownLink,
+  .navLink {
+    color: var(--light-color);
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 140%;
   }
 
-  .ant-dropdown-menu {
-    background: #111;
-    color: white;
-  }
 }
+
+.navBarDrawer {}
