@@ -3,7 +3,7 @@
 import { useState } from "react";
 import styles from './head.module.scss'
 import { Button, Drawer, Dropdown, Flex, Menu } from 'antd'
-import homePageData from "@/json/homepage/home.json";
+// import homePageData from "@/json/homepage/home.json";
 import Link from 'next/link';
 import Image from 'next/image';
 import lightRapidMoneyLogo from './assets/light_rapid_money_logo.png'
@@ -13,9 +13,9 @@ import darkIphone from "./assets/dark_iphone.svg"
 import playStore from "./assets/playstore.svg";
 import { RiAlignJustify, RiArrowDownSLine, RiArrowDropDownLine } from "react-icons/ri";
 
-const header = homePageData.header;
+// const header = homePageData.header;
 
-const Header = ({ isDark = false }) => {
+const Header = ({ isDark = false, data }) => {
     const [open, setOpen] = useState(false);
     const showDrawer = () => {
         setOpen(true);
@@ -25,7 +25,7 @@ const Header = ({ isDark = false }) => {
     };
 
     return (
-        <header className={`${styles.header} ${isDark ? styles.dark : styles.light}`}>
+        <header className={`${styles.data} ${isDark ? styles.dark : styles.light}`}>
             <div className="container mx-auto flex justify-between items-center py-2">
                 {/* Logo */}
                 <div className="">
@@ -43,7 +43,7 @@ const Header = ({ isDark = false }) => {
 
                 {/* Desktop Menu */}
                 <nav className="hidden xl:flex items-center gap-5">
-                    {header.menu.map((item, idx) =>
+                    {data.menu.map((item, idx) =>
                         item.type === "dropdown" ? (
                             <Dropdown
                                 trigger="click"
@@ -85,23 +85,24 @@ const Header = ({ isDark = false }) => {
                 {/* CTA Buttons */}
                 <div className="flex items-center gap-3">
                     <div className="hidden md:flex items-center gap-3">
-                        <button
-                            // type="primary"
-                            className={`apply-btn ${isDark ? 'apply-btn-green' : 'apply-btn-blue'}`}
-                        >
-                            {header.cta.applyLabel}
-                        </button>
-                        <button
-                            // type="default"
-                            className={`apply-btn ${isDark ? 'apply-btn-dark' : 'apply-btn-light'} flex item-center gap-3`}
-
-
-
-                        >
-                            <span>Download</span>
-                            <Image src={isDark ? darkIphone : lightIphone} width={24} height={24} alt="iphone"></Image>
-                            <Image src={playStore} width={24} height={24} alt="playstore"></Image>
-                        </button>
+                        <Link href={"#"}>
+                            <button
+                                // type="primary"
+                                className={`apply-btn ${isDark ? 'apply-btn-green' : 'apply-btn-blue'}`}
+                            >
+                                {data.cta.applyLabel}
+                            </button>
+                        </Link>
+                        <Link href={"#"}>
+                            <button
+                                // type="default
+                                className={`apply-btn ${isDark ? 'apply-btn-dark' : 'apply-btn-light'} flex item-center gap-3`}
+                            >
+                                <span>Download</span>
+                                <Image src={isDark ? darkIphone : lightIphone} width={24} height={24} alt="iphone"></Image>
+                                <Image src={playStore} width={24} height={24} alt="playstore"></Image>
+                            </button>
+                        </Link>
                     </div>
                     <button
                         className="xl:hidden text-white"
@@ -128,7 +129,7 @@ const Header = ({ isDark = false }) => {
 
             >
                 <nav className='px-4 py-2 flex flex-col gap-2'>
-                    {header.menu.map((item, idx) =>
+                    {data.menu.map((item, idx) =>
                         item.type === "dropdown" ? (
                             <Dropdown
                                 key={idx}
@@ -173,7 +174,7 @@ const Header = ({ isDark = false }) => {
                                 className="bg-green-400 border-none font-semibold w-full mt-2"
                                 href="/apply"
                             >
-                                {header.cta.applyLabel}
+                                {data.cta.applyLabel}
                             </Button>
 
                             <Button

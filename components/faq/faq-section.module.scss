@@ -1,0 +1,87 @@
+.section {
+
+    .faqTabs {
+gap: 40px;
+
+        .faqTabsPane {
+
+
+            .faqCollapse {
+                display: flex;
+                flex-direction: column;
+                gap: 20px;
+                background-color: transparent;
+
+                :global(.ant-collapse-item-active) {
+                    background-color: #FFFFFF;
+                    box-shadow: 0px 0px 24px rgba(0, 0, 0, 0.09);
+                    border: none !important;
+                }
+
+                .faqCollapsePanel {
+                    border: 1px solid #DEDEDE;
+                    border-radius: 15px;
+                    padding: 16px 20px;
+
+                    :global(.ant-collapse-header) {
+                        font-weight: 500;
+                        font-size: 18px;
+                        line-height: 132%;
+                        color: #212121;
+                        padding-bottom: 8px;
+                    }
+
+                    :global(.ant-collapse-content) {
+                        font-weight: 400;
+                        font-size: 14px;
+                        line-height: 148%;
+                        color: rgba(33, 33, 33, 0.8);
+                    }
+                }
+
+            }
+        }
+    }
+
+}
+
+// .faqTabs {
+//   .ant-tabs-nav {
+//     margin-bottom: 24px;
+//   }
+// }
+
+// .faqCollapse {
+//   background: transparent;
+
+//   .ant-collapse-item {
+//     margin-bottom: 12px;
+//     background-color: #f9f9f9;
+//     border-radius: 10px;
+//     border: none;
+//     overflow: hidden;
+//     box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+//   }
+
+//   .ant-collapse-header {
+//     padding: 16px 20px;
+//     font-weight: 600;
+//     font-size: 15px;
+//     color: #111;
+//     display: flex;
+//     justify-content: space-between;
+//     align-items: center;
+//   }
+
+//   .ant-collapse-content {
+//     background: white;
+//     border-top: none;
+//   }
+
+//   .ant-collapse-content-box {
+//     padding: 16px 20px;
+//     font-size: 14px;
+//     color: #444;
+//     line-height: 1.6;
+//   }
+// }

@@ -1,0 +1,19 @@
+.section {
+    .cardBkl {
+        position: relative;
+        overflow: hidden;
+        z-index: 1;
+    }
+
+    .cardBkl::after {
+        content: "";
+        position: absolute;
+        width: 170px;
+        height: 183px;
+        left: 185px;
+        top: -39px;
+z-index: -1;
+        background: #6C63FF;
+        filter: blur(82.8px);
+    }
+}
