@@ -8,11 +8,12 @@
         "menu": [
             {
                 "label": "Home",
-                "link": "/"
+                "link": "/",
+                "type" : "link"
             },
             {
                 "label": "About Us",
-                "submenu": [
+                "option": [
                     {
                         "label": "Company",
                         "link": "/about/company"
@@ -21,28 +22,28 @@
                         "label": "Team",
                         "link": "/about/team"
                     }
-                ]
+                ],
+                  "type" : "dropdown"
             },
             {
                 "label": "Products",
-                "submenu": [
+                "option": [
                     {
                         "label": "Personal Loan",
                         "link": "/products/personal"
-                    },
-                    {
-                        "label": "Business Loan",
-                        "link": "/products/business"
                     }
-                ]
+                ],
+                "type" : "dropdown"
             },
             {
                 "label": "Education & Blogs",
-                "link": "/blogs"
+                "link": "/blogs",
+                 "type" : "link"
             },
             {
                 "label": "Contact Us",
-                "link": "/contact"
+                "link": "/contact",
+                 "type" : "link"
             }
         ],
         "cta": {

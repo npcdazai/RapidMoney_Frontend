@@ -1,6 +1,6 @@
 import { Noto_Sans } from "next/font/google";
 // import Header from "@/components/Header/Header";
-import "./globals.scss";
+import "./globals.scss"
 import "./app.css"
 // import { Menubar } from "@/components/Menubar/Menubar";
 // import Footer from "@/components/Footer/Footer";
@@ -18,9 +18,11 @@ const notoSans = Noto_Sans({
 
 
 export const metadata = {
-  title: "Event Booking Platform",
-  description: "Book your favorite events with ease",
+  title: "Rapid-Money",
+  description:
+    "Rapid-Money is a fast, secure, and reliable digital loan platform that helps you get personal and business loans with minimal documentation and instant approvals. Trusted by thousands for hassle-free financing.",
 };
+
 
 export default function RootLayout({ children }) {
   return (

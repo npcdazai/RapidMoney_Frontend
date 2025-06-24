@@ -1,0 +1,55 @@
+.section {
+
+    .footerLink,
+    .footerEmail,
+    .contactDesc {
+        color: var(--footer-color);
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 140%;
+        margin-bottom: 4px;
+        display: block;
+    }
+
+    .footerHeader {
+        font-weight: 700;
+        font-size: 20px;
+        line-height: 140%;
+        color: #474747;
+        padding-bottom: 30px;
+
+    }
+
+    .footerEmail {
+        word-break: break-all;
+    }
+
+    .footerDesc {
+
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 140%;
+
+        color: #474747;
+
+
+    }
+
+    .footerLastBottom {
+
+        .notes {
+            font-weight: 400;
+            font-size: 16px;
+            line-height: 140%;
+            color: var(--dark-color);
+        }
+
+        .copyRight {
+            font-weight: 400;
+            font-size: 14px;
+            line-height: 140%;
+            color: #474747;
+        }
+
+    }
+}
