@@ -43,7 +43,8 @@ const Footer = () => {
         <footer className={`pt-10 pb-6 ${styles.section}`}>
             <div className="container mx-auto">
                 <Row gutter={[24, 24]}>
-                    <Col xs={24} md={6} lg={8}>
+                    <Col xl={8} lg={24}>
+                    {/* <Col xs={24} md={6} lg={8}> */}
                         <div>
                             <div className='flex gap-1 flex-col'>
                                 <Link href="/">
@@ -51,7 +52,7 @@ const Footer = () => {
                                 </Link>
                                 <p className={styles.footerDesc}>{companyInfo.description}</p>
                             </div>
-                            <div className="flex items-center gap-3 flex-wrap pt-[64px]">
+                            <div className="flex items-center gap-3 flex-wrap pt-6 xl:pt-[64px]">
                                 {companyInfo.socialLinks.map((link, idx) => {
                                     if (link.icon === 'google' && link.rating) {
                                         return (
@@ -102,7 +103,8 @@ const Footer = () => {
                         </div>
                     </Col>
 
-                    <Col xs={0} md={3} lg={3} />
+                    <Col xs={0} lg={0} xl={3} />
+                    {/* <Col xs={0} md={0} lg={3} /> */}
 
                     {sections.map((section, idx) => {
                         const isLast = idx === sections.length - 1;
@@ -110,11 +112,17 @@ const Footer = () => {
                         return (
                             <Col
                                 key={idx}
-                                xs={12}
+                                xs={isLast ? 24 : 12}
+                                md={8}
+                                xl={isLast ? 5 : 4}
+                            >
+                            {/* <Col
+                                key={idx}
+                                xs={isLast ? 24 : 12}
                                 md={5}
                                 lg={isLast ? 5 : 4}
-                            >
-                                <h4 className={styles.footerHeader}>{section.title}</h4>
+                            > */}
+                                <h4 className={`${styles.footerHeader} xl:pb-7 pb-4`}>{section.title}</h4>
                                 {section.links &&
                                     section.links.map((link, i) => (
                                         <Link key={i} href={link.url} className={styles.footerLink}>
@@ -139,7 +147,7 @@ const Footer = () => {
             <Divider />
             <div className={`border-[#DBDBDB] container mx-auto flex flex-wrap justify-center md:justify-between ${styles.footerLastBottom}`}>
                 <span className={styles.notes}>{bottomNote}</span>
-                <div className="flex flex-wrap gap-4 justify-center mt-2 md:mt-0">
+                <div className="flex flex-wrap gap-4 justify-center mt-3 md:mt-0">
                     {legalLinks.map((item, idx) => (
                         <Link key={idx} href={item.url} className={styles.copyRight}>
                             {item.label}
