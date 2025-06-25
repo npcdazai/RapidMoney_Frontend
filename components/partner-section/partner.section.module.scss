@@ -12,8 +12,8 @@
         height: 183px;
         left: 185px;
         top: -39px;
-z-index: -1;
-        background: #6C63FF;
+// z-index: -1;
+         background: var(--glow-color, #6C63FF); // fallback
         filter: blur(82.8px);
     }
 }

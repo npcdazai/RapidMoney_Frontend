@@ -189,6 +189,20 @@
                     "answer": "RapidMoney focuses on speed, safety, and transparency — with customer-first policies and zero hidden fees."
                 }
             ]
+        },
+        {
+            "step": 5,
+            "tabTitle": "Miscellanfnejeous",
+            "questions": [
+                {
+                    "question": "I don’t own a smartphone, can I apply for a loan?",
+                    "answer": "Unfortunately, a smartphone is required to complete the digital KYC and loan application process."
+                },
+                {
+                    "question": "How is RapidMoney different from other apps?",
+                    "answer": "RapidMoney focuses on speed, safety, and transparency — with customer-first policies and zero hidden fees."
+                }
+            ]
         }
     ],
     "newsSection": {
@@ -228,21 +242,18 @@
                 "name": "SelFin",
                 "description": "Lorem Ipsum is simply dummy text of the printing and .",
                 "logo": "/images/partners/selfin.png",
-                "link": "#"
+                "link": "#",
+                "glowColor":"#6C63FF"
+            
             },
+           
             {
                 "id": 2,
-                "name": "PayMe",
-                "description": "Lorem Ipsum is simply dummy text of the printing and .",
-                "logo": "/images/partners/payme.png",
-                "link": "#"
-            },
-            {
-                "id": 3,
                 "name": "Fintree",
                 "description": "Lorem Ipsum is simply dummy text of the printing and .",
                 "logo": "/images/partners/fintree.png",
-                "link": "#"
+                "link": "#",
+                "glowColor":"#826822"
             }
         ]
     }

@@ -29,18 +29,31 @@ const FaqSection = ({ data }) => {
                                     <Collapse
                                         accordion
                                         expandIconPosition="end"
-                                        expandIcon={({ isActive }) => <RiArrowDropDownLine size={26} color="" rotate={isActive ? 90 : 0} />}
+                                        // expandIcon={({ isActive }) => <RiArrowDropDownLine size={26} color="" rotate={isActive ? 90 : 0} />}
+                                        expandIcon={({ isActive }) => (
+                                            <RiArrowDropDownLine
+                                                size={32}
+                                                className=" transition-transform duration-300"
+                                                style={{ transform: isActive ? "rotate(180deg)" : "rotate(0deg)" }}
+                                                color="#212121b3"
+                                            />
+                                        )}
                                         bordered={false}
                                         className={styles.faqCollapse}
                                     >
                                         {step.questions.map((q, i) => (
                                             <Panel
-                                                header={<span className="font-18 font-weight-medium">{q.question}</span>}
+                                                // header={<span className="font-18 font-weight-medium">{q.question}</span>}
+                                                header={
+                                                    <div className="flex justify-between items-center w-full">
+                                                        <span className="font-18 font-weight-medium">{q.question}</span>
+                                                    </div>
+                                                }
                                                 key={`${index}-${i}`}
-                                                className={styles.faqCollapsePanel}
+                                                className={`${styles.faqCollapsePanel} w-full`}
                                             >
 
-                                                <p className="text-gray-700 text-sm leading-relaxed">{q.answer}</p>
+                                                <p className="font-14 text-[rgba(33, 33, 33, 0.8)]">{q.answer}</p>
 
                                             </Panel>
                                         ))}

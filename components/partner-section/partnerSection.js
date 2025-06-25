@@ -14,16 +14,31 @@ const logos = {
   Fintree: Fintree
 };
 
+const glowColorMap = {
+  SelFin: "#6C63FF",
+  PayMe: "#00C48C",
+  Fintree: "#826822",
+  default: "#999999"
+};
+
+
 
 const PartnersSection = ({ data }) => {
+  const getGlowColor = (partner) => {
+  return partner.glowColor || glowColorMap[partner.name] || glowColorMap.default;
+};
+
   return (
     <section className={`pt-60 pb-60 ${styles.section}`}>
       <h2 className="font-20 text-center font-weight-medium pb-[40px]">{data?.title}</h2>
       <div className="container mx-auto">
-        <Row gutter={[24, 24]}>
+        <Row gutter={[24, 24]} justify="center">
           {data?.partners.map((partner) => (
             <Col key={partner.id} xs={24} sm={12} lg={8}>
-              <div className={`dark-bg light-color px-[24px] rounded-3xl py-[30px] h-full flex flex-col justify-between gap-5 ${styles.cardBkl}`}
+              <div
+                className={`dark-bg light-color px-[24px] rounded-3xl py-[30px] h-full flex flex-col justify-between gap-5 ${styles.cardBkl}`}
+                 style={{ "--glow-color": getGlowColor(partner) }}
+                // style={{ "--glow-color": partner.glowColor }}
               >
                 <div>
                   <Image
@@ -37,7 +52,7 @@ const PartnersSection = ({ data }) => {
 
                 <div className="flex justify-between items-center gap-4">
                   <p className="font-16">{partner.description}</p>
-                  <Link href={partner.link}>
+                  <Link href={partner.link} className="self-end">
                     <button className="glossy-btn whitespace-nowrap">Know More</button>
                   </Link>
                 </div>
