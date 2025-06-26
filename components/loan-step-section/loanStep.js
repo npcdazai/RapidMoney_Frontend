@@ -94,9 +94,9 @@ import install from "./assets/install.png"
 import loanApp from "./assets/loanApp.png"
 import verify from "./assets/verify.png"
 
-const AUTO_PLAY_INTERVAL = 3000; 
+const AUTO_PLAY_INTERVAL = 3000;
 const imageArray = {
-  install : install,
+  install: install,
   verify: verify,
   loanApp: loanApp
 }
@@ -125,7 +125,7 @@ const LoanStep = ({ data }) => {
           </h2>
         </span>
 
-        <Row gutter={[32, 32]}>
+        <Row gutter={[32, 32]} justify={"center"} align="middle">
           {/* Left Column: Steps */}
           <Col xs={24} lg={12}>
             <Steps
@@ -146,6 +146,13 @@ const LoanStep = ({ data }) => {
                     <span className="font-16 pb-[70px]">
                       {step.description}
                     </span>
+                  }
+                  icon={
+                    <div
+                      className={`custom-step-icon ${idx === current ? 'active' : ''}`}
+                    >
+                      {String(idx + 1).padStart(2, '0')}
+                    </div>
                   }
                 />
               ))}

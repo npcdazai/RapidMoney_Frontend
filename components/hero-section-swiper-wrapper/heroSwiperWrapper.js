@@ -13,10 +13,31 @@ import styles from "./hero-swiper-wrapper.module.scss"
 
 const heroSection = homePageData.heroSection;
 
+  const heroSlides = [
+        {
+            "title": "Smart Loans for Health Needs",
+            "description": "Transparent terms & quick approvals.",
+            "ctaButton": { "label": "Learn More", "link": "/learn-more" },
+            "backgroundImage": "./assets/hero-health.png"
+        },
+        {
+            "title": "Education Loans Made Easy",
+            "description": "Support your student’s journey effortlessly.",
+            "ctaButton": { "label": "Get Started", "link": "/education" },
+            "backgroundImage": "./assets/hero-marriage.png"
+        },
+        {
+            "title": "Business Loans On Demand",
+            "description": "Fuel your growth with flexible financing.",
+            "ctaButton": { "label": "Explore Now", "link": "/business" },
+            "backgroundImage": "./assets/hero-life.png"
+        }
+    ]
+
+
 export default function HeroSwiperWrapper() {
     return (
         <section className={`mt-[-88px] relative ${styles.section}`}>
-            {/* <div className={StyleSheet.heroSwiperContainer}> */}
             <Swiper
                 // modules={[Autoplay, Pagination]}
                 autoplay={{
@@ -28,9 +49,11 @@ export default function HeroSwiperWrapper() {
                 <SwiperSlide>
                     <HeroSection data={heroSection} />
                 </SwiperSlide>
-                <SwiperSlide>
-                    <HeroBgSection />
-                </SwiperSlide>
+                {heroSlides.map((slide, idx) => (
+                    <SwiperSlide key={`hero-${idx}`}>
+                        <HeroBgSection data={slide} />
+                    </SwiperSlide>
+                ))}
                 <div className={styles.curve}></div>
             </Swiper>
         </section>
