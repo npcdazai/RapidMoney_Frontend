@@ -1,0 +1,144 @@
+.section {
+    background: #faf5ff;
+    position: relative;
+    overflow: hidden;
+
+    &::after {
+        content: "";
+        position: absolute;
+        pointer-events: none;
+        background-repeat: no-repeat;
+        background-size: contain;
+        z-index: 0;
+        background-image: url("./assets/qr.png");
+        max-width: 275px;
+        max-height: 100px;
+        right: 0px;
+        bottom: 0;
+        width: 100%;
+        height: 100%;
+    }
+
+    .loanStep {
+        :global(.ant-steps-item) {
+            :global(.ant-steps-item-container) {
+                :global(.ant-steps-item-tail) {
+                    display: none !important;
+                }
+
+                :global(.ant-steps-item-icon) {
+                    width: 60px;
+                    height: 60px;
+                    line-height: 60px;
+                    background: transparent;
+                    border: 1px solid gray;
+                    border-radius: 50%;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    z-index: 1;
+                    position: relative;
+
+                    :global(.ant-steps-icon) {
+                        font-weight: 300;
+                        font-size: 24px;
+                        line-height: 113%;
+                        color: var(--dark-color);
+                    }
+                }
+
+                :global(.ant-steps-item-content) {
+                    padding-bottom: 80px;
+                }
+            }
+        }
+
+        // ✅ Style for ACTIVE step icon
+        :global(.ant-steps-item-process) {
+            :global(.ant-steps-item-icon) {
+                background-color: var(--primary-color) !important;
+                border-color: var(--primary-color) !important;
+
+                :global(.ant-steps-icon) {
+                    color: white !important;
+                }
+            }
+        }
+
+        // ✅ Optional: style for COMPLETED step
+        :global(.ant-steps-item-finish) {
+            :global(.ant-steps-item-icon) {
+                border-color: gray;
+
+                :global(.ant-steps-icon) {
+                    color: var(--primary-color) !important;
+                }
+            }
+        }
+
+        // :global(.ant-steps-item-finish) {
+        //     :global(.ant-steps-icon) {
+        //         display: none !important; // hide the ✔
+        //     }
+
+        //     :global(.ant-steps-item-icon) {
+        //         &::before {
+        //             content: attr(data-step); // set via data-step attribute dynamically
+        //             display: block;
+        //             color: var(--primary-color);
+        //             font-size: 20px;
+        //             font-weight: 500;
+        //         }
+        //     }
+        // }
+
+    }
+
+    .imageBkl {
+        position: relative;
+
+        &::before,
+        &::after {
+            content: "";
+            position: absolute;
+
+            pointer-events: none;
+            background-repeat: no-repeat;
+            background-size: contain;
+            z-index: 0;
+        }
+
+        &::before {
+            background-image: url("./assets/money.png");
+            max-width: 230px;
+            max-height: 180px;
+            top: 50%;
+            left: -20%;
+
+          
+              @media screen and  (max-width :992px){
+                left: -10px;
+            }
+
+        }
+        &::after {
+            background-image: url("./assets/coin.png");
+            max-width: 150px;
+            max-height: 150px;
+            // top: 100%;
+            right: -60px;
+            bottom: 60%;
+
+              @media screen and  (max-width :992px){
+                right: -10px;
+            }
+        }
+
+        &::before,
+        &::after {
+            width: 100%;
+            height: 100%;
+        }
+    }
+
+}

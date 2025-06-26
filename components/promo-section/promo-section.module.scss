@@ -1,0 +1,46 @@
+.section {
+    background-color: var(--dark-color);
+    overflow: hidden;
+
+    .promoHeading {
+        // font-weight: 700;
+        // font-size: 40px;
+        // line-height: 104%;
+        // color: var(--light-color);
+    }
+
+    .bannerImageBkl {
+        position: relative;
+        z-index: 1;
+    }
+
+    .bannerImageBkl::before {
+        content: "";
+        position: absolute;
+        left: 47.94%;
+        right: 11.25%;
+        top: 8.07%;
+        bottom: -0.57%;
+
+
+        background: var(--primary-drop-shadow);
+        filter: blur(282.05px);
+        z-index: -1;
+    }
+
+    .bannerImageBkl::after {
+        content: "";
+
+        background-image: url("./assets/curve_pattern.svg");
+        background-repeat: no-repeat;
+        position: absolute;
+        left: 53.06%;
+        right: 42.39%;
+        top: 0%;
+        width: 80px;
+        height: 180px;
+        bottom: 71.32%;
+        z-index: -1;
+    }
+
+}

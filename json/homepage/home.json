@@ -9,7 +9,7 @@
             {
                 "label": "Home",
                 "link": "/",
-                "type" : "link"
+                "type": "link"
             },
             {
                 "label": "About Us",
@@ -23,7 +23,7 @@
                         "link": "/about/team"
                     }
                 ],
-                  "type" : "dropdown"
+                "type": "dropdown"
             },
             {
                 "label": "Products",
@@ -33,17 +33,17 @@
                         "link": "/products/personal"
                     }
                 ],
-                "type" : "dropdown"
+                "type": "dropdown"
             },
             {
                 "label": "Education & Blogs",
                 "link": "/blogs",
-                 "type" : "link"
+                "type": "link"
             },
             {
                 "label": "Contact Us",
                 "link": "/contact",
-                 "type" : "link"
+                "type": "link"
             }
         ],
         "cta": {
@@ -55,8 +55,8 @@
         }
     },
     "heroSection": {
-        "title": "Flexible Loans for Your Perfect Celebration",
-        "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been.",
+        "title": "Loans for Your Dreams. Our Loans.",
+        "description": "Empower your aspirations with customizable loan solutions that adapt to your needs—enjoy transparent terms, swift approvals, and a seamless digital experience from application to funding.",
         "ctaButton": {
             "label": "Apply Now",
             "link": "/apply"
@@ -67,6 +67,271 @@
             "coin-top-right.png",
             "coin-bottom-right.png",
             "note-float.png"
+        ]
+    },
+    "loanStep": {
+        "title": "3 steps and you have the loan",
+        "steps": [
+            {
+                "step": 1,
+                "title": "Install & Choose",
+                "description": "Lorem Ipsum is simply dummy text of the printing and typesetting.",
+                "image": "/images/step-1.png",
+                "flag": "install"
+            },
+            {
+                "step": 2,
+                "title": "Verify & Apply",
+                "description": "Lorem Ipsum is simply dummy text of the printing and typesetting.",
+                "image": "/images/step-2.png",
+                "flag": "verify"
+            },
+            {
+                "step": 3,
+                "title": "Choose a loan",
+                "description": "Lorem Ipsum is simply dummy text of the printing and typesetting.",
+                "image": "/images/step-3.png",
+                "flag": "loanApp"
+            }
+        ],
+        "cta": {
+            "title": "Don’t wait. Just tap and take.",
+            "subtitle": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+            "buttonLabel": "Swipe To Start",
+            "qrText": "Download RapidMoney",
+            "qrImage": "/images/qr.png"
+        }
+    },
+    "personalLoanSection": {
+        "title": "Turning Dreams Into Reality",
+        "subtitle": "Chase your dreams without pause — from travel to tech to tuition, get instant loans that match your vibe.",
+        "cta": {
+            "apply": {
+                "label": "Apply Now",
+                "link": "/apply"
+            },
+            "download": {
+                "label": "Download",
+                "apple": true,
+                "android": true
+            }
+        },
+        "stats": [
+            {
+                "icon": "money",
+                "value": "2000Lakh+",
+                "label": "Amount Disbursed"
+            },
+            {
+                "icon": "money",
+                "value": "2000Lakh+",
+                "label": "Amount Disbursed"
+            },
+            {
+                "icon": "download",
+                "value": "4.8",
+                "label": "Google Reviews"
+            },
+            {
+                "icon": "money",
+                "value": "2000Lakh+",
+                "label": "Amount Disbursed"
+            }
+        ],
+        "mainImage": "/images/banner/girl-app.png",
+        "backgroundText": "Personal"
+    },
+    "benefitSection": {
+        "title": "Our benefits",
+        "features": [
+            {
+                "id": 1,
+                "text": "No bank\nVisits",
+                "icon": "/icons/bank-cross.png"
+            },
+            {
+                "id": 2,
+                "text": "Transfer to\nbank account",
+                "icon": "/icons/wallet-money.png"
+            },
+            {
+                "id": 3,
+                "text": "No\nPaperwork",
+                "icon": "/icons/doc-stack.png"
+            },
+            {
+                "id": 4,
+                "text": "Repayment upto\n9 months.",
+                "icon": "/icons/calendar-loan.png"
+            }
+        ]
+    },
+    "promoSection": {
+        "title": "Join the RapidMoney app for instant personal loans!",
+        "buttonLabel": "Download",
+        "apple": true,
+        "android": true,
+        "image": "app-promo-banner.png",
+        "appleLink": "https://apps.apple.com/",
+        "androidLink": "https://play.google.com/"
+    },
+    "faqSteps": [
+        {
+            "step": 1,
+            "tabTitle": "About",
+            "questions": [
+                {
+                    "question": "What is RapidMoney?",
+                    "answer": "RapidMoney is a customer-focused financial services company committed to making access to credit fast, simple, and hassle-free. Established with the goal of empowering individuals and businesses, RapidMoney offers flexible and dependable loan solutions designed to fit diverse financial needs."
+                },
+                {
+                    "question": "Is RapidMoney a bank or an NBFC?",
+                    "answer": "RapidMoney is not a bank. It partners with RBI-registered NBFCs and financial institutions to offer you loan products."
+                }
+            ]
+        },
+        {
+            "step": 2,
+            "tabTitle": "Eligibility ",
+            "questions": [
+                {
+                    "question": "Why should I borrow from RapidMoney?",
+                    "answer": "Because we provide instant loan approvals, minimal paperwork, secure disbursals, and great customer support."
+                },
+                {
+                    "question": "I have never taken a loan before; can I apply for a personal loan from RapidMoney?",
+                    "answer": "Yes, we welcome first-time borrowers and provide loans based on simple eligibility criteria."
+                }
+            ]
+        },
+        {
+            "step": 3,
+            "tabTitle": "About Loan",
+            "questions": [
+                {
+                    "question": "I don’t own a smartphone, can I apply for a loan?",
+                    "answer": "Unfortunately, a smartphone is required to complete the digital KYC and loan application process."
+                },
+                {
+                    "question": "How is RapidMoney different from other apps?",
+                    "answer": "RapidMoney focuses on speed, safety, and transparency — with customer-first policies and zero hidden fees."
+                }
+            ]
+        },
+        {
+            "step": 4,
+            "tabTitle": "Miscellaneous",
+            "questions": [
+                {
+                    "question": "I don’t own a smartphone, can I apply for a loan?",
+                    "answer": "Unfortunately, a smartphone is required to complete the digital KYC and loan application process."
+                },
+                {
+                    "question": "How is RapidMoney different from other apps?",
+                    "answer": "RapidMoney focuses on speed, safety, and transparency — with customer-first policies and zero hidden fees."
+                }
+            ]
+        },
+        {
+            "step": 5,
+            "tabTitle": "Miscellanfnejeous",
+            "questions": [
+                {
+                    "question": "I don’t own a smartphone, can I apply for a loan?",
+                    "answer": "Unfortunately, a smartphone is required to complete the digital KYC and loan application process."
+                },
+                {
+                    "question": "How is RapidMoney different from other apps?",
+                    "answer": "RapidMoney focuses on speed, safety, and transparency — with customer-first policies and zero hidden fees."
+                }
+            ]
+        }
+    ],
+    "newsSection": {
+        "sectionTitle": "RapidMoney in the News",
+        "cards": [
+            {
+                "id": 1,
+                "title": "Lorem Ipsum is simply dummy text",
+                "author": "Alec Whitten",
+                "date": "17 Jan 2022",
+                "link": "#",
+                "image": "/images/news/news-1.png"
+            },
+            {
+                "id": 2,
+                "title": "Lorem Ipsum is simply dummy text",
+                "author": "Alec Whitten",
+                "date": "17 Jan 2022",
+                "link": "#",
+                "image": "/images/news/news-2.png"
+            },
+            {
+                "id": 3,
+                "title": "Lorem Ipsum is simply dummy text",
+                "author": "Alec Whitten",
+                "date": "17 Jan 2022",
+                "link": "#",
+                "image": "/images/news/news-3.png"
+            }
+        ]
+    },
+    "partnerSection": {
+        "title": "Our Lending Partners",
+        "partners": [
+            {
+                "id": 1,
+                "name": "SelFin",
+                "description": "Lorem Ipsum is simply dummy text of the printing and .",
+                "logo": "/images/partners/selfin.png",
+                "link": "#",
+                "glowColor": "#6C63FF"
+            },
+            {
+                "id": 2,
+                "name": "Fintree",
+                "description": "Lorem Ipsum is simply dummy text of the printing and .",
+                "logo": "/images/partners/fintree.png",
+                "link": "#",
+                "glowColor": "#826822"
+            }
+        ]
+    },
+    "testimonialSection": {
+        "title": "Testimonials",
+        "testimonials": [
+            {
+                "id": 1,
+                "quote": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.",
+                "name": "Amit Desai",
+                "role": "Founder, RapidMoney",
+                "rating": 4.5,
+                "avatar": "/images/testimonials/amit.jpg"
+            },
+            {
+                "id": 2,
+                "quote": "In modern web design, using placeholder text allows designers to focus on layout without distractions.",
+                "name": "Sana Patel",
+                "role": "Admin, TechSphere",
+                "rating": 4.8,
+                "avatar": "/images/testimonials/sana.jpg"
+            },
+            {
+                "id": 3,
+                "quote": "Many designers use Lorem Ipsum to fill space in wireframes, helping clients visualize a final product.",
+                "name": "Rajesh Singh",
+                "role": "Designer, CreativeLab",
+                "rating": 4.9,
+                "avatar": "/images/testimonials/rajesh.jpg"
+            },
+            {
+                "id": 4,
+                "quote": "Using Lorem Ipsum in drafts provides better perspective on aesthetics and usability, keeping the focus on design elements.",
+                "name": "Anita Verma",
+                "role": "Editor, NextGenMedia",
+                "rating": 5.0,
+                "avatar": "/images/testimonials/anita.jpg"
+            }
         ]
     }
 }

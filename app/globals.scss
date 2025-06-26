@@ -1,19 +1,23 @@
+
 :root {
   --background: #ffffff;
   --foreground: #171717;
-  --primary-color: #79ca00;
-  --secondary-color: #6c63ff;
-  --primary-btn-color: #b7fb52;
-  --secondary-btn-color: #4d43fe;
+  --primary-color: #79CA00;
+  --secondary-color: #6C63FF;
+  --primary-btn-color: #B7FB52;
+  --secondary-btn-color: #4D43FE;
 
   --dark-color: #000;
+  --dark-bg: #000101;
   --light-color: #fff;
+  --footer-color: #474747;
+
+
   // --heading-text-color: #000825;
   // --text-color: #575f80;
   // --default-border-color: #dedede;
   // --green-color: #027a48;
   // --light-green-color: #ecfdf3;
-  --footer-color: #474747;
 
   --heading-text-color: #000000;
   --content-text-color: #00000087;
@@ -88,6 +92,20 @@ body {
   border-radius: 60px;
 }
 
+.glossy-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px 18px;
+  gap: 10px;
+  background: #20212B;
+  border: 1px solid #ffffff0f;
+  border-radius: 32px;
+  color: var(--light-color);
+
+}
+
+
 .apply-btn-green {
   background: var(--primary-btn-color);
 }
@@ -119,6 +137,7 @@ body {
 //     color: #fff;
 //   }
 // }
+
 
 .text-heading-color {
   color: var(--heading-text-color);
@@ -174,20 +193,32 @@ body {
 
 .font-40 {
   font-size: 40px;
-  line-height: 140%;
+  line-height: 110%;
 
   @media (max-width: 767px) {
     font-size: 26px;
   }
 }
 
-.font-45 {
-  font-size: 45px;
+.font-48 {
+  font-size: 48px;
   line-height: 110%;
+
+  @media (max-width: 767px) {
+    font-size: 24px;
+  }
+
+}
+.transparent-bg{
+  background: var(--transparent-bg);
 }
 
-.dark-color {
-  color: var(--heading-text-color);
+.dark-bg {
+  background-color: var(--dark-bg);
+}
+
+.purple-color {
+  color: var(--purple-color);
 }
 
 .primary-color {
@@ -198,9 +229,14 @@ body {
   color: var(--green-color);
 }
 
-.text-color {
-  color: var(--text-color);
+.light-color {
+  color: var(--light-color);
 }
+
+.dark-color {
+  color: var(--dark-color);
+}
+
 
 .font-weight-regular {
   font-weight: 400;
@@ -499,6 +535,7 @@ body {
     font-size: 48px !important;
   }
 }
+
 
 .my-80 {
   margin-top: 80px;

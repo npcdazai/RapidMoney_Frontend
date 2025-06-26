@@ -6,11 +6,10 @@ import "./app.css"
 // import Footer from "@/components/Footer/Footer";
 import { AntdRegistry } from '@ant-design/nextjs-registry';
 import { ConfigProvider } from "antd";
-import theme from "@/config/theme.json"
+import config from "@/config/theme"
 import { UserProvider } from "@/contexts/user";
 import Header from "@/components/head/head";
 import Footer from "@/components/footer/footer";
-
 
 const notoSans = Noto_Sans({
   subsets: ["latin"],
@@ -25,6 +24,8 @@ export const metadata = {
 
 
 export default function RootLayout({ children }) {
+
+    const antdConfig = config(notoSans.style.fontFamily);
   return (
     <html lang="en">
       <UserProvider>
@@ -32,7 +33,7 @@ export default function RootLayout({ children }) {
           className={`${notoSans.className}`}
         >
           <AntdRegistry>
-            <ConfigProvider theme={theme}>
+            <ConfigProvider theme={antdConfig}>
               {/* <Header /> */}
           {/* <main className="min-h-[200px] py-8"> */}
                 {children}

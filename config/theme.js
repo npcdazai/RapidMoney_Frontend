@@ -1,8 +1,8 @@
-{
+const config = (fontFamily)=>({
   "token": {
     "borderRadius": 12,
     "fontSize": 14,
-    "fontFamily": "'Inter', sans-serif",
+   fontFamily,
     "colorPrimary": "#79CA00"
   },
   "components": {
@@ -74,6 +74,11 @@
     },
     "Dropdown": {
       "borderRadiusLG": 4
+    },
+      "Tabs": {
+      "lineWidthBold": 4
     }
   }
-}
+})
+
+export default config

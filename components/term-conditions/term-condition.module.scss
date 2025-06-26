@@ -1,0 +1,66 @@
+$primary-green: #79ca01;
+$light-green-bg: #e3ffe5;
+$font-main: "Noto Sans", sans-serif;
+ 
+.check-circle {
+  background-color: $light-green-bg;
+  color: $primary-green;
+  border-radius: 50%;
+  height: 20px;
+  width: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  margin-top: 10px;
+}
+.square {
+  height: 10px;
+  width: 10px;
+  background-color: #6c63ff;
+  margin-top: 5px;
+}
+.sectionSubContent {
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 148%;
+ 
+  font-family: $font-main;
+  word-wrap: break-word;
+}
+.top-heading {
+  font-size: 40px;
+  font-weight: 700;
+  line-height: 128%;
+  text-align: center;
+  font-family: $font-main;
+  margin-bottom: 30px;
+}
+ 
+.section-content {
+  font-size: 16px;
+  line-height: 148%;
+  padding-top: 8px;
+  font-family: $font-main;
+  word-wrap: break-word;
+  display: flex;
+  gap: 10px;
+  font-weight: 400;
+}
+ 
+.section-heading {
+  font-size: 32px;
+  font-weight: 700;
+  line-height: 128%;
+  text-align: start;
+  font-family: $font-main;
+}
+ 
+.section1-subtitle {
+  font-family: $font-main;
+  line-height: 128%;
+  font-size: 16px;
+  word-wrap: break-word;
+}
+ 
+ 
