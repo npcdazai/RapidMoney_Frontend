@@ -77,6 +77,7 @@ body {
   padding: 12px 18px;
   background-color: #edeef2;
   border-radius: 4px;
+  cursor: pointer;
 }
 
 .apply-btn {
@@ -90,6 +91,8 @@ body {
   text-decoration: none;
   box-shadow: none;
   border-radius: 60px;
+  cursor: pointer;
+  min-width: 180px;
 }
 
 .glossy-btn {
@@ -102,6 +105,7 @@ body {
   border: 1px solid #ffffff0f;
   border-radius: 32px;
   color: var(--light-color);
+  cursor: pointer;
 
 }
 

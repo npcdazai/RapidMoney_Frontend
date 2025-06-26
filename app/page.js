@@ -10,6 +10,7 @@ import Benefits from "@/components/our-benefits-section/ourBenefits";
 import LoanStep from "@/components/loan-step-section/loanStep";
 import PersonalLoan from "@/components/personal-loan-section/personalLoan";
 import Testimonials from "@/components/testimonial-section/TestiMonials";
+import HeroAnotherSection from "@/components/hero-another-part/heroAnotherSection";
 
 console.log(homePageData)
 const header = homePageData.header;
@@ -27,13 +28,15 @@ export default function Home() {
   return (
     <>
       <Header isDark={true} data={header} />
-      <HeroSection  data={heroSection}/>
+      <HeroSection data={heroSection} />
+      {/* <HeroAnotherSection/>m/ */}
       <Benefits data={benefitsData} />
       <PersonalLoan data={personalLoan}/>
       <LoanStep data={ loanData} />
       <PartnersSection data={partner} />
       <NewsSection data={newsData} />
       <Testimonials data={testimonialsData} />
+      <FaqSection data={faqSteps} />
       <PromoSection data={promo} />
       {/* <Header isDark={!true } /> */}
     </>
