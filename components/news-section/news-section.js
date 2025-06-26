@@ -3,13 +3,19 @@
 import React from "react";
 import Link from "next/link";
 import Image from "next/image";
-import newsImage from './assets/newsImage.png'
+import news from './assets/newsImage.png'
+import plant from './assets/plant.png'
+import paper from './assets/paper.png'
+
 import rapidMoney from "./assets/rapid_money.png"
 import styles from "./news-section.module.scss"
 import { Col, Row } from "antd";
 import { RiArrowRightLine } from "react-icons/ri";
 
 const NewsSection = ({ data }) => {
+
+const imageArray = [news, plant, paper];
+
     return (
         <section className={`pt-60 pb-60 ${styles.section}`}>
             <div className="container mx-auto">
@@ -31,13 +37,13 @@ const NewsSection = ({ data }) => {
                         <Col key={idx} xs={24} sm={24} md={8}>
                             <div className="flex flex-col gap-4 h-full">
 
-                                <div className="overflow-hidden">
+                                <div className="overflow-hidden h-full">
                                     <Image
-                                        src={newsImage}
+                                        src={imageArray[idx]}
                                         alt={item.title}
                                         width={500}
                                         height={300}
-                                        className="w-full h-auto object-cover rounded-3xl"
+                                        className="w-full h-full object-cover rounded-3xl"
                                     />
                                 </div>
 

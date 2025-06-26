@@ -76,19 +76,22 @@
                 "step": 1,
                 "title": "Install & Choose",
                 "description": "Lorem Ipsum is simply dummy text of the printing and typesetting.",
-                "image": "/images/step-1.png"
+                "image": "/images/step-1.png",
+                "flag": "install"
             },
             {
                 "step": 2,
                 "title": "Verify & Apply",
                 "description": "Lorem Ipsum is simply dummy text of the printing and typesetting.",
-                "image": "/images/step-2.png"
+                "image": "/images/step-2.png",
+                "flag": "verify"
             },
             {
                 "step": 3,
                 "title": "Choose a loan",
                 "description": "Lorem Ipsum is simply dummy text of the printing and typesetting.",
-                "image": "/images/step-3.png"
+                "image": "/images/step-3.png",
+                "flag": "loanApp"
             }
         ],
         "cta": {
@@ -115,9 +118,9 @@
         },
         "stats": [
             {
-                "icon": "download",
-                "value": "10M+",
-                "label": "Downloads"
+                "icon": "money",
+                "value": "2000Lakh+",
+                "label": "Amount Disbursed"
             },
             {
                 "icon": "money",
@@ -295,7 +298,7 @@
         ]
     },
     "testimonialSection": {
-        "title":"Testimonials",
+        "title": "Testimonials",
         "testimonials": [
             {
                 "id": 1,

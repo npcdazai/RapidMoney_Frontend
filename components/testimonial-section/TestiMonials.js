@@ -13,7 +13,7 @@ import styles from "./testimonials.module.scss"
 
 const Testimonials = ({ data }) => {
     return (
-        <section className={`pt-120 pb-120 ${styles.section}`}>
+        <section className={`pt-60 pb-120 ${styles.section}`}>
             <div>
                 <h2 className="text-center font-48 font-weight-bold dark-color md:pb-[55px] pb-[25px]">
                     {data?.title}

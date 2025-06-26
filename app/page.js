@@ -31,11 +31,10 @@ export default function Home() {
       <Benefits data={benefitsData} />
       <PersonalLoan data={personalLoan}/>
       <LoanStep data={ loanData} />
-      <PromoSection data={promo} />
-      <NewsSection data={newsData} />
       <PartnersSection data={partner} />
-      <FaqSection data={faqSteps} />
+      <NewsSection data={newsData} />
       <Testimonials data={testimonialsData} />
+      <PromoSection data={promo} />
       {/* <Header isDark={!true } /> */}
     </>
 

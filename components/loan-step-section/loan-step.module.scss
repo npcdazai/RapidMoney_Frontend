@@ -1,6 +1,7 @@
 .section {
     background: #faf5ff;
     position: relative;
+    overflow: hidden;
 
     &::after {
         content: "";
@@ -114,14 +115,23 @@
             top: 50%;
             left: -20%;
 
+          
+              @media screen and  (max-width :992px){
+                left: -10px;
+            }
+
         }
         &::after {
             background-image: url("./assets/coin.png");
             max-width: 150px;
             max-height: 150px;
             // top: 100%;
-            right: 0;
+            right: -60px;
             bottom: 60%;
+
+              @media screen and  (max-width :992px){
+                right: -10px;
+            }
         }
 
         &::before,

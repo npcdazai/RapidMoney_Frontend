@@ -1,6 +1,6 @@
 'use client';
 
-import React from 'react';
+import { useEffect, useRef, useState } from "react";
 import { Row, Col, Button } from 'antd';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -13,13 +13,27 @@ import downLoad from "./assets/download.svg"
 
 
 const PersonalLoan = ({ data }) => {
+
+    const sectionRef = useRef(null);
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const top = sectionRef.current?.getBoundingClientRect().top || 0;
+      setScrolled(top < -50); // adjust threshold for effect
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   return (
     <section
       className={`${styles.section} dark-bg light-color pt-60`}
       data-label={data.backgroundText || "Personal"}
     >
 
-      <div className="container mx-auto text-center">
+      <div className="container mx-auto text-center pt-[120px]">
         <div className="w-full flex justify-center items-center text-center">
           <div className="flex flex-col gap-5 max-w-[600px] items-center px-4">
             <h2 className="font-48 font-weight-bold max-w-[460px]">{data.title}</h2>
@@ -65,15 +79,15 @@ const PersonalLoan = ({ data }) => {
             {/* Dynamic corner stats */}
             {data.stats.map((stat, idx) => {
               const positionMap = [
-                'top-0 left-0',
-                'top-0 right-0',
-                'bottom-0 left-0',
+                // 'top-0 left-0',
+                // 'top-0 right-0',
+                // 'bottom-0 left-0',
                 'bottom-0 right-0',
               ];
               return (
                 <div
                   key={idx}
-                  className={`absolute ${positionMap[idx]} m-4 p-4 flex flex-col items-center gap-1 z-2`}
+                  className={`absolute ${positionMap[idx]} m-4 p-4 flex flex-col items-center gap-1 z-10`}
                 >
                   <Image
                     src={downLoad

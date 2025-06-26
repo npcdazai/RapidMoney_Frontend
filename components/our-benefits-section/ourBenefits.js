@@ -5,7 +5,7 @@ import styles from "./our-benefits.modules.scss"
 
 const Benefits = ({ data }) => {
     return (
-        <section className={`pb-60 pt-60`}>
+        <section className={`pt-60`}>
             {/* <section className={`${styles.section} pb-120 pt-120`}> */}
             <div className="container mx-auto">
                 <Row gutter={[24, 24]} justify="center">

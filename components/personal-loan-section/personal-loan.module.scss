@@ -1,9 +1,10 @@
 .section {
   //   clip-path: circle(99.5% at 50% 100%);
-  clip-path: circle(150% at 50% 100%);
+  // clip-path: circle(150% at 50% 100%);
+   clip-path: ellipse(100% 85% at 50% 100%);
 
   position: relative;
-  //   overflow: hidden;
+    overflow: hidden;
 
   &::after {
     content: attr(data-label); // ← dynamic text
@@ -19,8 +20,8 @@
     background-clip: text;
     text-fill-color: transparent;
     opacity: 0.12;
-    top: 35%;
-    left: 20%;
+    top: 40%;
+    left: 22%;
     pointer-events: none;
   }
 
@@ -37,10 +38,13 @@
       url('./assets/blue-coin.png'),
       url('./assets/blue-coin.png'),
       url('./assets/curve.png');
-    background-position: left 20% top 20%, right 20% top 20%,left 20% top 20%;
+    // background-position: left 20% top 20%, right 20% top 20%,left 20% top 20%;
     background-repeat: no-repeat;
-    background-size: 80px 80px, 80px 80px;
-    filter: grayscale(0%); // applies to BOTH
+    // background-size: 80px 80px, 80px 80px;
+    // filter: grayscale(0%);
+
+    background-position: 0% 50%, right 0% top 50%, 0% 50%;
+    background-size: 120px 120px, 120px 120px;
   }
 
   .personImage {

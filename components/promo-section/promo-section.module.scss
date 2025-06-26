@@ -32,18 +32,15 @@
         content: "";
 
         background-image: url("./assets/curve_pattern.svg");
+        background-repeat: no-repeat;
         position: absolute;
         left: 53.06%;
         right: 42.39%;
-        top: 10.91%;
+        top: 0%;
+        width: 80px;
+        height: 180px;
         bottom: 71.32%;
-
-
         z-index: -1;
     }
-
-    /* Ellipse 36 */
-
-
 
 }

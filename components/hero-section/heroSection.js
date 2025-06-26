@@ -10,10 +10,10 @@ import { RiArrowRightLine } from 'react-icons/ri';
 
 const HeroSection = ({ data }) => {
     return (
-        <section className={`${styles.section} dark-bg flex items-center`}>
+        <section className={`${styles.section} dark-bg flex items-center pt-60`}>
             <div className="container mx-auto relative">
-                <Row gutter={[32, 32]} align="middle">
-                    <Col xs={24} lg={12} xl={8}>
+                <Row gutter={[32, 32]} align="">
+                    <Col xs={24} lg={24} xl={8}>
                         <div className='flex flex-col gap-[20px]'>
                             <h1 className="font-48 light-color font-weight-bold">
                                 <span>{data?.title}</span>
@@ -32,19 +32,20 @@ const HeroSection = ({ data }) => {
                         </div>
                     </Col>
 
-                    <Col xs={24} lg={12} xl={16}>
+                    <Col xs={24} lg={24} xl={16}>
                         <div className={`w-full flex justify-center ${styles.personImage}`}>
                             <Image
                                 src={personImage}
                                 alt="Hero"
                                 width={900}
                                 height={800}
-                                className={`object-contain  `}
+                                className={`object-cover`}
                             />
                         </div>
                     </Col>
                 </Row>
             </div>
+            <div className={ styles.curve}></div>
         </section>
     );
 };
