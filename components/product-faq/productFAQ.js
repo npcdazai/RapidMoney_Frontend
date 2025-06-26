@@ -8,7 +8,7 @@ const { Panel } = Collapse;
 
 export default function ProductFAQ() {
   return (
-    <section className="bg-white my-100 container px-4">
+    <section className="bg-white pb-[100px] container px-4">
       <h2 className="font-40 text-black font-bold text-center mb-11">FAQs</h2>
 
       <div >
@@ -52,7 +52,7 @@ export default function ProductFAQ() {
                   </span>
                 </div>
               }
-              key={'1'}
+              key={'2'}
               className={`${styles.faqCollapsePanel} w-full`}
             >
               <p className="font-14 text-[rgba(33, 33, 33, 0.8)]">An instant personal loan provides quick access to funds through a completely digital process. You receive money directly in your bank account after online approval without visiting any branch.</p>

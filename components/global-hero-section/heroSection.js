@@ -12,7 +12,7 @@ import { RiCheckLine } from "react-icons/ri";
 
 const GlobalHeroSection = ({ data }) => {
   return (
-    <section className={`${styles.section} dark-bg flex items-center pt-60`}>
+    <section className={`${styles.section} dark-bg flex items-center pt-[200px]`}>
       <div className="container mx-auto relative">
         <Row gutter={[32, 32]} align="">
           <Col xs={24} lg={24} xl={8}>
