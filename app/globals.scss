@@ -1,14 +1,10 @@
-// @tailwind base;
-// @tailwind components;
-// @tailwind utilities;
-
 :root {
   --background: #ffffff;
   --foreground: #171717;
-  --primary-color: #79CA00;
-  --secondary-color: #6C63FF;
-  --primary-btn-color: #B7FB52;
-  --secondary-btn-color: #4D43FE;
+  --primary-color: #79ca00;
+  --secondary-color: #6c63ff;
+  --primary-btn-color: #b7fb52;
+  --secondary-btn-color: #4d43fe;
 
   --dark-color: #000;
   --light-color: #fff;
@@ -19,7 +15,8 @@
   // --light-green-color: #ecfdf3;
   --footer-color: #474747;
 
-
+  --heading-text-color: #000000;
+  --content-text-color: #00000087;
 }
 
 // @theme inline {
@@ -123,7 +120,6 @@ body {
 //   }
 // }
 
-
 .text-heading-color {
   color: var(--heading-text-color);
 }
@@ -148,6 +144,11 @@ body {
 
 .font-18 {
   font-size: 18px;
+  line-height: 120%;
+}
+
+.font-20 {
+  font-size: 20px;
   line-height: 120%;
 }
 
@@ -351,8 +352,6 @@ body {
 .font-40-bold-dark {
   @extend .font-40;
   @extend .dark-color;
-
-
 }
 
 .font-40-regular-primary,
@@ -501,7 +500,6 @@ body {
   }
 }
 
-
 .my-80 {
   margin-top: 80px;
   margin-bottom: 80px;
@@ -563,7 +561,8 @@ body {
 }
 
 .navbarDrawer {
-  a, .ant-dropdown-trigger {
+  a,
+  .ant-dropdown-trigger {
     color: var(--dark-color);
     // color: var(--light-color);
     font-weight: 500;
