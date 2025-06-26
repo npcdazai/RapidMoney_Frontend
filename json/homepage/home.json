@@ -55,8 +55,8 @@
         }
     },
     "heroSection": {
-        "title": "Flexible Loans for Your Perfect Celebration",
-        "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been.",
+        "title": "Loans for Your Dreams. Our Loans.",
+        "description": "Empower your aspirations with customizable loan solutions that adapt to your needs—enjoy transparent terms, swift approvals, and a seamless digital experience from application to funding.",
         "ctaButton": {
             "label": "Apply Now",
             "link": "/apply"
@@ -98,6 +98,45 @@
             "qrText": "Download RapidMoney",
             "qrImage": "/images/qr.png"
         }
+    },
+    "personalLoanSection": {
+        "title": "Turning Dreams Into Reality",
+        "subtitle": "Chase your dreams without pause — from travel to tech to tuition, get instant loans that match your vibe.",
+        "cta": {
+            "apply": {
+                "label": "Apply Now",
+                "link": "/apply"
+            },
+            "download": {
+                "label": "Download",
+                "apple": true,
+                "android": true
+            }
+        },
+        "stats": [
+            {
+                "icon": "download",
+                "value": "10M+",
+                "label": "Downloads"
+            },
+            {
+                "icon": "money",
+                "value": "2000Lakh+",
+                "label": "Amount Disbursed"
+            },
+            {
+                "icon": "download",
+                "value": "4.8",
+                "label": "Google Reviews"
+            },
+            {
+                "icon": "money",
+                "value": "2000Lakh+",
+                "label": "Amount Disbursed"
+            }
+        ],
+        "mainImage": "/images/banner/girl-app.png",
+        "backgroundText": "Personal"
     },
     "benefitSection": {
         "title": "Our benefits",
@@ -243,17 +282,15 @@
                 "description": "Lorem Ipsum is simply dummy text of the printing and .",
                 "logo": "/images/partners/selfin.png",
                 "link": "#",
-                "glowColor":"#6C63FF"
-            
+                "glowColor": "#6C63FF"
             },
-           
             {
                 "id": 2,
                 "name": "Fintree",
                 "description": "Lorem Ipsum is simply dummy text of the printing and .",
                 "logo": "/images/partners/fintree.png",
                 "link": "#",
-                "glowColor":"#826822"
+                "glowColor": "#826822"
             }
         ]
     }

@@ -46,8 +46,8 @@
     "bottomNote": "MoneyTime Technology Solutions Pvt. Ltd.",
     "legalLinks": [
       { "label": "Disclaimer", "url": "/disclaimer" },
-      { "label": "Terms of Conditions", "url": "/terms" },
-      { "label": "Privacy Policy", "url": "/privacy" }
+      { "label": "Terms of Conditions", "url": "/term-conditions" },
+      { "label": "Privacy Policy", "url": "/privacy-policy" }
     ]
   }
 }
