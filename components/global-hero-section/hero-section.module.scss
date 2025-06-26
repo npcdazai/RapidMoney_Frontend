@@ -1,0 +1,92 @@
+.section {
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
+    // clip-path: polygon(0% 0%, 0% 0%, 2.679% 1.559%, 6.796% 2.705%, 12.422% 3.462%, 19.627% 3.855%, 28.484% 3.911%, 39.061% 3.653%, 51.431% 3.108%, 65.663% 2.301%, 81.829% 1.256%, 100% 0%, 100% 100%, 100% 100%, 88.848% 99.39%, 78.502% 98.909%, 68.756% 98.56%, 59.403% 98.346%, 50.238% 98.267%, 41.053% 98.327%, 31.643% 98.529%, 21.802% 98.873%, 11.323% 99.363%, 0% 100%, 0% 0%);
+
+    //  clip-path: ellipse(100% 85% at 50% 100%);
+    //  clip-path: ellipse(120% 100% at 50% 100%);
+
+
+    &::before {
+        content: "";
+        z-index: 0;
+        pointer-events: none;
+        background: url("./assets/heroClipPath.png") center / cover no-repeat;
+        width: 100%;
+        max-width: 1200px;
+        height: 100%;
+        max-height: 813px;
+        position: absolute;
+        right: 0%;
+        // right: 5%;
+        top: 0%;
+    }
+
+    // &::after {
+    //     content: "";
+    //     z-index: 0;
+    //     pointer-events: none;
+    //     background: #fff;
+    //     width: 100%;
+    //     // max-width: 1200px;
+    //     height: 100%;
+    //     max-height: 70px;
+    //     position: absolute;
+    //     bottom: -25%;
+    //     z-index: 4;
+    //     padding-top: 200px;
+    //     border-radius: 50%;
+    // }
+
+
+    .personImage {
+        position: relative;
+        z-index: 2;
+
+        &::after {
+            content: "";
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            width: 100%;
+            height: 100%;
+            max-width: 700px;
+            max-height: 400px;
+            background: var(--primary-drop-shadow);
+            filter: blur(120px);
+            z-index: -1;
+            opacity: 0.77;
+            pointer-events: none;
+        }
+
+        &::before {
+            content: "";
+            z-index: 0;
+            pointer-events: none;
+            background: url("./assets/moneygroup.png") center / cover no-repeat;
+            width: 100%;
+            max-width: 1200px;
+            height: 100%;
+            max-height: 813px;
+            position: absolute;
+            right: -5%;
+        }
+    }
+
+    .curve {
+        clip-path: ellipse(100% 85% at 50% 100%);
+        position: absolute;
+        bottom: -70%;
+        // top: 100%;
+        width: 100%;
+        height: 100%;
+        background: #fff;
+        z-index: 10;
+
+        // @media screen and (max-width:576px) {
+        //     bottom: -30%;
+        // }
+    }
+}
