@@ -9,6 +9,7 @@ import PartnersSection from "@/components/partner-section/partnerSection";
 import Benefits from "@/components/our-benefits-section/ourBenefits";
 import LoanStep from "@/components/loan-step-section/loanStep";
 import PersonalLoan from "@/components/personal-loan-section/personalLoan";
+import Testimonials from "@/components/testimonial-section/TestiMonials";
 
 console.log(homePageData)
 const header = homePageData.header;
@@ -17,9 +18,10 @@ const faqSteps = homePageData.faqSteps;
 const newsData = homePageData.newsSection;
 const partner = homePageData.partnerSection;
 const benefitsData = homePageData.benefitSection;
-const loanData = homePageData.loanStep
-const heroSection = homePageData.heroSection
-const personalLoan = homePageData.personalLoanSection
+const loanData = homePageData.loanStep;
+const heroSection = homePageData.heroSection;
+const personalLoan = homePageData.personalLoanSection;
+const testimonialsData = homePageData.testimonialSection;
 export default function Home() {
 
   return (
@@ -33,6 +35,7 @@ export default function Home() {
       <NewsSection data={newsData} />
       <PartnersSection data={partner} />
       <FaqSection data={faqSteps} />
+      <Testimonials data={testimonialsData} />
       {/* <Header isDark={!true } /> */}
     </>
 

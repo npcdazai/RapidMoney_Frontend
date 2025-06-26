@@ -293,5 +293,42 @@
                 "glowColor": "#826822"
             }
         ]
+    },
+    "testimonialSection": {
+        "title":"Testimonials",
+        "testimonials": [
+            {
+                "id": 1,
+                "quote": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.",
+                "name": "Amit Desai",
+                "role": "Founder, RapidMoney",
+                "rating": 4.5,
+                "avatar": "/images/testimonials/amit.jpg"
+            },
+            {
+                "id": 2,
+                "quote": "In modern web design, using placeholder text allows designers to focus on layout without distractions.",
+                "name": "Sana Patel",
+                "role": "Admin, TechSphere",
+                "rating": 4.8,
+                "avatar": "/images/testimonials/sana.jpg"
+            },
+            {
+                "id": 3,
+                "quote": "Many designers use Lorem Ipsum to fill space in wireframes, helping clients visualize a final product.",
+                "name": "Rajesh Singh",
+                "role": "Designer, CreativeLab",
+                "rating": 4.9,
+                "avatar": "/images/testimonials/rajesh.jpg"
+            },
+            {
+                "id": 4,
+                "quote": "Using Lorem Ipsum in drafts provides better perspective on aesthetics and usability, keeping the focus on design elements.",
+                "name": "Anita Verma",
+                "role": "Editor, NextGenMedia",
+                "rating": 5.0,
+                "avatar": "/images/testimonials/anita.jpg"
+            }
+        ]
     }
 }
