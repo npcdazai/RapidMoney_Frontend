@@ -5,7 +5,7 @@ import styles from "./our-benefits.module.scss"
 
 const Benefits = ({ data }) => {
     return (
-        <section className={`pt-60 ${styles.section}`}>
+        <section className={`${styles.section}`}>
             {/* <section className={`${styles.section} pb-120 pt-120`}> */}
             <div className="container mx-auto">
                 <h2 className="text-center font-48 font-weight-bold dark-color md:pb-[55px] pb-[25px]">{data?.title }</h2>

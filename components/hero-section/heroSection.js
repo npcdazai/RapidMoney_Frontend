@@ -10,7 +10,7 @@ import { RiArrowRightLine } from 'react-icons/ri';
 
 const HeroSection = ({ data }) => {
     return (
-        <section className={`${styles.section} dark-bg flex items-center pt-[120px]`}>
+        <section className={`${styles.section} dark-bg flex items-center pt-[200px]`}>
             <div className="container mx-auto relative">
                 <Row gutter={[32, 32]} align="">
                     <Col xs={24} lg={24} xl={8}>
