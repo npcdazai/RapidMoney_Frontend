@@ -10,15 +10,16 @@ import { RiArrowRightLine } from 'react-icons/ri';
 
 const HeroSection = ({ data }) => {
     return (
-        <section className={`${styles.section} dark-bg flex items-center pt-60`}>
+        <section className={`${styles.section} dark-bg flex items-center pt-[120px]`}>
             <div className="container mx-auto relative">
                 <Row gutter={[32, 32]} align="">
                     <Col xs={24} lg={24} xl={8}>
                         <div className='flex flex-col gap-[20px]'>
-                            <h1 className="font-48 light-color font-weight-bold">
-                                <span>{data?.title}</span>
+                           <h1
+  className={`font-48 light-color font-weight-bold ${styles.heroTitle}`}
+  dangerouslySetInnerHTML={{ __html: data?.title || '' }}
+/>
 
-                            </h1>
                             <span className="font-16 light-color">{data?.description}</span>
 
                             <Link href={data?.ctaButton.link}>

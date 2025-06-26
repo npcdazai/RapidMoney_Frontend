@@ -25,7 +25,7 @@ const Header = ({ isDark = false, data }) => {
     };
 
     return (
-        <header className={`${styles.data} ${isDark ? styles.dark : styles.light}`}>
+        <header className={`${styles.header} ${isDark ? styles.dark : styles.light} pt-6`}>
             <div className="container mx-auto flex justify-between items-center py-2">
                 {/* Logo */}
                 <div className="">

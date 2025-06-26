@@ -10,22 +10,23 @@ import playStore from "./assets/playstore.svg";
 import styles from "./personal-loan.module.scss"
 import personImage from "./assets/personImage.png"
 import downLoad from "./assets/download.svg"
+import google from "./assets/google.svg"
 
 
 const PersonalLoan = ({ data }) => {
 
-    const sectionRef = useRef(null);
-  const [scrolled, setScrolled] = useState(false);
+  //   const sectionRef = useRef(null);
+  // const [scrolled, setScrolled] = useState(false);
 
-  useEffect(() => {
-    const handleScroll = () => {
-      const top = sectionRef.current?.getBoundingClientRect().top || 0;
-      setScrolled(top < -50); // adjust threshold for effect
-    };
+  // useEffect(() => {
+  //   const handleScroll = () => {
+  //     const top = sectionRef.current?.getBoundingClientRect().top || 0;
+  //     setScrolled(top < -50); // adjust threshold for effect
+  //   };
 
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  //   window.addEventListener("scroll", handleScroll);
+  //   return () => window.removeEventListener("scroll", handleScroll);
+  // }, []);
 
   return (
     <section
@@ -80,9 +81,9 @@ const PersonalLoan = ({ data }) => {
             {data.stats.map((stat, idx) => {
               const positionMap = [
                 // 'top-0 left-0',
-                // 'top-0 right-0',
+                'top-0 right-0',
                 // 'bottom-0 left-0',
-                'bottom-0 right-0',
+                // 'bottom-0 right-0',
               ];
               return (
                 <div
@@ -90,7 +91,7 @@ const PersonalLoan = ({ data }) => {
                   className={`absolute ${positionMap[idx]} m-4 p-4 flex flex-col items-center gap-1 z-10`}
                 >
                   <Image
-                    src={downLoad
+                    src={google
                       // stat.icon === 'download'
                       //   ? require('./assets/download.svg')
                       //   : require('./assets/money.svg')

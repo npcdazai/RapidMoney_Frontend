@@ -1,5 +1,7 @@
 .header {
   transition: background 0.3s ease;
+  z-index: 99;
+  position: relative;
 
   .logo img {
     max-width: 100%;
@@ -23,7 +25,7 @@
 }
 
 .dark {
-  background-color: #000;
+  background-color: transparent;
   .dropDownLink,
   .navLink {
     color: var(--light-color);

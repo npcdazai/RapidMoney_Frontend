@@ -13,17 +13,7 @@
             },
             {
                 "label": "About Us",
-                "option": [
-                    {
-                        "label": "Company",
-                        "link": "/about/company"
-                    },
-                    {
-                        "label": "Team",
-                        "link": "/about/team"
-                    }
-                ],
-                "type": "dropdown"
+                "link": "/about"
             },
             {
                 "label": "Products",
@@ -55,7 +45,7 @@
         }
     },
     "heroSection": {
-        "title": "Loans for Your Dreams. Our Loans.",
+        "title": "<span>Loans</span/> for Your Dreams. Our Loans.",
         "description": "Empower your aspirations with customizable loan solutions that adapt to your needs—enjoy transparent terms, swift approvals, and a seamless digital experience from application to funding.",
         "ctaButton": {
             "label": "Apply Now",
@@ -117,20 +107,20 @@
             }
         },
         "stats": [
-            {
-                "icon": "money",
-                "value": "2000Lakh+",
-                "label": "Amount Disbursed"
-            },
-            {
-                "icon": "money",
-                "value": "2000Lakh+",
-                "label": "Amount Disbursed"
-            },
-            {
+             {
                 "icon": "download",
                 "value": "4.8",
                 "label": "Google Reviews"
+            },
+            {
+                "icon": "money",
+                "value": "2000Lakh+",
+                "label": "Amount Disbursed"
+            },
+            {
+                "icon": "money",
+                "value": "2000Lakh+",
+                "label": "Amount Disbursed"
             },
             {
                 "icon": "money",
@@ -142,7 +132,7 @@
         "backgroundText": "Personal"
     },
     "benefitSection": {
-        "title": "Our benefits",
+        "title": "Benefits",
         "features": [
             {
                 "id": 1,
