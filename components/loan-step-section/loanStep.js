@@ -106,12 +106,12 @@ const LoanStep = ({ data }) => {
   const stepsCount = data.steps.length;
 
   // Auto-play effect
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setCurrent((prev) => (prev + 1) % stepsCount);
-    }, AUTO_PLAY_INTERVAL);
-    return () => clearInterval(timer);
-  }, [stepsCount]);
+  // useEffect(() => {
+  //   const timer = setInterval(() => {
+  //     setCurrent((prev) => (prev + 1) % stepsCount);
+  //   }, AUTO_PLAY_INTERVAL);
+  //   return () => clearInterval(timer);
+  // }, [stepsCount]);
 
   const currentStep = data.steps[current];
 
@@ -159,9 +159,9 @@ const LoanStep = ({ data }) => {
                 // src={currentStep.image}
                 src={imageArray[currentStep.flag]}
                 alt={`Step ${currentStep.step}`}
-                width={300}
+                width={400}
                 height={500}
-                style={{ objectFit: "contain" }}
+                style={{ objectFit: "cover" }}
               />
             </div>
           </Col>
