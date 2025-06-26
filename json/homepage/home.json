@@ -13,17 +13,11 @@
             },
             {
                 "label": "About Us",
-                "link": "/about"
+                "link": "/about-us"
             },
             {
                 "label": "Products",
-                "option": [
-                    {
-                        "label": "Personal Loan",
-                        "link": "/products/personal"
-                    }
-                ],
-                "type": "dropdown"
+                "link":"/product"
             },
             {
                 "label": "Education & Blogs",

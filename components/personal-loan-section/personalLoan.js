@@ -34,7 +34,7 @@ const PersonalLoan = ({ data }) => {
       data-label={data.backgroundText || "Personal"}
     >
 
-      <div className="container mx-auto text-center pt-[120px]">
+      <div className="container mx-auto text-center pt-[200px]">
         <div className="w-full flex justify-center items-center text-center">
           <div className="flex flex-col gap-5 max-w-[600px] items-center px-4">
             <h2 className="font-48 font-weight-bold max-w-[460px]">{data.title}</h2>
