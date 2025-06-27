@@ -4,6 +4,9 @@ import homePageData from "@/json/homepage/home.json";
 import PromoSection from "@/components/promo-section/promoSection";
 import GlobalHeroSection from "@/components/global-hero-section/heroSection";
 import ProductFAQ from "@/components/product-faq/productFAQ";
+import ProductRepayment from "@/components/product-repayment/productRepayment";
+import ProductTermLoans from "@/components/product-term-loans/productTermLoans";
+import ProductInstantAccess from "@/components/product-instant-access/productInstantAccess";
 
 export default function page() {
   const header = homePageData.header;
@@ -13,6 +16,9 @@ export default function page() {
     <>
       <Header isDark={true} data={header} />
       <GlobalHeroSection data={heroSection} />
+      <ProductRepayment />
+      <ProductTermLoans />
+      <ProductInstantAccess />
       <ProductFAQ />
       <PromoSection data={promo} />
     </>
