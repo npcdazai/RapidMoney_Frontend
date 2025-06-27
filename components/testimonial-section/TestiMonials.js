@@ -14,7 +14,7 @@ import { RiDoubleQuotesR, RiStarFill } from 'react-icons/ri';
 
 const Testimonials = ({ data }) => {
     return (
-        <section className={`pt-60 pb-60 ${styles.section}`}>
+        <section className={`pt-60 ${styles.section}`}>
             <div>
                 <h2 className="text-center font-48 font-weight-bold dark-color md:pb-[55px] pb-[25px]">
                     {data?.title}
