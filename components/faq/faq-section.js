@@ -38,7 +38,7 @@ const FaqSection = ({ data }) => {
                                                     // width={20}
                                                     // height={20}
                                                     alt="Rapid Money Logo"
-                                                    className="inline-block object-contain align-middle min-w-[95px] w-full"
+                                                    className="inline-block object-contain align-middle max-w-[95px] min-w-[95px] w-full"
                                                 />
                                             </div>
                                         ) : (
