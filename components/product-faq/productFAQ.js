@@ -1,17 +1,17 @@
 "use client";
 
 import React from "react";
-import styles from "./faq-section.module.scss"
-import { Collapse  } from "antd";
+import styles from "./faq-section.module.scss";
+import { Collapse } from "antd";
 import { RiArrowDropDownLine } from "react-icons/ri";
 const { Panel } = Collapse;
 
 export default function ProductFAQ() {
   return (
-    <section className={`bg-white pb-[100px] container px-4 ${styles.section}`}>
+    <section className={`bg-white py-[100px] container px-4 ${styles.section}`}>
       <h2 className="font-40 text-black font-bold text-center mb-11">FAQs</h2>
 
-      <div >
+      <div>
         <Collapse
           accordion
           expandIconPosition="end"
@@ -28,35 +28,44 @@ export default function ProductFAQ() {
           )}
           bordered={false}
           className={styles.faqCollapse}
+          defaultActiveKey={["1"]}
         >
-           <Panel
-              // header={<span className="font-18 font-weight-medium">{q.question}</span>}
-              header={
-                <div className="flex justify-between items-center w-full">
-                  <span className="font-18 font-weight-medium">
-                    What is an instant personal loan?
-                  </span>
-                </div>
-              }
-              key={'1'}
-              className={`${styles.faqCollapsePanel} w-full`}
-            >
-              <p className="font-14 text-[rgba(33, 33, 33, 0.8)]">An instant personal loan provides quick access to funds through a completely digital process. You receive money directly in your bank account after online approval without visiting any branch.</p>
-            </Panel>
-           <Panel
-              // header={<span className="font-18 font-weight-medium">{q.question}</span>}
-              header={
-                <div className="flex justify-between items-center w-full">
-                  <span className="font-18 font-weight-medium">
-                    What is an instant personal loan?
-                  </span>
-                </div>
-              }
-              key={'2'}
-              className={`${styles.faqCollapsePanel} w-full`}
-            >
-              <p className="font-14 text-[rgba(33, 33, 33, 0.8)]">An instant personal loan provides quick access to funds through a completely digital process. You receive money directly in your bank account after online approval without visiting any branch.</p>
-            </Panel>
+          <Panel
+            // header={<span className="font-18 font-weight-medium">{q.question}</span>}
+            header={
+              <div className="flex justify-between items-center w-full">
+                <span className="font-18 font-weight-medium">
+                  What is an instant personal loan?
+                </span>
+              </div>
+            }
+            key={"1"}
+            className={`${styles.faqCollapsePanel} w-full`}
+          >
+            <p className="font-14 text-[rgba(33, 33, 33, 0.8)]">
+              An instant personal loan provides quick access to funds through a
+              completely digital process. You receive money directly in your
+              bank account after online approval without visiting any branch.
+            </p>
+          </Panel>
+          <Panel
+            // header={<span className="font-18 font-weight-medium">{q.question}</span>}
+            header={
+              <div className="flex justify-between items-center w-full">
+                <span className="font-18 font-weight-medium">
+                  What is an instant personal loan?
+                </span>
+              </div>
+            }
+            key={"2"}
+            className={`${styles.faqCollapsePanel} w-full`}
+          >
+            <p className="font-14 text-[rgba(33, 33, 33, 0.8)]">
+              An instant personal loan provides quick access to funds through a
+              completely digital process. You receive money directly in your
+              bank account after online approval without visiting any branch.
+            </p>
+          </Panel>
         </Collapse>
       </div>
     </section>
