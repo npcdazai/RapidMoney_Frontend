@@ -106,12 +106,12 @@ const LoanStep = ({ data }) => {
   const stepsCount = data.steps.length;
 
   // Auto-play effect
-  // useEffect(() => {
-  //   const timer = setInterval(() => {
-  //     setCurrent((prev) => (prev + 1) % stepsCount);
-  //   }, AUTO_PLAY_INTERVAL);
-  //   return () => clearInterval(timer);
-  // }, [stepsCount]);
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrent((prev) => (prev + 1) % stepsCount);
+    }, AUTO_PLAY_INTERVAL);
+    return () => clearInterval(timer);
+  }, [stepsCount]);
 
   const currentStep = data.steps[current];
 
