@@ -14,7 +14,7 @@ export default function ProductInstantAccess() {
           <div className="w-full text-center lg:text-left lg:w-1/2 py-16 lg:py-[86px]">
             <h2 className="text-white font-bold font-40 lg:max-w-[500px]">
               Get <span className="text-[#B7FB52]">Instant</span> Access to Cash
-              – Download the App Today!"
+              – Download the App Today!
             </h2>
 
             <Link href={"#"}>
