@@ -97,20 +97,6 @@ body {
   cursor: pointer;
 }
 
-.apply-btn {
-  font-size: 14px;
-  font-weight: 600;
-  padding: 12px 18px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  transition: 0.3s;
-  text-decoration: none;
-  box-shadow: none;
-  border-radius: 60px;
-  cursor: pointer;
-  min-width: 180px;
-}
 
 .glossy-btn {
   display: flex;
@@ -126,38 +112,80 @@ body {
 
 }
 
-
+.apply-btn {
+  font-size: 16px;
+  line-height: 140%;
+  font-weight: 600;
+  padding: 12px 18px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  border: none;
+  border-radius: 60px;
+  cursor: pointer;
+  min-width: 180px;
+  transition: all 0.3s ease-in-out;
+  box-shadow: 0 0 0 rgba(0, 0, 0, 0);
+  transform: translateY(0);
+}
+ 
+.apply-btn:hover {
+  transform: scale(1.01);
+}
+ 
+.apply-btn:hover {
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+}
+ 
 .apply-btn-green {
   background: var(--primary-btn-color);
+  // color: white;
+ 
 }
-
+ 
+.apply-btn-green:hover,
+.apply-btn-green:active {
+  background: transparent;
+  border: 1px solid var(--primary-btn-color);
+  color: var(--primary-btn-color);
+  box-shadow: 0 0 2px 2px var(--primary-btn-color);
+  // transform: scale(1.01);
+}
+ 
 .apply-btn-light {
   background: var(--dark-color);
   color: var(--light-color);
 }
-
+ 
+.apply-btn-light:hover,
+.apply-btn-light:active {
+  box-shadow: 0 0 2px 2px #cec6c6;
+}
+ 
 .apply-btn-dark {
   background: var(--light-color);
   color: var(--dark-color);
 }
-
+ 
+.apply-btn-dark:hover,
+.apply-btn-dark:active {
+  box-shadow: 0 0 2px 2px #cec6c6;
+}
+ 
 .apply-btn-blue {
   background: var(--secondary-btn-color);
   color: var(--light-color);
 }
-
-// .primary-outline-btn {
-//   @extend .primary-btn;
-//   background-color: #fff;
-//   border: 1px solid var(--primary-color);
-//   color: var(--dark-color);
-//   box-shadow: none;
-
-//   &:hover {
-//     background-color: var(--primary-color);
-//     color: #fff;
-//   }
-// }
+ 
+.apply-btn-blue:hover,
+.apply-btn-blue:active {
+  background: transparent;
+  border: 1px solid var(--secondary-btn-color);
+  color: var(--secondary-btn-color);
+  box-shadow: 0 0 2px 2px var(--secondary-btn-color);
+}
+ 
 
 
 .text-heading-color {

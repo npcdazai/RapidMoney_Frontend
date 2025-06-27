@@ -25,6 +25,7 @@ position: relative;
     border: 1px solid #DEDEDE;
     border-radius: 15px !important;
     padding: 16px 20px;
+     transition: transform 0.2s, box-shadow 0.2s;
 
     &:last-child {
       border-bottom: 1px solid #DEDEDE !important;
@@ -45,5 +46,10 @@ position: relative;
       color: rgba(33, 33, 33, 0.8);
     }
   }
+
+    .faqCollapsePanel:hover {
+                transform: translateY(-4px) scale(1.03);
+                box-shadow: 0 4px 24px 0 rgba(0,0,0,0.10);
+            }
 }
 }

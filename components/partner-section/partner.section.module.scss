@@ -3,8 +3,9 @@
         position: relative;
         overflow: hidden;
         z-index: 1;
+        transition: transform 0.2s, box-shadow 0.2s;
     }
-
+ 
     .cardBkl::after {
         content: "";
         position: absolute;
@@ -15,5 +16,10 @@
 // z-index: -1;
          background: var(--glow-color, #6C63FF); // fallback
         filter: blur(82.8px);
+    }
+ 
+    .cardBkl:hover {
+        transform: translateY(-6px) scale(1.04);
+        box-shadow: 0 0 32px 0 var(--glow-color, #6C63FF);
     }
 }

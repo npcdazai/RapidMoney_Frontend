@@ -52,7 +52,7 @@ const PartnersSection = ({ data }) => {
 
                 <div className="flex justify-between items-center gap-4">
                   <p className="font-16">{partner.description}</p>
-                  <Link href={partner.link} className="self-end">
+                  <Link href={partner.link} className="self-end cursor-pointer">
                     <button className="glossy-btn whitespace-nowrap">Know More</button>
                   </Link>
                 </div>

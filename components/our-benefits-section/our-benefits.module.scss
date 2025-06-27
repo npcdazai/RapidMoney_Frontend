@@ -3,8 +3,10 @@ position: relative;
     .benefitsCard {
         border: 8px solid #F9FAFF;
         border-radius: 32px;
-
+        transition: transform 0.2s, box-shadow 0.2s;
     }
-
-
+    .benefitsCard:hover {
+        transform: translateY(-6px) scale(1.04);
+        box-shadow: 0 8px 32px 0 rgba(0,0,0,0.10);
+    }
 }

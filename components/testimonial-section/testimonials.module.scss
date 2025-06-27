@@ -2,17 +2,24 @@
     .testimonialsSwiperBkl {
         .testimonialsSwiper {
             padding-bottom: 50px;
-
-            .testimonialSwiperSlide {}
-
+ 
+            .testimonialSwiperSlide {
+                transition: transform 0.2s, box-shadow 0.2s;
+                border-radius: 32px;
+            }
+            .testimonialSwiperSlide:hover {
+                transform: translateY(-4px) scale(1.03);
+                box-shadow: 0 4px 24px 0 rgba(0,0,0,0.10);
+            }
+ 
             :global(.swiper-pagination) {
-
+ 
                 :global(.swiper-pagination-bullet-active) {
                     background-color: #737373 !important;
                 }
             }
         }
-
+ 
     }
-
+ 
 }

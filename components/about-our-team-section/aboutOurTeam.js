@@ -2,6 +2,7 @@ import React from "react";
 import HemaliImg from "@/components/about-our-team-section/assets/hemali.png";
 import ChintanImg from "@/components/about-our-team-section/assets/chintan.png";
 import AnkurImg from "@/components/about-our-team-section/assets/ankur.png";
+import AshwaniImg from "@/components/about-our-team-section/assets/ashwani.png";
 import Image from "next/image";
 
 const leaders = [
@@ -21,9 +22,9 @@ const leaders = [
 
 const team = [
   {
-    name: "Ankur Chandra",
-    title: "AVP-Products",
-    img: AnkurImg,
+    name: "Ashwani Manaktala",
+    title: "Chief Executive Officer",
+    img: AshwaniImg,
     linkedin: "#",
   },
   {

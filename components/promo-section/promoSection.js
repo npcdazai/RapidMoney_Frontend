@@ -27,7 +27,7 @@ const PromoSection = ({ data }) => (
         
         <div className="flex flex-col gap-4 pt-60 container mx-auto">
             <div className="flex flex-col gap-8">
-                <div className="flex flex-col gap-5 max-w-[550px] relative z-[1]">
+                <div className="flex flex-col gap-5 max-w-[550px] relative z-10">
                     <h2 className={`${styles.promoHeading} font-40 light-color font-weight-bold`}>
                         {data?.title}
                     </h2>
