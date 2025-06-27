@@ -1,7 +1,17 @@
 import { Row, Col } from "antd";
 import Image from "next/image";
 import bank from './assets/banking.svg'
+import creditCard from './assets/credit-card.svg'
+import layer from './assets/layer.svg'
+import calender from './assets/calendar.svg'
 import styles from "./our-benefits.module.scss"
+
+const icon = {
+    creditCard: creditCard,
+    bank: bank,
+    layer: layer,
+    calender :calender
+}
 
 const Benefits = ({ data }) => {
     return (
@@ -23,7 +33,7 @@ const Benefits = ({ data }) => {
                                     <div></div>
                                     <div className="">
                                         <Image
-                                            src={bank}
+                                           src={icon[item.icon]}
                                             // src={item.icon}
                                             alt="feature"
                                             width={40}

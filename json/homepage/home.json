@@ -127,28 +127,28 @@
   },
   "benefitSection": {
     "title": "Benefits",
-    "features": [
-      {
-        "id": 1,
-        "text": "No bank\nVisits",
-        "icon": "/icons/bank-cross.png"
-      },
-      {
-        "id": 2,
-        "text": "Transfer to\nbank account",
-        "icon": "/icons/wallet-money.png"
-      },
-      {
-        "id": 3,
-        "text": "No\nPaperwork",
-        "icon": "/icons/doc-stack.png"
-      },
-      {
-        "id": 4,
-        "text": "Repayment upto\n9 months.",
-        "icon": "/icons/calendar-loan.png"
-      }
-    ]
+     "features": [
+            {
+                "id": 1,
+                "text": "No bank\nVisits",
+                "icon": "bank"
+            },
+            {
+                "id": 2,
+                "text": "Transfer to\nbank account",
+                "icon": "creditCard"
+            },
+            {
+                "id": 3,
+                "text": "No\nPaperwork",
+                "icon": "layer"
+            },
+            {
+                "id": 4,
+                "text": "Repayment upto\n9 months.",
+                "icon": "calender"
+            }
+        ]
   },
   "promoSection": {
     "title": "Join the RapidMoney app for instant personal loans!",
