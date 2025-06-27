@@ -8,7 +8,7 @@ const { Panel } = Collapse;
 
 export default function ProductFAQ() {
   return (
-    <section className="bg-white pb-[100px] container px-4">
+    <section className={`bg-white pb-[100px] container px-4 ${styles.section}`}>
       <h2 className="font-40 text-black font-bold text-center mb-11">FAQs</h2>
 
       <div >

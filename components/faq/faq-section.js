@@ -4,10 +4,12 @@ import React from "react";
 import { Card, Col, Collapse, Row, Tabs } from "antd";
 import { RiArrowDropDownLine } from "react-icons/ri";
 import dropDownArrow from "./assets/drowpDownArrow.svg"
+import rapidMoneyLogo from "./assets/rapid_money.png"
 
 const { Panel } = Collapse;
 const { TabPane } = Tabs;
 import styles from "./faq-section.module.scss"
+import Image from "next/image";
 
 const FaqSection = ({ data }) => {
     //  const { token } = theme.useToken();
@@ -22,10 +24,32 @@ const FaqSection = ({ data }) => {
             <div className="container mx-auto px-4">
                 <h2 className="text-center font-48 font-weight-bold dark-color md:pb-[55px] pb-[25px]">FAQs</h2>
                 <Row>
-                    <Col span={16} offset={4}>
+                    <Col span={24} offset={0} lg={{ offset: 4, span: 16 }}>
                         <Tabs defaultActiveKey="1" tabPosition="top" className={`${styles.faqTabs}`}>
                             {data?.map((step, index) => (
-                                <TabPane tab={`${step.tabTitle}`} key={String(step.step)} className={`${styles.faqTabsPane}`}>
+                                // <TabPane tab={`${step.tabTitle}`} key={String(step.step)} className={`${styles.faqTabsPane}`}>
+                                <TabPane
+                                    tab={
+                                        step.step === 1 ? (
+                                            <span className="flex items-center gap-1">
+                                                <span className="inline-block">{step.tabTitle}</span>
+                                                <Image
+                                                    src={rapidMoneyLogo}
+                                                    width={20}
+                                                    height={20}
+                                                    alt="Rapid Money Logo"
+                                                    className="inline-block object-contain align-middle"
+                                                />
+                                            </span>
+                                        ) : (
+                                            step.tabTitle
+                                        )
+                                    }
+                                    key={String(step.step)}
+                                    className={styles.faqTabsPane}
+                                >
+
+
                                     <Collapse
                                         accordion
                                         expandIconPosition="end"
@@ -64,7 +88,7 @@ const FaqSection = ({ data }) => {
                     </Col>
                 </Row>
             </div>
-        </section>
+        </section >
     );
 };
 

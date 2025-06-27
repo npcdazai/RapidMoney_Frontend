@@ -1,13 +1,18 @@
 .section {
-
-
     .testimonialsSwiperBkl {
+        .testimonialsSwiper {
+            padding-bottom: 50px;
 
-        .swiper {
-         .swiper-horizontal > .swiper-pagination-bullets, .swiper-pagination-bullets.swiper-pagination-horizontal{
-            bottom: -4px;
-         }
+            .testimonialSwiperSlide {}
+
+            :global(.swiper-pagination) {
+
+                :global(.swiper-pagination-bullet-active) {
+                    background-color: #737373 !important;
+                }
+            }
         }
+
     }
 
 }

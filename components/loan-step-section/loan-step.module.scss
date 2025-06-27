@@ -21,17 +21,28 @@
 
     .loanStep {
         :global(.ant-steps-item) {
+            margin-bottom: 20px;
+
             :global(.ant-steps-item-container) {
+                position: relative;
+
                 :global(.ant-steps-item-tail) {
-                    top: 20px !important;
+                    top: 25px !important;
                     inset-inline-start: 30px !important;
+
+                    // position: absolute;
+                    // left: 30px; // Matches half of icon width
+                    // top: 60px; // icon height
+                    // height: calc(100% - 60px);
+                    // border-left: 1px solid #BDBDBD;
+                    // z-index: 0;
 
                 }
 
                 :global(.ant-steps-item-icon) {
                     width: 60px;
                     height: 60px;
-                    line-height: 60px;
+                    // line-height: 60px;
                     background: transparent;
                     border: 1px solid gray;
                     border-radius: 50%;
@@ -42,8 +53,11 @@
                     position: relative;
 
                     :global(.ant-steps-icon) {
-                        font-weight: 300;
-                        font-size: 24px;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        font-weight: 500;
+                        font-size: 20px;
                         line-height: 113%;
                         color: var(--dark-color);
                     }
@@ -51,6 +65,7 @@
 
                 :global(.ant-steps-item-content) {
                     padding-bottom: 80px;
+                    // padding-left: 90px;
                 }
             }
         }
@@ -69,11 +84,19 @@
 
         // ✅ Optional: style for COMPLETED step
         :global(.ant-steps-item-finish) {
+            :global(.ant-steps-item-container) {
+                :global(.ant-steps-item-tail) {
+                    &::after {
+                    background-color: #BDBDBD !important; // or any completed step color
+                    }
+                }
+            }
+
             :global(.ant-steps-item-icon) {
-                border-color: gray;
+                border-color: #BDBDBD;
 
                 :global(.ant-steps-icon) {
-                    color: var(--primary-color) !important;
+                    color: var(--dark-color) !important;
                 }
             }
         }
@@ -129,7 +152,7 @@
             max-width: 150px;
             max-height: 150px;
             // top: 100%;
-            right: -60px;
+            right: -20%;
             bottom: 60%;
 
             @media screen and (max-width :992px) {

@@ -54,7 +54,7 @@ const GlobalHeroSection = ({ data }) => {
           </Col>
 
           <Col xs={24} lg={24} xl={16}>
-            <div className={`w-full flex justify-center `}>
+               <div className={`w-full flex justify-center ${styles.personImage}`}>
               <Image
                 src={productImage}
                 alt="Hero"

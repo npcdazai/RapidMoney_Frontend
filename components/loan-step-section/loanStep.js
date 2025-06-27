@@ -94,9 +94,9 @@ import install from "./assets/install.png"
 import loanApp from "./assets/loanApp.png"
 import verify from "./assets/verify.png"
 
-const AUTO_PLAY_INTERVAL = 3000; 
+const AUTO_PLAY_INTERVAL = 3000;
 const imageArray = {
-  install : install,
+  install: install,
   verify: verify,
   loanApp: loanApp
 }
@@ -106,12 +106,12 @@ const LoanStep = ({ data }) => {
   const stepsCount = data.steps.length;
 
   // Auto-play effect
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setCurrent((prev) => (prev + 1) % stepsCount);
-    }, AUTO_PLAY_INTERVAL);
-    return () => clearInterval(timer);
-  }, [stepsCount]);
+  // useEffect(() => {
+  //   const timer = setInterval(() => {
+  //     setCurrent((prev) => (prev + 1) % stepsCount);
+  //   }, AUTO_PLAY_INTERVAL);
+  //   return () => clearInterval(timer);
+  // }, [stepsCount]);
 
   const currentStep = data.steps[current];
 
@@ -125,7 +125,7 @@ const LoanStep = ({ data }) => {
           </h2>
         </span>
 
-        <Row gutter={[32, 32]}>
+        <Row gutter={[32, 32]} justify={"center"} align="middle">
           {/* Left Column: Steps */}
           <Col xs={24} lg={12}>
             <Steps
@@ -147,6 +147,13 @@ const LoanStep = ({ data }) => {
                       {step.description}
                     </span>
                   }
+                  icon={
+                    <div
+                      className={`custom-step-icon ${idx === current ? 'active' : ''}`}
+                    >
+                      {String(idx + 1).padStart(2, '0')}
+                    </div>
+                  }
                 />
               ))}
             </Steps>
@@ -159,9 +166,9 @@ const LoanStep = ({ data }) => {
                 // src={currentStep.image}
                 src={imageArray[currentStep.flag]}
                 alt={`Step ${currentStep.step}`}
-                width={300}
+                width={400}
                 height={500}
-                style={{ objectFit: "contain" }}
+                style={{ objectFit: "cover" }}
               />
             </div>
           </Col>
