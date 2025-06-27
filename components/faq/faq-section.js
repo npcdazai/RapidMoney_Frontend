@@ -20,7 +20,7 @@ const FaqSection = ({ data }) => {
     //     border: 'none',
     // };
     return (
-        <section className={`w-full ${styles.section} pt-60 pb-60`}>
+        <section className={`w-full ${styles.section} pt-120 pb-120`}>
             <div className="container mx-auto px-4">
                 <h2 className="text-center font-48 font-weight-bold dark-color md:pb-[55px] pb-[25px]">FAQs</h2>
                 <Row>
@@ -31,16 +31,16 @@ const FaqSection = ({ data }) => {
                                 <TabPane
                                     tab={
                                         step.step === 1 ? (
-                                            <span className="flex items-center gap-1">
+                                            <div className="flex items-center w-full gap-2">
                                                 <span className="inline-block">{step.tabTitle}</span>
                                                 <Image
                                                     src={rapidMoneyLogo}
-                                                    width={20}
-                                                    height={20}
+                                                    // width={20}
+                                                    // height={20}
                                                     alt="Rapid Money Logo"
-                                                    className="inline-block object-contain align-middle"
+                                                    className="inline-block object-contain align-middle min-w-[95px] w-full"
                                                 />
-                                            </span>
+                                            </div>
                                         ) : (
                                             step.tabTitle
                                         )
