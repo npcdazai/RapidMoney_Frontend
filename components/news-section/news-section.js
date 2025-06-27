@@ -35,7 +35,7 @@ const NewsSection = ({ data }) => {
           {data?.cards.map((item, idx) => (
             <Col key={idx} xs={24} sm={24} md={8}>
               <div className="flex flex-col gap-4 h-full group">
-                <Link href={item.link} className="">
+                <Link href={item.link} className="h-full">
                   <div className="overflow-hidden h-full rounded-3xl ">
                     <Image
                       src={imageArray[idx]}
