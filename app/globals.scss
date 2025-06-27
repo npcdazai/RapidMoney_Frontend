@@ -149,7 +149,7 @@ body {
   background: transparent;
   border: 1px solid var(--primary-btn-color);
   color: var(--primary-btn-color);
-  box-shadow: 0 0 2px 2px var(--primary-btn-color);
+  box-shadow: 0 0 10px 0px var(--primary-btn-color);
   // transform: scale(1.01);
 }
  
@@ -160,7 +160,7 @@ body {
  
 .apply-btn-light:hover,
 .apply-btn-light:active {
-  box-shadow: 0 0 2px 2px #cec6c6;
+  box-shadow: 0 0 10px 0px #cec6c6;
 }
  
 .apply-btn-dark {
@@ -170,7 +170,7 @@ body {
  
 .apply-btn-dark:hover,
 .apply-btn-dark:active {
-  box-shadow: 0 0 2px 2px #cec6c6;
+  box-shadow: 0 0 10px 0px #cec6c6;
 }
  
 .apply-btn-blue {
@@ -183,7 +183,7 @@ body {
   background: transparent;
   border: 1px solid var(--secondary-btn-color);
   color: var(--secondary-btn-color);
-  box-shadow: 0 0 2px 2px var(--secondary-btn-color);
+  box-shadow: 0 0 10px 0px var(--secondary-btn-color);
 }
  
 
