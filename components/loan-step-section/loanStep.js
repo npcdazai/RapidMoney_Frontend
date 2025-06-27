@@ -73,16 +73,16 @@ const LoanStep = ({ data }) => {
             </Steps>
           </Col>
 
-          {/* <Col xs={24} lg={11} offset={1} className={styles.imageBkl}> */}
-          <Col xs={24} lg={{ span: 11, offset: 1 }} className={styles.imageBkl}>
+          <Col xs={24} lg={12} className={styles.imageBkl}>
+          {/* <Col xs={24} lg={{ span: 11, offset: 1 }} className={styles.imageBkl}> */}
             <div className="flex justify-center items-center">
               <Image
                 // src={currentStep.image}
                 src={imageArray[currentStep.flag]}
                 alt={`Step ${currentStep.step}`}
-                width={400}
-                height={500}
-                style={{ objectFit: "cover" }}
+                // width={400}
+                // height={500}
+                className="max-h-[550px] object-scale-down"
               />
             </div>
           </Col>

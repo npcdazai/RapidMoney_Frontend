@@ -13,49 +13,76 @@ import styles from "./hero-swiper-wrapper.module.scss"
 
 const heroSection = homePageData.heroSection;
 
-  const heroSlides = [
-        {
-            "title": "Smart Loans for Health Needs",
-            "description": "Transparent terms & quick approvals.",
-            "ctaButton": { "label": "Learn More", "link": "/learn-more" },
-            "backgroundImage": "./assets/hero-health.png"
+const heroSlides = [
+    {
+        "title": "Your <span>Dreams</span/>. Our Loans.",
+        "description": "Empower your aspirations with customizable loan solutions that adapt to your needs—enjoy transparent terms, swift approvals, and a seamless digital experience from application to funding.",
+        "ctaButton": {
+            "label": "Apply Now",
+            "link": "/apply"
         },
-        {
-            "title": "Education Loans Made Easy",
-            "description": "Support your student’s journey effortlessly.",
-            "ctaButton": { "label": "Get Started", "link": "/education" },
-            "backgroundImage": "./assets/hero-marriage.png"
+        "image": "happy-man-phone.png",
+        "floatingCoins": [
+            "coin-left.png",
+            "coin-top-right.png",
+            "coin-bottom-right.png",
+            "note-float.png"
+        ]
+    },
+    {
+        "title": "Smart Loans for Health Needs",
+        "description": "Empower your aspirations with customizable loan solutions that adapt to your needs—enjoy transparent terms, swift approvals, and a seamless digital experience from application to funding.",
+        "ctaButton": {
+            "label": "Apply Now",
+            "link": "/apply"
         },
-        {
-            "title": "Business Loans On Demand",
-            "description": "Fuel your growth with flexible financing.",
-            "ctaButton": { "label": "Explore Now", "link": "/business" },
-            "backgroundImage": "./assets/hero-life.png"
-        }
-    ]
+        "image": "happy-man-phone.png",
+        "floatingCoins": [
+            "coin-left.png",
+            "coin-top-right.png",
+            "coin-bottom-right.png",
+            "note-float.png"
+        ]
+    },
+    {
+        "title": "Business Loans On Demand",
+        "description": "Empower your aspirations with customizable loan solutions that adapt to your needs—enjoy transparent terms, swift approvals, and a seamless digital experience from application to funding.",
+        "ctaButton": {
+            "label": "Apply Now",
+            "link": "/apply"
+        },
+        "image": "happy-man-phone.png",
+        "floatingCoins": [
+            "coin-left.png",
+            "coin-top-right.png",
+            "coin-bottom-right.png",
+            "note-float.png"
+        ]
+    },
+]
 
 
 export default function HeroSwiperWrapper() {
     return (
         <section className={`mt-[-100px] relative ${styles.section}`}>
             <Swiper
-                // modules={[Autoplay, Pagination]}
                 autoplay={{
                     delay: 3000,
                     disableOnInteraction: false
                 }}
+                pagination={{ clickable: true }}
+                // modules={[Pagination]}
+                modules={[Autoplay,Pagination]}
                 loop={true}
+                className={styles.heroSwiper}
             >
-                <SwiperSlide>
-                    <HeroSection data={heroSection} />
-                </SwiperSlide>
-                {heroSlides.map((slide, idx) => (
-                    <SwiperSlide key={`hero-${idx}`}>
-                        <HeroBgSection data={slide} />
+                {heroSlides.map((item, idx) => (
+                    <SwiperSlide key={idx}>
+                        <HeroSection data={item} />
                     </SwiperSlide>
                 ))}
-                <div className={styles.curve}></div>
             </Swiper>
+            <div className={styles.curve}></div>
         </section>
     )
 }
