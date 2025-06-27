@@ -13,11 +13,15 @@
       },
       {
         "label": "About Us",
-        "link": "/about-us"
+        "link": "/about-us",
+        "type":"dropdown",
+        "option" : []
       },
       {
         "label": "Products",
-        "link": "/product"
+        "link": "/product",
+        "type":"dropdown",
+        "option" : []
       },
       {
         "label": "Education & Blogs",
@@ -39,7 +43,7 @@
     }
   },
   "heroSection": {
-    "title": "<span>Loans</span/> for Your Dreams. Our Loans.",
+    "title": "Your <span>Dreams</span/>. Our Loans.",
     "description": "Empower your aspirations with customizable loan solutions that adapt to your needs—enjoy transparent terms, swift approvals, and a seamless digital experience from application to funding.",
     "ctaButton": {
       "label": "Apply Now",
@@ -54,26 +58,26 @@
     ]
   },
   "loanStep": {
-    "title": "3 steps and you have the loan",
+    "title": "3 Steps and You Have Loan",
     "steps": [
       {
         "step": 1,
         "title": "Install & Choose",
-        "description": "Lorem Ipsum is simply dummy text of the printing and typesetting.",
+        "description": "Install the RapidMoney app and get a loan amount & tenure that fits your needs!",
         "image": "/images/step-1.png",
         "flag": "install"
       },
       {
         "step": 2,
         "title": "Verify & Apply",
-        "description": "Lorem Ipsum is simply dummy text of the printing and typesetting.",
+        "description": "Verify your mobile, fill basic details & complete your loan application in minutes!",
         "image": "/images/step-2.png",
         "flag": "verify"
       },
       {
         "step": 3,
         "title": "Choose a loan",
-        "description": "Lorem Ipsum is simply dummy text of the printing and typesetting.",
+        "description": "Choose the loan amount and repayment period that fits your needs perfectly",
         "image": "/images/step-3.png",
         "flag": "loanApp"
       }
@@ -130,22 +134,23 @@
      "features": [
             {
                 "id": 1,
-                "text": "No bank\nVisits",
+                "text": "No bank<br/>Visits"
+,
                 "icon": "bank"
             },
             {
                 "id": 2,
-                "text": "Transfer to\nbank account",
+                "text": "Transfer to<br/>bank account",
                 "icon": "creditCard"
             },
             {
                 "id": 3,
-                "text": "No\nPaperwork",
+                "text": "No<br/>Paperwork",
                 "icon": "layer"
             },
             {
                 "id": 4,
-                "text": "Repayment upto\n9 months.",
+                "text": "Repayment upto<br/>9 months.",
                 "icon": "calender"
             }
         ]
@@ -340,7 +345,7 @@
       {
         "id": 1,
         "name": "SelFin",
-        "description": "Lorem Ipsum is simply dummy text of the printing and .",
+        "description": "SelFin (RBI Registered NBFC) ,started its lending business in 2019 with the vision to improve financial inclusion",
         "logo": "/images/partners/selfin.png",
         "link": "#",
         "glowColor": "#6C63FF"

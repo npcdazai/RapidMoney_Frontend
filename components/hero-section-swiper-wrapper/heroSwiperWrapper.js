@@ -37,7 +37,7 @@ const heroSection = homePageData.heroSection;
 
 export default function HeroSwiperWrapper() {
     return (
-        <section className={`mt-[-88px] relative ${styles.section}`}>
+        <section className={`mt-[-100px] relative ${styles.section}`}>
             <Swiper
                 // modules={[Autoplay, Pagination]}
                 autoplay={{

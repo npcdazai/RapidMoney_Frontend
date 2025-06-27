@@ -25,9 +25,7 @@ const Benefits = ({ data }) => {
                             <div className={`h-full flex flex-col gap-2 justify-between p-8 ${styles.benefitsCard}`}>
 
                                 <div className="flex justify-between">
-                                    <span className="font-18 font-weight-medium dark-color">
-                                        {item.text}
-                                    </span><span></span>
+                                    <span className="font-18 font-weight-medium dark-color" dangerouslySetInnerHTML={{ __html: item.text}}></span>
                                 </div>
                                 <div className="flex justify-between">
                                     <div></div>

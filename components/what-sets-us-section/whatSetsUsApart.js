@@ -46,7 +46,7 @@ export default function WhatSetsUsApart() {
               <h3 className="font-28 font-bold text-white mb-4">
                 {card.title}
               </h3>
-              <p className="text-white font-20 font-light">{card.description}</p>
+            <p className="light-color font-18 font-weight-regular">{card.description}</p>
             </div>
           </div>
         ))}
@@ -54,3 +54,4 @@ export default function WhatSetsUsApart() {
     </section>
   );
 }
+

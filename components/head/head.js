@@ -41,6 +41,7 @@ const Header = ({ isDark = false, data }) => {
                     </Link>
                 </div>
 
+                <div className="flex items-center gap-5">
                 {/* Desktop Menu */}
                 <nav className="hidden xl:flex items-center gap-5">
                     {data.menu.map((item, idx) =>
@@ -48,7 +49,7 @@ const Header = ({ isDark = false, data }) => {
                             <Dropdown
                                 trigger="click"
                                 menu={{
-                                    items: item.option.map((sub) => ({
+                                    items: item?.option?.length > 0 && item?.option?.map((sub) => ({
                                         key: sub.link,
                                         label: (
                                             <Link
@@ -115,7 +116,7 @@ const Header = ({ isDark = false, data }) => {
                     </button>
 
                 </div>
-
+                </div>
                 {/* Mobile Hamburger */}
 
             </div>

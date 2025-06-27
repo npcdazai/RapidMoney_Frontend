@@ -57,7 +57,7 @@ const Testimonials = ({ data }) => {
               >
                 {/* <Row justify="center" className='!h-full'>
                                     <Col xs={24} sm={22} lg={22} className='!h-full'> */}
-                <div className="border border-gray-200 rounded-2xl p-6 h-full flex flex-col justify-between bg-white">
+                <div className="border border-gray-200 rounded p-6 h-full flex flex-col justify-between bg-white">
                   {/* <div className="flex gap-2.5 font-16 font-weight-medium px-3 py-2 mb-4"> */}
                   <div className="flex gap-2.5 font-16 font-weight-medium w-max px-3 py-2 mb-4 rounded-[8px] border border-[#E5E7EB]">
                     <RiStarFill size={20} color="#79CA00" />{" "}

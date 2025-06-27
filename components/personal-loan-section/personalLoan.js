@@ -36,20 +36,20 @@ const PersonalLoan = ({ data }) => {
 
       <div className="container mx-auto text-center pt-[200px]">
         <div className="w-full flex justify-center items-center text-center">
-          <div className="flex flex-col gap-5 max-w-[600px] items-center px-4">
+          <div className="flex flex-col gap-5 max-w-[600px] items-center px-4 z-10">
             <h2 className="font-48 font-weight-bold max-w-[460px]">{data.title}</h2>
             <span className="font-16">{data.subtitle}</span>
             <div className="hidden md:flex items-center gap-3">
               <Link href={"#"}>
                 <button
-                  className={`apply-btn apply-btn-blue`}
+                  className={`apply-btn apply-btn-blue min-w-[180px]`}
                 >
                   {data.cta.apply.label}
                 </button>
               </Link>
               <Link href={"#"}>
                 <button
-                  className={`apply-btn apply-btn-dark flex item-center gap-3`}
+                  className={`apply-btn apply-btn-dark flex item-center gap-3 min-w-[180px]`}
                 >
                   <span>{data.cta.download.label}</span>
                   <Image src={darkIphone} width={24} height={24} alt="iphone"></Image>
@@ -81,9 +81,9 @@ const PersonalLoan = ({ data }) => {
             {data.stats.map((stat, idx) => {
               const positionMap = [
                 // 'top-0 left-0',
-                'top-0 right-0',
+                // 'top-0 right-0',
                 // 'bottom-0 left-0',
-                // 'bottom-0 right-0',
+                'bottom-0 right-0',
               ];
               return (
                 <div

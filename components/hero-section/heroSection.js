@@ -14,9 +14,9 @@ const HeroSection = ({ data }) => {
             <div className="container mx-auto relative">
                 <Row gutter={[32, 32]} align="">
                     <Col xs={24} lg={24} xl={8}>
-                        <div className='flex flex-col gap-[20px]'>
+                        <div className='flex flex-col gap-[30px]'>
                            <h1
-  className={`font-48 light-color font-weight-bold ${styles.heroTitle}`}
+  className={`font-48 light-color font-weight-bold ${styles.heroTitle} max-w-[340px]`}
   dangerouslySetInnerHTML={{ __html: data?.title || '' }}
 />
 
@@ -24,7 +24,7 @@ const HeroSection = ({ data }) => {
 
                             <Link href={data?.ctaButton.link}>
                                 <button
-                                    className={`apply-btn apply-btn-dark flex gap-2 font-16 font-weight-medium`}
+                                    className={`apply-btn apply-btn-dark flex gap-2`}
                                 >
                                     {data?.ctaButton.label}
                                     <span className="primary-color"><RiArrowRightLine size={24} /></span>

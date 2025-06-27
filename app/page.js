@@ -38,7 +38,7 @@ export default function Home() {
       <LoanStep data={ loanData} />
       <PartnersSection data={partner} />
       <NewsSection data={newsData} />
-      <Testimonials data={testimonialsData} />
+      {/* <Testimonials data={testimonialsData} /> */}
       <FaqSection data={faqSteps} />
       <PromoSection data={promo} />
       {/* <Header isDark={!true } /> */}

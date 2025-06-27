@@ -39,13 +39,10 @@
       url('./assets/blue-coin.png'),
       url('./assets/blue-coin.png'),
       url('./assets/curve.png');
-    // background-position: left 20% top 20%, right 20% top 20%,left 20% top 20%;
+    background-position: left -5% top 60%, right -5% top 40%,left 1% top 50%;
+    // background-position: -5%, right -5% top 50%, 0%;
     background-repeat: no-repeat;
-    // background-size: 80px 80px, 80px 80px;
-    // filter: grayscale(0%);
-
-    background-position: 0% 50%, right 0% top 50%, 0% 50%;
-    background-size: 120px 120px, 120px 120px;
+    background-size: 200px 200px, 200px 200px,100px 100px;
   }
 
   .personImage {

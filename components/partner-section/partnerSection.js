@@ -29,8 +29,10 @@ const PartnersSection = ({ data }) => {
 };
 
   return (
-    <section className={`pt-60 pb-60 ${styles.section}`}>
-      <h2 className="font-20 text-center font-weight-medium pb-[40px]">{data?.title}</h2>
+    <section className={`pt-120 pb-60 ${styles.section}`}>
+      {/* <h2 className="font-20 text-center font-weight-medium pb-[40px]"> */}
+      <h2 className="font-48 font-weight-bold text-center pb-14">
+        {data?.title}</h2>
       <div className="container mx-auto">
         <Row gutter={[24, 24]} justify="center">
           {data?.partners.map((partner) => (
