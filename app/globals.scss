@@ -25,6 +25,7 @@
   --dark-bg: #000101;
   --light-color: #fff;
   --footer-color: #FFFFFFCC;
+  --border-color : #C7C7C7;
 
 
 
@@ -124,12 +125,13 @@ body {
   transform: scale(1.01);
 }
 
-.apply-btn:hover {
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
-}
+// .apply-btn:hover {
+//   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+// }
 
 .apply-btn-green {
   background: var(--primary-btn-color);
+  border: 1px solid transparent;
   // color: white;
 
 }
@@ -166,6 +168,7 @@ body {
 .apply-btn-blue {
   background: var(--secondary-btn-color);
   color: var(--light-color);
+  border: 1px solid transparent;
 }
 
 .apply-btn-blue:hover,

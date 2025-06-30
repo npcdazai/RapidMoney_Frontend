@@ -1,0 +1,41 @@
+.section {
+  .topHeading {
+    font-size: 40px;
+    font-weight: 700;
+    line-height: 128%;
+    text-align: center;
+    margin-bottom: 30px;
+  }
+ 
+  .sectionHeading {
+    font-weight: 700;
+    text-align: start;
+    padding-bottom: 12px;
+  }
+ 
+  .checkCircle {
+    color: var(--primary-color);
+    background-color: #e3ffe5;
+    border-radius: 50%;
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+ 
+  .sectionContent {
+    // padding-top: 8px;
+    word-wrap: break-word;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+ 
+  .section1Subtitle {
+    word-wrap: break-word;
+  }
+}
+ 
+ 

@@ -1,5 +1,5 @@
 {
-    "header": {
+  "header": {
     "logo": {
       "textPrimary": "Rapid",
       "textSecondary": "Money",
@@ -14,14 +14,14 @@
       {
         "label": "About Us",
         "link": "/about-us",
-        "type":"dropdown",
-        "option" : []
+        "type": "dropdown",
+        "option": []
       },
       {
         "label": "Products",
         "link": "/product",
-        "type":"dropdown",
-        "option" : []
+        "type": "dropdown",
+        "option": []
       },
       {
         "label": "Blogs",
@@ -30,7 +30,7 @@
       },
       {
         "label": "Contact Us",
-        "link": "/contact",
+        "link": "/contact-us",
         "type": "link"
       }
     ],

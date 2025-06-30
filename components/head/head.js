@@ -12,8 +12,10 @@ import lightIphone from "./assets/light_iphone.svg"
 import darkIphone from "./assets/dark_iphone.svg"
 import playStore from "./assets/playstore.svg";
 import { RiAlignJustify, RiArrowDownSLine, RiArrowDropDownLine } from "react-icons/ri";
+// import data from "@/json/header/header.json"
 
 // const header = homePageData.header;
+// console.log(data)
 
 const Header = ({ isDark = false, data }) => {
     const [open, setOpen] = useState(false);
@@ -42,80 +44,80 @@ const Header = ({ isDark = false, data }) => {
                 </div>
 
                 <div className="flex items-center gap-5">
-                {/* Desktop Menu */}
-                <nav className="hidden xl:flex items-center gap-5">
-                    {data.menu.map((item, idx) =>
-                        item.type === "dropdown" ? (
-                            <Dropdown
-                                trigger="click"
-                                menu={{
-                                    items: item?.option?.length > 0 && item?.option?.map((sub) => ({
-                                        key: sub.link,
-                                        label: (
-                                            <Link
-                                                href={sub.link}
-                                                className="font-16 font-weight-medium"
-                                                target={sub.link_type === "external" ? "_blank" : "_self"}
-                                            >
-                                                {sub.label}
-                                            </Link>
-                                        ),
-                                    })),
-                                }}
-                                className={[
-                                    'navBarDropDown',
-                                    styles.dropdownWithArrow,
-                                ].join(" ")}
-                                key={idx}
-                            >
-                                <div>
-                                    <Flex align="center" gap={10}>
-                                        <span className={styles.dropDownLink}>{item.label}</span>
-                                        <RiArrowDownSLine size={18} color={isDark ? "#fff" : "#000"} />
-                                    </Flex>
-                                </div>
-                            </Dropdown>
-                        ) : (
-                            <Link key={idx} className="" href={item.link}>
-                                <span className={styles.navLink}>{item.label}</span>
+                    {/* Desktop Menu */}
+                    <nav className="hidden xl:flex items-center gap-5">
+                        {data?.menu?.map((item, idx) =>
+                            item?.type === "dropdown" ? (
+                                <Dropdown
+                                    trigger="click"
+                                    menu={{
+                                        items: item?.option?.length > 0 && item?.option?.map((sub) => ({
+                                            key: sub?.link,
+                                            label: (
+                                                <Link
+                                                    href={sub?.link}
+                                                    className="font-16 font-weight-medium"
+                                                    target={sub?.link_type === "external" ? "_blank" : "_self"}
+                                                >
+                                                    {sub?.label}
+                                                </Link>
+                                            ),
+                                        })),
+                                    }}
+                                    className={[
+                                        'navBarDropDown',
+                                        styles.dropdownWithArrow,
+                                    ].join(" ")}
+                                    key={idx}
+                                >
+                                        {/* <Link key={idx} href={item?.link}> */}
+                                            <Flex align="center" gap={10}>
+                                                <span className={styles.dropDownLink}>{item?.label}</span>
+                                                <RiArrowDownSLine size={18} color={isDark ? "#fff" : "#000"} />
+                                            </Flex>
+                                        {/* </Link> */}
+                                </Dropdown>
+                            ) : (
+                                <Link key={idx} className="" href={item?.link}>
+                                    <span className={styles.navLink}>{item?.label}</span>
+                                </Link>
+                            )
+                        )}
+                    </nav>
+
+                    {/* CTA Buttons */}
+                    <div className="flex items-center gap-3">
+                        <div className="hidden md:flex items-center gap-3">
+                            <Link href={"#"}>
+                                <button
+                                    // type="primary"
+                                    className={`apply-btn ${isDark ? 'apply-btn-green' : 'apply-btn-blue'}`}
+                                >
+                                    {data?.cta?.applyLabel}
+                                </button>
                             </Link>
-                        )
-                    )}
-                </nav>
+                            <Link href={"#"}>
+                                <button
+                                    // type="default
+                                    className={`apply-btn ${isDark ? 'apply-btn-dark' : 'apply-btn-light'} flex item-center gap-3`}
+                                >
+                                    <span>Download</span>
+                                    <Image src={isDark ? darkIphone : lightIphone} width={24} height={24} alt="iphone"></Image>
+                                    <Image src={playStore} width={24} height={24} alt="playstore"></Image>
+                                </button>
+                            </Link>
+                        </div>
+                        <button
+                            className="xl:hidden text-white"
+                            onClick={() => showDrawer(!open)}
+                        >
+                            {/* Hamburger icon */}
+                            <span className="material-icons">
+                                <RiAlignJustify color={isDark ? "#fff" : "#000"} />
+                            </span>
+                        </button>
 
-                {/* CTA Buttons */}
-                <div className="flex items-center gap-3">
-                    <div className="hidden md:flex items-center gap-3">
-                        <Link href={"#"}>
-                            <button
-                                // type="primary"
-                                className={`apply-btn ${isDark ? 'apply-btn-green' : 'apply-btn-blue'}`}
-                            >
-                                {data.cta.applyLabel}
-                            </button>
-                        </Link>
-                        <Link href={"#"}>
-                            <button
-                                // type="default
-                                className={`apply-btn ${isDark ? 'apply-btn-dark' : 'apply-btn-light'} flex item-center gap-3`}
-                            >
-                                <span>Download</span>
-                                <Image src={isDark ? darkIphone : lightIphone} width={24} height={24} alt="iphone"></Image>
-                                <Image src={playStore} width={24} height={24} alt="playstore"></Image>
-                            </button>
-                        </Link>
                     </div>
-                    <button
-                        className="xl:hidden text-white"
-                        onClick={() => showDrawer(!open)}
-                    >
-                        {/* Hamburger icon */}
-                        <span className="material-icons">
-                            <RiAlignJustify color={isDark ? "#fff" : "#000"} />
-                        </span>
-                    </button>
-
-                </div>
                 </div>
                 {/* Mobile Hamburger */}
 
@@ -130,21 +132,21 @@ const Header = ({ isDark = false, data }) => {
 
             >
                 <nav className='px-4 py-2 flex flex-col gap-2'>
-                    {data.menu.map((item, idx) =>
+                    {data?.menu?.map((item, idx) =>
                         item.type === "dropdown" ? (
                             <Dropdown
                                 key={idx}
                                 menu={{
-                                    items: item.option.map((sub) => ({
+                                    items: item?.option?.map((sub) => ({
                                         key: sub.link,
                                         label: (
                                             <Link
-                                                href={sub.link}
+                                                href={sub?.link}
                                                 // className={styles.dropDownWithContent}
                                                 className="font-16 font-weight-medium"
-                                                target={sub.link_type === "external" ? "_blank" : "_self"}
+                                                target={sub?.link_type === "external" ? "_blank" : "_self"}
                                             >
-                                                {sub.label}
+                                                {sub?.label}
                                             </Link>
                                         ),
                                     })),
@@ -154,17 +156,17 @@ const Header = ({ isDark = false, data }) => {
                                 className="navBarDropDown"
                             >
                                 <div className="cursor-pointer flex items-center justify-between px-2 py-2 rounded">
-                                    <span className={styles.drawerDropDownLink}>{item.label}</span>
+                                    <span className={styles.drawerDropDownLink}>{item?.label}</span>
                                     <RiArrowDropDownLine size={22} />
                                 </div>
                             </Dropdown>
                         ) : (
                             <Link
                                 key={idx}
-                                href={item.link}
+                                href={item?.link}
                                 className="block py-2 px-2 rounded"
                             >
-                                <span className={styles.drawerNavLink}>{item.label}</span>
+                                <span className={styles.drawerNavLink}>{item?.label}</span>
                             </Link>
                         )
                     )}
@@ -175,7 +177,7 @@ const Header = ({ isDark = false, data }) => {
                                 className="bg-green-400 border-none font-semibold w-full mt-2"
                                 href="/apply"
                             >
-                                {data.cta.applyLabel}
+                                {data?.cta?.applyLabel}
                             </Button>
 
                             <Button
