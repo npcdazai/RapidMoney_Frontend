@@ -24,7 +24,8 @@
   --dark-color: #000;
   --dark-bg: #000101;
   --light-color: #fff;
-  --footer-color: #474747;
+  --footer-color: #FFFFFFCC;
+
 
 
 
@@ -266,6 +267,9 @@ body {
 
 .dark-bg {
   background-color: var(--dark-bg);
+}
+.light-bg {
+  background-color: var(--light-color);
 }
 
 .purple-color {

@@ -8,7 +8,7 @@ import 'swiper/css/pagination';
 import HeroSection from '../hero-section/heroSection'
 import HeroBgSection from '../hero-bg-section/heroBgSection'
 import homePageData from "@/json/homepage/home.json";
-import { Autoplay, Pagination } from 'swiper/modules';
+import { Autoplay, Pagination, Parallax } from 'swiper/modules';
 import styles from "./hero-swiper-wrapper.module.scss"
 
 const heroSection = homePageData.heroSection;
@@ -65,20 +65,49 @@ const heroSlides = [
 export default function HeroSwiperWrapper() {
     return (
         <section className={`mt-[-100px] relative ${styles.section}`}>
-            <Swiper
+            {/* <Swiper
                 autoplay={{
                     delay: 3000,
                     disableOnInteraction: false
                 }}
                 pagination={{ clickable: true }}
+                parallax={true}
+
                 // modules={[Pagination]}
-                modules={[Autoplay,Pagination]}
+                modules={[Autoplay, Pagination]}
                 loop={true}
                 className={styles.heroSwiper}
             >
                 {heroSlides.map((item, idx) => (
                     <SwiperSlide key={idx}>
                         <HeroSection data={item} />
+                    </SwiperSlide>
+                ))}
+            </Swiper> */}
+            <Swiper
+                autoplay={{
+                    delay: 3000,
+                    disableOnInteraction: false
+                }}
+                pagination={{ clickable: true }}
+                parallax={true}
+                modules={[Autoplay, Pagination, Parallax]}
+                loop={true}
+                className={styles.heroSwiper}
+            >
+                {/* <div
+                    slot="container-start"
+                    className={styles.parallaxBg || "parallax-bg"}
+                    style={{
+                        backgroundImage: 'url(https://swiperjs.com/demos/images/nature-1.jpg)',
+                    }}
+                    data-swiper-parallax="-23%"
+                ></div> */}
+                {heroSlides.map((item, idx) => (
+                    <SwiperSlide key={idx}>
+                        <div data-swiper-parallax="-300">
+                            <HeroSection data={item} />
+                        </div>
                     </SwiperSlide>
                 ))}
             </Swiper>

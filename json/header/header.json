@@ -1,0 +1,45 @@
+{
+    "header": {
+    "logo": {
+      "textPrimary": "Rapid",
+      "textSecondary": "Money",
+      "tagline": "Money when you need it - Rapidly and Reliably"
+    },
+    "menu": [
+      {
+        "label": "Home",
+        "link": "/",
+        "type": "link"
+      },
+      {
+        "label": "About Us",
+        "link": "/about-us",
+        "type":"dropdown",
+        "option" : []
+      },
+      {
+        "label": "Products",
+        "link": "/product",
+        "type":"dropdown",
+        "option" : []
+      },
+      {
+        "label": "Blogs",
+        "link": "/blogs",
+        "type": "link"
+      },
+      {
+        "label": "Contact Us",
+        "link": "/contact",
+        "type": "link"
+      }
+    ],
+    "cta": {
+      "applyLabel": "Apply Loan",
+      "download": {
+        "apple": true,
+        "android": true
+      }
+    }
+  }
+}

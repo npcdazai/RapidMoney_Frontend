@@ -40,6 +40,18 @@ position: relative;
           width: max-content;
           left: 15%;
           transform: translateX(-50%);
+
+          :global(.swiper-pagination-bullet){
+            background-color: #ffffff;
+            width: 18px;
+            height: 18px;
+          }
+          :global(.swiper-pagination-bullet-active){
+            background-color: #ffffff;
+            border: 5px solid gray;
+
+          }
+
         }
       }
 }

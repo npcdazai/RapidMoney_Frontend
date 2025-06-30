@@ -19,7 +19,7 @@
       {
         "title": "Company",
         "links": [
-          { "label": "About Us", "url": "/about" },
+          { "label": "About Us", "url": "/about-us" },
           { "label": "Lending Partners", "url": "/partners" },
           { "label": "Our Team", "url": "/team" },
           { "label": "Career", "url": "/career" },
