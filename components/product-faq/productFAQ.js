@@ -70,7 +70,7 @@ export default function ProductFAQ() {
           defaultActiveKey={["1"]}
         >
           {productFAQs?.map((faq, index) => {
-            console.log(index);
+            // console.log(index);
             return (
               <Panel
                 // header={<span className="font-18 font-weight-medium">{q.question}</span>}

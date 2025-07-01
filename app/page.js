@@ -14,7 +14,7 @@ import HeroBgSection from "@/components/hero-bg-section/heroBgSection";
 import HeroSwiperWrapper from "@/components/hero-section-swiper-wrapper/heroSwiperWrapper";
 
 
-console.log(homePageData)
+// console.log(homePageData);
 const header = homePageData.header;
 const promo = homePageData.promoSection;
 const faqSteps = homePageData.faqSteps;

@@ -3,6 +3,20 @@ import { FiFileText } from "react-icons/fi";
 import { RiShieldCheckLine } from "react-icons/ri";
 import { RiCheckLine } from "react-icons/ri";
 
+const data = [
+  ["Bureau Score", "650", "900"],
+  ["Age", "21 years", "58 years (EOT)"],
+  ["Tenure", "15 Days", "9 Months"],
+  ["Income-NTH", "20,000/-", "-"],
+  ["Banking Norms", "3 Months", "-"],
+  ["ABB to EMI Ratio", "1", "-"],
+  ["Loan Amount", "3,000", "50,000"],
+  ["ROI (Per Day)", "0.10%", "0.15%"],
+  ["Processing Fees", "0 to 15% Excluding GST", "-"],
+  ["PF", "Required for all customers", "-"]
+];
+
+
 export default function ProductTermLoans() {
   return (
     <section className="container px-4 bg-white pb-24">
@@ -110,7 +124,7 @@ export default function ProductTermLoans() {
           </div>
         </div>
       </div> */}
-      <div className="flex flex-col lg:flex-row gap-4 lg:gap-[30px] mt-10">
+      {/* <div className="flex flex-col lg:flex-row gap-4 lg:gap-[30px] mt-10">
         <div className="w-full bg-[#F9FAFF] text-black rounded-4xl border border-[#DDDDDD] overflow-x-auto">
           <table className="min-w-[700px] w-full  text-sm text-center">
             <thead>
@@ -150,7 +164,92 @@ export default function ProductTermLoans() {
             </tbody>
           </table>
         </div>
+      </div> */}
+
+      {/* ------------------------------------------------------------------------------------ */}
+
+      <div className="flex flex-col mt-10">
+        {/* Desktop View – 3 vertical column tables side by side */}
+        <div className="hidden lg:flex gap-[30px]">
+          {/* Criteria Table */}
+          <div className="w-[40%] bg-[#F9FAFF] rounded-2xl border border-[#DDDDDD] overflow-hidden">
+            <table className="w-full text-sm text-left">
+              <thead>
+                <tr className="bg-[#F6FFE8] text-black text-[18px] font-semibold">
+                  <th className="px-6 py-4">Criteria</th>
+                </tr>
+              </thead>
+              <tbody className="text-[15px]">
+                {data.map(([criteria], idx) => (
+                  <tr key={idx} className="border-t border-[#E5E5E5] bg-white">
+                    <td className="px-6 py-4 font-bold">{criteria}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+
+          {/* Minimum Table */}
+          <div className="w-[30%] bg-[#F9FAFF] border rounded-2xl border-[#DDDDDD] overflow-hidden">
+            <table className="w-full text-sm text-left">
+              <thead>
+                <tr className="bg-[#F6FFE8] text-black text-[18px] font-semibold">
+                  <th className="px-6 py-4">Minimum</th>
+                </tr>
+              </thead>
+              <tbody className="text-[15px]">
+                {data.map(([, min], idx) => (
+                  <tr key={idx} className="border-t border-[#E5E5E5] bg-white">
+                    <td className="px-6 py-4">{min}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+
+          {/* Maximum Table */}
+          <div className="w-[30%] bg-[#F9FAFF] rounded-2xl border border-[#DDDDDD] overflow-hidden">
+            <table className="w-full text-sm text-left">
+              <thead>
+                <tr className="bg-[#F6FFE8] text-black text-[18px] font-semibold">
+                  <th className="px-6 py-4">Maximum</th>
+                </tr>
+              </thead>
+              <tbody className="text-[15px]">
+                {data.map(([, , max], idx) => (
+                  <tr key={idx} className="border-t border-[#E5E5E5] bg-white">
+                    <td className="px-6 py-4">{max}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        {/* Mobile View – Single full table */}
+        <div className="lg:hidden w-full bg-[#F9FAFF] rounded-4xl border border-[#DDDDDD] overflow-x-auto mt-8">
+          <table className="min-w-[700px] w-full text-sm text-center">
+            <thead>
+              <tr className="bg-[#F6FFE8] text-black text-[18px] font-semibold">
+                <th className="px-6 py-4 rounded-tl-2xl">Criteria</th>
+                <th className="px-6 py-4">Minimum</th>
+                <th className="px-6 py-4 rounded-tr-2xl">Maximum</th>
+              </tr>
+            </thead>
+            <tbody className="text-[15px]">
+              {data.map(([criteria, min, max], idx) => (
+                <tr key={idx} className="border-t border-[#E5E5E5] bg-white">
+                  <td className="px-6 py-4 font-bold">{criteria}</td>
+                  <td className="px-6 py-4">{min}</td>
+                  <td className="px-6 py-4">{max}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
       </div>
+
+      {/* ------------------------------------------------------------------------------------ */}
 
       {/* <div className="flex justify-center w-full overflow-x-auto mt-10">
         <table className="border-separate border-spacing-x-5 min-w-[700px] text-center text-sm rounded-2xl">
