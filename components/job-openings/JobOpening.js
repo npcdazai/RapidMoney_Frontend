@@ -2,8 +2,8 @@
 
 import React, { useState } from 'react';
 import styles from "./job-opening.module.scss"
-import { Input, Pagination, Modal, Form, Upload, Button, message } from 'antd';
-import { RiArrowRightLine, RiSearchLine } from 'react-icons/ri';
+import { Input, Pagination, Modal, Form, Upload, Button, message, Row, Col } from 'antd';
+import { RiArrowRightLine, RiCloseLine, RiSearchLine } from 'react-icons/ri';
 import { UploadOutlined } from '@ant-design/icons';
 
 const JobOpening = ({ data }) => {
@@ -39,8 +39,8 @@ const JobOpening = ({ data }) => {
       <div className="container mx-auto">
         <div className='flex justify-between items-center w-full pb-10'>
           <h2 className='font-40 font-weight-bold dark-color'>{title}</h2>
-          <div className="w-1/4">
-            <Input prefix={<RiSearchLine />} placeholder='Search Opening' size='large' />
+          <div className={`w-1/4 ${styles.searchInput}`}>
+            <Input prefix={<RiSearchLine size={20} />} placeholder='Search Opening' size='large' />
           </div>
         </div>
         <div className='flex flex-col gap-6'>
@@ -50,13 +50,13 @@ const JobOpening = ({ data }) => {
                 <h3 className="font-24 font-weight-semibold w-1/2">{job.title}</h3>
                 <span className="font-18 w-1/4">Experience: {job.experience}</span>
                 <div className='w-1/6'>
-                  <Button
-                    type={index === 0 ? 'default' : 'primary'}
-                    className={`mt-4 md:mt-0 px-6 py-2 rounded-full font-semibold ${index === 0 ? 'bg-black text-white' : 'bg-green-400 text-white border-none'}`}
+                  <button
+                    // type={index === 0 ? 'default' : 'primary'}
+                    className={`apply-btn  gap-2 ${index === 0 ? 'apply-btn-transparent' : 'apply-btn-green'}`}
                     onClick={() => handleApply(job)}
                   >
                     Apply Now <RiArrowRightLine size={22} />
-                  </Button>
+                  </button>
                 </div>
               </div>
             </div>
@@ -76,42 +76,118 @@ const JobOpening = ({ data }) => {
           open={modalOpen}
           onCancel={handleCancel}
           footer={null}
+          closable={false} // Hide default close button
           centered
           width={600}
-          closeIcon={<span style={{ fontSize: 28, fontWeight: 600 }}>&times;</span>}
-          bodyStyle={{ padding: 32, borderRadius: 20 }}
+          className='jobApplicationModal'
+        // bodyStyle={{ padding: 32, borderRadius: 20 }}
         >
-          <h2 className="text-3xl font-bold mb-2">Apply Here <span className="text-lg font-normal">( For Open Application )</span></h2>
-          <Form
-            form={form}
-            layout="vertical"
-            onFinish={handleFinish}
-            className="mt-6"
-          >
-            <Form.Item name="fullname" rules={[{ required: true, message: 'Please enter your full name' }]}>
-              <Input size="large" placeholder="Full Name" />
-            </Form.Item>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <Form.Item name="email" rules={[{ required: true, type: 'email', message: 'Enter a valid email' }]}> <Input size="large" placeholder="Your Email" /></Form.Item>
-              <Form.Item name="phone" rules={[{ required: true, message: 'Enter your phone' }]}> <Input size="large" placeholder="Your Phone" /></Form.Item>
-            </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <Form.Item name="experience" rules={[{ required: true, message: 'Enter experience' }]}> <Input size="large" placeholder="Experience Year & Months" /></Form.Item>
-              <Form.Item name="location" rules={[{ required: true, message: 'Enter your location' }]}> <Input size="large" placeholder="Your Location" /></Form.Item>
-            </div>
-            <Form.Item name="message" className="mb-4"> <Input.TextArea rows={3} size="large" placeholder="Your Message" /></Form.Item>
-            <Form.Item name="cv" valuePropName="fileList" getValueFromEvent={e => Array.isArray(e) ? e : e && e.fileList} rules={[{ required: true, message: 'Please upload your CV (PDF)' }]}
-              extra="Drop your CV ( PDF )">
-              <Upload beforeUpload={file => file.type === 'application/pdf' ? true : Upload.LIST_IGNORE} maxCount={1} accept="application/pdf" showUploadList={{ showRemove: true }}>
-                <Button icon={<UploadOutlined />}>Choose File</Button>
-              </Upload>
-            </Form.Item>
-            <Form.Item className="flex justify-end mt-8">
-              <Button htmlType="submit" size="large" className="bg-lime-300 hover:bg-lime-400 text-black font-semibold px-10 py-2 rounded-full flex items-center gap-2" style={{ boxShadow: 'none', border: 'none' }}>
-                Submit <RiArrowRightLine size={22} />
-              </Button>
-            </Form.Item>
-          </Form>
+          <div className="flex justify-between items-center  border-b border-[#EBEBEB] py-6 px-8 ">
+            <h2 className="text-3xl font-bold">
+              Apply Here <span className="text-lg font-normal">( For Open Application )</span>
+            </h2>
+            <button
+              onClick={handleCancel}
+              className="text-2xl font-bold hover:text-[#86858523] transition cursor-pointer"
+              aria-label="Close"
+              type="button"
+            >
+             <RiCloseLine size={24}/>
+            </button>
+          </div>
+          <div className='py-6 px-8'>
+
+            <Form
+              form={form}
+              layout="vertical"
+              onFinish={handleFinish}
+              className="mt-6 jobApplicationForm" // You can keep this Tailwind margin, or replace with `style={{ marginTop: 24 }}`
+            >
+              <Row gutter={[16]}>
+                <Col span={24}>
+                  <Form.Item
+                    name="fullname"
+                    rules={[{ required: true, message: 'Please enter your full name' }]}
+                  >
+                    <Input size="large" placeholder="Full Name" />
+                  </Form.Item>
+                </Col>
+                <Col xs={24} md={12}>
+                  <Form.Item
+                    name="email"
+                    rules={[{ required: true, type: 'email', message: 'Enter a valid email' }]}
+                  >
+                    <Input size="large" placeholder="Your Email" />
+                  </Form.Item>
+                </Col>
+                <Col xs={24} md={12}>
+                  <Form.Item
+                    name="phone"
+                    rules={[{ required: true, message: 'Enter your phone' }]}
+                  >
+                    <Input size="large" placeholder="Your Phone" />
+                  </Form.Item>
+                </Col>
+                <Col xs={24} md={12}>
+                  <Form.Item
+                    name="experience"
+                    rules={[{ required: true, message: 'Enter experience' }]}
+                  >
+                    <Input size="large" placeholder="Experience Year & Months" />
+                  </Form.Item>
+                </Col>
+                <Col xs={24} md={12}>
+                  <Form.Item
+                    name="location"
+                    rules={[{ required: true, message: 'Enter your location' }]}
+                  >
+                    <Input size="large" placeholder="Your Location" />
+                  </Form.Item>
+                </Col>
+
+                <Col span={24}>
+                  <Form.Item name="message" className="mb-4">
+                    <Input.TextArea rows={3} size="large" placeholder="Your Message" />
+                  </Form.Item>
+                </Col>
+
+                <Col span={24}>
+                  <Form.Item
+                    name="cv"
+                    valuePropName="fileList"
+                    getValueFromEvent={(e) => (Array.isArray(e) ? e : e?.fileList)}
+                    rules={[{ required: true, message: 'Please upload your CV (PDF)' }]}
+                    className="mb-4"
+                  >
+                    <div className="flex justify-between items-center border border-[#EBEBEB] rounded-lg px-4 py-2 bg-white">
+                      <span className="font-14 text-[#1A1A1A]">Drop your CV ( PDF )</span>
+                      <Upload
+                        beforeUpload={(file) => (file.type === 'application/pdf' ? true : Upload.LIST_IGNORE)}
+                        maxCount={1}
+                        accept="application/pdf"
+                        showUploadList={{ showRemove: true }}
+                      >
+                        <Button type="default" className="ml-4 font-12">Choose File</Button>
+                      </Upload>
+                    </div>
+                  </Form.Item>
+                </Col>
+              </Row>
+
+              <Form.Item>
+                <div className='flex justify-end'>
+                  <button
+                    htmlType="submit"
+                    size="large"
+                    className="apply-btn apply-btn-green gap-2"
+
+                  >
+                    Submit <RiArrowRightLine size={22} />
+                  </button>
+                </div>
+              </Form.Item>
+            </Form>
+          </div>
         </Modal>
       </div>
     </section>

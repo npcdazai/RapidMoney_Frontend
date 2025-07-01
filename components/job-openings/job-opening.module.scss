@@ -1,0 +1,14 @@
+.section {
+    .searchInput {
+        :global(.ant-input-affix-wrapper) {
+            gap: 10px;
+            input::placeholder {
+
+                font-weight: 400;
+                font-size: 16px;
+                line-height: 24px;
+                color: #556685;
+            }
+        }
+    }
+}

@@ -17,7 +17,7 @@ const iconMap = {
   phone: RiPhoneLine,
   website: RiGlobalLine,
   location: RiMapPinLine,
-  sachet: RiGlobalLine  
+  sachet: RiGlobalLine
 };
 
 const LendingPartners = ({ data }) => {
@@ -37,11 +37,13 @@ const LendingPartners = ({ data }) => {
             <Image src={selfin} width={150} height={50} alt="Partner Logo" />
           </div>
 
-          <div className="grid md:grid-cols-2 gap-10">
+          <div className="grid lg:grid-cols-2 gap-5">
             {/* Delhi Office */}
-            <div className="bg-white p-8 rounded-3xl space-y-6">
+            <div className="bg-white p-7 rounded-3xl space-y-6">
               <div className="flex items-start gap-3">
-                <RiMapPinLine size={22} className="text-lime-600 mt-1" />
+                <div className="flex-shrink-0 flex items-center justify-center w-8 h-8">
+                  <RiMapPinLine size={24} className="text-lime-600 mt-1" />
+                </div>
                 <div>
                   <h4 className="text-lg font-semibold">{delhiOffice.type}</h4>
                   <p className="text-gray-700 mt-1">{delhiOffice.address}</p>
@@ -52,24 +54,28 @@ const LendingPartners = ({ data }) => {
                 {delhiOffice.contacts.map((contact, idx) => {
                   const Icon = iconMap[contact.icon || contact.type.toLowerCase()];
                   return (
-                    <div key={idx}>
-                      <div className="flex items-center gap-2 mb-1">
-                        {Icon && <Icon size={20} className="text-lime-600" />}
-                        <h4 className="font-medium">{contact?.type}</h4>
+                    <div key={idx} className="flex items-start gap-3">
+                      {/* Icon column */}
+                      <div className="flex-shrink-0 flex items-center justify-center w-8 h-8">
+                        {Icon && <Icon size={24} className="text-lime-600" />}
                       </div>
-                      <a
-                        href={
-                          contact.url ||
-                          (contact.type.toLowerCase() === 'email'
-                            ? `mailto:${contact.value}`
-                            : contact.type.toLowerCase() === 'phone'
-                            ? `tel:${contact.value}`
-                            : contact.value)
-                        }
-                        className="text-blue-700 underline ml-6 text-sm break-all"
-                      >
-                        {contact.value}
-                      </a>
+                      {/* Text column */}
+                      <div className="flex flex-col justify-center">
+                        <h4 className="font-medium text-base">{contact?.type}</h4>
+                        <a
+                          href={
+                            contact.url ||
+                            (contact.type.toLowerCase() === 'email'
+                              ? `mailto:${contact.value}`
+                              : contact.type.toLowerCase() === 'phone'
+                                ? `tel:${contact.value}`
+                                : contact.value)
+                          }
+                          className="font-16 underline text-[#00000099] break-all"
+                        >
+                          {contact.value}
+                        </a>
+                      </div>
                     </div>
                   );
                 })}
@@ -77,9 +83,11 @@ const LendingPartners = ({ data }) => {
             </div>
 
             {/* Registered Office */}
-            <div className="bg-white p-8 rounded-3xl h-fit">
+            <div className="bg-white p-7 rounded-3xl h-fit">
               <div className="flex items-start gap-3">
-                <RiMapPinLine size={22} className="text-lime-600 mt-1" />
+              <div className="flex-shrink-0 flex items-center justify-center w-8 h-8">
+                  <RiMapPinLine size={24} className="text-lime-600 mt-1" />
+                </div>
                 <div>
                   <h4 className="text-lg font-semibold">{registeredOffice.type}</h4>
                   <p className="text-gray-700 mt-1">{registeredOffice.address}</p>

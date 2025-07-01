@@ -7,9 +7,9 @@ const config = (fontFamily)=>({
   },
   "components": {
     "Input": {
-      "fontSizeLG": 14,
+      // "fontSizeLG": 14,
       "colorBgContainer": "#ffffff",
-      "colorBorder": "#d9d9d9",
+      "colorBorder": "#EBEBEB",
       "colorText": "#0a0a0a",
       "colorTextPlaceholder": "rgba(0, 0, 0, 0.45)"
     },
