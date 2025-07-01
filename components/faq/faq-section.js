@@ -66,7 +66,8 @@ const FaqSection = ({ data }) => {
                                         className={styles.faqCollapse}
                                         // defaultActiveKey={["1"]}
                                         defaultActiveKey={['1']}
-        
+                                        collapsible="header"
+
                                     >
                                         {step.questions.map((q, i) => (
                                             <Panel
@@ -76,13 +77,21 @@ const FaqSection = ({ data }) => {
                                                         <span className="font-18 font-weight-medium">{q.question}</span>
                                                     </div>
                                                 }
-                                                key={(i + 1).toString()} 
+                                                key={(i + 1).toString()}
                                                 className={`${styles.faqCollapsePanel} w-full`}
-                                                
-                                                
+
                                             >
 
-                                                <p className="font-14 text-[rgba(33, 33, 33, 0.8)]">{q.answer}</p>
+                                                <div className='flex justify-between items-center gap-10'>
+                                                    <p className="font-14 text-[rgba(33, 33, 33, 0.8)]">{q.answer}</p>
+                                                    {/* <div className="flex-shrink-0 flex items-center justify-center w-8 h-8">
+                                                        <RiArrowDropDownLine
+                                                            size={32}
+                                                            style={{ transform: "rotate(0deg)" }}
+                                                            color="#212121b3"
+                                                        />
+                                                    </div> */}
+                                                </div>
 
                                             </Panel>
                                         ))}

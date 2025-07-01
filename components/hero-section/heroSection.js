@@ -8,7 +8,7 @@ import personImage from "./assets/heroPerson.png"
 import styles from "./hero-section.module.scss"
 import { RiArrowRightLine } from 'react-icons/ri';
 
-const HeroSection = ({ data }) => {
+const HeroSection = ({ data, showPagination }) => {
     return (
         <section className={`${styles.section} dark-bg flex items-center pt-[150px] sm:pt-[200px]`}>
             <div className="container mx-auto relative">
@@ -30,6 +30,12 @@ const HeroSection = ({ data }) => {
                                     <span className="primary-color"><RiArrowRightLine size={24} /></span>
                                 </button>
                             </Link>
+
+                            {/* {
+                                showPagination && (
+                                    <div className='custom-swiper-pagination'></div>
+                                )
+                            } */}
                         </div>
                     </Col>
 

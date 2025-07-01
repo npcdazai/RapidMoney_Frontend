@@ -9,6 +9,31 @@
     //  clip-path: ellipse(100% 85% at 50% 100%);
     //  clip-path: ellipse(120% 100% at 50% 100%);
 
+    // :global(.custom-swiper-pagination) {
+    //     z-index: 10;
+    //     //   background: #0f0;
+    //     //  position: absolute;
+    //     //  bottom: 100px;
+    //     //  width: max-content;
+    //     //  left: 15%;
+    //     //  transform: translateX(-50%);
+    //     display: flex;
+    //     // gap: 5px;
+
+    //     :global(.swiper-pagination-bullet) {
+    //         background-color: #ffffff;
+    //         width: 18px;
+    //         height: 18px;
+    //     }
+
+    //     :global(.swiper-pagination-bullet-active) {
+    //         background-color: #ffffff;
+    //         border: 5px solid gray;
+
+    //     }
+
+    // }
+
 
     &::before {
         content: "";
@@ -41,8 +66,8 @@
     //     border-radius: 50%;
     // }
 
-    .heroTitle{
-        span{
+    .heroTitle {
+        span {
             color: var(--primary-btn-color);
         }
     }

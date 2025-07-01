@@ -1,6 +1,18 @@
 .section {
 position: relative;
     // aspect-ratio: 1600 / 800;
+    // .custom-swiper-pagination {
+    //   position: absolute;
+    //   left: 0;
+    //   right: 0;
+    //   bottom: 0px; // adjust as needed
+    //   margin: 0 auto;
+    //   z-index: 10;
+    //   display: flex;
+    //   justify-content: center;
+    //   width: max-content;
+      
+    // }
     .curve {
         // clip-path: ellipse(100% 85% at 50% 100%);
         // // clip-path: ellipse(100% 85% at 50% 100%);
@@ -36,9 +48,9 @@ position: relative;
          z-index: 10;
         //   background: #0f0;
           position: absolute;
-          bottom: 100px;
+          bottom: 80px;
           width: max-content;
-          left: 15%;
+          left: 244px;
           transform: translateX(-50%);
 
           :global(.swiper-pagination-bullet){
@@ -54,4 +66,5 @@ position: relative;
 
         }
       }
+   
 }

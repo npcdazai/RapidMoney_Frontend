@@ -19,7 +19,7 @@ const heroSlides = [
         "description": "Empower your aspirations with customizable loan solutions that adapt to your needs—enjoy transparent terms, swift approvals, and a seamless digital experience from application to funding.",
         "ctaButton": {
             "label": "Apply Now",
-            "link": "/apply"
+            "link": "/#"
         },
         "image": "happy-man-phone.png",
         "floatingCoins": [
@@ -34,7 +34,7 @@ const heroSlides = [
         "description": "Empower your aspirations with customizable loan solutions that adapt to your needs—enjoy transparent terms, swift approvals, and a seamless digital experience from application to funding.",
         "ctaButton": {
             "label": "Apply Now",
-            "link": "/apply"
+            "link": "/#"
         },
         "image": "happy-man-phone.png",
         "floatingCoins": [
@@ -49,7 +49,7 @@ const heroSlides = [
         "description": "Empower your aspirations with customizable loan solutions that adapt to your needs—enjoy transparent terms, swift approvals, and a seamless digital experience from application to funding.",
         "ctaButton": {
             "label": "Apply Now",
-            "link": "/apply"
+            "link": "/#"
         },
         "image": "happy-man-phone.png",
         "floatingCoins": [
@@ -85,32 +85,32 @@ export default function HeroSwiperWrapper() {
                 ))}
             </Swiper> */}
             <Swiper
-                autoplay={{
-                    delay: 3000,
-                    disableOnInteraction: false
+                // autoplay={{
+                //     delay: 3000,
+                //     disableOnInteraction: false
+                // }}
+                pagination={{
+                    clickable: true,
+                    // el: '.custom-swiper-pagination'
                 }}
-                pagination={{ clickable: true }}
                 parallax={true}
-                modules={[Autoplay, Pagination, Parallax]}
+                modules={[
+                    // Autoplay,
+                    Pagination,
+                    Parallax]}
                 loop={true}
                 className={styles.heroSwiper}
             >
-                {/* <div
-                    slot="container-start"
-                    className={styles.parallaxBg || "parallax-bg"}
-                    style={{
-                        backgroundImage: 'url(https://swiperjs.com/demos/images/nature-1.jpg)',
-                    }}
-                    data-swiper-parallax="-23%"
-                ></div> */}
                 {heroSlides.map((item, idx) => (
                     <SwiperSlide key={idx}>
-                        <div data-swiper-parallax="-300">
-                            <HeroSection data={item} />
-                        </div>
+                        {/* <div data-swiper-parallax="-300"> */}
+                            {/* <HeroSection data={item}  /> */}
+                            <HeroSection data={item} showPagination={true} />
+                        {/* </div> */}
                     </SwiperSlide>
                 ))}
             </Swiper>
+            {/* <div className="custom-swiper-pagination" /> */}
             <div className={styles.curve}></div>
         </section>
     )

@@ -19,104 +19,100 @@
         height: 100%;
     }
 
-    .loanStep {
-        :global(.ant-steps-item) {
-            margin-bottom: 20px;
+    .stepCol {
 
-            :global(.ant-steps-item-container) {
-                position: relative;
+        position: relative;
+        .loanStep {
+            &::before {
+                content: "";
+                width: 1px;
+                height: 100%;
+                background-color: #00000042;
+                position: absolute;
+                left: 48px;
+                z-index: 1;
+            }
 
-                :global(.ant-steps-item-tail) {
-                    top: 25px !important;
-                    inset-inline-start: 30px !important;
 
-                    // position: absolute;
-                    // left: 30px; // Matches half of icon width
-                    // top: 60px; // icon height
-                    // height: calc(100% - 60px);
-                    // border-left: 1px solid #BDBDBD;
-                    // z-index: 0;
 
-                }
+            :global(.ant-steps-item) {
+                margin-bottom: 20px;
 
-                :global(.ant-steps-item-icon) {
-                    width: 60px;
-                    height: 60px;
-                    // line-height: 60px;
-                    background: transparent;
-                    border: 1px solid gray;
-                    border-radius: 50%;
-                    display: flex;
-                    justify-content: center;
-                    align-items: center;
-                    z-index: 1;
+                :global(.ant-steps-item-container) {
                     position: relative;
 
-                    :global(.ant-steps-icon) {
+                    :global(.ant-steps-item-tail) {
+                        // top: 25px !important;
+                        // inset-inline-start: 30px !important;
+                        display: none !important;
+                    }
+
+                    :global(.ant-steps-item-icon) {
+                        width: 60px;
+                        height: 60px;
+                        // line-height: 60px;
+                        background: #faf5ff;
+                        border: 1px solid gray;
+                        border-radius: 50%;
                         display: flex;
                         justify-content: center;
                         align-items: center;
-                        font-weight: 500;
-                        font-size: 20px;
-                        line-height: 113%;
-                        color: var(--dark-color);
+                        z-index: 10;
+                        position: relative;
+
+                        :global(.ant-steps-icon) {
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;
+                            font-weight: 500;
+                            font-size: 20px;
+                            line-height: 113%;
+                            color: var(--dark-color);
+                        }
                     }
-                }
 
-                :global(.ant-steps-item-content) {
-                    padding-bottom: 80px;
-                    // padding-left: 90px;
-                }
-            }
-        }
-
-        // ✅ Style for ACTIVE step icon
-        :global(.ant-steps-item-process) {
-            :global(.ant-steps-item-icon) {
-                background-color: var(--primary-color) !important;
-                border-color: var(--primary-color) !important;
-
-                :global(.ant-steps-icon) {
-                    color: white !important;
-                }
-            }
-        }
-
-        // ✅ Optional: style for COMPLETED step
-        :global(.ant-steps-item-finish) {
-            :global(.ant-steps-item-container) {
-                :global(.ant-steps-item-tail) {
-                    &::after {
-                    background-color: #BDBDBD !important; // or any completed step color
+                    :global(.ant-steps-item-content) {
+                        padding-bottom: 80px;
+                        // padding-left: 90px;
+                        :global(.ant-steps-item-title),
+                        :global(.ant-steps-item-description) {
+                          color: #222 !important; // Set your desired color here
+                        }
                     }
                 }
             }
+            // ✅ Style for ACTIVE step icon
+            :global(.ant-steps-item-process) {
+                :global(.ant-steps-item-icon) {
+                    background-color: var(--primary-color) !important;
+                    border-color: var(--primary-color) !important;
 
-            :global(.ant-steps-item-icon) {
-                border-color: #BDBDBD;
+                    :global(.ant-steps-icon) {
+                        color: white !important;
+                        z-index: 10;
+                    }
+                }
+            }
+            // ✅ Optional: style for COMPLETED step
+            :global(.ant-steps-item-finish) {
+                :global(.ant-steps-item-container) {
+                    :global(.ant-steps-item-tail) {
+                        &::after {
+                            background-color: #BDBDBD !important; 
+                        }
+                    }
+                }
 
-                :global(.ant-steps-icon) {
-                    color: var(--dark-color) !important;
+                :global(.ant-steps-item-icon) {
+                    border-color: #BDBDBD;
+
+                    :global(.ant-steps-icon) {
+                        color: var(--dark-color) !important;
+                        z-index: 10;
+                    }
                 }
             }
         }
-
-        // :global(.ant-steps-item-finish) {
-        //     :global(.ant-steps-icon) {
-        //         display: none !important; // hide the ✔
-        //     }
-
-        //     :global(.ant-steps-item-icon) {
-        //         &::before {
-        //             content: attr(data-step); // set via data-step attribute dynamically
-        //             display: block;
-        //             color: var(--primary-color);
-        //             font-size: 20px;
-        //             font-weight: 500;
-        //         }
-        //     }
-        // }
-
     }
 
     .imageBkl {

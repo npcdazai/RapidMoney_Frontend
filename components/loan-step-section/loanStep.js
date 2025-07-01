@@ -41,7 +41,7 @@ const LoanStep = ({ data }) => {
 
         <Row gutter={[32, 32]} justify={"center"} align="middle">
           {/* Left Column: Steps */}
-          <Col xs={24} lg={12}>
+          <Col xs={24} lg={12} className={styles.stepCol}>
             <Steps
               direction="vertical"
               current={current}
@@ -57,7 +57,7 @@ const LoanStep = ({ data }) => {
                     </span>
                   }
                   description={
-                    <span className="font-16 pb-[70px]">
+                    <span className="font-16 pb-[60px]">
                       {step.description}
                     </span>
                   }
