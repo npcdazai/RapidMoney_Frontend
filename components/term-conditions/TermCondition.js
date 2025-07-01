@@ -38,6 +38,19 @@ function TermCondition({ data }) {
                     </div>
                   );
                 }
+                // If item is a string and contains a link, render as dangerous HTML
+                if (typeof item === 'string' && item.includes('<a')) {
+                  return (
+                    <div key={itemIndex}>
+                      <span className={styles.checkCircle}>
+                        <FaCheck size={10} />
+                      </span>
+                      <p className={`font-16`}
+                        dangerouslySetInnerHTML={{ __html: item }}
+                      />
+                    </div>
+                  );
+                }
                 return (
                   <div key={itemIndex} className="flex gap-[10px]  items-start">
                     <span className={styles.checkCircle}>
@@ -48,7 +61,12 @@ function TermCondition({ data }) {
                 );
               })
             ) : (
-              <p className={styles.sectionContent}>{section.content}</p>
+              // If section.content is a string and contains a link, render as dangerous HTML
+              typeof section.content === 'string' && section.content.includes('<a') ? (
+                <p dangerouslySetInnerHTML={{ __html: section.content }} />
+              ) : (
+                <p className={styles.sectionContent}>{section.content}</p>
+              )
             )}
           </div>
         </div>

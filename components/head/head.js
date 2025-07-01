@@ -48,35 +48,41 @@ const Header = ({ isDark = false, data }) => {
                     <nav className="hidden xl:flex items-center gap-5">
                         {data?.menu?.map((item, idx) =>
                             item?.type === "dropdown" ? (
-                                <Dropdown
-                                    trigger="click"
-                                    menu={{
-                                        items: item?.option?.length > 0 && item?.option?.map((sub) => ({
-                                            key: sub?.link,
-                                            label: (
-                                                <Link
-                                                    href={sub?.link}
-                                                    className="font-16 font-weight-medium"
-                                                    target={sub?.link_type === "external" ? "_blank" : "_self"}
-                                                >
-                                                    {sub?.label}
-                                                </Link>
-                                            ),
-                                        })),
-                                    }}
-                                    className={[
-                                        'navBarDropDown',
-                                        styles.dropdownWithArrow,
-                                    ].join(" ")}
-                                    key={idx}
-                                >
-                                        {/* <Link key={idx} href={item?.link}> */}
-                                            <Flex align="center" gap={10}>
-                                                <span className={styles.dropDownLink}>{item?.label}</span>
-                                                <RiArrowDownSLine size={18} color={isDark ? "#fff" : "#000"} />
-                                            </Flex>
-                                        {/* </Link> */}
-                                </Dropdown>
+                                // <Dropdown
+                                //     trigger="click"
+                                //     menu={{
+                                //         items: item?.option?.length > 0 && item?.option?.map((sub) => ({
+                                //             key: sub?.link,
+                                //             label: (
+                                //                 <Link
+                                //                     href={sub?.link}
+                                //                     className="font-16 font-weight-medium"
+                                //                     target={sub?.link_type === "external" ? "_blank" : "_self"}
+                                //                 >
+                                //                     {sub?.label}
+                                //                 </Link>
+                                //             ),
+                                //         })),
+                                //     }}
+                                //     className={[
+                                //         'navBarDropDown',
+                                //         styles.dropdownWithArrow,
+                                //     ].join(" ")}
+                                //     key={idx}
+                                // >
+                                //         <Link key={idx} href={item?.link}>
+                                //             <Flex align="center" gap={10}>
+                                //                 <span className={styles.dropDownLink}>{item?.label}</span>
+                                //                 <RiArrowDownSLine size={18} color={isDark ? "#fff" : "#000"} />
+                                //             </Flex>
+                                //         </Link>
+                                // </Dropdown>
+                                <Link key={idx} href={item?.link}>
+                                    <Flex align="center" gap={10}>
+                                        <span className={styles.dropDownLink}>{item?.label}</span>
+                                        <RiArrowDownSLine size={18} color={isDark ? "#fff" : "#000"} />
+                                    </Flex>
+                                </Link>
                             ) : (
                                 <Link key={idx} className="" href={item?.link}>
                                     <span className={styles.navLink}>{item?.label}</span>
@@ -91,7 +97,8 @@ const Header = ({ isDark = false, data }) => {
                             <Link href={"#"}>
                                 <button
                                     // type="primary"
-                                    className={`apply-btn ${isDark ? 'apply-btn-green' : 'apply-btn-blue'}`}
+                                    className={`apply-btn apply-btn-green`}
+                                // className={`apply-btn ${isDark ? 'apply-btn-green' : 'apply-btn-blue'}`}
                                 >
                                     {data?.cta?.applyLabel}
                                 </button>

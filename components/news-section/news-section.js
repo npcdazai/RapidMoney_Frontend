@@ -60,15 +60,15 @@ const NewsSection = ({ data }) => {
 
                 {/* CTA */}
                 <Link
-  href={item.link}
-  className="font-18 font-weight-medium dark-color flex items-center gap-2 group hover:!text-[#79CA00] transition-colors duration-300"
->
-  Learn More
-  <span className="text-[#79CA00] transform transition-transform duration-300 group-hover:translate-x-1">
-    <RiArrowRightLine size={24} />
-  </span>
-</Link>
- 
+                  href={item.link}
+                  className="font-18 font-weight-medium dark-color flex items-center gap-2 group hover:!text-[#79CA00] transition-colors duration-300"
+                >
+                  Learn More
+                  <span className="text-[#79CA00] transform transition-transform duration-300 group-hover:translate-x-1">
+                    <RiArrowRightLine size={24} />
+                  </span>
+                </Link>
+
               </div>
             </Col>
           ))}

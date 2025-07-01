@@ -1,7 +1,6 @@
 'use client';
 import React from 'react';
 import { Row, Col } from 'antd';
-import { PhoneOutlined, MailOutlined, EnvironmentOutlined } from '@ant-design/icons';
 import { Form, Input, Button } from 'antd';
 import styles from "./contact-form.module.scss"
 import Image from 'next/image';
@@ -20,9 +19,9 @@ const ContactUs = ({ data }) => {
         <section className="container mx-auto pt-120 pb-60">
             <div className="pb-[70px] w-full text-center">
                 <div className="max-w-[660px] mx-auto">
-                    <h2 className="font-18 pb-6">
+                    <h1 className="font-18 pb-6">
                         {data.title}
-                    </h2>
+                    </h1>
                     <span className="block font-40 font-weight-bold">
                         {data.description}
                     </span>

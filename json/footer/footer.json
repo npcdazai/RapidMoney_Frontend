@@ -20,8 +20,8 @@
         "title": "Company",
         "links": [
           { "label": "About Us", "url": "/about-us" },
-          { "label": "Lending Partners", "url": "/partners" },
-          { "label": "Our Team", "url": "/team" },
+          { "label": "Lending Partners", "url": "/lending-partners" },
+          { "label": "Our Team", "url": "/#" },
           { "label": "Career", "url": "/career" },
           { "label": "FAQs", "url": "/faqs" }
         ]
@@ -45,7 +45,7 @@
     ],
     "bottomNote": "Copyright © 2025 MoneyTime Technology Solutions Private Limited. All rights reserved.",
     "legalLinks": [
-      { "label": "Disclaimer", "url": "/disclaimer" },
+      { "label": "Disclaimer", "url": "/#" },
       { "label": "Terms of Conditions", "url": "/term-conditions" },
       { "label": "Privacy Policy", "url": "/privacy-policy" }
     ]

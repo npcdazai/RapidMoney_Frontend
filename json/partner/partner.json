@@ -1,0 +1,41 @@
+{
+    "logo": "/components/partner-section/assets/selfin.png",
+    "name": "SelFin",
+    "title": "Our Lending Partners",
+    "offices": [
+      {
+        "type": "Delhi Office",
+        "address": "2E/25, Jhandewalan Ext, Block E 2, Jhandewalan Extension, Jhandewalan,New Delhi, Delhi - 110005, Mumbai 400059",
+        "icon": "/icons/location.svg",
+        "contacts": [
+          {
+            "type": "Email",
+            "value": "care@selfinindia.com",
+            "icon": "email"
+          },
+          {
+            "type": "Phone",
+            "value": "022-48914286",
+            "icon": "phone"
+          },
+          {
+            "type": "Website",
+            "value": "www.selfinindia.com",
+            "url": "http://www.selfinindia.com",
+            "icon": "website"
+          },
+          {
+            "type": "Sachet Portal Link",
+            "value": "https://sachet.rbi.org.in/",
+            "url": "https://sachet.rbi.org.in/",
+            "icon": "website"
+          }
+        ]
+      },
+      {
+        "type": "Registered Office",
+        "address": "H. No A-138, 3rd Floor, Shankar Garden, Vikas Puri, New Delhi - 110018.",
+         "icon": "location"
+      }
+    ]
+  }

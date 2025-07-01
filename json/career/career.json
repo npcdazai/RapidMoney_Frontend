@@ -1,0 +1,87 @@
+{
+    "careerHeroSection": {
+        "title": "Career",
+        "description": "Chillin' at RapidMoney",
+        "images": [
+            "/components/career-section/assets/career.png",
+            "/components/career-section/assets/career2.png",
+            "/components/career-section/assets/career3.png"
+        ],
+        "coreValues": {
+            "title": "Core Values",
+            "values": [
+                "Our employees are our perennial assets",
+                "Due recognitions and rewards for individuals ability's and performance",
+                "Create and maintain a safe and healthy working environment",
+                "Recruit and promote based on merit and performance"
+            ]
+        }
+    },
+    "lifeAtRapidMoney": {
+        "title": "Life at RapidMoney",
+        "benefits": [
+            {
+                "icon": "culture",
+                "text": "Open<br/>Culture"
+            },
+            {
+                "icon": "stability",
+                "text": "Equal Employment<br/>Opportunity"
+            },
+            {
+                "icon": "growth",
+                "text": "Platform for<br/>Growth &<br/>Opportunity"
+            },
+            {
+                "icon": "trophy",
+                "text": "Employee<br/>An Asset"
+            },
+            {
+                "icon": "investment",
+                "text": "Professional &<br/>Personal<br/>Growth"
+            },
+            {
+                "icon": "emotion",
+                "text": "Stress - Free<br/>Environment"
+            },
+            {
+                "icon": "shield",
+                "text": "Grooming<br/>Internal Talent"
+            },
+            {
+                "icon": "invoice",
+                "text": "Attractive<br/>Compensation"
+            }
+        ]
+    },
+    "jobOpenings": {
+        "title": "Job Openings",
+        "jobs": [
+            {
+                "title": "Loan Officer",
+                "experience": "3 - 5 Years",
+                "applyLink": "#"
+            },
+            {
+                "title": "Chartered accountant",
+                "experience": "3 - 5 Years",
+                "applyLink": "#"
+            },
+            {
+                "title": "Business Analyst",
+                "experience": "2 - 4 Years",
+                "applyLink": "#"
+            },
+            {
+                "title": "Sales Manager",
+                "experience": "5 - 8 Years",
+                "applyLink": "#"
+            },
+            {
+                "title": "Customer Support Executive",
+                "experience": "1 - 3 Years",
+                "applyLink": "#"
+            }
+        ]
+    }
+}

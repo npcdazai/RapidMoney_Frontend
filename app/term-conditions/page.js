@@ -11,7 +11,7 @@ export default function Home() {
 
   return (
     <>
-          <Header isDark={true} data={header} />
+          <Header data={header} />
           <TermCondition data={termJson}/>
     </>
 

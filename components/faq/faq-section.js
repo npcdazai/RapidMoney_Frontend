@@ -64,6 +64,9 @@ const FaqSection = ({ data }) => {
                                         )}
                                         bordered={false}
                                         className={styles.faqCollapse}
+                                        // defaultActiveKey={["1"]}
+                                        defaultActiveKey={['1']}
+        
                                     >
                                         {step.questions.map((q, i) => (
                                             <Panel
@@ -73,8 +76,10 @@ const FaqSection = ({ data }) => {
                                                         <span className="font-18 font-weight-medium">{q.question}</span>
                                                     </div>
                                                 }
-                                                key={`${index}-${i}`}
+                                                key={(i + 1).toString()} 
                                                 className={`${styles.faqCollapsePanel} w-full`}
+                                                
+                                                
                                             >
 
                                                 <p className="font-14 text-[rgba(33, 33, 33, 0.8)]">{q.answer}</p>
