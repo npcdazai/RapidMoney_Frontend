@@ -58,7 +58,6 @@ const PersonalLoan = ({ data }) => {
       // className={`${styles.section} dark-bg light-color pt-60 relative overflow-hidden`}
       data-label={data.backgroundText || "Personal"}
     >
-      {/* SVG WAVE */}
       <svg
         className="overlay-reverse"
         viewBox="0 0 100 100"
@@ -80,11 +79,11 @@ const PersonalLoan = ({ data }) => {
         />
       </svg>
 
+      {/* <div className="container mx-auto text-center pt-[300px] relative z-10"> */}
+      <div className="container mx-auto text-center pt-[100px] sm:pt-[150px] md:pt-[200px] lg:pt-[300px]">
 
-      {/* MAIN CONTENT */}
-      <div className="container mx-auto text-center pt-[300px] relative z-10">
         <div className="flex justify-center">
-          <div className="flex flex-col gap-5 max-w-[600px] items-center px-4">
+          <div className="flex flex-col gap-5 max-w-[600px] items-center md:pt-0 pt-[80px] px-4 z-10">
             <h2 className="font-48 font-weight-bold">{data.title}</h2>
             <span className="font-16">{data.subtitle}</span>
             <div className="hidden md:flex items-center gap-3">
@@ -116,22 +115,35 @@ const PersonalLoan = ({ data }) => {
               />
             </div>
 
-            {data.stats.map((stat, idx) => (
-              <div
-                key={idx}
-                className="absolute bottom-0 right-0 m-4 p-4 flex flex-col items-center gap-1 z-10"
-              >
-                <Image
-                  src={stat.icon === 'download' ? downLoad : google}
-                  width={20}
-                  height={20}
-                  alt={stat.label}
-                />
-                <span className="font-40 font-weight-bold">{stat.value}</span>
-                <span className="font-20">{stat.label}</span>
-              </div>
-            ))}
+            {data.stats.map((stat, idx) => {
+              const positionMap = [
+                // 'top-0 left-0',
+                // 'top-0 right-0',
+                // 'bottom-0 left-0',
+                'bottom-0 right-0',
+              ];
+              return (
+                <div
+                  key={idx}
+                  className={`absolute ${positionMap[idx]} m-4 p-4 flex flex-col items-center gap-1 z-10`}
+                >
+                  <Image
+                    src={google
+                      // stat.icon === 'download'
+                      //   ? require('./assets/download.svg')
+                      //   : require('./assets/money.svg')
+                    }
+                    width={20}
+                    height={20}
+                    alt={stat.label}
+                  />
+                  <span className="font-40 font-weight-bold">{stat.value}</span>
+                  <span className="font-20">{stat.label}</span>
+                </div>
+              );
+            })}
           </Col>
+          
         </Row>
       </div>
     </section>
