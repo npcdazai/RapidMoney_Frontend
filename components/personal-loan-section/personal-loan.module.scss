@@ -1,7 +1,7 @@
 .section {
   //   clip-path: circle(99.5% at 50% 100%);
   // clip-path: circle(150% at 50% 100%);
-   clip-path: ellipse(100% 85% at 50% 100%);
+  //  clip-path: ellipse(100% 85% at 50% 100%);
 
   position: relative;
     overflow: hidden;
@@ -39,7 +39,7 @@
       url('./assets/blue-coin.png'),
       url('./assets/blue-coin.png'),
       url('./assets/curve.png');
-    background-position: left -5% top 60%, right -5% top 40%,left 1% top 50%;
+    background-position: left -5% top 60%, right -5% top 50%,left 1% top 50%;
     // background-position: -5%, right -5% top 50%, 0%;
     background-repeat: no-repeat;
     background-size: 200px 200px, 200px 200px,100px 100px;
