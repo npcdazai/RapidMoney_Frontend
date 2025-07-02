@@ -1,14 +1,55 @@
 .header {
-  transition: background 0.3s ease;
-  z-index: 99;
-  position: relative;
+  // transition: background 0.3s ease;
+  // z-index: 99;
+  // position: relative;
+  // transition: all 0.3s ease;
+
+  position: sticky;
+  top: 0;
+  width: 100%;
+  z-index: 100;
+  transition: all 0.3s ease;
+  padding: 10px 0;
+
+  &.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  &.hidden {
+    opacity: 0;
+    transform: translateY(-100%);
+    pointer-events: none;
+  }
+
+  &.scrolled {
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(12px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    // color: var(--light-color);
+
+    .navLink,
+    .dropDownLink,
+    .dropDownArrow {
+      color: var(--light-color) !important;
+    }
+    // .dark .headerLogo {
+    //   filter: drop-shadow(2px 4px 6px lime);
+    //   transition: filter 0.3s ease-in-out;
+    // }
+
+    // .light .headerLogo {
+    //   filter: drop-shadow(0 0 4px rgba(255, 255, 255, 0.8))
+    //           drop-shadow(0 2px 6px rgba(255, 255, 255, 0.4));
+    //   transition: filter 0.3s ease-in-out;
+    // }
+  }
 
   .logo img {
     max-width: 100%;
     height: auto;
     object-fit: contain;
   }
-
 }
 
 .light {
@@ -26,6 +67,7 @@
 
 .dark {
   background-color: transparent;
+
   .dropDownLink,
   .navLink {
     color: var(--light-color);

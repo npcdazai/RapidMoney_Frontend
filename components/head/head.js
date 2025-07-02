@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import styles from './head.module.scss'
 import { Button, Drawer, Dropdown, Flex, Menu } from 'antd'
 // import homePageData from "@/json/homepage/home.json";
@@ -19,15 +19,43 @@ import { RiAlignJustify, RiArrowDownSLine, RiArrowDropDownLine } from "react-ico
 
 const Header = ({ isDark = false, data }) => {
     const [open, setOpen] = useState(false);
-    const showDrawer = () => {
-        setOpen(true);
-    };
-    const onClose = () => {
-        setOpen(false);
-    };
+    const [showHeader, setShowHeader] = useState(true);
+    const [lastScrollY, setLastScrollY] = useState(0);
+    const [isAtTop, setIsAtTop] = useState(true);
+
+    const showDrawer = () => setOpen(true);
+    const onClose = () => setOpen(false);
+
+    useEffect(() => {
+        const handleScroll = () => {
+            const currentScrollY = window.scrollY;
+
+            setIsAtTop(currentScrollY < 10);
+
+            if (currentScrollY > lastScrollY && currentScrollY > 80) {
+                setShowHeader(false);
+            } else {
+                setShowHeader(true);
+            }
+
+            setLastScrollY(currentScrollY);
+        };
+
+        window.addEventListener("scroll", handleScroll);
+        return () => window.removeEventListener("scroll", handleScroll);
+    }, [lastScrollY]);
+    console.log({ showHeader })
 
     return (
-        <header className={`${styles.header} ${isDark ? styles.dark : styles.light} pt-6`}>
+        // <header className={`${styles.header} ${isDark ? styles.dark : styles.light} pt-6`}>
+        <header
+            className={`
+          ${styles.header}
+          ${isDark ? styles.dark : styles.light}
+          ${showHeader ? styles.visible : styles.hidden}
+          ${!isAtTop ? styles.scrolled : ""}
+        `}
+        >
             <div className="container mx-auto flex justify-between items-center py-2">
                 {/* Logo */}
                 <div className="">
@@ -37,7 +65,7 @@ const Header = ({ isDark = false, data }) => {
                             alt="RapidMoney Logo"
                             width={220}
                             height={50}
-                            className="max-w-full h-auto object-contain"
+                            className={`max-w-full h-auto object-contain ${styles.headerLogo}`}
                         />
 
                     </Link>
@@ -80,7 +108,7 @@ const Header = ({ isDark = false, data }) => {
                                 <Link key={idx} href={item?.link}>
                                     <Flex align="center" gap={10}>
                                         <span className={styles.dropDownLink}>{item?.label}</span>
-                                        <RiArrowDownSLine size={18} color={isDark ? "#fff" : "#000"} />
+                                        <RiArrowDownSLine className={styles.dropDownArrow} size={18} color={isDark ? "#fff" : "#000"} />
                                     </Flex>
                                 </Link>
                             ) : (
