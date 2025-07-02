@@ -30,7 +30,9 @@ const paths = {
 const PersonalLoan = ({ data }) => {
   useEffect(() => {
     gsap.set(".overlay__path-reverse", {
-      attr: { d: paths.step1.filled }
+      // attr: { d: paths.step1.filled }
+      attr: { d: paths.step1.inBetween.curve1 }
+     
     });
 
     gsap.utils.toArray(".overlay__path-reverse").forEach((overlayPath) => {
@@ -47,7 +49,8 @@ const PersonalLoan = ({ data }) => {
       }).to(overlayPath, {
         duration: 1.8,
         ease: "power1.inOut",
-        attr: { d: paths.step1.inBetween.curve1 }
+        // attr: { d: paths.step1.inBetween.curve1 }
+         attr: { d: paths.step1.filled }
       });
     });
   }, []);

@@ -26,12 +26,12 @@ const CareerSection = ({ data }) => {
                     </div>
                 </div>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <span className='h-full'><Image src={career} width={580} height={350} alt="career image 1" className="rounded-xl w-full !h-full object-cover" /></span>
-                    <span className='h-full'><Image src={career2} width={580} height={350} alt="career image 2" className="rounded-xl w-full !h-full object-cover" /></span>
+                    <span className='h-full'><Image src={career} width={580} height={280} alt="career image 1" className="rounded-xl w-full !h-full object-cover max-h-[280px]" /></span>
+                    <span className='h-full'><Image src={career2} width={580} height={280} alt="career image 2" className="rounded-xl w-full !h-full object-cover max-h-[280px]" /></span>
                 </div>
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-4">
+                <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 mt-4">
                     {/* Left - Core Values List */}
-                    <div className="bg-[#F9F9F9] p-8 rounded-xl text-black md:col-span-1">
+                    <div className="bg-[#F9F9F9] p-8 rounded-xl text-black lg:col-span-1">
                         <h2 className="text-4xl font-bold mb-6">{coreValues.title}</h2>
                         <ul className="space-y-10">
                             {coreValues.values.map((item, index) => (
@@ -46,13 +46,13 @@ const CareerSection = ({ data }) => {
                     </div>
 
                     {/* Right - Image */}
-                    <div className="md:col-span-2">
+                    <div className="lg:col-span-2">
                         <Image
                             src={career3}
                             width={580}
                             height={350}
                             alt="career image 3"
-                            className="rounded-xl w-full h-full object-cover"
+                            className="rounded-xl w-full h-full object-cover max-h-[460px]"
                         />
                     </div>
                 </div>

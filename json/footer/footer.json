@@ -7,12 +7,12 @@
       },
       "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
       "socialLinks": [
-        { "platform": "LinkedIn", "icon": "linkedin", "url": "https://linkedin.com/company/rapidmoney" },
-        { "platform": "X", "icon": "x-twitter", "url": "https://twitter.com/rapidmoney" },
-        { "platform": "YouTube", "icon": "youtube", "url": "https://youtube.com/rapidmoney" },
-        { "platform": "Instagram", "icon": "instagram", "url": "https://instagram.com/rapidmoney" },
-        { "platform": "Facebook", "icon": "facebook", "url": "https://facebook.com/rapidmoney" },
-        { "platform": "Google", "icon": "google", "url": "https://google.com/rapidmoney", "rating": 4.7 }
+        { "platform": "LinkedIn", "icon": "linkedin", "url": "/#" },
+        { "platform": "X", "icon": "x-twitter", "url": "/#" },
+        { "platform": "YouTube", "icon": "youtube", "url": "/#" },
+        { "platform": "Instagram", "icon": "instagram", "url": "/#" },
+        { "platform": "Facebook", "icon": "facebook", "url": "/#" },
+        { "platform": "Google", "icon": "google", "url": "/#", "rating": 4.7 }
       ]
     },
     "sections": [
@@ -30,7 +30,7 @@
         "title": "Products",
         "links": [
           { "label": "Product Overview", "url": "/products" },
-          { "label": "Personal Loan", "url": "/products/personal-loan" }
+          { "label": "Personal Loan", "url": "/#" }
         ]
       },
       {

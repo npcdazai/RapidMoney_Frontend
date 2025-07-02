@@ -46,13 +46,13 @@ const JobOpening = ({ data }) => {
         <div className='flex flex-col gap-6'>
           {paginatedJobs.map((job, index) => (
             <div key={index} className="bg-white border border-[var(--border-color)] rounded-lg p-6  md:flex-row  text-black ">
-              <div className='flex items-center justify-between w-full'>
-                <h3 className="font-24 font-weight-semibold w-1/2">{job.title}</h3>
-                <span className="font-18 w-1/4">Experience: {job.experience}</span>
-                <div className='w-1/6'>
+              <div className='flex items-center flex-wrap gap-3 justify-between w-full'>
+                <h3 className="font-24 font-weight-semibold w-1/3 lg:w-1/2">{job.title}</h3>
+                <span className="font-18 w-1/3 lg:w-1/4">Experience: {job.experience}</span>
+                <div className='w-1/3 lg:w-1/6 text-end'>
                   <button
                     // type={index === 0 ? 'default' : 'primary'}
-                    className={`apply-btn  gap-2 ${index === 0 ? 'apply-btn-transparent' : 'apply-btn-green'}`}
+                    className={`apply-btn  gap-2 ${index === 0 ? 'apply-btn-transparent' : 'apply-btn-green'} `}
                     onClick={() => handleApply(job)}
                   >
                     Apply Now <RiArrowRightLine size={22} />
