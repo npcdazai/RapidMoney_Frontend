@@ -128,3 +128,49 @@
     //     // }
     // }
 }
+
+// .section {
+//     position: relative;
+//     overflow: hidden;
+//   }
+  
+//   .coinRain {
+//     position: fixed;
+//     top: 0;
+//     left: 0;
+//     pointer-events: none;
+//     width: 100%;
+//     height: 100%;
+//     z-index: 1;
+//   }
+  
+//   .coin {
+//     position: absolute;
+//     top: -10%;
+//     width: 30px;
+//     animation: fall 10s linear infinite, sway 3s ease-in-out infinite;
+  
+//     img {
+//       width: 100%;
+//       height: auto;
+//     }
+//   }
+  
+//   @keyframes fall {
+//     0% {
+//       top: -10%;
+//     }
+//     100% {
+//       top: 110%;
+//     }
+//   }
+  
+//   @keyframes sway {
+//     0%, 100% {
+//       transform: translateX(0);
+//     }
+//     50% {
+//       transform: translateX(40px);
+//     }
+//   }
+  

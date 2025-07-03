@@ -1,0 +1,21 @@
+{
+  "repaymentSection" :  {
+  "title": "Bullet Repayment Loan",
+  "document": {
+    "heading": "Document Required",
+    "items": [
+      "No physical Doc Required"
+    ]
+  },
+  "eligibility": {
+    "heading": "Eligibility",
+    "items": [
+      "Indian Citizen, 21+ years & Above",
+      "Fixed Monthly Re-Payments & Instant Approval",
+      "Quick Access to Lump Sum Amount"
+    ]
+  },
+  "image": "/assets/gold-coins.png" 
+}
+
+}

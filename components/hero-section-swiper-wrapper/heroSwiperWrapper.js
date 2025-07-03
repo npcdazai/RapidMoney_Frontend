@@ -10,6 +10,8 @@ import HeroBgSection from '../hero-bg-section/heroBgSection'
 import homePageData from "@/json/homepage/home.json";
 import { Autoplay, Pagination, Parallax } from 'swiper/modules';
 import styles from "./hero-swiper-wrapper.module.scss"
+import Curve from "./assets/herosectioncurv.svg"
+import Image from 'next/image';
 
 const heroSection = homePageData.heroSection;
 
@@ -112,6 +114,9 @@ export default function HeroSwiperWrapper() {
             </Swiper>
             {/* <div className="custom-swiper-pagination" /> */}
             <div className={styles.curve}></div>
+            {/* <Image src={Curve} alt="Glow" /> */}
+            
+
         </section>
     )
 }
