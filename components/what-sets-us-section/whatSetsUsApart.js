@@ -1,9 +1,11 @@
+"use client";
 import React from "react";
 import { RiFlashlightLine, RiHeart2Line } from "react-icons/ri";
 import { FaRegChessKnight } from "react-icons/fa6";
+import useScrollStaggerFadeIn from "@/animations/useScrollStaggerFadeIn";
 
 export default function WhatSetsUsApart() {
-    const cards = [
+  const cards = [
     {
       icon: <RiFlashlightLine size={28} />,
       title: "Speed",
@@ -26,27 +28,32 @@ export default function WhatSetsUsApart() {
       bg: "#1D3557",
     },
   ];
+
+  const sectionRef = useScrollStaggerFadeIn({ stagger: 0.2 });
+
   return (
-    <section className="container mx-auto my-80 px-4">
-      <h2 className="font-40 text-black font-bold mb-7 text-center">
-        What sets us apart?
+    <section ref={sectionRef} className="container mx-auto my-100 px-4">
+      <h2 className="font-40 text-black font-bold mb-9 text-center fade-card">
+        What Sets Us Apart?
       </h2>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-         {cards.map((card, i) => (
+        {cards.map((card, i) => (
           <div
             key={i}
-            className="rounded-xl p-7 flex flex-col h-full transform transition-all duration-300 hover:scale-105 hover:shadow-xl hover:-translate-y-1"
+            className="rounded-xl p-7 flex flex-col h-full transform transition-all duration-300 hover:scale-105 hover:shadow-xl hover:-translate-y-1 fade-card group"
             style={{ backgroundColor: card.bg }}
           >
-            <div className="mb-8 rounded-full bg-white p-5 w-fit transition-transform duration-300 hover:rotate-6 hover:scale-110">
+            <div className="mb-8 rounded-full bg-white p-5 w-fit transition-transform duration-300 group-hover:rotate-6 hover:scale-110 ">
               {card.icon}
             </div>
             <div className="mt-auto">
               <h3 className="font-28 font-bold text-white mb-4">
                 {card.title}
               </h3>
-            <p className="light-color font-18 font-weight-regular">{card.description}</p>
+              <p className="light-color font-18 font-weight-regular">
+                {card.description}
+              </p>
             </div>
           </div>
         ))}
@@ -54,4 +61,3 @@ export default function WhatSetsUsApart() {
     </section>
   );
 }
-

@@ -1,64 +1,81 @@
+"use client";
 import Image from "next/image";
-import bannerImage from './assets/bannerImage.png'
+import bannerImage from "./assets/bannerImage.png";
 import { Col, Row } from "antd";
-import styles from "./promo-section.module.scss"
+import styles from "./promo-section.module.scss";
 import Link from "next/link";
-import darkIphone from "./assets/dark_iphone.svg"
-import playStore from "./assets/playstore.svg"
+import darkIphone from "./assets/dark_iphone.svg";
+import playStore from "./assets/playstore.svg";
+import useScrollFadeInOnce from "@/animations/useScrollFadeInOnce";
+import { useRef, useEffect } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
+gsap.registerPlugin(ScrollTrigger);
 
-const PromoSection = ({ data }) => (
-    <section className={`${styles.section} `}>
-        {/* <Row>
+const PromoSection = ({ data }) => {
+  const textRef = useScrollFadeInOnce();
+  const imageRef = useRef(null);
 
-            <Col>
-            </Col>
-            <Col>
-                <Image
-                src={bannerImage}
-                //   src={`/${data?.image}`}
-                alt="RapidMoney App Promo"
-                width={900}
-                height={400}
-                className="w-full max-w-2xl h-auto object-contain"
-                priority
-            /></Col>
-        </Row> */}
-        
-        <div className="flex flex-col gap-4 pt-60 container mx-auto">
-            <div className="flex flex-col gap-8">
-                <div className="flex flex-col gap-5 max-w-[550px] relative z-10">
-                    <h2 className={`${styles.promoHeading} font-40 light-color font-weight-bold`}>
-                        {data?.title}
-                    </h2>
-                    <Link href={"#"}>
-                        <button
-                            // type="default
-                            className={`apply-btn apply-btn-dark flex item-center gap-3`}
-                        >
-                            <span>Download</span>
-                            <Image src={darkIphone} width={24} height={24} alt="iphone"></Image>
-                            <Image src={playStore} width={24} height={24} alt="playstore"></Image>
-                        </button>
-                    </Link>
-                </div>
+  useEffect(() => {
+    if (!imageRef.current) return;
 
-                <div className={`flex lg:mt-[-100px] sm:mt-[-100px] mt-[-50px] ${styles.bannerImageBkl}`}>
-                    <Image
-                        src={bannerImage}
-                        alt="..."
-                        width={1920}
-                        height={600}
-                        className="w-full h-auto object-cover"
-                        priority
-                    />
-                </div>
+    gsap.fromTo(
+      imageRef.current,
+      { autoAlpha: 0, y: 80 },
+      {
+        autoAlpha: 1,
+        y: 0,
+        duration: 1.3,
+        ease: "power2.out",
+        scrollTrigger: {
+          trigger: imageRef.current,
+          start: "top 90%",
+          toggleActions: "play reverse play reverse",
+        },
+      }
+    );
+  }, []);
 
-            </div>
+  return (
+    <section className={`${styles.section}`}>
+      <div className="flex flex-col gap-4 pt-60 container mx-auto">
+        <div className="flex flex-col gap-8">
+          {/* Heading & CTA */}
+          <div
+            className="flex flex-col gap-5 max-w-[550px] relative z-10"
+            ref={textRef}
+          >
+            <h2 className={`${styles.promoHeading} font-40 light-color font-weight-bold`}>
+              {data?.title}
+            </h2>
+            <Link href={"#"}>
+              <button className="apply-btn apply-btn-dark flex items-center gap-3">
+                <span>Download</span>
+                <Image src={darkIphone} width={24} height={24} alt="iphone" />
+                <Image src={playStore} width={24} height={24} alt="playstore" />
+              </button>
+            </Link>
+          </div>
+
+          {/* Banner Image */}
+          <div
+            ref={imageRef}
+            className={`flex lg:mt-[-100px] sm:mt-[-100px] mt-[-50px] ${styles.bannerImageBkl}`}
+          >
+            <Image
+              src={bannerImage}
+              alt="..."
+              width={1920}
+              height={600}
+              className="w-full h-auto object-cover"
+              priority
+            />
+          </div>
         </div>
-
-
+      </div>
     </section>
-);
+  );
+};
 
 export default PromoSection;

@@ -10,10 +10,13 @@ import VissionIcon from "@/components/about-slider-section/assets/vission.svg";
 import MissionIcon from "@/components/about-slider-section/assets/mission.svg";
 import ImgCard from "@/components/about-slider-section/imgCard";
 import ContentCard from "@/components/about-slider-section/contentCard";
+import useScrollFadeIn from "@/animations/useScrollFadeIn";
 
 const AboutSlider = () => {
+   const fadeInRef = useScrollFadeIn();
+
   return (
-    <section className="mx-auto my-20">
+    <section ref={fadeInRef}  className="mx-auto my-20">
       <Swiper
         modules={[Autoplay]}
         spaceBetween={30}

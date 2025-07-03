@@ -1,17 +1,26 @@
+"use client";
+
 import Image from "next/image";
 import React from "react";
 import { RiDoubleQuotesR } from "react-icons/ri";
 import CEO from "@/components/about-ceo-section/assets/ceo.png";
 import CEOBG from "@/components/about-ceo-section/assets/ceo-bg-util.svg";
-import CEOUtil from "@/components/about-ceo-section/assets/ceo-util.svg";
-import styles from "./aboutCEO.module.scss"
+import styles from "./aboutCEO.module.scss";
+import useScrollFadeInOnce from "@/animations/useScrollFadeInOnce";
 
 export default function AboutCEO() {
+  const textRef = useScrollFadeInOnce(50);
+  const imageRef = useScrollFadeInOnce(100); // animate a bit deeper
+
   return (
     <section className="bg-black lg:mt-52">
       <div className="container mx-auto px-4">
         <div className="flex flex-col lg:flex-row items-center justify-between lg:gap-10 bg-black relative">
-          <div className="lg:w-2/3 py-10 xl:py-14">
+          {/* Left Content (Text) */}
+          <div
+            className="lg:w-2/3 py-10 xl:py-14"
+            ref={textRef}
+          >
             <p className="text-white text-base lg:text-lg leading-relaxed mb-6">
               At RapidMoney, we deliver speedy, trustworthy, and transparent
               lending solutions tailored to individual needs. Our seamless
@@ -29,8 +38,10 @@ export default function AboutCEO() {
             <p className="text-[#DEDEDE] text-sm">Chief Executive Officer</p>
           </div>
 
+          {/* Right Content (CEO Image) */}
           <div
-            className={`lg:w-1/3 flex justify-center lg:justify-end pt-10 lg:pt-0 ${styles.ceoImage} `}
+            className={`lg:w-1/3 flex justify-center lg:justify-end pt-10 lg:pt-0 ${styles.ceoImage}`}
+            // ref={imageRef}
           >
             <Image
               src={CEOBG}
@@ -40,7 +51,7 @@ export default function AboutCEO() {
             <Image
               src={CEO}
               alt="Chief Executive Officer"
-              className={`max-w-full h-auto relative lg:absolute bottom-0 z-10  `}
+              className={`max-w-full h-auto relative lg:absolute bottom-0 z-10`}
               priority
             />
           </div>

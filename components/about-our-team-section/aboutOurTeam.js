@@ -1,9 +1,14 @@
-import React from "react";
+"use client";
+
+import React, { useRef } from "react";
+import Image from "next/image";
+import useScrollFadeInOnce from "@/animations/useScrollFadeInOnce";
+import useStaggerFadeIn from "@/animations/useStaggerFadeIn";
+
 import HemaliImg from "@/components/about-our-team-section/assets/hemali.png";
 import ChintanImg from "@/components/about-our-team-section/assets/chintan.png";
 import AnkurImg from "@/components/about-our-team-section/assets/ankur.png";
 import AshwaniImg from "@/components/about-our-team-section/assets/ashwani.png";
-import Image from "next/image";
 
 const leaders = [
   {
@@ -35,9 +40,9 @@ const team = [
   },
 ];
 
-function MemberCard({ name, title, img, linkedin }) {
+function MemberCard({ name, title, img, linkedin, cardRef }) {
   return (
-    <div className="max-w-[270px] group">
+    <div className="max-w-[270px] group" ref={cardRef}>
       <div className="bg-[#F4F5F8] rounded-4xl relative w-full mx-auto overflow-hidden mb-[10px]">
         <div className="overflow-hidden rounded-xl pt-8">
           <Image
@@ -66,24 +71,44 @@ function MemberCard({ name, title, img, linkedin }) {
 }
 
 export default function AboutOurTeam() {
+  const titleRef1 = useScrollFadeInOnce();
+  const titleRef2 = useScrollFadeInOnce();
+  const leaderRefs = useStaggerFadeIn();
+  const teamRefs = useStaggerFadeIn();
+
   return (
     <section className="bg-white px-4 z-50 relative">
-      <div className=" py-24 ">
+      <div className="py-24">
         <div className="max-w-4xl mx-auto">
-          <h2 className="font-40 text-black font-bold text-center mb-10">
+          <h2
+            className="font-40 text-black font-bold text-center mb-10"
+            ref={titleRef1}
+          >
             Our Leader Board
           </h2>
           <div className="flex justify-center flex-wrap gap-8 mb-20 md:mb-24">
-            {leaders.map((member) => (
-              <MemberCard key={member.name} {...member} />
+            {leaders.map((member, i) => (
+              <MemberCard
+                key={member.name}
+                {...member}
+                cardRef={(el) => (leaderRefs.current[i] = el)}
+              />
             ))}
           </div>
-          <h2 className="font-40 text-black font-bold text-center mb-10">
+
+          <h2
+            className="font-40 text-black font-bold text-center mb-10"
+            ref={titleRef2}
+          >
             Our Team Member
           </h2>
           <div className="flex justify-center flex-wrap gap-8">
-            {team.map((member) => (
-              <MemberCard key={member.name} {...member} />
+            {team.map((member, i) => (
+              <MemberCard
+                key={member.name}
+                {...member}
+                cardRef={(el) => (teamRefs.current[i] = el)}
+              />
             ))}
           </div>
         </div>
