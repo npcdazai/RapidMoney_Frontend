@@ -39,7 +39,7 @@ const LoanStep = ({ data }) => {
           </h2>
         </span>
 
-        <Row gutter={[32, 32]} justify={"center"} align="middle">
+        <Row gutter={[32, 32]} justify={"center"} align="bottom">
           {/* Left Column: Steps */}
           <Col xs={24} lg={12} className={styles.stepCol}>
             <Steps

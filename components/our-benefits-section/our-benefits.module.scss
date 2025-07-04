@@ -1,13 +1,21 @@
 .section {
-position: relative;
-z-index: 20;
-    .benefitsCard {
-        border: 8px solid #F9FAFF;
-        border-radius: 32px;
-        transition: transform 0.2s, box-shadow 0.2s;
+  position: relative;
+  z-index: 20;
+  .benefitsCard {
+    // border: 8px solid #f9faff;
+    border-radius: 32px;
+    transition: transform 0.2s, box-shadow 0.2s;
+    box-shadow: 0px 5px 40px 0px #00000014;
+    border: 1px solid #ebebeb;
+
+    .cardInner {
+        background-color: #f9faff;
+         border-radius: 28px;
+         padding: 26px 18px;
     }
-    .benefitsCard:hover {
-        transform: translateY(-6px) scale(1.04);
-        box-shadow: 0 8px 32px 0 rgba(0,0,0,0.10);
-    }
+  }
+  .benefitsCard:hover {
+    transform: translateY(-6px) scale(1.04);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.1);
+  }
 }

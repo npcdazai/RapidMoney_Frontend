@@ -1,24 +1,78 @@
 "use client";
-
-import React from "react";
+import React, { useEffect, useRef } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Link from "next/link";
 import Image from "next/image";
-import news from "./assets/newsImage.png";
-import plant from "./assets/plant.png";
-import paper from "./assets/paper.png";
+import blog1 from "./assets/blog-1.jpg";
+import blog2 from "./assets/blog-2.jpg";
+import blog3 from "./assets/blog-3.jpg";
 
 import rapidMoney from "./assets/rapid_money.png";
 import styles from "./news-section.module.scss";
-import { Col, Row } from "antd";
+import { Col, Row, Button } from "antd";
 import { RiArrowRightLine } from "react-icons/ri";
 
+gsap.registerPlugin(ScrollTrigger);
+
 const NewsSection = ({ data }) => {
-  const imageArray = [news, plant, paper];
+  const imageArray = [blog1, blog2, blog3];
+
+  const titleRef = useRef(null);
+  const cardsRef = useRef([]);
+  cardsRef.current = [];
+
+  useEffect(() => {
+    // Animate title
+    gsap.fromTo(
+      titleRef.current,
+      { autoAlpha: 0, y: 40 },
+      {
+        autoAlpha: 1,
+        y: 0,
+        duration: 1,
+        ease: "power2.out",
+        scrollTrigger: {
+          trigger: titleRef.current,
+          start: "top 85%",
+        },
+      }
+    );
+
+    // Animate each card with stagger
+    gsap.fromTo(
+      cardsRef.current,
+      {
+        autoAlpha: 0,
+        y: 60,
+        scale: 0.95,
+      },
+      {
+        autoAlpha: 1,
+        y: 0,
+        scale: 1,
+        duration: 0.9,
+        ease: "power3.out",
+        stagger: 0.2,
+        scrollTrigger: {
+          trigger: titleRef.current,
+          start: "top 85%",
+        },
+      }
+    );
+
+    return () => {
+      ScrollTrigger.getAll().forEach((t) => t.kill());
+    };
+  }, []);
 
   return (
-    <section className={`pt-60 pb-60 ${styles.section}`}>
+    <section className={`py-12 bg-[#FAFAFA] ${styles.section}`}>
       <div className="container mx-auto">
-        <div className="flex justify-center flex-wrap items-center gap-2 pb-60">
+        <div
+          ref={titleRef}
+          className="flex justify-center flex-wrap items-center gap-2 pb-12"
+        >
           <Image
             src={rapidMoney}
             alt="rapid_money"
@@ -33,7 +87,13 @@ const NewsSection = ({ data }) => {
 
         <Row gutter={[24, 32]}>
           {data?.cards.map((item, idx) => (
-            <Col key={idx} xs={24} sm={24} md={8}>
+            <Col
+              key={idx}
+              xs={24}
+              sm={24}
+              md={8}
+              ref={(el) => (cardsRef.current[idx] = el)}
+            >
               <div className="flex flex-col gap-4 h-full group">
                 <Link href={item.link} className="h-full">
                   <div className="overflow-hidden h-full rounded-3xl ">
@@ -68,11 +128,16 @@ const NewsSection = ({ data }) => {
                     <RiArrowRightLine size={24} />
                   </span>
                 </Link>
-
               </div>
             </Col>
           ))}
         </Row>
+
+        <div className="text-center mt-10">
+          <button className={`apply-btn apply-btn-green`}>
+            View All Blogs
+          </button>
+        </div>
       </div>
     </section>
   );

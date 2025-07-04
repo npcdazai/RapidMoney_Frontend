@@ -1,29 +1,30 @@
 .section {
-    .cardBkl {
-      position: relative;
-      overflow: hidden;
-      z-index: 1;
-      transition: transform 0.2s, box-shadow 0.2s;
-      background-color: #0d0d0d; // optional dark background
-  
-      &:hover {
-        transform: translateY(-6px) scale(1.04);
-        box-shadow: 0 0 32px 0 var(--glow-color, #6C63FF);
-      }
-    }
-  
-    .blob {
-      position: absolute;
-      width: 180px;
-      height: 180px;
-      background: var(--glow-color, #6C63FF);
-      border-radius: 9999px;
-      filter: blur(60px);
-      pointer-events: none;
-      opacity: 0.6;
-      z-index: 0;
-      transition: transform 0.1s ease;
-      transform: translate(-9999px, -9999px); // default offscreen
+  .cardBkl {
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+    transition: transform 0.2s, box-shadow 0.2s;
+    background-color: #0d0d0d;
+
+    &:hover {
+      transform: translateY(-6px) scale(1.04);
+      box-shadow: 0 0 32px 0 var(--glow-color, #6C63FF);
     }
   }
-  
+
+  .blob {
+    position: absolute;
+    width: 160px;
+    height: 160px;
+    background: var(--glow-color, #6C63FF);
+    border-radius: 50%;
+    filter: blur(60px);
+    pointer-events: none;
+    opacity: 0.6;
+    z-index: 0;
+    top: 0;
+    left: 0;
+    transform: translate(0px, 0px);
+    z-index: -1;
+  }
+}
