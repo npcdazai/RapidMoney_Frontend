@@ -23,7 +23,7 @@
   border-radius: 100%;
   filter: blur(100px);
   z-index: 5;
-  overflow: hidden;
+  // overflow: hidden;
 
   @media (max-width: 1023px) {
     right: 50%;

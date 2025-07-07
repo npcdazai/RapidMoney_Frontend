@@ -15,7 +15,7 @@ const ContactUs = ({ data }) => {
 
     return (
         <>
-            <section className="container mx-auto pt-120 pb-60">
+            <section className="container mx-auto pt-[80px] pb-60">
                 <div className="pb-[70px] w-full text-center">
                     <div className="max-w-[660px] mx-auto">
                         <h1 className="font-18 pb-6">
