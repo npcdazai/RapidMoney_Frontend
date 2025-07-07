@@ -8,6 +8,7 @@ import blog2 from "./assets/blog-2.jpg";
 import blog3 from "./assets/blog-3.jpg";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import Link from "next/link";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -75,7 +76,7 @@ export default function BlogListing() {
             md={8}
             ref={(el) => (cardsRef.current[index] = el)}
           >
-            <BlogCard item={{ ...blog, image: imageArray[index] }} />
+            <Link href={'/blogs/test'}><BlogCard item={{ ...blog, image: imageArray[index] }} /></Link>
           </Col>
         ))}
       </Row>

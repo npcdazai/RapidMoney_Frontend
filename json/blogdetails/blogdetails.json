@@ -1,0 +1,94 @@
+{
+  "title": "A personal loan from the comfort of your home",
+  "author": "Ankur",
+  "date": "17 Jan 2025",
+  "mainImage": "/path/to/main-image.png",
+  "content": [
+    {
+      "heading": "Lorem Ipsum is simply dummy text of the printing and typesetting industry Lorem Ipsum .",
+      "paragraph": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry’s standard dummy text ever since the 1500s..."
+    },
+    {
+      "heading": "Lorem Ipsum is simply dummy text of the printing and typesetting industry Lorem Ipsum .",
+      "paragraph": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry’s standard dummy text ever since the 1500s..."
+    },
+    {
+      "heading": "Lorem Ipsum is simply dummy text of the printing and typesetting industry Lorem Ipsum .",
+      "paragraph": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry’s standard dummy text ever since the 1500s..."
+    },
+    {
+      "heading": "Lorem Ipsum is simply dummy text of the printing and typesetting industry Lorem Ipsum .",
+      "paragraph": "Lorem Ipsum is simply dummy text of the printing and typesetting industry..."
+    }
+  ],
+  "socialLinks": [
+    {
+      "platform": "LinkedIn",
+      "icon": "linkedin",
+      "url": "/#"
+    },
+    {
+      "platform": "X",
+      "icon": "x-twitter",
+      "url": "/#"
+    },
+    {
+      "platform": "Instagram",
+      "icon": "instagram",
+      "url": "/#"
+    },
+    {
+      "platform": "Facebook",
+      "icon": "facebook",
+      "url": "/#"
+    }
+  ],
+  "categories": [
+    "Bullet Repayment Loan",
+    "Term Loans",
+    "Personal Loans",
+    "Business Loans",
+    "Home Equity Loans",
+    "Student Loans",
+    "Auto Loans",
+    "Payday Loans",
+    "Microloans"
+  ],
+  "authorBio": [
+    {
+      "name": "Ankur Chandra",
+      "desc": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry’s standard dummy text ever."
+    },
+    {
+      "name": "Ankur Chandra",
+      "desc": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry’s standard dummy text ever."
+    },
+    {
+      "name": "Ankur Chandra",
+      "desc": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry’s standard dummy text ever."
+    }
+  ],
+  "relatedBlogs": [
+    {
+      "image": "/path/to/related1.png",
+      "title": "A Consumer Guide to Identifying Loan Fraud",
+      "author": "Alec Whitman",
+      "date": "17 Jan 2022",
+      "link": "#"
+    },
+    {
+      "image": "/path/to/related2.png",
+      "title": "A personal loan from the comfort of your home",
+      "author": "Alec Whitman",
+      "date": "17 Jan 2022",
+      "link": "#"
+    },
+    {
+      "image": "/path/to/related3.png",
+      "title": "Tips to Get a Personal Loan Easily & Hassle-Free",
+      "author": "Alec Whitman",
+      "date": "17 Jan 2022",
+      "link": "#"
+    }
+  ]
+}
