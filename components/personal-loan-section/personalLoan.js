@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect } from "react";
+import { useRef, useEffect } from "react";
 import { Row, Col } from 'antd';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -10,7 +10,6 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import darkIphone from "./assets/dark_iphone.svg";
 import playStore from "./assets/playstore.svg";
 import personImage from "./assets/personImage.png";
-import downLoad from "./assets/download.svg";
 import google from "./assets/google.svg";
 
 import styles from "./personal-loan.module.scss";
@@ -28,11 +27,36 @@ const paths = {
 };
 
 const PersonalLoan = ({ data }) => {
+  const ref = useRef(null);
+  const labelRef = useRef(null);
+
+  useEffect(() => {
+    if (!labelRef.current) return;
+
+    gsap.fromTo(
+      labelRef.current,
+      { y: 200, opacity: 0 },
+      {
+        y: 0,
+        opacity: 0.12,
+        duration: 1.2,
+        ease: 'power3.out',
+        scrollTrigger: {
+          trigger: labelRef.current,
+          start: 'top 80%',
+          toggleActions: 'play none none none',
+          once: true
+        }
+      }
+    );
+  }, []);
+
+
   useEffect(() => {
     gsap.set(".overlay__path-reverse", {
       // attr: { d: paths.step1.filled }
       attr: { d: paths.step1.inBetween.curve1 }
-     
+
     });
 
     gsap.utils.toArray(".overlay__path-reverse").forEach((overlayPath) => {
@@ -50,7 +74,7 @@ const PersonalLoan = ({ data }) => {
         duration: 1.8,
         ease: "power1.inOut",
         // attr: { d: paths.step1.inBetween.curve1 }
-         attr: { d: paths.step1.filled }
+        attr: { d: paths.step1.filled }
       });
     });
   }, []);
@@ -58,9 +82,10 @@ const PersonalLoan = ({ data }) => {
   return (
     <section
       className={`${styles.section}  light-color pt-60 relative overflow-hidden`}
-      // className={`${styles.section} dark-bg light-color pt-60 relative overflow-hidden`}
-      data-label={data.backgroundText || "Personal"}
+    // className={`${styles.section} dark-bg light-color pt-60 relative overflow-hidden`}
+    // data-label={data.backgroundText || "Personal"}
     >
+
       <svg
         className="overlay-reverse"
         viewBox="0 0 100 100"
@@ -78,12 +103,20 @@ const PersonalLoan = ({ data }) => {
         <path
           className="overlay__path-reverse"
           d="M 0 100 V 0 Q 50 0 100 0 V 100 Z"
-          fill="#000101" 
+          fill="#000101"
         />
       </svg>
 
       {/* <div className="container mx-auto text-center pt-[300px] relative z-10"> */}
       <div className="container mx-auto text-center pt-[100px] sm:pt-[150px] md:pt-[200px] lg:pt-[300px]">
+
+        {/* <div className={styles.sectionLabel}>
+          {data.backgroundText || 'Personal'}
+        </div> */}
+
+        <div ref={labelRef} className={styles.sectionLabel}>
+          {data.backgroundText}
+        </div>
 
         <div className="flex justify-center">
           <div className="flex flex-col gap-5 max-w-[600px] items-center md:pt-0 pt-[80px] px-4 z-10">
@@ -146,7 +179,7 @@ const PersonalLoan = ({ data }) => {
               );
             })}
           </Col>
-          
+
         </Row>
       </div>
     </section>

@@ -2,6 +2,7 @@ import { Noto_Sans } from "next/font/google";
 // import Header from "@/components/Header/Header";
 import "./globals.scss"
 import "./app.css"
+import 'animate.css';
 // import { Menubar } from "@/components/Menubar/Menubar";
 // import Footer from "@/components/Footer/Footer";
 import { AntdRegistry } from '@ant-design/nextjs-registry';
