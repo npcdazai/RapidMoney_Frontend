@@ -1,70 +1,87 @@
 .section {
-position: relative;
-    // aspect-ratio: 1600 / 800;
-    // .custom-swiper-pagination {
-    //   position: absolute;
-    //   left: 0;
-    //   right: 0;
-    //   bottom: 0px; // adjust as needed
-    //   margin: 0 auto;
-    //   z-index: 10;
-    //   display: flex;
-    //   justify-content: center;
-    //   width: max-content;
-      
-    // }
-    .curve {
-        // clip-path: ellipse(100% 85% at 50% 100%);
-        // // clip-path: ellipse(100% 85% at 50% 100%);
-        // position: absolute;
-        // bottom: -20%;
-        // width: 100%;
-        // // height: 100%;
-        // height: 20%;
-        // background: #fff;
-        // z-index: 10;
+  position: relative;
+  // aspect-ratio: 1600 / 800;
+  // .custom-swiper-pagination {
+  //   position: absolute;
+  //   left: 0;
+  //   right: 0;
+  //   bottom: 0px; // adjust as needed
+  //   margin: 0 auto;
+  //   z-index: 10;
+  //   display: flex;
+  //   justify-content: center;
+  //   width: max-content;
 
-        // // @media screen and (max-width:576px) {
-        // //     bottom: -30%;
-        // // }
-        
-        clip-path: ellipse(70% 105% at 50% 170%);
-        z-index: 10;
-        background: #fff;
-        width: 100%;
-        height: 40%;
-        position: absolute;
-        bottom: 0%;
-        @media screen and (max-width:992px) {
-            clip-path: ellipse(80% 110% at 50% 180%);
-        }
-        @media screen and (max-width:768px) {
-            clip-path: ellipse(90% 110% at 50% 180%);
-        }
+  // }
+  .curve {
+    // clip-path: ellipse(100% 85% at 50% 100%);
+    // // clip-path: ellipse(100% 85% at 50% 100%);
+    // position: absolute;
+    // bottom: -20%;
+    // width: 100%;
+    // // height: 100%;
+    // height: 20%;
+    // background: #fff;
+    // z-index: 10;
+
+    // // @media screen and (max-width:576px) {
+    // //     bottom: -30%;
+    // // }
+
+    clip-path: ellipse(70% 108% at 50% 175%);
+    // clip-path: ellipse(70% 105% at 50% 170%);
+    z-index: 10;
+    background: #fff;
+    width: 100%;
+    height: 40%;
+    position: absolute;
+    // bottom: 0%;
+    bottom: -1px;
+
+    @media screen and (max-width:992px) {
+      clip-path: ellipse(80% 110% at 50% 180%);
     }
 
-    .heroSwiper {
-        :global(.swiper-pagination) { 
-         z-index: 10;
-        //   background: #0f0;
-          position: absolute;
-          bottom: 80px;
-          width: max-content;
-          left: 244px;
-          transform: translateX(-50%);
+    @media screen and (max-width:768px) {
+      clip-path: ellipse(90% 110% at 50% 180%);
+    }
+  }
 
-          :global(.swiper-pagination-bullet){
-            background-color: #ffffff;
-            width: 18px;
-            height: 18px;
-          }
-          :global(.swiper-pagination-bullet-active){
-            background-color: #ffffff;
-            border: 5px solid gray;
+  .heroSwiper {
+    :global(.swiper-pagination) {
+      z-index: 10;
+      //   background: #0f0;
+      position: absolute;
+      bottom: 80px;
+      width: max-content;
+      left: 244px;
+      transform: translateX(-50%);
 
-          }
-
-        }
+      :global(.swiper-pagination-bullet) {
+        background-color: #ffffff;
+        width: 18px;
+        height: 18px;
       }
-   
+
+      :global(.swiper-pagination-bullet-active) {
+        background-color: #ffffff;
+        border: 5px solid gray;
+
+      }
+
+    }
+
+    // :global(.swiper-wrapper) {
+    //   :global(.swiper-slide-active) {
+    //     .heroTitle,
+    //     .heroDescription,
+    //     .heroButton
+    //     {
+    //       visibility: hidden;
+    //       opacity: 0;
+    //     }
+    //   }
+    // }
+  }
+
 }
