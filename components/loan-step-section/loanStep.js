@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { Col, Row, Steps } from "antd";
 import Image from "next/image";
 const { Step } = Steps;
@@ -8,6 +8,11 @@ import styles from "./loan-step.module.scss";
 import install from "./assets/install.png"
 import loanApp from "./assets/loanApp.png"
 import verify from "./assets/verify.png"
+import qrImg from './assets/qr.png';
+import moneyImg from './assets/money.png';
+import coinImage from './assets/coin.png';
+import curveImage from './assets/curve.png';
+import gsap from "gsap";
 
 const AUTO_PLAY_INTERVAL = 3000;
 const imageArray = {
@@ -19,6 +24,10 @@ const imageArray = {
 const LoanStep = ({ data }) => {
   const [current, setCurrent] = useState(0);
   const stepsCount = data.steps.length;
+  const moneyRef = useRef(null);
+  const coinRef = useRef(null);
+  const curveRef = useRef(null);
+
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -29,8 +38,45 @@ const LoanStep = ({ data }) => {
 
   const currentStep = data.steps[current];
 
+  useEffect(() => {
+    if (moneyRef.current && coinRef.current && curveRef.current) {
+      gsap.to(moneyRef.current, {
+        y: -40,
+        rotation: 10,
+        duration: 2,
+        repeat: -1,
+        yoyo: true,
+        ease: "power1.inOut"
+      });
+
+      gsap.to(coinRef.current, {
+        y: -20,
+        rotation: -10,
+        duration: 3,
+        repeat: -1,
+        yoyo: true,
+        ease: "sine.inOut"
+      });
+
+      gsap.to(curveRef.current, {
+        y: -10,
+        duration: 4,
+        repeat: -1,
+        yoyo: true,
+        ease: "sine.inOut"
+      });
+    }
+  }, []);
+
+
   return (
     <section className={`pt-120 ${styles.section}`}>
+      <Image
+        src={qrImg}
+        alt="QR"
+        className={styles.qrDecor}
+        priority
+      />
       <div className="container mx-auto px-4">
         {/* Section Title */}
         <span className="flex justify-center items-center">
@@ -41,7 +87,7 @@ const LoanStep = ({ data }) => {
 
         <Row gutter={[32, 32]} justify={"center"} align="bottom">
           {/* Left Column: Steps */}
-          <Col xs={24} lg={12} className={styles.stepCol}>
+         <Col xs={24} lg={12} className={`${styles.stepCol} ${styles.stepColPadTop}`}>
             <Steps
               direction="vertical"
               current={current}
@@ -74,7 +120,29 @@ const LoanStep = ({ data }) => {
           </Col>
 
           <Col xs={24} lg={12} className={styles.imageBkl}>
-          {/* <Col xs={24} lg={{ span: 11, offset: 1 }} className={styles.imageBkl}> */}
+            <Image
+              ref={moneyRef}
+              src={moneyImg}
+              alt="Money"
+              className={styles.moneyDecor}
+              priority
+            />
+            <Image
+              ref={coinRef}
+              src={coinImage}
+              alt="Coin"
+              className={styles.coinDecor}
+              priority
+            />
+            <Image
+              ref={curveRef}
+              src={curveImage}
+              alt="Curve"
+              className={styles.curveDecor}
+              priority
+            />
+
+            {/* <Col xs={24} lg={{ span: 11, offset: 1 }} className={styles.imageBkl}> */}
             <div className="flex justify-center items-center">
               <Image
                 // src={currentStep.image}

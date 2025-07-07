@@ -24,24 +24,34 @@
   }
   
 
-  &::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    pointer-events: none;
-    z-index: 1;
-    background-image:
-      url('./assets/blue-coin.png'),
-      url('./assets/blue-coin.png'),
-      url('./assets/curve.png');
-    background-position: left -5% top 60%, right -5% top 50%,left 1% top 50%;
-    // background-position: -5%, right -5% top 50%, 0%;
-    background-repeat: no-repeat;
-    background-size: 200px 200px, 200px 200px,100px 100px;
+&::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+  background-image:
+    url('./assets/blue-coin.png'),
+    url('./assets/blue-coin.png'),
+    url('./assets/curve.png');
+  background-position: left -5% top 60%, right -5% top 50%, left 1% top 50%;
+  background-repeat: no-repeat;
+  background-size: 200px 200px, 200px 200px, 100px 100px;
+
+  @media (max-width: 992px) {
+    background-size: 150px 150px, 150px 150px, 80px 80px;
+    background-position: left -5% top 65%, right -5% top 55%, left 1% top 55%;
   }
+
+  @media (max-width: 576px) {
+    background-size: 100px 100px, 100px 100px, 60px 60px;
+    background-position: left -8% top 70%, right -8% top 60%, left 1% top 60%;
+  }
+}
+
 
   .personImage {
     position: relative;

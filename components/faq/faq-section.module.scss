@@ -45,12 +45,17 @@
         background-color: #ffffff;
         box-shadow: 0px 0px 24px rgba(0, 0, 0, 0.09);
         border: 1px solid transparent !important;
+
+        :global(.ant-collapse-header) {
+          padding-bottom: 8px !important; // or your reduced value
+        }
       }
 
-      .faqCollapsePanel {
+      // :global(.ant-collapse-item) {
+        .faqCollapsePanel {
         border: 1px solid #dedede;
         border-radius: 15px;
-        padding: 16px 20px;
+        // padding: 16px 20px;
         transition: transform 0.2s, box-shadow 0.2s;
 
         :global(.ant-collapse-header) {
@@ -58,7 +63,8 @@
           font-size: 18px;
           line-height: 132%;
           color: #212121;
-          padding-bottom: 8px;
+          // padding-bottom: 8px;
+          padding: 26px 36px;
 
           :global(.ant-collapse-header-text) {
             flex: auto !important;
@@ -70,6 +76,11 @@
           font-size: 14px;
           line-height: 148%;
           color: rgba(33, 33, 33, 0.8);
+
+          :global(.ant-collapse-content-box) {
+            padding: 0px 36px 26px;
+          }
+
         }
       }
 

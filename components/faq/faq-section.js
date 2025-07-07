@@ -121,7 +121,7 @@ const FaqSection = ({ data }) => {
                     className={styles.faqCollapse}
                     // defaultActiveKey={["1"]}
                     defaultActiveKey={["1"]}
-                    collapsible="header"
+                    // collapsible="header"
                   >
                     {step.questions.map((q, i) => (
                       <Panel
