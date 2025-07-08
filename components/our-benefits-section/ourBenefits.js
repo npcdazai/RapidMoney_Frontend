@@ -12,6 +12,14 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import styles from "./our-benefits.module.scss";
 
+const icon = {
+  bank: bank,
+  creditCard: creditCard,
+  layer: layer,
+  calender: calender,
+  noBank: noBank,
+};
+
 gsap.registerPlugin(ScrollTrigger);
 
 const Benefits = ({ data }) => {
@@ -106,7 +114,8 @@ const Benefits = ({ data }) => {
                       />
                     </div>
                     <div className="flex justify-between">
-                      {/* <div className="">
+                        <div></div>
+                      <div className="">
                       <Image
                         src={icon[item.icon]}
                         // src={item.icon}
@@ -115,16 +124,16 @@ const Benefits = ({ data }) => {
                         height={40}
                         className="object-contain"
                       />
-                    </div> */}
-                      <div></div>
-                      <Lottie
+                    </div>
+                      {/* <div></div> */}
+                      {/* <Lottie
                         lottieRef={lottieRef}
                         animationData={noBank}
                         autoplay={true}
                         loop={false}
                         onComplete={handleComplete}
                         style={{ width: "60px", height: "60px" }}
-                      />
+                      /> */}
                     </div>
                   </div>
                 </div>

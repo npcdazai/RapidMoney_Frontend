@@ -76,7 +76,7 @@ export default function BlogListing() {
             md={8}
             ref={(el) => (cardsRef.current[index] = el)}
           >
-            <Link href={'/blogs/test'}><BlogCard item={{ ...blog, image: imageArray[index] }} /></Link>
+           <BlogCard item={{ ...blog, image: imageArray[index] }} />
           </Col>
         ))}
       </Row>

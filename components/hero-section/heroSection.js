@@ -17,101 +17,17 @@ import moneyNote2 from "./assets/note2.png";
 
 import { gsap } from 'gsap';
 
-const HeroSection = ({ data, showPagination }) => {
+const HeroSection = ({ data, showPagination }) => {  
 
-  // useEffect(() => {
-  //   const context = gsap.context(() => {
-  //     const elements = gsap.utils.toArray(".floating-image");
-  //     const heroTitle = document.querySelector(".hero-title");
-  //     const heroDescription = document.querySelector(".hero-description");
-  //     const heroButton = document.querySelector(".hero-button");
-
-  //     // Initial state for coins
-  //     gsap.set(elements, { y: -150, opacity: 0, visibility: 'hidden' });
-
-  //     // Initial state for left content (bottom to top)
-  //     gsap.set(heroTitle, { y: 60, opacity: 0 });
-  //     gsap.set(heroDescription, { y: 60, opacity: 0 });
-  //     gsap.set(heroButton, { y: 60, opacity: 0 });
-
-  //     const tl = gsap.timeline({
-  //       scrollTrigger: {
-  //         trigger: '.hero-section-container',
-  //         start: 'top 80%',
-  //         once: true,
-  //       },
-  //     });
-
-  //     // Animate left content sequentially from bottom to top with smoother easing
-  //     tl.to(heroTitle, {
-  //       y: 0,
-  //       opacity: 1,
-  //       duration: 1.0,
-  //       ease: 'power4.out',
-  //     }, "+=0.3")
-  //       .to(heroDescription, {
-  //         y: 0,
-  //         opacity: 1,
-  //         duration: 1.0,
-  //         ease: 'power4.out',
-  //       }, "+=0.3") // 0.3s delay after title
-  //       .to(heroButton, {
-  //         y: 0,
-  //         opacity: 1,
-  //         duration: 1.0,
-  //         ease: 'power4.out',
-  //       }, "+=0.3") // 0.3s delay after description
-
-  //       // Start coin animation after left content is done
-  //       .set(elements, { visibility: 'visible' }, "+=0.4")
-  //       .fromTo(
-  //         elements,
-  //         { y: -150, opacity: 0 },
-  //         {
-  //           y: 0,
-  //           opacity: 1,
-  //           duration: 0.8,
-  //           ease: "power2.out",
-  //           stagger: 0.1,
-  //         }
-  //       )
-
-  //       // Add controlled floating animation with shorter duration
-  //       .add(() => {
-  //         elements.forEach((el) => {
-  //           const floatY = gsap.utils.random(5, 10);
-  //           const floatX = gsap.utils.random(2, 5);
-  //           const rotate = gsap.utils.random(-3, 3);
-  //           const duration = gsap.utils.random(1.5, 2.0); // Shorter duration
-  //           const delay = gsap.utils.random(0, 0.2);
-
-  //           gsap.to(el, {
-  //             y: `-=${floatY}`,
-  //             x: `+=${floatX}`,
-  //             rotation: rotate,
-  //             duration,
-  //             ease: "sine.inOut",
-  //             yoyo: true,
-  //             repeat: -1,
-  //             delay,
-  //           });
-  //         });
-  //       });
-  //   });
-
-  //   return () => context.revert();
-  // }, []);
-
-
-  useEffect(() => {
+useEffect(() => {
   const context = gsap.context(() => {
     const elements = gsap.utils.toArray(".floating-image");
     const heroTitle = document.querySelector(".hero-title");
     const heroDescription = document.querySelector(".hero-description");
     const heroButton = document.querySelector(".hero-button");
 
-    // Set initial states
-    gsap.set(elements, { y: -150, opacity: 0, visibility: 'hidden' });
+    // Initial states
+    gsap.set(elements, { y: -100, opacity: 0, visibility: 'hidden' });
     gsap.set([heroTitle, heroDescription, heroButton], { y: 60, opacity: 0 });
 
     const tl = gsap.timeline({
@@ -122,50 +38,57 @@ const HeroSection = ({ data, showPagination }) => {
       },
     });
 
-    // Animate left content and right elements in parallel (no delay)
-    tl
-      .to([heroTitle, heroDescription, heroButton], {
+    // Animate text content
+    tl.to([heroTitle, heroDescription, heroButton], {
+      y: 0,
+      opacity: 1,
+      duration: 0.6,
+      ease: 'power2.out',
+      stagger: 0.1,
+    }, 0)
+
+    // Animate coins/notes in
+    .set(elements, { visibility: 'visible' }, 0)
+    .fromTo(
+      elements,
+      { y: -100, opacity: 0 },
+      {
         y: 0,
         opacity: 1,
-        duration: 1,
-        ease: 'power4.out',
-        stagger: 0.2,
-      }, 0) // <-- Start at same time
+        duration: 0.5,
+        ease: "power1.out",
+        stagger: 0.07,
+      },
+      0.1
+    )
 
-      .set(elements, { visibility: 'visible' }, 0) // <-- Also start immediately
-      .fromTo(
-        elements,
-        { y: -150, opacity: 0 },
-        {
-          y: 0,
-          opacity: 1,
-          duration: 0.8,
-          ease: "power2.out",
-          stagger: 0.1,
-        },
-        0.2 // Slightly offset for smoother look
-      )
-      .add(() => {
-        elements.forEach((el) => {
-          const floatY = gsap.utils.random(5, 10);
-          const floatX = gsap.utils.random(2, 5);
-          const rotate = gsap.utils.random(-3, 3);
-          const duration = gsap.utils.random(1.5, 2.0);
-          const delay = gsap.utils.random(0, 0.2);
+    // Floating animation
+    .add(() => {
+      elements.forEach((el) => {
+        const alt = el.getAttribute("alt");
 
-          gsap.to(el, {
-            y: `-=${floatY}`,
-            x: `+=${floatX}`,
-            rotation: rotate,
-            duration,
-            ease: "sine.inOut",
-            yoyo: true,
-            repeat: -1,
-            delay,
-          });
+        // Extra spacing for Note 1 and Coin 3
+        const isNote1 = alt === "Note 1";
+        const isCoin3 = alt === "Coin 3";
+
+        const floatY = isNote1 ? gsap.utils.random(20, 28) : gsap.utils.random(10, 18);
+        const floatX = isCoin3 ? gsap.utils.random(12, 18) : gsap.utils.random(5, 10);
+        const rotate = gsap.utils.random(-6, 6);
+        const duration = gsap.utils.random(0.6, 1.2); // Faster loop
+        const delay = gsap.utils.random(0, 0.05);
+
+        gsap.to(el, {
+          y: `-=${floatY}`,
+          x: `+=${floatX}`,
+          rotation: rotate,
+          duration,
+          ease: "sine.inOut",
+          yoyo: true,
+          repeat: -1,
+          delay,
         });
-      }, 1); // Float starts after initial anim
-
+      });
+    }, 0.6);
   });
 
   return () => context.revert();

@@ -11,6 +11,8 @@ import darkIphone from "./assets/dark_iphone.svg";
 import playStore from "./assets/playstore.svg";
 import personImage from "./assets/personImage.png";
 import google from "./assets/google.svg";
+import coin from "./assets/blue-coin.png"
+import curve from "./assets/curve.png"
 
 import styles from "./personal-loan.module.scss";
 
@@ -29,6 +31,9 @@ const paths = {
 const PersonalLoan = ({ data }) => {
   const ref = useRef(null);
   const labelRef = useRef(null);
+  const leftCoinRef = useRef(null);
+  const rightCoinRef = useRef(null);
+  const curveRef = useRef(null);
 
   useEffect(() => {
     if (!labelRef.current) return;
@@ -45,11 +50,60 @@ const PersonalLoan = ({ data }) => {
           trigger: labelRef.current,
           start: 'top 80%',
           toggleActions: 'play none none none',
-          once: true
-        }
+          once: true,
+        },
       }
     );
+
+    if (leftCoinRef.current && rightCoinRef.current && curveRef.current) {
+      // Floating left coin
+      gsap.to(leftCoinRef.current, {
+        y: -40,
+        x: 10,
+        rotation: 15,
+        duration: 3,
+        repeat: -1,
+        yoyo: true,
+        ease: "sine.inOut",
+        delay: 0.2,
+      });
+
+      // Floating right coin
+      gsap.to(rightCoinRef.current, {
+        y: -30,
+        x: -10,
+        rotation: -18,
+        duration: 3.8,
+        repeat: -1,
+        yoyo: true,
+        ease: "sine.inOut",
+        delay: 0.6,
+      });
+
+      gsap.to(curveRef.current, {
+        y: -10,
+        duration: 4,
+        repeat: -1,
+        yoyo: true,
+        ease: "sine.inOut"
+      });
+
+      // 👇 Spring press and release animation using timeline
+      // const tl = gsap.timeline({ repeat: -1, yoyo: true });
+      // tl.to(curveRef.current, {
+      //   y: 10,
+      //   rotation: -5,
+      //   duration: 0.4,
+      //   ease: "power2.in",
+      // }).to(curveRef.current, {
+      //   y: -25,
+      //   rotation: 10,
+      //   duration: 1.2,
+      //   ease: "elastic.out(1.2, 0.3)",
+      // });
+    }
   }, []);
+
 
 
   useEffect(() => {
@@ -86,6 +140,7 @@ const PersonalLoan = ({ data }) => {
     // data-label={data.backgroundText || "Personal"}
     >
 
+
       <svg
         className="overlay-reverse"
         viewBox="0 0 100 100"
@@ -106,6 +161,35 @@ const PersonalLoan = ({ data }) => {
           fill="#000101"
         />
       </svg>
+
+      <Image
+        src={coin}
+        alt="Blue Coin Left"
+        className={styles.leftCoin}
+        width={200}
+        height={200}
+        priority
+        ref={leftCoinRef}
+      />
+      <Image
+        src={coin}
+        alt="Blue Coin Right"
+        className={styles.rightCoin}
+        width={200}
+        height={200}
+        priority
+        ref={rightCoinRef}
+      />
+      <Image
+        src={curve}
+        alt="Curve"
+        className={styles.curve}
+        width={100}
+        height={100}
+        priority
+        ref={curveRef}
+      />
+
 
       {/* <div className="container mx-auto text-center pt-[300px] relative z-10"> */}
       <div className="container mx-auto text-center pt-[100px] sm:pt-[150px] md:pt-[200px] lg:pt-[300px]">

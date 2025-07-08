@@ -12,6 +12,18 @@
     .bannerImageBkl {
         position: relative;
         z-index: 1;
+
+        .curvePattern {
+            position: absolute;
+            left: 53.06%;
+            top: 0;
+            width: 80px;
+            height: 180px;
+            z-index: -1;
+            pointer-events: none;
+            // Optional: adjust for responsiveness as needed
+        }
+
     }
 
     .bannerImageBkl::before {
@@ -28,19 +40,19 @@
         z-index: -1;
     }
 
-    .bannerImageBkl::after {
-        content: "";
+    // .bannerImageBkl::after {
+    //     content: "";
 
-        background-image: url("./assets/curve_pattern.svg");
-        background-repeat: no-repeat;
-        position: absolute;
-        left: 53.06%;
-        right: 42.39%;
-        top: 0%;
-        width: 80px;
-        height: 180px;
-        bottom: 71.32%;
-        z-index: -1;
-    }
+    //     background-image: url("./assets/curve_pattern.svg");
+    //     background-repeat: no-repeat;
+    //     position: absolute;
+    //     left: 53.06%;
+    //     right: 42.39%;
+    //     top: 0%;
+    //     width: 80px;
+    //     height: 180px;
+    //     bottom: 71.32%;
+    //     z-index: -1;
+    // }
 
 }

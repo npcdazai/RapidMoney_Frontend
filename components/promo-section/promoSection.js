@@ -10,12 +10,14 @@ import useScrollFadeInOnce from "@/animations/useScrollFadeInOnce";
 import { useRef, useEffect } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import curvePattern from "./assets/curve_pattern.svg";
 
 gsap.registerPlugin(ScrollTrigger);
 
 const PromoSection = ({ data }) => {
   const textRef = useScrollFadeInOnce();
   const imageRef = useRef(null);
+  const curveRef = useRef(null);
 
   useEffect(() => {
     if (!imageRef.current) return;
@@ -35,6 +37,33 @@ const PromoSection = ({ data }) => {
         },
       }
     );
+    gsap.to(curveRef.current, {
+      y: -20,
+      duration: 2,
+      repeat: -1,
+      yoyo: true,
+      ease: "sine.inOut"
+    });
+
+    // if (curveRef.current) {
+    //   const tl = gsap.timeline({ repeat: -1, yoyo: true });
+
+    //   tl.to(curveRef.current, {
+    //     y: 15,              // go down more
+    //     x: -5,              // add a slight x movement
+    //     rotation: -8,       // rotate more
+    //     duration: 0.5,
+    //     ease: "power1.inOut",
+    //   }).to(curveRef.current, {
+    //     y: -30,             // bounce up more
+    //     x: 10,              // shift opposite direction
+    //     rotation: 12,       // rotate opposite
+    //     duration: 1.4,
+    //     ease: "elastic.out(1.4, 0.25)", // stronger spring effect
+    //   });
+    // }
+
+
   }, []);
 
   return (
@@ -71,6 +100,26 @@ const PromoSection = ({ data }) => {
               className="w-full h-auto object-cover"
               priority
             />
+
+            <div className={styles.curvePattern}>
+              <Image
+                src={curvePattern}
+                alt="Curve Pattern"
+                ref={curveRef}
+                width={80}
+                height={180}
+                style={{
+                  position: "absolute",
+                  left: "53.06%",
+                  top: 0,
+                  zIndex: -1,
+                  pointerEvents: "none"
+                }}
+                draggable={false}
+                priority
+              />
+
+            </div>
           </div>
         </div>
       </div>

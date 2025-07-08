@@ -4,7 +4,74 @@
   //  clip-path: ellipse(100% 85% at 50% 100%);
 
   position: relative;
-    overflow: hidden;
+  overflow: hidden;
+
+
+
+ .leftCoin {
+    position: absolute;
+    left: -5%;
+    top: 60%;
+    width: 200px;
+    height: 200px;
+    z-index: 2;
+
+    @media (max-width: 992px) {
+      width: 150px;
+      height: 150px;
+      top: 65%;
+    }
+
+    @media (max-width: 576px) {
+      width: 100px;
+      height: 100px;
+      left: -8%;
+      top: 70%;
+    }
+  }
+
+  .rightCoin {
+    position: absolute;
+    right: -5%;
+    top: 50%;
+    width: 200px;
+    height: 200px;
+    z-index: 2;
+
+    @media (max-width: 992px) {
+      width: 150px;
+      height: 150px;
+      top: 55%;
+    }
+
+    @media (max-width: 576px) {
+      width: 100px;
+      height: 100px;
+      right: -8%;
+      top: 60%;
+    }
+  }
+
+  .curve {
+    position: absolute;
+    left: 1%;
+    top: 70%;
+    width: 100px;
+    height: 100px;
+    z-index: 2;
+
+    @media (max-width: 992px) {
+      width: 80px;
+      height: 80px;
+      // top: 55%;
+    }
+
+    @media (max-width: 576px) {
+      width: 60px;
+      height: 60px;
+      // top: 60%;
+    }
+  }
 
   .sectionLabel {
     position: absolute;
@@ -15,42 +82,42 @@
     line-height: 92%;
     letter-spacing: 0.01em;
     pointer-events: none;
-  
+
     background: linear-gradient(142.14deg, #fff 28.66%, rgba(211, 218, 218, 0) 116.33%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
     text-fill-color: transparent;
   }
-  
 
-&::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
-  z-index: 1;
-  background-image:
-    url('./assets/blue-coin.png'),
-    url('./assets/blue-coin.png'),
-    url('./assets/curve.png');
-  background-position: left -5% top 60%, right -5% top 50%, left 1% top 50%;
-  background-repeat: no-repeat;
-  background-size: 200px 200px, 200px 200px, 100px 100px;
 
-  @media (max-width: 992px) {
-    background-size: 150px 150px, 150px 150px, 80px 80px;
-    background-position: left -5% top 65%, right -5% top 55%, left 1% top 55%;
-  }
+  // &::before {
+  //   content: "";
+  //   position: absolute;
+  //   top: 0;
+  //   left: 0;
+  //   width: 100%;
+  //   height: 100%;
+  //   pointer-events: none;
+  //   z-index: 1;
+  //   background-image:
+  //     url('./assets/blue-coin.png'),
+  //     url('./assets/blue-coin.png'),
+  //     url('./assets/curve.png');
+  //   background-position: left -5% top 60%, right -5% top 50%, left 1% top 50%;
+  //   background-repeat: no-repeat;
+  //   background-size: 200px 200px, 200px 200px, 100px 100px;
 
-  @media (max-width: 576px) {
-    background-size: 100px 100px, 100px 100px, 60px 60px;
-    background-position: left -8% top 70%, right -8% top 60%, left 1% top 60%;
-  }
-}
+  //   @media (max-width: 992px) {
+  //     background-size: 150px 150px, 150px 150px, 80px 80px;
+  //     background-position: left -5% top 65%, right -5% top 55%, left 1% top 55%;
+  //   }
+
+  //   @media (max-width: 576px) {
+  //     background-size: 100px 100px, 100px 100px, 60px 60px;
+  //     background-position: left -8% top 70%, right -8% top 60%, left 1% top 60%;
+  //   }
+  // }
 
 
   .personImage {

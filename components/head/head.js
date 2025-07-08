@@ -48,8 +48,9 @@ const Header = ({ isDark = false, data }) => {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, [lastScrollY]);
-  console.log({ showHeader });
-  console.log("s", isDark);
+  // console.log({ showHeader });
+  // console.log("s", isDark);
+  // console.log(isAtTop, "isAtTop");
   return (
     // <header className={`${styles.header} ${isDark ? styles.dark : styles.light} pt-6`}>
     <header
@@ -120,7 +121,7 @@ const Header = ({ isDark = false, data }) => {
                     <RiArrowDownSLine
                       className={styles.dropDownArrow}
                       size={18}
-                      color={isDark ? "#fff" : "#000"}
+                      color={isDark && showHeader && isAtTop ? "#fff" : "#000"}
                     />
                   </Flex>
                 </Link>
@@ -148,12 +149,12 @@ const Header = ({ isDark = false, data }) => {
                 <button
                   // type="default
                   className={`apply-btn ${
-                    isDark ? "apply-btn-dark" : "apply-btn-light"
+                    isDark && showHeader && isAtTop ? "apply-btn-dark" : "apply-btn-light"
                   } flex item-center gap-3`}
                 >
                   <span>Download</span>
                   <Image
-                    src={isDark ? darkIphone : lightIphone}
+                    src={isDark && showHeader && isAtTop ? darkIphone : lightIphone}
                     width={24}
                     height={24}
                     alt="iphone"
@@ -173,7 +174,7 @@ const Header = ({ isDark = false, data }) => {
             >
               {/* Hamburger icon */}
               <span className="material-icons">
-                <RiAlignJustify color={isDark ? "#fff" : "#000"} />
+                <RiAlignJustify color={isDark && showHeader && isAtTop ? "#fff" : "#000"} />
               </span>
             </button>
           </div>
