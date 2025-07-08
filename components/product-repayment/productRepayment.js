@@ -60,19 +60,36 @@
 //     </section>
 //   );
 // }
+"use client"
 
-import React from 'react';
+import React, { useEffect } from 'react';
 import Image from 'next/image';
 import styles from "./product-repayment.module.scss";
 import { RiCheckLine } from 'react-icons/ri';
 // import checkIcon from "./assets/check-circle.svg";
 import moneyImage from "./assets/money.png"
+import useScrollFadeIn from "@/animations/useScrollFadeIn";
+import gsap from "gsap";
+
+
+
 
 export default function productRepayment({ data }) {
+  // const imageRef = useScrollFadeIn();
+
+  // useEffect(() => {
+  //   gsap.to(imageRef.current, {
+  //     y: -10,
+  //     duration: 2,
+  //     repeat: -1,
+  //     yoyo: true,
+  //     ease: "sine.inOut",
+  //   });
+  // }, []);
   return (
     <section className={`${styles.section} pb-120 pt-120`}>
-      <div className="container mx-auto px-4 ">
-        <div className="flex flex-col lg:flex-row justify-between px-8 py-16 dark-bg light-color rounded-[32px]  items-center gap-12">
+      <div className="container mx-auto px-4 " ref={imageRef}>
+        <div className="flex flex-col lg:flex-row justify-between px-8 py-16 dark-bg light-color rounded-[32px] items-center gap-12 overflow-hidden">
 
           {/* Left: Content */}
           <div className="w-full lg:w-1/2 z-1">
@@ -81,7 +98,7 @@ export default function productRepayment({ data }) {
             </h2> */}
 
             {/* Document Required */}
-            <div className="pb-60">
+            <div className="pb-60 overflow-hidden">
               <h4 className="font-32 font-weight-semibold pb-7">
                 {data.document.heading}
               </h4>
@@ -100,7 +117,7 @@ export default function productRepayment({ data }) {
 
             {/* Eligibility */}
             <div>
-            <h4 className="font-32 font-weight-semibold pb-7">
+              <h4 className="font-32 font-weight-semibold pb-7">
                 {data.eligibility.heading}
               </h4>
               <ul className="flex flex-col gap-6">
@@ -119,16 +136,17 @@ export default function productRepayment({ data }) {
 
           {/* Right: Image */}
           <div className="w-full lg:w-1/2 flex justify-center">
-          <div className={styles.imageWrapper}>
+            <div className={styles.imageWrapper}>
 
-            <Image
-              src={moneyImage}
-              alt="Gold Coins"
-              width={450}
-              height={320}
-              className="object-contain w-full max-w-[450px] h-full max-h-[320px]"
-            />
-          </div>
+              <Image
+                src={moneyImage}
+                // ref={imageRef}
+                alt="Gold Coins"
+                width={450}
+                height={320}
+                className="object-contain w-full max-w-[450px] h-full max-h-[320px]"
+              />
+            </div>
           </div>
         </div>
       </div>

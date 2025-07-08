@@ -7,7 +7,7 @@ export default function ImgCard({ imageSrc, imageAlt }) {
       <Image
         src={imageSrc}
         alt={imageAlt}
-        className="w-full max-h-[320px] object-cover rounded-xl transform transition-transform duration-500 group-hover:scale-105"
+        className="w-full !h-full object-cover rounded-xl transform transition-transform duration-500 group-hover:scale-105"
       />
     </div>
   );

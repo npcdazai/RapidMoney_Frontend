@@ -90,7 +90,7 @@ const PromoSection = ({ data }) => {
           {/* Banner Image */}
           <div
             ref={imageRef}
-            className={`flex lg:mt-[-100px] sm:mt-[-100px] mt-[-50px] ${styles.bannerImageBkl}`}
+            className={`flex lg:mt-[-100px]  mt-[-50px] ${styles.bannerImageBkl}`}
           >
             <Image
               src={bannerImage}

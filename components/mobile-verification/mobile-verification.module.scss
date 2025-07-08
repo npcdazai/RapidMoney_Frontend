@@ -1,0 +1,47 @@
+// Apply Form styles
+
+.applyForm {}
+
+// Apply Image Container styles
+
+
+.applyImageContainer {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    background: #010201;
+    border-top-left-radius: 150px;
+    overflow: hidden;
+
+    &::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-image: url("./assets/heroClipPath.png");
+        background-size: cover;
+        background-position: center;
+        z-index: 0;
+    }
+
+    .personImage {
+        position: relative;
+
+        &::before {
+            content: "";
+            position: absolute;
+            width: 712px;
+            height: 712px;
+            left: 48px;
+            top: 198px;
+            background: #57E72B;
+            opacity: 0.64;
+            filter: blur(175px);
+        }
+    }
+}
+
+
+// Mobile Verification styles

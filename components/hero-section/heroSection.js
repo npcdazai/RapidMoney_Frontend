@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Row, Col } from 'antd';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -16,10 +16,14 @@ import moneyNote1 from "./assets/note1.png";
 import moneyNote2 from "./assets/note2.png";
 
 import { gsap } from 'gsap';
+import SelectLanguage from '../select-language/SelectLanguage';
 
 const HeroSection = ({ data, showPagination }) => {  
+  const [isLangModalOpen, setIsLangModalOpen] = useState(false);
 
-useEffect(() => {
+  useEffect(() => {
+  
+
   const context = gsap.context(() => {
     const elements = gsap.utils.toArray(".floating-image");
     const heroTitle = document.querySelector(".hero-title");
@@ -110,7 +114,7 @@ useEffect(() => {
               </span>
 
               <Link href={data?.ctaButton.link} className="hero-button">
-                <button className="apply-btn apply-btn-dark flex gap-2">
+                <button className="apply-btn apply-btn-dark flex gap-2" onClick={() => setIsLangModalOpen(true)} >
                   {data?.ctaButton.label}
                   <span className="primary-color"><RiArrowRightLine size={24} /></span>
                 </button>
@@ -185,7 +189,11 @@ useEffect(() => {
         </Row>
       </div>
 
-      <div className={styles.curve}></div>
+      {/* <div className={styles.curve}></div> */}
+     <SelectLanguage
+        isOpen={isLangModalOpen}
+        onClose={() => setIsLangModalOpen(false)}
+      />
     </section>
   );
 };

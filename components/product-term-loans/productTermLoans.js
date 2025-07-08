@@ -3,6 +3,7 @@ import { FiFileText } from "react-icons/fi";
 import { RiShieldCheckLine } from "react-icons/ri";
 import { RiCheckLine } from "react-icons/ri";
 
+
 const data = [
   ["Bureau Score", "650", "900"],
   ["Age", "21 years", "58 years (EOT)"],
