@@ -23,17 +23,19 @@ export default function AboutHero({ content }) {
 
   return (
     <section className="container mx-auto px-4 my-80">
-      <h2 ref={headingRef} className="font-36 text-black font-bold mb-7">
+      <h2 ref={headingRef} className="font-36 text-black text-center font-bold mb-7">
         {content?.title}
       </h2>
 
       <div className="flex flex-col lg:flex-row gap-4 lg:gap-[50px] relative">
-        <p ref={leftParaRef} className="w-full lg:w-1/2">
-          {content?.content1}
-        </p>
-        <p ref={rightParaRef} className="w-full lg:w-1/2">
-          {content?.content2}
-        </p>
+        <div className="flex flex-col gap-4 w-full text-center">
+          <p ref={leftParaRef} className="w-full">
+            {content?.content1}
+          </p>
+          <p ref={rightParaRef} className="w-full">
+            {content?.content2}
+          </p>
+        </div>
 
         <Image
           ref={imageRef}

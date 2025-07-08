@@ -6,19 +6,17 @@ module.exports = {
     './components/**/*.{js,ts,jsx,tsx}',
   ],
   theme: {
-    extend: {
-      screens: {
-        xs: '0px',
-        sm: '576px',
-        md: '768px',
-        lg: '992px',
-        xl: '1200px',
-        xxl: '1600px'
-      },
+    screens: {
+      xs: '0px',
+      sm: '576px',
+      md: '768px',
+      lg: '992px',
+      xl: '1200px',
+      xxl: '1600px',
     },
-  },
-  container: {
-    center: true, // Enables auto-centering by default
+    container: {
+      center: true,
+    },
   },
   plugins: {
     tailwindcss: {},

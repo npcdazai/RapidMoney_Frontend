@@ -90,10 +90,10 @@ useEffect(() => {
       <div className="container mx-auto">
         <Row gutter={[24, 24]} justify="center">
           {data?.partners.map((partner) => (
-            <Col key={partner.id} xs={24} sm={12} lg={8}>
+            <Col key={partner.id} xs={24} md={12} lg={8}>
               <div
                 ref={(el) => (cardsRef.current[partner.id] = el)}
-                className={`dark-bg light-color px-[24px] max-w-96 rounded-3xl py-[30px] h-full flex flex-col justify-between gap-5 ${styles.cardBkl}`}
+                className={`dark-bg justify-self-center light-color px-[24px] sm:max-w-96 rounded-3xl w-full py-[30px] !h-full flex flex-col justify-between gap-5 ${styles.cardBkl}`}
                 style={{ "--glow-color": getGlowColor(partner) }}
               >
                 <div

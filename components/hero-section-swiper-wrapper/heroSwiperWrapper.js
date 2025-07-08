@@ -32,7 +32,7 @@ const heroSlides = [
         ]
     },
     {
-        "title": "Smart Loans for Health Needs",
+        "title": "Smart Loans for <span>Health</span/> Needs",
         "description": "Empower your aspirations with customizable loan solutions that adapt to your needs—enjoy transparent terms, swift approvals, and a seamless digital experience from application to funding.",
         "ctaButton": {
             "label": "Apply Now",
@@ -47,7 +47,7 @@ const heroSlides = [
         ]
     },
     {
-        "title": "Business Loans On Demand",
+        "title": "<span>Business</span/> Loans On Demand",
         "description": "Empower your aspirations with customizable loan solutions that adapt to your needs—enjoy transparent terms, swift approvals, and a seamless digital experience from application to funding.",
         "ctaButton": {
             "label": "Apply Now",

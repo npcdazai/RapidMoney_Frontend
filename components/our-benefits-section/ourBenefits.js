@@ -28,7 +28,12 @@ const Benefits = ({ data }) => {
   const cardRefs = useRef([]);
 
   useEffect(() => {
-    if (!sectionRef.current) return;
+      if (
+      !sectionRef.current ||
+      !titleRef.current ||
+      !cardRefs.current.length ||
+      cardRefs.current.some(ref => !ref)
+    ) return;
 
     const ctx = gsap.context(() => {
       // Title fade
@@ -64,8 +69,8 @@ const Benefits = ({ data }) => {
       );
     }, sectionRef);
 
-    return () => ctx.revert();
-  }, []);
+  return () => ctx.revert();
+}, [data?.features?.length]);
 
   return (
     <section ref={sectionRef} className={`${styles.section}`}>
@@ -77,6 +82,7 @@ const Benefits = ({ data }) => {
           {data?.title}
         </h2>
         <Row gutter={[30, 30]} justify="center">
+           {cardRefs.current = []}
           {data.features.map((item, i) => {
             const lottieRef = useRef(null);
 
