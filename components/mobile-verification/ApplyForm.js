@@ -82,7 +82,7 @@ export default function ApplyForm() {
                                 />
                         </Form.Item>
 
-                        <p className="text-sm text-gray-500 mb-2">Didn't Receive OTP?</p>
+                        <p className="text-sm text-gray-500 mb-2">{"Didn't Receive OTP?"}</p>
 
                         <Form.Item>
                             <Button
