@@ -96,12 +96,14 @@ export default function HeroSwiperWrapper() {
                     // el: '.custom-swiper-pagination'
                 }}
                 parallax={true}
+                
                 modules={[
                     // Autoplay,
                     Pagination,
                     Parallax]}
                 loop={true}
                 className={styles.heroSwiper}
+                spaceBetween={0}
             >
                 {heroSlides.map((item, idx) => (
                     <SwiperSlide key={idx}>

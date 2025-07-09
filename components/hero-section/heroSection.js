@@ -19,11 +19,9 @@ import { gsap } from 'gsap';
 import SelectLanguage from '../select-language/SelectLanguage';
 
 const HeroSection = ({ data, showPagination }) => {  
-  const [isLangModalOpen, setIsLangModalOpen] = useState(false);
+  // const [isLangModalOpen, setIsLangModalOpen] = useState(false);
 
   useEffect(() => {
-  
-
   const context = gsap.context(() => {
     const elements = gsap.utils.toArray(".floating-image");
     const heroTitle = document.querySelector(".hero-title");
@@ -103,7 +101,7 @@ const HeroSection = ({ data, showPagination }) => {
       <div className="container mx-auto relative">
         <Row gutter={[32, 32]}>
           <Col xs={24} lg={24} xl={8}>
-            <div className="flex flex-col gap-[30px]">
+            <div className="flex flex-col gap-[30px] z-10 relative">
               <h1
                 className={`font-48 light-color font-weight-bold ${styles.heroTitle} max-w-[340px] hero-title `}
                 dangerouslySetInnerHTML={{ __html: data?.title || '' }}
@@ -114,7 +112,7 @@ const HeroSection = ({ data, showPagination }) => {
               </span>
 
               <Link href={data?.ctaButton.link} className="hero-button">
-                <button className="apply-btn apply-btn-dark flex gap-2" onClick={() => setIsLangModalOpen(true)} >
+                <button className="apply-btn apply-btn-dark flex gap-2" >
                   {data?.ctaButton.label}
                   <span className="primary-color"><RiArrowRightLine size={24} /></span>
                 </button>
@@ -190,10 +188,10 @@ const HeroSection = ({ data, showPagination }) => {
       </div>
 
       {/* <div className={styles.curve}></div> */}
-     <SelectLanguage
+     {/* <SelectLanguage
         isOpen={isLangModalOpen}
         onClose={() => setIsLangModalOpen(false)}
-      />
+      /> */}
     </section>
   );
 };
