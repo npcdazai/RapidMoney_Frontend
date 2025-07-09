@@ -273,24 +273,24 @@ const Benefits = ({ data }) => {
           {/* Clear cardRefs array at the start of each render */}
           {cardRefs.current = []}
           {data.features.map((item, i) => {
-            const lottieRef = useRef(null);
+            // const lottieRef = useRef(null);
 
-            const handleMouseEnter = () => {
-              if (lottieRef.current) {
-                lottieRef.current.setSpeed(0.5);
-                lottieRef.current.goToAndPlay(0, true);
-              }
-            };
+            // const handleMouseEnter = () => {
+            //   if (lottieRef.current) {
+            //     lottieRef.current.setSpeed(0.5);
+            //     lottieRef.current.goToAndPlay(0, true);
+            //   }
+            // };
 
-            const handleComplete = () => {
-              if (lottieRef.current) {
-                lottieRef.current.pause();
-              }
-            };
+            // const handleComplete = () => {
+            //   if (lottieRef.current) {
+            //     lottieRef.current.pause();
+            //   }
+            // };
 
             return (
               <Col
-                key={item.id || i} // Fallback to index if id is not available
+                key={item.id || i}
                 xs={24}
                 sm={12}
                 md={8}
@@ -303,7 +303,7 @@ const Benefits = ({ data }) => {
               >
                 <div
                   className={`h-full flex flex-col gap-2 justify-between p-2 ${styles.benefitsCard}`}
-                  onMouseEnter={handleMouseEnter}
+                  // onMouseEnter={handleMouseEnter}
                 >
                   <div className={`${styles.cardInner}`}>
                     <div className="flex justify-between">
