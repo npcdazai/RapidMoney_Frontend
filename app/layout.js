@@ -5,6 +5,7 @@ import "./app.css"
 import 'animate.css';
 // import { Menubar } from "@/components/Menubar/Menubar";
 // import Footer from "@/components/Footer/Footer";
+import '@ant-design/v5-patch-for-react-19';
 import { AntdRegistry } from '@ant-design/nextjs-registry';
 import { ConfigProvider } from "antd";
 import config from "@/config/theme"

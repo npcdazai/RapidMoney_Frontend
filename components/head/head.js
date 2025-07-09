@@ -15,7 +15,10 @@ import {
   RiAlignJustify,
   RiArrowDownSLine,
   RiArrowDropDownLine,
+  RiMenuUnfold2Fill,
+  RiMenuUnfold4Fill,
 } from "react-icons/ri";
+import ResponsiveDrawer from "../responsive-drawer/ResponsiveDrawer";
 // import data from "@/json/header/header.json"
 
 // const header = homePageData.header;
@@ -136,11 +139,11 @@ const Header = ({ isDark = false, data }) => {
           {/* CTA Buttons */}
           <div className="flex items-center gap-3">
             <div className="hidden md:flex items-center gap-3">
-              <Link href={"#"}>
+              <Link href={data?.cta?.applyLink || "#"}>
                 <button
                   // type="primary"
                   className={`apply-btn apply-btn-green`}
-                  // className={`apply-btn ${isDark ? 'apply-btn-green' : 'apply-btn-blue'}`}
+                // className={`apply-btn ${isDark ? 'apply-btn-green' : 'apply-btn-blue'}`}
                 >
                   {data?.cta?.applyLabel}
                 </button>
@@ -148,9 +151,8 @@ const Header = ({ isDark = false, data }) => {
               <Link href={"#"}>
                 <button
                   // type="default
-                  className={`apply-btn ${
-                    isDark && showHeader && isAtTop ? "apply-btn-dark" : "apply-btn-light"
-                  } flex item-center gap-3`}
+                  className={`apply-btn ${isDark && showHeader && isAtTop ? "apply-btn-dark" : "apply-btn-light"
+                    } flex item-center gap-3`}
                 >
                   <span>Download</span>
                   <Image
@@ -174,7 +176,7 @@ const Header = ({ isDark = false, data }) => {
             >
               {/* Hamburger icon */}
               <span className="material-icons">
-                <RiAlignJustify color={isDark && showHeader && isAtTop ? "#fff" : "#000"} />
+                <RiMenuUnfold4Fill size={24} color={isDark && showHeader && isAtTop ? "#fff" : "#000"} />
               </span>
             </button>
           </div>
@@ -182,91 +184,7 @@ const Header = ({ isDark = false, data }) => {
         {/* Mobile Hamburger */}
       </div>
       {/* <div className={styles.navBarDrawer}> */}
-      <Drawer
-        closable={{ "aria-label": "Close Button" }}
-        onClose={onClose}
-        open={open}
-        className="navbarDrawer"
-        //   rootClassName={styles.navBarDrawer}
-      >
-        <nav className="px-4 py-2 flex flex-col gap-2">
-          {data?.menu?.map((item, idx) =>
-            item.type === "dropdown" ? (
-              <Dropdown
-                key={idx}
-                menu={{
-                  items: item?.option?.map((sub) => ({
-                    key: sub.link,
-                    label: (
-                      <Link
-                        href={sub?.link}
-                        // className={styles.dropDownWithContent}
-                        className="font-16 font-weight-medium"
-                        target={
-                          sub?.link_type === "external" ? "_blank" : "_self"
-                        }
-                      >
-                        {sub?.label}
-                      </Link>
-                    ),
-                  })),
-                }}
-                placement="bottomLeft"
-                trigger={["click"]}
-                className="navBarDropDown"
-              >
-                <div className="cursor-pointer flex items-center justify-between px-2 py-2 rounded">
-                  <span className={styles.drawerDropDownLink}>
-                    {item?.label}
-                  </span>
-                  <RiArrowDropDownLine size={22} />
-                </div>
-              </Dropdown>
-            ) : (
-              <Link
-                key={idx}
-                href={item?.link}
-                className="block py-2 px-2 rounded"
-              >
-                <span className={styles.drawerNavLink}>{item?.label}</span>
-              </Link>
-            )
-          )}
-          {
-            <div className="md:hidden block">
-              <Button
-                type="primary"
-                className="bg-green-400 border-none font-semibold w-full mt-2"
-                href="/apply"
-              >
-                {data?.cta?.applyLabel}
-              </Button>
-
-              <Button
-                type="default"
-                href="/apply"
-                className="flex justify-between items-center gap-2 border w-full mt-2"
-              >
-                <span>Download</span>
-                <div className="flex items-center gap-2">
-                  <Image
-                    src={lightIphone}
-                    width={20}
-                    height={20}
-                    alt="iphone"
-                  />
-                  <Image
-                    src={playStore}
-                    width={20}
-                    height={20}
-                    alt="playstore"
-                  />
-                </div>
-              </Button>
-            </div>
-          }
-        </nav>
-      </Drawer>
+      <ResponsiveDrawer data={data} open={open} onClose={onClose} />
       {/* </div> */}
     </header>
   );

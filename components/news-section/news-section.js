@@ -134,9 +134,14 @@ const NewsSection = ({ data }) => {
         </Row>
 
         <div className="text-center mt-10">
-          <button className={`apply-btn apply-btn-green`}>
-            View All Blogs
-          </button>
+          <Link
+            href={data.link}
+            // className="font-18 font-weight-medium dark-color flex items-center gap-2 group hover:!text-[#79CA00] transition-colors duration-300"
+          >
+            <button className={`apply-btn apply-btn-green`}>
+              View All Blogs
+            </button>
+          </Link>
         </div>
       </div>
     </section>

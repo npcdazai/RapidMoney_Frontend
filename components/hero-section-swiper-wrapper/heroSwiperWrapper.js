@@ -21,7 +21,7 @@ const heroSlides = [
         "description": "Empower your aspirations with customizable loan solutions that adapt to your needs—enjoy transparent terms, swift approvals, and a seamless digital experience from application to funding.",
         "ctaButton": {
             "label": "Apply Now",
-            "link": "/#"
+            "link": "/apply"
         },
         "image": "happy-man-phone.png",
         "floatingCoins": [
@@ -36,7 +36,7 @@ const heroSlides = [
         "description": "Empower your aspirations with customizable loan solutions that adapt to your needs—enjoy transparent terms, swift approvals, and a seamless digital experience from application to funding.",
         "ctaButton": {
             "label": "Apply Now",
-            "link": "/#"
+            "link": "/apply"
         },
         "image": "happy-man-phone.png",
         "floatingCoins": [
@@ -51,7 +51,7 @@ const heroSlides = [
         "description": "Empower your aspirations with customizable loan solutions that adapt to your needs—enjoy transparent terms, swift approvals, and a seamless digital experience from application to funding.",
         "ctaButton": {
             "label": "Apply Now",
-            "link": "/#"
+            "link": "/apply"
         },
         "image": "happy-man-phone.png",
         "floatingCoins": [

@@ -64,7 +64,7 @@ export default function BlogListing() {
   }, []);
 
   return (
-    <section className="container mx-auto py-24">
+    <section className="container mx-auto pt-120 pb-120">
       <h1 className="text-4xl font-bold text-center pb-12">Blogs</h1>
 
       <Row gutter={[24, 32]}>

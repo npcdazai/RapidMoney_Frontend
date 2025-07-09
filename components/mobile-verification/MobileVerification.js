@@ -7,19 +7,22 @@ import ApplyForm from './ApplyForm';
 import ApplyImageContainer from './ApplyImageContainer';
 import lightRapidMoneyLogo from "./assets/light_rapid_money_logo.png";
 import styles from './mobile-verification.module.scss';
+import MobileForm from './MobileForm';
+import OtpForm from './OtpForm';
+import BasicDetailsForm from './BasicForm';
 // import indiaFlag from './assets/india-flag.svg'; // Replace with your path
 
 const { Option } = Select;
 
 export default function MobileVerification() {
+    const [step, setStep] = useState(1);
     const [mobile, setMobile] = useState('');
     const [countryCode, setCountryCode] = useState('+91');
+    const [formData, setFormData] = useState({});
 
     return (
         <div className="min-h-screen flex">
-            {/* Left Section */}
             <div className="w-full lg:w-1/2 flex flex-col justify-center items-center px-6 py-12">
-                {/* Logo */}
                 <Image
                     src={lightRapidMoneyLogo}
                     alt="RapidMoney Logo"
@@ -33,6 +36,40 @@ export default function MobileVerification() {
             <div className="hidden lg:block w-1/2 overflow-hidden">
                 <ApplyImageContainer />
             </div>
-        </div>
+            {/* <div className="w-full  mt-8"> */}
+                {/* {step === 1 && (
+                    <MobileForm
+                        setStep={setStep}
+                        formData={formData}
+                        setFormData={setFormData}
+                    />
+                )}
+
+                {step === 2 && (
+                    <OtpForm
+                        setStep={setStep}
+                        formData={formData}
+                        setFormData={setFormData}
+                    />
+                )}
+
+                {step === 3 && (
+                    <BasicDetailsForm
+                        setStep={setStep}
+                        formData={formData}
+                        setFormData={setFormData}
+                    />
+                )} */}
+
+                {/* {step === 4 && (
+                    <StepConsentForm
+                        setStep={setStep}
+                        formData={formData}
+                        setFormData={setFormData}
+                    />
+                )} */}
+            </div>
+
+        // </div >
     );
 }

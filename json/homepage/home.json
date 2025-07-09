@@ -35,6 +35,7 @@
       }
     ],
     "cta": {
+      "applyLink": "/apply",
       "applyLabel": "Apply Loan",
       "download": {
         "apple": true,
@@ -312,6 +313,7 @@
   ],
   "newsSection": {
     "sectionTitle": "RapidMoney in the News",
+    "link": "/blogs",
     "cards": [
       {
         "id": 1,
@@ -347,7 +349,7 @@
         "name": "SelFin",
         "description": "SelFin (RBI Registered NBFC) ,started its lending business in 2019 with the vision to improve financial inclusion",
         "logo": "/images/partners/selfin.png",
-        "link": "#",
+        "link": "/lending-partners",
         "glowColor": "#6C63FF"
       },
       {
@@ -355,7 +357,7 @@
         "name": "Fintree",
         "description": "Lorem Ipsum is simply dummy text of the printing and .",
         "logo": "/images/partners/fintree.png",
-        "link": "#",
+        "link": "/lending-partners",
         "glowColor": "#826822"
       }
     ]

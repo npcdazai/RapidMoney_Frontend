@@ -65,32 +65,78 @@ const HeroSection = ({ data, showPagination }) => {
     )
 
     // Floating animation
+    // .add(() => {
+    //   elements.forEach((el) => {
+    //     const alt = el.getAttribute("alt");
+
+    //     // Extra spacing for Note 1 and Coin 3
+    //     const isNote1 = alt === "Note 1";
+    //     const isCoin3 = alt === "Coin 3";
+
+    //     const floatY = isNote1 ? gsap.utils.random(20, 28) : gsap.utils.random(10, 18);
+    //     const floatX = isCoin3 ? gsap.utils.random(12, 18) : gsap.utils.random(5, 10);
+    //     const rotate = gsap.utils.random(-6, 6);
+    //     const duration = gsap.utils.random(0.6, 1.2); // Faster loop
+    //     const delay = gsap.utils.random(0, 0.05);
+
+    //     gsap.to(el, {
+    //       y: `-=${floatY}`,
+    //       x: `+=${floatX}`,
+    //       rotation: rotate,
+    //       duration,
+    //       ease: "sine.inOut",
+    //       yoyo: true,
+    //       repeat: -1,
+    //       delay,
+    //     });
+    //   });
+    // }, 0.6);
+
     .add(() => {
-      elements.forEach((el) => {
-        const alt = el.getAttribute("alt");
+  elements.forEach((el, i) => {
+    const alt = el.getAttribute("alt");
 
-        // Extra spacing for Note 1 and Coin 3
-        const isNote1 = alt === "Note 1";
-        const isCoin3 = alt === "Coin 3";
+    // Custom amplitude for each type
+    const isNote1 = alt === "Note 1";
+    const isCoin3 = alt === "Coin 3";
 
-        const floatY = isNote1 ? gsap.utils.random(20, 28) : gsap.utils.random(10, 18);
-        const floatX = isCoin3 ? gsap.utils.random(12, 18) : gsap.utils.random(5, 10);
-        const rotate = gsap.utils.random(-6, 6);
-        const duration = gsap.utils.random(0.6, 1.2); // Faster loop
-        const delay = gsap.utils.random(0, 0.05);
+    const floatY = isNote1 ? gsap.utils.random(18, 28) : gsap.utils.random(10, 18);
+    const floatX = isCoin3 ? gsap.utils.random(10, 18) : gsap.utils.random(5, 12);
 
-        gsap.to(el, {
-          y: `-=${floatY}`,
-          x: `+=${floatX}`,
-          rotation: rotate,
-          duration,
-          ease: "sine.inOut",
-          yoyo: true,
-          repeat: -1,
-          delay,
-        });
-      });
-    }, 0.6);
+    // Each element gets a unique phase offset
+    const phase = gsap.utils.random(0, Math.PI * 2);
+
+    // Animate Y (up/down)
+    gsap.to(el, {
+      y: `+=${floatY}`,
+      duration: gsap.utils.random(2.2, 3.2),
+      ease: "sine.inOut",
+      yoyo: true,
+      repeat: -1,
+      delay: phase,
+    });
+
+    // Animate X (side to side)
+    gsap.to(el, {
+      x: `+=${floatX}`,
+      duration: gsap.utils.random(2.8, 4.2),
+      ease: "sine.inOut",
+      yoyo: true,
+      repeat: -1,
+      delay: phase + 0.5,
+    });
+
+    // Gentle rotation
+    gsap.to(el, {
+      rotation: gsap.utils.random(-8, 8),
+      duration: gsap.utils.random(3, 5),
+      ease: "sine.inOut",
+      yoyo: true,
+      repeat: -1,
+      delay: phase + 1,
+    });
+  });
+}, 0.6);
   });
 
   return () => context.revert();

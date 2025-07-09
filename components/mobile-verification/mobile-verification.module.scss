@@ -1,6 +1,67 @@
 // Apply Form styles
 
-.applyForm {}
+.applyForm {
+
+    .otpInputContainer {
+        display: flex;
+        width: 100%;
+
+        :global(.ant-otp) {
+            gap: 20px;
+
+            :global(.ant-otp-input-wrapper) {
+
+                input {
+                    width: 48px;
+                    height: 48px;
+                    border-radius: 8px;
+                }
+            }
+        }
+    }
+
+    .consentCheckbox {
+        display: flex;
+        align-items: flex-start;
+
+        :global(.ant-checkbox-wrapper) {
+            font-size: 14px;
+            color: #000000;
+            font-weight: 500;
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+
+            :global(.ant-checkbox) {
+                align-self: flex-start;
+                margin-top: 4px;
+
+                // Make checkbox bigger
+                :global(.ant-checkbox-inner) {
+                    width: 20px;
+                    height: 20px;
+                    border-radius: 4px;
+                }
+
+                input {
+                    width: 22px;
+                    height: 22px;
+                }
+
+            }
+
+            :global(.ant-checkbox-label) {
+                text-align: justify;
+                line-height: 1.5;
+                font-weight: 400;
+                font-size: 14px;
+                line-height: 148%;
+                letter-spacing: 0.01em;
+                color: #000000;
+            }
+        }
+    }
+}
 
 // Apply Image Container styles
 

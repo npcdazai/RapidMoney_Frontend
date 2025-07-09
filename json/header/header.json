@@ -36,6 +36,7 @@
     ],
     "cta": {
       "applyLabel": "Apply Loan",
+      "applyLink": "/apply",
       "download": {
         "apple": true,
         "android": true
