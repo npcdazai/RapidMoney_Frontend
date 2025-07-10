@@ -4,13 +4,14 @@ import React, { useState } from 'react'
 import lightRapidMoneyLogo from "./assets/light_rapid_money_logo.png";
 import ApplyImageContainer from './ApplyImageContainer';
 import styles from './apply-verification.module.scss'
+import personImage from './assets/otpWomen.png'
 const { Option } = Select
 export default function OtpForm({ setStep }) {
     const [countryCode, setCountryCode] = useState('+91');
     return (
         <div className="h-screen flex overflow-hidden">
             <div className="w-full lg:w-1/2 flex flex-col justify-center items-center px-6 py-8">
-                {/* <div className="w-full max-w-sm mx-auto text-center"> */}
+
                 <Image
                     src={lightRapidMoneyLogo}
                     alt="RapidMoney Logo"
@@ -66,7 +67,7 @@ export default function OtpForm({ setStep }) {
                 </button> */}
             {/* </div> */}
             <div className="hidden lg:block w-1/2 overflow-hidden">
-                <ApplyImageContainer />
+                <ApplyImageContainer personImage={personImage}/>
             </div>
         </div>
     )

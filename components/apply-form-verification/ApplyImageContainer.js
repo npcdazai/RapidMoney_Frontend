@@ -1,9 +1,9 @@
 import Image from 'next/image'
 import React from 'react'
 import styles from './apply-verification.module.scss'
-import personImage from './assets/personImage.png'
 
-export default function ApplyImageContainer() {
+
+export default function ApplyImageContainer({personImage}) {
     return (
         <>
             <div className={`${styles.applyImageContainer} h-full`}>

@@ -5,6 +5,7 @@ import lightRapidMoneyLogo from "./assets/light_rapid_money_logo.png";
 import Image from 'next/image';
 import styles from './apply-verification.module.scss'
 const { Option } = Select
+import personImage from './assets/personImage.png'
 export default function MobileForm({ setStep }) {
     const [countryCode, setCountryCode] = useState('+91');
     // <div className="w-full lg:w-1/2 flex flex-col justify-center items-center px-6 py-12">
@@ -66,7 +67,7 @@ export default function MobileForm({ setStep }) {
                 </div>
             </div>
             <div className="hidden lg:block w-1/2 overflow-hidden">
-                <ApplyImageContainer />
+                <ApplyImageContainer personImage={personImage} />
             </div>
         </div>
     )
