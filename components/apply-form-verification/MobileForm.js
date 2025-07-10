@@ -7,18 +7,27 @@ import styles from './apply-verification.module.scss'
 const { Option } = Select
 export default function MobileForm({ setStep }) {
     const [countryCode, setCountryCode] = useState('+91');
-
+    // <div className="w-full lg:w-1/2 flex flex-col justify-center items-center px-6 py-12">
+    //     <Image
+    //         src={lightRapidMoneyLogo}
+    //         alt="RapidMoney Logo"
+    //         width={220}
+    //         height={50}
+    //         className={`max-w-full h-auto object-contain ${styles.headerLogo}`}
+    //     />
+    //     <ApplyForm />
+    // </div>
     return (
         <div className="h-screen flex overflow-hidden">
-            <div className="w-full lg:w-1/2 flex flex-col justify-center items-center px-6 py-8">
-                <div className="w-full max-w-sm mx-auto text-center">
-                    <Image
-                        src={lightRapidMoneyLogo}
-                        alt="RapidMoney Logo"
-                        width={220}
-                        height={50}
-                        className={`max-w-full h-auto object-contain ${styles.headerLogo}`}
-                    />
+            <div className="w-full lg:w-1/2 flex flex-col justify-center items-center px-6 py-12">
+                <Image
+                    src={lightRapidMoneyLogo}
+                    alt="RapidMoney Logo"
+                    width={220}
+                    height={50}
+                    className={`max-w-full h-auto object-contain ${styles.headerLogo}`}
+                />
+                <div className="w-full max-w-sm mx-auto py-12 px-4 text-center">
                     <Form.Item
                         label={<span className="font-14 font-semibold text-[#333333]">Mobile Number</span>}
                         name="mobile"
@@ -48,7 +57,8 @@ export default function MobileForm({ setStep }) {
                         Please enter your <span className="primary-color">AADHAAR</span> linked mobile number
                     </p>
                     <button
-                        className="apply-btn apply-btn-green !w-full font-medium"
+                        // className="apply-btn apply-btn-green !w-full font-medium"
+                        className="apply-btn apply-btn-green !w-full mt-[100px] font-medium"
                         onClick={() => setStep(prev => prev + 1)}
                     >
                         Request OTP
