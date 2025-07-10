@@ -149,6 +149,9 @@
 .successScreen {
     position: relative;
     overflow: hidden;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
 
     &::before {
         content: "";
@@ -166,6 +169,8 @@
     .moneyHand {
         position: relative;
         z-index: 1;
+        height: auto;
+        min-height: 0;
 
         &::before {
             content: "";

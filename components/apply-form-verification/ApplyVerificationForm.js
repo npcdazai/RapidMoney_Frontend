@@ -14,7 +14,7 @@ export default function ApplyVerificationForm() {
 
     return (
         <>
-            <div>
+            <div className="h-screen overflow-hidden">
                 {step === 1 && (
                     <MobileForm
                         setStep={setStep}
@@ -40,6 +40,5 @@ export default function ApplyVerificationForm() {
                 )}
             </div>
         </>
-
     );
 }

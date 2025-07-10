@@ -3,15 +3,15 @@ import React, { useState } from 'react'
 import ApplyImageContainer from './ApplyImageContainer';
 import lightRapidMoneyLogo from "./assets/light_rapid_money_logo.png";
 import Image from 'next/image';
-import styles from './mobile-verification.module.scss'
+import styles from './apply-verification.module.scss'
 const { Option } = Select
 export default function MobileForm({ setStep }) {
     const [countryCode, setCountryCode] = useState('+91');
 
     return (
-        <div className="min-h-screen flex">
-            <div className="w-full lg:w-1/2 flex flex-col justify-center items-center px-6 py-12">
-                <div className="w-full max-w-sm mx-auto py-12 px-4 text-center">
+        <div className="h-screen flex overflow-hidden">
+            <div className="w-full lg:w-1/2 flex flex-col justify-center items-center px-6 py-8">
+                <div className="w-full max-w-sm mx-auto text-center">
                     <Image
                         src={lightRapidMoneyLogo}
                         alt="RapidMoney Logo"
@@ -42,15 +42,13 @@ export default function MobileForm({ setStep }) {
                             size='large'
                             allowClear
                         />
-                        {/* </div> */}
                     </Form.Item>
 
-                    <p className="font-14 text-[#333333CC];
-">
+                    <p className="font-14 text-[#333333CC] mb-6">
                         Please enter your <span className="primary-color">AADHAAR</span> linked mobile number
                     </p>
                     <button
-                        className="apply-btn apply-btn-green !w-full mt-[100px] font-medium"
+                        className="apply-btn apply-btn-green !w-full font-medium"
                         onClick={() => setStep(prev => prev + 1)}
                     >
                         Request OTP
