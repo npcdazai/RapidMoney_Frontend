@@ -1,12 +1,12 @@
-import MobileVerification from '@/components/mobile-verification/MobileVerification'
+import ApplyVerificationForm from '@/components/mobile-verification/ApplyVerificationForm'
 import SelectLanguageModal from '@/components/select-language/SelectLanguage'
 import React from 'react'
 
 export default function page() {
   return (
-      <>
-          {/* <SelectLanguageModal /> */}
-          <MobileVerification />
+    <>
+      {/* <SelectLanguageModal /> */}
+      <ApplyVerificationForm />
     </>
   )
 }

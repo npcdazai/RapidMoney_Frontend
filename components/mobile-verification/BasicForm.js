@@ -1,113 +1,132 @@
 'use client';
 import { Form, Input, DatePicker, Select, Button, Row, Col } from 'antd';
 import { ArrowRightOutlined } from '@ant-design/icons';
+import { RiArrowLeftLine, RiMenuFill, RiNotification2Line } from 'react-icons/ri';
+import Image from 'next/image';
+import Idcard from "./assets/IdCard.png"
 
 const { Option } = Select;
 
-export default function BasicDetailsForm() {
+export default function BasicDetailsForm({ setStep }) {
   const [form] = Form.useForm();
 
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center px-4">
-      <h1 className="text-xl font-semibold mb-6 w-full max-w-4xl text-left">
-        ← Basic Details
-      </h1>
+    <div className="min-h-screen flex flex-col">
+      <div className='flex items-center justify-between px-10 py-5 bg-white border-b border-gray-200 '>
+        <h2 className="font-24 font-bold text-[#333333] flex items-center gap-2">
+          <button  onClick={()=> setStep(prev => prev - 1)}><RiArrowLeftLine /></button> Basic Details
+        </h2>
 
-      <Form
-        form={form}
-        layout="vertical"
-        className="w-full max-w-4xl bg-white p-4 md:p-8 rounded-xl shadow"
-      >
-        <Row gutter={[16, 16]}>
-          <Col xs={24} md={12}>
-            <Form.Item
-              name="fullName"
-              label="Full Name as per PAN Number"
-              rules={[{ required: true, message: 'Please enter your full name' }]}
-            >
-              <Input placeholder="Full Name as per PAN Number" />
-            </Form.Item>
-          </Col>
-
-          <Col xs={24} md={12}>
-            <Form.Item
-              name="panCard"
-              label="Pan Card Number"
-              rules={[{ required: true, message: 'Please enter your PAN card number' }]}
-            >
-              <Input placeholder="For eg: ABCDE134" />
-            </Form.Item>
-          </Col>
-
-          <Col xs={24} md={12}>
-            <Form.Item
-              name="fatherName"
-              label="Father's Full Name as per PAN Number"
-              rules={[{ required: true, message: "Please enter your father's name" }]}
-            >
-              <Input placeholder="Enter your father name" />
-            </Form.Item>
-          </Col>
-
-          <Col xs={24} md={12}>
-            <Form.Item
-              name="dob"
-              label="Date of Birth (as per PAN Card / Number)"
-              rules={[{ required: true, message: 'Please enter your DOB' }]}
-            >
-              <DatePicker
-                format="DD-MM-YYYY"
-                className="w-full"
-                placeholder="DD-MM-YYYY"
-              />
-            </Form.Item>
-          </Col>
-
-          <Col xs={24} md={12}>
-            <Form.Item
-              name="pincode"
-              label="Pincode"
-              rules={[{ required: true, message: 'Please enter your pincode' }]}
-            >
-              <Input placeholder="Enter your pincode" />
-            </Form.Item>
-          </Col>
-
-          <Col xs={24} md={12}>
-            <Form.Item
-              name="language"
-              label="Preferred Language"
-              rules={[{ required: true, message: 'Please select your language' }]}
-            >
-              <Select placeholder="Select language">
-                <Option value="en">English</Option>
-                <Option value="hi">Hindi</Option>
-                {/* Add more languages as needed */}
-              </Select>
-            </Form.Item>
-          </Col>
-        </Row>
-
-        <div className="text-green-600 text-sm font-semibold mb-1">IMPORTANT*</div>
-        <p className="text-gray-600 text-sm mb-6">
-          Your PAN, Full Name and Date of Birth help us verify your details quickly.
-          Please ensure you enter correct information.
-        </p>
-
-        <div className="flex justify-end">
-          <Button
-            type="primary"
-            icon={<ArrowRightOutlined />}
-            className="bg-lime-400 hover:bg-lime-500 text-black font-semibold"
-          >
-            Proceed
-          </Button>
+        <div className='flex items-center gap-4'>
+          <RiNotification2Line />
+          <RiMenuFill />
         </div>
-      </Form>
+      </div>
+      <div className="w-full flex flex-col items-center justify-center px-4 pt-10">
 
-      <footer className="mt-10 text-sm text-gray-500">
+        <div className="text-center mb-6">
+          <Image src={Idcard} alt="Id Card" width={150} height={150} className="mb-4" />
+        </div>
+
+        <Form
+          form={form}
+          layout="vertical"
+          className="w-full max-w-4xl  p-4 md:p-8  "
+          requiredMark={false}
+        >
+          <Row gutter={[16, 16]}>
+            <Col xs={24} md={12}>
+              <Form.Item
+                name="fullName"
+                label="Full Name as per PAN Number"
+                rules={[{ required: true, message: 'Please enter your full name' }]}
+              >
+                <Input placeholder="Full Name as per PAN Number" size='large' />
+              </Form.Item>
+            </Col>
+
+            <Col xs={24} md={12}>
+              <Form.Item
+                name="panCard"
+                label="Pan Card Number"
+                rules={[{ required: true, message: 'Please enter your PAN card number' }]}
+              >
+                <Input placeholder="For eg: ABCDE134" size='large' />
+              </Form.Item>
+            </Col>
+
+            <Col xs={24} md={12}>
+              <Form.Item
+                name="fatherName"
+                label="Father's Full Name as per PAN Number"
+                rules={[{ required: true, message: "Please enter your father's name" }]}
+              >
+                <Input placeholder="Enter your father name" size='large' />
+              </Form.Item>
+            </Col>
+
+            <Col xs={24} md={12}>
+              <Form.Item
+                name="dob"
+                label="Date of Birth (as per PAN Card / Number)"
+                rules={[{ required: true, message: 'Please enter your DOB' }]}
+              >
+                <DatePicker
+                  format="DD-MM-YYYY"
+                  className="w-full"
+                  placeholder="DD-MM-YYYY"
+                  size='large'
+                />
+              </Form.Item>
+            </Col>
+
+            <Col xs={24} md={12}>
+              <Form.Item
+                name="pincode"
+                label="Pincode"
+                rules={[{ required: true, message: 'Please enter your pincode' }]}
+              >
+                <Input placeholder="Enter your pincode" size='large' />
+              </Form.Item>
+            </Col>
+
+            {/* <Col xs={24} md={12}>
+              <Form.Item
+                name="language"
+                label="Preferred Language"
+                rules={[{ required: true, message: 'Please select your language' }]}
+              >
+                <Select placeholder="Select language" size='large'>
+                  <Option value="en">English</Option>
+                  <Option value="hi">Hindi</Option>
+  
+                </Select>
+              </Form.Item>
+            </Col> */}
+          </Row>
+
+          <div className="text-[#53A10A] font-14 font-semibold mb-3">IMPORTANT*</div>
+          <p className="text-[#333333CC] font-14 mb-5">
+            Your PAN, Full Name and Date of Birth help us verify your details quickly.
+            Please ensure you enter correct information.
+          </p>
+
+          <div className="flex justify-end">
+            <button
+              // icon={<ArrowRightOutlined />}
+              className="apply-btn apply-btn-green"
+              onClick={() => setStep(prev => prev + 1)} // Change to next step
+            >
+              Proceed
+              <ArrowRightOutlined className="ml-2" />
+            </button>
+          </div>
+        </Form>
+
+      </div>
+      <div className="mt-10 font-16 text-black border-t border-gray-200 p-5 rounded-lg w-full text-center">
         MoneyTime Technology Solutions Pvt. Ltd.
-      </footer>
+      </div>
     </div>
   );
 }

@@ -1,6 +1,8 @@
 // Apply Form styles
 
-.applyForm {
+// .applyForm {
+//     width: 100%;
+//     display: flex;
 
     .otpInputContainer {
         display: flex;
@@ -61,7 +63,7 @@
             }
         }
     }
-}
+// }
 
 // Apply Image Container styles
 
@@ -106,3 +108,76 @@
 
 
 // Mobile Verification styles
+
+// con styles
+// .successScreen {
+//     position: relative;
+//     overflow: hidden;
+
+//     &::before {
+//         content: "";
+//         position: absolute;
+//         top: 0;
+//         left: 0;
+//         width: 100%;
+//         height: 100%;
+//         background-image: url("./assets/heroClipPath.png");
+//         background-size: cover;
+//         background-position: center;
+//         z-index: 0;
+//     }
+
+//     .moneyHand {
+//         position: relative;
+//         z-index: 1;
+
+
+//         &::before {
+//             content: "";
+//             position: absolute;
+//             width: 739px;
+//             height: 739px;
+//             // left: 494px;
+//             // top: 460px;
+//             background: #57E72B;
+//             filter: blur(291.1px);
+//             z-index: -1;
+
+//         }
+//     }
+// }
+.successScreen {
+    position: relative;
+    overflow: hidden;
+
+    &::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-image: url("./assets/heroClipPath.png");
+        background-size: cover;
+        background-position: center;
+        z-index: 0;
+    }
+
+    .moneyHand {
+        position: relative;
+        z-index: 1;
+
+        &::before {
+            content: "";
+            position: absolute;
+            width: 739px;
+            height: 739px;
+            background: #57E72B;
+            filter: blur(291.1px);
+            z-index: -1;
+            left: 50%;
+            top: 0;
+            transform: translateX(-50%);
+        }
+    }
+}

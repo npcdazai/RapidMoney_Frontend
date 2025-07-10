@@ -12,11 +12,11 @@ import config from "@/config/theme"
 import { UserProvider } from "@/contexts/user";
 import Header from "@/components/head/head";
 import Footer from "@/components/footer/footer";
+import AppLayout from "@/components/layout/AppLayout";
 
 const notoSans = Noto_Sans({
   subsets: ["latin"],
 });
-
 
 export const metadata = {
   title: "Rapid-Money",
@@ -26,8 +26,7 @@ export const metadata = {
 
 
 export default function RootLayout({ children }) {
-
-    const antdConfig = config(notoSans.style.fontFamily);
+  const antdConfig = config(notoSans.style.fontFamily);
   return (
     <html lang="en">
       <UserProvider>
@@ -37,10 +36,13 @@ export default function RootLayout({ children }) {
           <AntdRegistry>
             <ConfigProvider theme={antdConfig}>
               {/* <Header /> */}
-          {/* <main className="min-h-[200px] py-8"> */}
-                {children}
+              {/* <main className="min-h-[200px] py-8"> */}
+              {/* {children} */}
               {/* </main> */}
-              <Footer />
+              {/* <Footer /> */}
+              <AppLayout>
+                {children}
+              </AppLayout>
             </ConfigProvider>
           </AntdRegistry>
         </body>
