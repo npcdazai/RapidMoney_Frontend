@@ -50,12 +50,22 @@
 
     :global(.ant-form-item-control-input){
         :global(.ant-form-item-control-input-content){
+            // input{
+            //     padding: 10px 12px;
+            //     border-radius: 8px;
+            // }
             input::placeholder {
                 font-weight: 400;
                 font-size: 14px;
                 color: #33333366;
 
+                
             }
+            // :global(.ant-picker){
+            //     padding-right: 5px;
+            //     border-radius: 8px;
+
+            // }
         }
     }
 }

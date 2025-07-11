@@ -15,7 +15,7 @@ export default function BasicDetailsForm({ setStep }) {
     <div className="h-screen flex flex-col overflow-hidden">
       <div className='flex items-center justify-between px-10 py-5 bg-white border-b border-gray-200 flex-shrink-0'>
         <h2 className="font-24 font-bold text-[#333333] flex items-center gap-2">
-          <button  onClick={()=> setStep(prev => prev - 1)}><RiArrowLeftLine /></button> Basic Details
+          <button  onClick={()=> setStep(prev => prev - 1)} className="cursor-pointer"><RiArrowLeftLine /></button> Basic Details
         </h2>
 
         {/* <div className='flex items-center gap-4'>
