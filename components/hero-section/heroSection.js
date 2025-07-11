@@ -6,7 +6,6 @@ import Image from 'next/image';
 import Link from 'next/link';
 import styles from './hero-section.module.scss';
 import { RiArrowRightLine } from 'react-icons/ri';
-
 import personImage from "./assets/heroPerson.png";
 import moneyCoin1 from "./assets/money1.png";
 import moneyCoin2 from "./assets/money2.png";
@@ -16,127 +15,63 @@ import moneyNote1 from "./assets/note1.png";
 import moneyNote2 from "./assets/note2.png";
 
 import { gsap } from 'gsap';
-import SelectLanguage from '../select-language/SelectLanguage';
+
 
 const HeroSection = ({ data, showPagination }) => {  
-  // const [isLangModalOpen, setIsLangModalOpen] = useState(false);
-
-  useEffect(() => {
+ useEffect(() => {
   const context = gsap.context(() => {
     const elements = gsap.utils.toArray(".floating-image");
     const heroTitle = document.querySelector(".hero-title");
     const heroDescription = document.querySelector(".hero-description");
     const heroButton = document.querySelector(".hero-button");
 
-    // Initial states
-    gsap.set(elements, { y: -100, opacity: 0, visibility: 'hidden' });
+    gsap.set(elements, { y: -100, opacity: 0, visibility: "hidden" });
     gsap.set([heroTitle, heroDescription, heroButton], { y: 60, opacity: 0 });
 
     const tl = gsap.timeline({
       scrollTrigger: {
-        trigger: '.hero-section-container',
-        start: 'top 80%',
+        trigger: ".hero-section-container",
+        start: "top 80%",
         once: true,
       },
     });
 
-    // Animate text content
     tl.to([heroTitle, heroDescription, heroButton], {
       y: 0,
       opacity: 1,
       duration: 0.6,
-      ease: 'power2.out',
+      ease: "power2.out",
       stagger: 0.1,
     }, 0)
 
-    // Animate coins/notes in
-    .set(elements, { visibility: 'visible' }, 0)
-    .fromTo(
-      elements,
-      { y: -100, opacity: 0 },
-      {
-        y: 0,
-        opacity: 1,
-        duration: 0.5,
-        ease: "power1.out",
-        stagger: 0.07,
-      },
-      0.1
-    )
+      .set(elements, { visibility: "visible" }, 0)
+      .fromTo(
+        elements,
+        { y: -100, opacity: 0 },
+        {
+          y: 0,
+          opacity: 1,
+          duration: 0.5,
+          ease: "power1.out",
+          stagger: 0.07,
+        },
+        0.1
+      )
 
-    // Floating animation
-    // .add(() => {
-    //   elements.forEach((el) => {
-    //     const alt = el.getAttribute("alt");
 
-    //     // Extra spacing for Note 1 and Coin 3
-    //     const isNote1 = alt === "Note 1";
-    //     const isCoin3 = alt === "Coin 3";
-
-    //     const floatY = isNote1 ? gsap.utils.random(20, 28) : gsap.utils.random(10, 18);
-    //     const floatX = isCoin3 ? gsap.utils.random(12, 18) : gsap.utils.random(5, 10);
-    //     const rotate = gsap.utils.random(-6, 6);
-    //     const duration = gsap.utils.random(0.6, 1.2); // Faster loop
-    //     const delay = gsap.utils.random(0, 0.05);
-
-    //     gsap.to(el, {
-    //       y: `-=${floatY}`,
-    //       x: `+=${floatX}`,
-    //       rotation: rotate,
-    //       duration,
-    //       ease: "sine.inOut",
-    //       yoyo: true,
-    //       repeat: -1,
-    //       delay,
-    //     });
-    //   });
-    // }, 0.6);
-
-    .add(() => {
-  elements.forEach((el, i) => {
-    const alt = el.getAttribute("alt");
-
-    // Custom amplitude for each type
-    const isNote1 = alt === "Note 1";
-    const isCoin3 = alt === "Coin 3";
-
-    const floatY = isNote1 ? gsap.utils.random(18, 28) : gsap.utils.random(10, 18);
-    const floatX = isCoin3 ? gsap.utils.random(10, 18) : gsap.utils.random(5, 12);
-
-    // Each element gets a unique phase offset
-    const phase = gsap.utils.random(0, Math.PI * 2);
-
-    // Animate Y (up/down)
-    gsap.to(el, {
-      y: `+=${floatY}`,
-      duration: gsap.utils.random(2.2, 3.2),
-      ease: "sine.inOut",
-      yoyo: true,
-      repeat: -1,
-      delay: phase,
-    });
-
-    // Animate X (side to side)
-    gsap.to(el, {
-      x: `+=${floatX}`,
-      duration: gsap.utils.random(2.8, 4.2),
-      ease: "sine.inOut",
-      yoyo: true,
-      repeat: -1,
-      delay: phase + 0.5,
-    });
-
-    // Gentle rotation
-    gsap.to(el, {
-      rotation: gsap.utils.random(-8, 8),
-      duration: gsap.utils.random(3, 5),
-      ease: "sine.inOut",
-      yoyo: true,
-      repeat: -1,
-      delay: phase + 1,
-    });
-  });
-}, 0.6);
+      .call(() => {
+        elements.forEach((el, index) => {
+          gsap.to(el, {
+            y: -40,
+            rotation: 10,
+            duration: 2,
+            repeat: -1,
+            yoyo: true,
+            ease: "power1.inOut",
+            delay: index * 0.2,
+          });
+        });
+      });
   });
 
   return () => context.revert();
@@ -163,6 +98,8 @@ const HeroSection = ({ data, showPagination }) => {
                   <span className="primary-color"><RiArrowRightLine size={24} /></span>
                 </button>
               </Link>
+
+               <div className="pagination-placeholder" />
             </div>
 
           </Col>
@@ -232,12 +169,6 @@ const HeroSection = ({ data, showPagination }) => {
           </Col>
         </Row>
       </div>
-
-      {/* <div className={styles.curve}></div> */}
-     {/* <SelectLanguage
-        isOpen={isLangModalOpen}
-        onClose={() => setIsLangModalOpen(false)}
-      /> */}
     </section>
   );
 };

@@ -4,6 +4,7 @@ import { ArrowRightOutlined } from '@ant-design/icons';
 import { RiArrowLeftLine, RiMenuFill, RiNotification2Line } from 'react-icons/ri';
 import Image from 'next/image';
 import Idcard from "./assets/IdCard.png"
+import styles from './apply-verification.module.scss';
 
 const { Option } = Select;
 
@@ -17,10 +18,10 @@ export default function BasicDetailsForm({ setStep }) {
           <button  onClick={()=> setStep(prev => prev - 1)}><RiArrowLeftLine /></button> Basic Details
         </h2>
 
-        <div className='flex items-center gap-4'>
+        {/* <div className='flex items-center gap-4'>
           <RiNotification2Line />
           <RiMenuFill />
-        </div>
+        </div> */}
       </div>
       
       <div className="flex-1 flex flex-col items-center justify-center px-4 py-6 overflow-y-auto">
@@ -31,8 +32,8 @@ export default function BasicDetailsForm({ setStep }) {
         <Form
           form={form}
           layout="vertical"
-          className="w-full max-w-4xl p-4 md:p-8"
           requiredMark={false}
+          className={`${styles.applyVerificationForm} w-full max-w-4xl p-4 md:p-8`}
         >
           <Row gutter={[16, 16]}>
             <Col xs={24} md={12}>

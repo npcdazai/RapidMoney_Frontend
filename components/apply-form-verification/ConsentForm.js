@@ -8,14 +8,69 @@ import moneyHand from "./assets/woman-hands-money.png";
 import Link from 'next/link';
 import { RiArrowLeftLine } from 'react-icons/ri';
 import { Button } from 'antd';
+import coin1 from "./assets/coin1.png";
+import coin2 from "./assets/coin1.png";
+import coin3 from "./assets/coin1.png";
+import coin4 from "./assets/coin1.png";
+import coin5 from "./assets/coin1.png";
+import curve from "./assets/curve.png";
+import note1 from "./assets/note1.png";
+import note2 from "./assets/note2.png";
+import { useEffect } from 'react';
+import gsap from 'gsap';
 
-export default function ConsentForm({setStep}) {
+
+export default function ConsentForm({ setStep }) {
+
+    useEffect(() => {
+  const elements = gsap.utils.toArray(".floating-image");
+
+  gsap.set(elements, { y: -100, opacity: 0, visibility: "hidden" });
+
+  const tl = gsap.timeline();
+
+  tl.set(elements, { visibility: "visible" })
+    .to(elements, {
+      y: 0,
+      opacity: 1,
+      duration: 0.5,
+      ease: "power1.out",
+      stagger: 0.1,
+    })
+    .call(() => {
+      elements.forEach((el, index) => {
+        gsap.to(el, {
+          y: -40,
+          rotation: 10,
+          duration: 2,
+          repeat: -1,
+          yoyo: true,
+          ease: "power1.inOut",
+          delay: index * 0.2,
+        });
+      });
+    });
+}, []);
+
+
     return (
         <div className={`${styles.successScreen} h-screen flex flex-col bg-black text-white overflow-hidden`}>
-            
-            {/* Top Back Button - Fixed at top */}
+            <Image
+                src={curve}
+                alt="curve"
+                className="floating-image max-w-[70px] max-h-[150px] absolute top-[280px] left-[240px] z-40"
+            />
+         <Image src={coin1} alt="coin" className="floating-image absolute top-[-60px] left-[300px] max-w-[200px] max-h-[200px] rotate-6 z-10" />
+<Image src={coin2} alt="coin" className="floating-image absolute top-[-60px] right-[300px] max-w-[200px] max-h-[200px] z-10 rotate-12" />
+<Image src={coin3} alt="coin" className="floating-image absolute top-[250px] left-[-70px] max-w-[200px] max-h-[200px] z-10 rotate-45" />
+<Image src={coin4} alt="coin" className="floating-image absolute top-[400px] right-[-80px] max-w-[200px] max-h-[200px] z-10 rotate-3" />
+<Image src={coin5} alt="coin" className="floating-image absolute bottom-[-80px] left-[200px] max-w-[200px] max-h-[200px] z-10 rotate-2" />
+<Image src={note1} alt="note" className="floating-image absolute top-[150px] left-[240px] max-w-[200px] max-h-[200px] z-10" />
+<Image src={note2} alt="note" className="floating-image absolute top-[300px] right-[150px] max-w-[200px] max-h-[200px] z-10" />
+
+
             <div className="flex-shrink-0 pt-6 px-6 z-10 relative">
-                <button onClick={()=> setStep(prev => prev - 1)} className='text-[#333333] font-24 font-bold flex gap-2 items-center'>
+                <button onClick={() => setStep(prev => prev - 1)} className='text-[#333333] font-24 font-bold flex gap-2 items-center'>
                     <RiArrowLeftLine size={24} />
                     <span>Back</span>
                 </button>
@@ -40,7 +95,7 @@ export default function ConsentForm({setStep}) {
                     </button>
                 </Link>
 
-                <div className='max-w-[500px] w-full bg-[rgba(0,0,0,0.53)] backdrop-blur-[70.15px] rounded-[12px] text-sm px-5 py-4 flex gap-4'>
+                <div className='max-w-[560px] w-full bg-[rgba(0,0,0,0.53)] backdrop-blur-[70.15px] rounded-[12px] text-sm px-5 py-4 flex gap-4'>
                     <span className='text-[#53A10A] font-semibold flex-shrink-0'>Note</span>
                     <span className='text-left'>
                         Please Download & Install RapidMoney mobile app from android / apple PlayStore to continue with your Loan Application Journey
