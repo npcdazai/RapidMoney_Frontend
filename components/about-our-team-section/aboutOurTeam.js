@@ -18,7 +18,7 @@
       linkedin: "#",
     },
     {
-      name: "Chintan Panchmatya",
+      name: "Chintan Panchmatiya",
       title: "Director",
       img: ChintanImg,
       linkedin: "#",

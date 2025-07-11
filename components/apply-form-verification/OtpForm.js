@@ -30,7 +30,7 @@ export default function OtpForm({ setStep }) {
                         className={`max-w-full h-auto object-contain ${styles.headerLogo}`}
                     />
                 </Link>
-                <div className="w-full max-w-sm mx-auto py-12 px-4 text-center">
+                <div className="w-full max-w-sm mx-auto pt-12 px-4 text-center">
                     <Form.Item
                         required={false}
                         label={<span className="font-20 font-semibold text-[#333333]">Enter OTP</span>}
@@ -58,9 +58,9 @@ export default function OtpForm({ setStep }) {
                         </div>
                     </Form.Item>
 
-                    <p className="font-14 text-[#333333CC] text-left pb-[60px]">{"Didn't Receive OTP?"}</p>
+                    <p className="font-14 text-[#333333CC] text-left pb-[30px]">{"Didn't Receive OTP?"}</p>
 
-                    <p className='text-center text-black font-14 pb-10 underline'>Re-send in 00:53s</p>
+                    <p className='text-center text-black font-14 pb-[30px] underline'>Re-send in 00:53s</p>
 
                     <Form.Item>
                         <button

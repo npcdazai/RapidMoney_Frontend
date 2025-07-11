@@ -78,7 +78,7 @@ export default function MobileForm({ setStep }) {
                     </p>
                     <button
                         // className="apply-btn apply-btn-green !w-full font-medium"
-                        className="apply-btn apply-btn-green !w-full mt-[100px] font-medium"
+                        className="apply-btn apply-btn-green !w-full mt-[50px] font-medium"
                         onClick={() => setStep(prev => prev + 1)}
                     >
                         Request OTP
