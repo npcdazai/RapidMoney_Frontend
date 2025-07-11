@@ -20,127 +20,79 @@ gsap.registerPlugin(ScrollTrigger);
 
 const paths = {
   step1: {
-    filled: "M 0 100 V 0 Q 50 0 100 0 V 100 Z", // flat top
+    filled: "M 0 100 V 0 Q 50 0 100 0 V 100 Z",
     inBetween: {
       curve1: "M 0 100 V 37.845 Q 50 0 100 37.845 V 100 Z"
-    },
-    unfilled: "M 0 100 V 100 Q 50 100 100 100 V 100 Z" // stays flat
+    }
   }
 };
 
 const PersonalLoan = ({ data }) => {
-  const ref = useRef(null);
   const labelRef = useRef(null);
   const leftCoinRef = useRef(null);
   const rightCoinRef = useRef(null);
   const curveRef = useRef(null);
 
   useEffect(() => {
-    if (!labelRef.current) return;
-
-    gsap.fromTo(
-      labelRef.current,
-      { y: 200, opacity: 0 },
-      {
-        y: 0,
-        opacity: 0.12,
-        duration: 1.2,
-        ease: 'power3.out',
-        scrollTrigger: {
-          trigger: labelRef.current,
-          start: 'top 80%',
-          toggleActions: 'play none none none',
-          once: true,
-        },
-      }
-    );
-
-    if (leftCoinRef.current && rightCoinRef.current && curveRef.current) {
-      // Floating left coin
-      gsap.to(leftCoinRef.current, {
-        y: -40,
-        x: 10,
-        rotation: 15,
-        duration: 3,
-        repeat: -1,
-        yoyo: true,
-        ease: "sine.inOut",
-        delay: 0.2,
-      });
-
-      // Floating right coin
-      gsap.to(rightCoinRef.current, {
-        y: -30,
-        x: -10,
-        rotation: -18,
-        duration: 3.8,
-        repeat: -1,
-        yoyo: true,
-        ease: "sine.inOut",
-        delay: 0.6,
-      });
-
-      gsap.to(curveRef.current, {
-        y: -10,
-        duration: 4,
-        repeat: -1,
-        yoyo: true,
-        ease: "sine.inOut"
-      });
-
-      // 👇 Spring press and release animation using timeline
-      // const tl = gsap.timeline({ repeat: -1, yoyo: true });
-      // tl.to(curveRef.current, {
-      //   y: 10,
-      //   rotation: -5,
-      //   duration: 0.4,
-      //   ease: "power2.in",
-      // }).to(curveRef.current, {
-      //   y: -25,
-      //   rotation: 10,
-      //   duration: 1.2,
-      //   ease: "elastic.out(1.2, 0.3)",
-      // });
+    if (labelRef.current) {
+      gsap.fromTo(
+        labelRef.current,
+        { y: 200, opacity: 0 },
+        {
+          y: 0,
+          opacity: 0.12,
+          duration: 1.2,
+          ease: 'power3.out',
+          scrollTrigger: {
+            trigger: labelRef.current,
+            start: 'top 80%',
+            toggleActions: 'play none none none',
+            once: true,
+          },
+        }
+      );
     }
+
+    [leftCoinRef, rightCoinRef, curveRef].forEach((ref, i) => {
+      if (ref.current) {
+        gsap.to(ref.current, {
+          y: i === 2 ? -10 : -40 + i * 10,
+          x: i === 0 ? 10 : i === 1 ? -10 : 0,
+          rotation: i === 0 ? 15 : i === 1 ? -18 : 0,
+          duration: 3 + i,
+          repeat: -1,
+          yoyo: true,
+          ease: "sine.inOut",
+          delay: 0.3 * i,
+        });
+      }
+    });
   }, []);
-
-
 
   useEffect(() => {
     gsap.set(".overlay__path-reverse", {
-      // attr: { d: paths.step1.filled }
       attr: { d: paths.step1.inBetween.curve1 }
-
     });
 
     gsap.utils.toArray(".overlay__path-reverse").forEach((overlayPath) => {
       gsap.timeline({
         scrollTrigger: {
           trigger: ".overlay-reverse",
-          // start: "top top",
-          start: "20% 40%",
-          end: "+=100", // extend if needed
-          // end: "+=300", // extend if needed
+          start: "top 80%",
+          end: "top top",
           scrub: true,
           toggleActions: "play none reverse none"
         }
       }).to(overlayPath, {
         duration: 1.8,
         ease: "power1.inOut",
-        // attr: { d: paths.step1.inBetween.curve1 }
         attr: { d: paths.step1.filled }
       });
     });
   }, []);
 
   return (
-    <section
-      className={`${styles.section}  light-color pt-60 relative overflow-hidden`}
-    // className={`${styles.section} dark-bg light-color pt-60 relative overflow-hidden`}
-    // data-label={data.backgroundText || "Personal"}
-    >
-
-
+    <section className={`${styles.section} light-color pt-60 relative overflow-hidden`}>
       <svg
         className="overlay-reverse"
         viewBox="0 0 100 100"
@@ -162,45 +114,12 @@ const PersonalLoan = ({ data }) => {
         />
       </svg>
 
-      <Image
-        src={coin}
-        alt="Blue Coin Left"
-        className={styles.leftCoin}
-        width={200}
-        height={200}
-        priority
-        ref={leftCoinRef}
-      />
-      <Image
-        src={coin}
-        alt="Blue Coin Right"
-        className={styles.rightCoin}
-        width={200}
-        height={200}
-        priority
-        ref={rightCoinRef}
-      />
-      <Image
-        src={curve}
-        alt="Curve"
-        className={styles.curve}
-        width={100}
-        height={100}
-        priority
-        ref={curveRef}
-      />
+      <Image src={coin} alt="Blue Coin Left" className={styles.leftCoin} width={200} height={200} priority ref={leftCoinRef} />
+      <Image src={coin} alt="Blue Coin Right" className={styles.rightCoin} width={200} height={200} priority ref={rightCoinRef} />
+      <Image src={curve} alt="Curve" className={styles.curve} width={100} height={100} priority ref={curveRef} />
 
-
-      {/* <div className="container mx-auto text-center pt-[300px] relative z-10"> */}
-      <div className="container mx-auto text-center pt-[100px] sm:pt-[150px] md:pt-[200px] lg:pt-[300px]">
-
-        {/* <div className={styles.sectionLabel}>
-          {data.backgroundText || 'Personal'}
-        </div> */}
-
-        <div ref={labelRef} className={styles.sectionLabel}>
-          {data.backgroundText}
-        </div>
+      <div className="container mx-auto text-center pt-[50px] sm:pt-[120px] md:pt-[200px]">
+        <div ref={labelRef} className={styles.sectionLabel}>{data.backgroundText}</div>
 
         <div className="flex justify-center">
           <div className="flex flex-col gap-5 max-w-[600px] items-center md:pt-0 pt-[80px] px-4 z-10">
@@ -208,9 +127,7 @@ const PersonalLoan = ({ data }) => {
             <span className="font-16">{data.subtitle}</span>
             <div className="hidden md:flex items-center gap-3">
               <Link href={data.cta.apply.link || "#"}>
-                <button className="apply-btn apply-btn-green dark-color min-w-[180px]">
-                  {data.cta.apply.label}
-                </button>
+                <button className="apply-btn apply-btn-green dark-color min-w-[180px]">{data.cta.apply.label}</button>
               </Link>
               <Link href={data.cta.download.link || "#"}>
                 <button className="apply-btn apply-btn-dark flex items-center gap-3 min-w-[180px]">
@@ -226,13 +143,7 @@ const PersonalLoan = ({ data }) => {
         <Row align="middle" justify="center" gutter={[24, 24]}>
           <Col xs={24}>
             <div className={styles.personImage}>
-              <Image
-                src={personImage}
-                alt="Mobile Promo"
-                width={600}
-                height={600}
-                className="relative z-10 mx-auto"
-              />
+              <Image src={personImage} alt="Mobile Promo" width={600} height={600} className="relative z-10 mx-auto" />
             </div>
 
             {data.stats.map((stat, idx) => {
@@ -263,7 +174,6 @@ const PersonalLoan = ({ data }) => {
               );
             })}
           </Col>
-
         </Row>
       </div>
     </section>
