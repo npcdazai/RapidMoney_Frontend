@@ -14,36 +14,39 @@ export default function ApplyImageContainer({
   curve,
   passwordstar
 }) {
-  useEffect(() => {
-    const elements = gsap.utils.toArray('.floating-image');
+useEffect(() => {
+  const elements = gsap.utils.toArray('.floating-image');
 
-    // Drop-in + infinite bounce
-    gsap.set(elements, { y: -100, opacity: 0, visibility: 'hidden' });
+  gsap.set(elements, { y: -100, opacity: 0, visibility: 'hidden' });
 
-    const tl = gsap.timeline();
+  const tl = gsap.timeline();
 
-    tl.set(elements, { visibility: 'visible' })
-      .to(elements, {
-        y: 0,
-        opacity: 1,
-        duration: 0.5,
-        ease: 'power1.out',
-        stagger: 0.1,
-      })
-      .call(() => {
-        elements.forEach((el, index) => {
-          gsap.to(el, {
-            y: -40,
-            rotation: 10,
-            duration: 2,
-            repeat: -1,
-            yoyo: true,
-            ease: 'power1.inOut',
-            delay: index * 0.2,
-          });
+  tl.set(elements, { visibility: 'visible' })
+
+    // Drop-in animation
+    .to(elements, {
+      y: 0,
+      opacity: 1,
+      duration: 0.5,
+      ease: 'power1.out',
+      stagger: 0.1,
+    })
+
+    // Start bounce+rotate after the last element finishes dropping
+    .add(() => {
+      elements.forEach((el, index) => {
+        gsap.to(el, {
+          y: -40,
+          rotation: 10,
+          duration: 2,
+          repeat: -1,
+          yoyo: true,
+          ease: 'power1.inOut',
         });
       });
-  }, []);
+    }, "+=0"); // start immediately after drop ends
+}, []);
+
 
   return (
     <div className={`${styles.applyImageContainer} applyImageContainer h-full relative`}>

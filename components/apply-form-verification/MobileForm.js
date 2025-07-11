@@ -16,6 +16,7 @@ import passwordstar from "./assets/password.png"
 import curve from "./assets/curve.png"
 import indiaFlag from "./assets/india.svg";
 import { RiArrowDownSLine } from 'react-icons/ri';
+import Link from 'next/link';
 
 export default function MobileForm({ setStep }) {
     const [countryCode, setCountryCode] = useState('+91');
@@ -23,16 +24,18 @@ export default function MobileForm({ setStep }) {
     return (
         <div className="h-screen overflow-hidden grid grid-cols-1 lg:grid-cols-2">
             <div className=" flex flex-col justify-center items-center px-6 py-12">
-                <Image
-                    src={lightRapidMoneyLogo}
-                    alt="RapidMoney Logo"
-                    width={220}
-                    height={50}
-                    className={`max-w-full h-auto object-contain ${styles.headerLogo}`}
-                />
+                <Link href="/">
+                    <Image
+                        src={lightRapidMoneyLogo}
+                        alt="RapidMoney Logo"
+                        width={220}
+                        height={50}
+                        className={`max-w-full h-auto object-contain ${styles.headerLogo}`}
+                    />
+                </Link>
                 <div className="w-full max-w-sm mx-auto py-12 px-4 text-center">
                     <Form.Item
-                        required={false} 
+                        required={false}
                         label={<span className="font-14 font-semibold text-[#333333]">Mobile Number</span>}
                         name="mobile"
                         rules={[
@@ -42,7 +45,7 @@ export default function MobileForm({ setStep }) {
                         className={`!mb-4 ${styles.MobileForm} `}
                     >
                         <Input
-                            
+
                             addonBefore={
                                 <div className="flex items-center">
                                     <Image
@@ -58,7 +61,7 @@ export default function MobileForm({ setStep }) {
                                         bordered={false}
                                         className="w-[90px]"
                                         // style={{ borderRight: 'none' }}
-                                        suffixIcon={<RiArrowDownSLine color='#000' size={18}/>}
+                                        suffixIcon={<RiArrowDownSLine color='#000' size={18} />}
                                     >
                                         <Option value="+91">+91</Option>
                                         {/* <Option value="+1">+1</Option> */}

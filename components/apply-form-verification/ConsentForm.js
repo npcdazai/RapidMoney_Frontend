@@ -21,15 +21,17 @@ import gsap from 'gsap';
 
 
 export default function ConsentForm({ setStep }) {
-
-    useEffect(() => {
+useEffect(() => {
   const elements = gsap.utils.toArray(".floating-image");
 
+  // Initial state
   gsap.set(elements, { y: -100, opacity: 0, visibility: "hidden" });
 
   const tl = gsap.timeline();
 
   tl.set(elements, { visibility: "visible" })
+
+    // Drop with stagger
     .to(elements, {
       y: 0,
       opacity: 1,
@@ -37,20 +39,21 @@ export default function ConsentForm({ setStep }) {
       ease: "power1.out",
       stagger: 0.1,
     })
-    .call(() => {
-      elements.forEach((el, index) => {
-        gsap.to(el, {
-          y: -40,
-          rotation: 10,
-          duration: 2,
-          repeat: -1,
-          yoyo: true,
-          ease: "power1.inOut",
-          delay: index * 0.2,
-        });
+
+    // Start bounce & rotation for all at once (no delay or index-based stagger)
+    .add(() => {
+      gsap.to(elements, {
+        y: -40,
+        rotation: 10,
+        duration: 2,
+        repeat: -1,
+        yoyo: true,
+        ease: "power1.inOut",
       });
-    });
+    }, "+=0"); // run immediately after drop
 }, []);
+
+
 
 
     return (
@@ -60,13 +63,13 @@ export default function ConsentForm({ setStep }) {
                 alt="curve"
                 className="floating-image max-w-[70px] max-h-[150px] absolute top-[280px] left-[240px] z-40"
             />
-         <Image src={coin1} alt="coin" className="floating-image absolute top-[-60px] left-[300px] max-w-[200px] max-h-[200px] rotate-6 z-10" />
-<Image src={coin2} alt="coin" className="floating-image absolute top-[-60px] right-[300px] max-w-[200px] max-h-[200px] z-10 rotate-12" />
-<Image src={coin3} alt="coin" className="floating-image absolute top-[250px] left-[-70px] max-w-[200px] max-h-[200px] z-10 rotate-45" />
-<Image src={coin4} alt="coin" className="floating-image absolute top-[400px] right-[-80px] max-w-[200px] max-h-[200px] z-10 rotate-3" />
-<Image src={coin5} alt="coin" className="floating-image absolute bottom-[-80px] left-[200px] max-w-[200px] max-h-[200px] z-10 rotate-2" />
-<Image src={note1} alt="note" className="floating-image absolute top-[150px] left-[240px] max-w-[200px] max-h-[200px] z-10" />
-<Image src={note2} alt="note" className="floating-image absolute top-[300px] right-[150px] max-w-[200px] max-h-[200px] z-10" />
+            <Image src={coin1} alt="coin" className="floating-image absolute top-[-60px] left-[300px] max-w-[200px] max-h-[200px] rotate-6 z-10" />
+            <Image src={coin2} alt="coin" className="floating-image absolute top-[-60px] right-[300px] max-w-[200px] max-h-[200px] z-10 rotate-12" />
+            <Image src={coin3} alt="coin" className="floating-image absolute top-[250px] left-[-70px] max-w-[200px] max-h-[200px] z-10 rotate-45" />
+            <Image src={coin4} alt="coin" className="floating-image absolute top-[400px] right-[-80px] max-w-[200px] max-h-[200px] z-10 rotate-3" />
+            <Image src={coin5} alt="coin" className="floating-image absolute bottom-[-80px] left-[200px] max-w-[200px] max-h-[200px] z-10 rotate-2" />
+            <Image src={note1} alt="note" className="floating-image absolute top-[150px] left-[240px] max-w-[200px] max-h-[200px] z-10" />
+            <Image src={note2} alt="note" className="floating-image absolute top-[300px] right-[150px] max-w-[200px] max-h-[200px] z-10" />
 
 
             <div className="flex-shrink-0 pt-6 px-6 z-10 relative">

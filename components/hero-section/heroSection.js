@@ -44,38 +44,41 @@ const HeroSection = ({ data, showPagination }) => {
       stagger: 0.1,
     }, 0)
 
-      .set(elements, { visibility: "visible" }, 0)
-      .fromTo(
-        elements,
-        { y: -100, opacity: 0 },
-        {
-          y: 0,
-          opacity: 1,
-          duration: 0.5,
-          ease: "power1.out",
-          stagger: 0.07,
-        },
-        0.1
-      )
+    .set(elements, { visibility: "visible" }, 0)
 
+    .fromTo(
+      elements,
+      { y: -100, opacity: 0 },
+      {
+        y: 0,
+        opacity: 1,
+        duration: 0.5,
+        ease: "power1.out",
+        stagger: 0.07,
+      },
+      0.1
+    )
 
-      .call(() => {
-        elements.forEach((el, index) => {
-          gsap.to(el, {
-            y: -40,
-            rotation: 10,
-            duration: 2,
-            repeat: -1,
-            yoyo: true,
-            ease: "power1.inOut",
-            delay: index * 0.2,
-          });
+    // 👇 Start bounce at 0.6s (after drop finishes)
+    .add(() => {
+      elements.forEach((el, index) => {
+        gsap.to(el, {
+          y: -40,
+          rotation: 10,
+          duration: 2,
+          repeat: -1,
+          yoyo: true,
+          ease: "power1.inOut",
+          delay: index * 0.2,
         });
       });
+    }, 0.6); // ⏱ This starts right after the drop finishes
+
   });
 
   return () => context.revert();
 }, []);
+
 
   return (
     <section className={`${styles.section} dark-bg flex items-center pt-[150px] sm:pt-[200px] hero-section-container`}>

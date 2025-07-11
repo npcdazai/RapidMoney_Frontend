@@ -13,6 +13,7 @@ import coin3 from "./assets/coin3.png"
 import coin4 from "./assets/coin3.png"
 import passwordstar from "./assets/password.png"
 import curve from "./assets/curve.png"
+import Link from 'next/link';
 const { Option } = Select
 export default function OtpForm({ setStep }) {
     const [countryCode, setCountryCode] = useState('+91');
@@ -20,13 +21,15 @@ export default function OtpForm({ setStep }) {
         <div className="h-screen flex overflow-hidden">
             <div className="w-full lg:w-1/2 flex flex-col justify-center items-center px-6 py-8">
 
-                <Image
-                    src={lightRapidMoneyLogo}
-                    alt="RapidMoney Logo"
-                    width={220}
-                    height={50}
-                    className={`max-w-full h-auto object-contain ${styles.headerLogo}`}
-                />
+                <Link href="/">
+                    <Image
+                        src={lightRapidMoneyLogo}
+                        alt="RapidMoney Logo"
+                        width={220}
+                        height={50}
+                        className={`max-w-full h-auto object-contain ${styles.headerLogo}`}
+                    />
+                </Link>
                 <div className="w-full max-w-sm mx-auto py-12 px-4 text-center">
                     <Form.Item
                         required={false}
