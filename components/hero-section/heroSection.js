@@ -13,11 +13,29 @@ import moneyCoin3 from "./assets/money3.png";
 import moneyCoin4 from "./assets/money3.png";
 import moneyNote1 from "./assets/note1.png";
 import moneyNote2 from "./assets/note2.png";
+import "swiper/css";
+
 
 import { gsap } from 'gsap';
+// const slideStyle = {
+//   position: "relative",
+//   padding: "2rem",
+//   border: "1px solid #ccc",
+//   height: "200px",
+//   display: "flex",
+//   justifyContent: "center",
+//   alignItems: "center",
+//   fontSize: "1.5rem"
+// };
 
+// const paginationStyle = {
+//   position: "absolute",
+//   bottom: "10px",
+//   right: "10px",
+//   fontWeight: "bold"
+// };
 
-const HeroSection = ({ data, showPagination }) => {  
+const HeroSection = ({ data, paginationRef  }) => {  
  useEffect(() => {
   const context = gsap.context(() => {
     const elements = gsap.utils.toArray(".floating-image");
@@ -85,7 +103,7 @@ const HeroSection = ({ data, showPagination }) => {
       <div className="container mx-auto relative">
         <Row gutter={[32, 32]}>
           <Col xs={24} lg={24} xl={8}>
-            <div className="flex flex-col gap-[30px] z-10 relative">
+            <div className="flex flex-col gap-[24px] z-10 relative">
               <h1
                 className={`font-48 light-color font-weight-bold ${styles.heroTitle} max-w-[340px] hero-title `}
                 dangerouslySetInnerHTML={{ __html: data?.title || '' }}
@@ -102,7 +120,8 @@ const HeroSection = ({ data, showPagination }) => {
                 </button>
               </Link>
 
-               <div className="pagination-placeholder" />
+               {/* <div className="pagination-placeholder" /> */}
+                <div className="custom-swiper-pagination"  ref={paginationRef} />
             </div>
 
           </Col>

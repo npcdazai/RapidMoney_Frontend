@@ -60,28 +60,47 @@
       background: transparent;
     }
 
-    :global(.swiper-pagination) {
-      z-index: 10;
-      //   background: #0f0;
-      position: absolute;
-      bottom: 80px;
-      width: max-content;
-      left: 244px;
-      transform: translateX(-50%);
+    // :global(.swiper-pagination) {
+    //   z-index: 10;
+    //   //   background: #0f0;
+    //   position: absolute;
+    //   bottom: 80px;
+    //   width: max-content;
+    //   left: 244px;
+    //   transform: translateX(-50%);
 
-      :global(.swiper-pagination-bullet) {
-        background-color: #ffffff;
-        width: 18px;
-        height: 18px;
-      }
+    //   :global(.swiper-pagination-bullet) {
+    //     background-color: #ffffff;
+    //     width: 18px;
+    //     height: 18px;
+    //   }
 
-      :global(.swiper-pagination-bullet-active) {
-        background-color: #ffffff;
-        border: 5px solid gray;
+    //   :global(.swiper-pagination-bullet-active) {
+    //     background-color: #ffffff;
+    //     border: 5px solid gray;
 
-      }
+    //   }
 
+    // }
+
+    :global(.custom-swiper-pagination) {
+      margin-top: 20px;
+      text-align: left;
     }
+
+    :global(.custom-swiper-pagination .swiper-pagination-bullet) {
+      background-color: #FFFFFF57;
+      width: 18px;
+      height: 18px;
+      margin: 0 6px;
+      opacity: 1;
+    }
+
+    :global(.custom-swiper-pagination .swiper-pagination-bullet-active) {
+      background-color: #ffffff;
+      border: 5px solid gray;
+    }
+
 
     // :global(.swiper-wrapper) {
     //   :global(.swiper-slide-active) {
