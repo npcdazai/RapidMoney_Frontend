@@ -1,26 +1,68 @@
 "use client";
-import { Row, Col } from "antd";
-import React, { useEffect, useRef } from "react";
-import blogs from "@/json/blogs/blogs.json";
+import { Row, Col, Button, Spin, Empty, Result } from "antd";
+import React, { useEffect, useRef, useState } from "react";
 import BlogCard from "@/components/blogs/BlogCard";
-import blog1 from "./assets/blog-1.jpg";
-import blog2 from "./assets/blog-2.jpg";
-import blog3 from "./assets/blog-3.jpg";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import Link from "next/link";
+import endpoints from "@/constants/endpoints";
+import requests from "@/utils/api";
+import { useSearchParams } from "next/navigation";
+import BlogCardSkeleton from "@/components/blogs/BlogCardSkeleton";
 
 gsap.registerPlugin(ScrollTrigger);
 
 export default function BlogListing() {
-  const imageArray = [blog1, blog2, blog3];
-
   const titleRef = useRef(null);
   const cardsRef = useRef([]);
   cardsRef.current = [];
 
+  const [blogs, setBlogs] = useState([]);
+  const [page, setPage] = useState(1);
+  const [total, setTotal] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [loadingMore, setLoadingMore] = useState(false);
+  const [isFetching, setIsFetching] = useState(false);
+
+  const searchParams = useSearchParams();
+  const category = searchParams.get("category");
+
+  const getBlogs = async (pageNum = 1, initialLoad = false) => {
+    if (isFetching) return;
+    if (total !== null && blogs.length >= total) return;
+
+    setIsFetching(true);
+    if (!initialLoad) setLoadingMore(true);
+    else setLoading(true);
+
+    try {
+      const api = requests();
+      let url = `${endpoints.get_blogs}?page=${pageNum}&limit=6`;
+      if (category) url += `&category=${category}`;
+
+      const response = await api.get(url);
+
+      const data = response?.data || {
+        data: [],
+        total: 0,
+        current_page: pageNum,
+      };
+
+      setBlogs((prev) => (pageNum === 1 ? data.data : [...prev, ...data.data]));
+      setTotal(data?.pagination?.total);
+      setPage(data?.pagination?.currentPage);
+    } catch (error) {
+      console.error("Failed to fetch blogs:", error);
+    } finally {
+      setLoading(false);
+      setLoadingMore(false);
+      setIsFetching(false);
+    }
+  };
+
+  // Animation + initial data fetch
   useEffect(() => {
-    // Animate title
+    getBlogs(1, true);
+
     gsap.fromTo(
       titleRef.current,
       { autoAlpha: 0, y: 40 },
@@ -36,7 +78,14 @@ export default function BlogListing() {
       }
     );
 
-    // Animate each card with stagger
+    return () => {
+      ScrollTrigger.getAll().forEach((t) => t.kill());
+    };
+  }, [category]);
+
+  // Animate blog cards on update
+  useEffect(() => {
+    if (!cardsRef.current.length) return;
     gsap.fromTo(
       cardsRef.current,
       {
@@ -57,29 +106,64 @@ export default function BlogListing() {
         },
       }
     );
-
-    return () => {
-      ScrollTrigger.getAll().forEach((t) => t.kill());
-    };
-  }, []);
+  }, [blogs]);
 
   return (
     <section className="container mx-auto pt-120 pb-120">
-      <h1 className="text-4xl font-bold text-center pb-12">Blogs</h1>
+      <h1 ref={titleRef} className="text-4xl font-bold text-center pb-12">
+        Blogs
+      </h1>
 
-      <Row gutter={[24, 32]}>
-        {blogs.map((blog, index) => (
-          <Col
-            key={index}
-            xs={24}
-            sm={24}
-            md={8}
-            ref={(el) => (cardsRef.current[index] = el)}
-          >
-           <BlogCard item={{ ...blog, image: imageArray[index] }} />
-          </Col>
-        ))}
-      </Row>
+      {loading ? (
+        <div className="text-center py-32">
+          <Spin size="large" />
+        </div>
+      ) : blogs.length === 0 ? (
+        <div className="text-center py-10">
+          <Result
+            status="404"
+            title="No Blogs Found"
+            subTitle="Sorry, we couldn't find any blogs."
+          />
+        </div>
+      ) : (
+        <Spin spinning={loadingMore}>
+          <Row gutter={[24, 32]}>
+            {(loading ? Array.from({ length: 3 }) : blogs).map(
+              (blog, index) => (
+                <Col
+                  key={index}
+                  xs={24}
+                  sm={24}
+                  md={8}
+                  ref={(el) => (cardsRef.current[index] = el)}
+                >
+                  {loading ? <BlogCardSkeleton /> : <BlogCard item={blog} />}
+                </Col>
+              )
+            )}
+
+            {/* {loadingMore &&
+              Array.from({ length: 1 }).map((_, index) => (
+                <Col key={`skeleton-${index}`} xs={24} sm={24} md={8}>
+                  <BlogCardSkeleton />
+                </Col>
+              ))} */}
+          </Row>
+
+          {blogs.length < total && (
+            <div className="text-center mt-12">
+              <button
+                className={`apply-btn apply-btn-light flex item-center gap-3`}
+                onClick={() => getBlogs(page + 1)}
+                disabled={loading}
+              >
+                Load More
+              </button>
+            </div>
+          )}
+        </Spin>
+      )}
     </section>
   );
 }
