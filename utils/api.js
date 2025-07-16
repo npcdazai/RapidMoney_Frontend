@@ -13,13 +13,6 @@ apiInstance.interceptors.response.use(
         message.error(response.data.message);
         return Promise.reject(response.data.message);
       }
-      if (
-        response?.data?.data === null &&
-        response?.data?.message === "Cart Not Found" &&
-        response.data?.status === "Error"
-      ) {
-        Cookies.remove("rapid_money_cart_id");
-      }
       let Data = {
         response_status_code: response?.status,
         ...response.data,
@@ -36,7 +29,7 @@ apiInstance.interceptors.response.use(
       message.error(error.message);
     }
     if (error?.response?.status === 403) {
-      Cookies.remove("rapid-money-token");
+      // Cookies.remove("rapid-money-site-token");
       setTimeout(() => {
         window.location.reload();
       }, 1000);
@@ -46,7 +39,7 @@ apiInstance.interceptors.response.use(
 );
 
 function requests(external_token) {
-  let token = external_token ?? Cookies.get("rapid-money-token");
+  let token = external_token ?? Cookies.get("rapid-money-site-token");
   let get = (url, data, withAuth = true, config = {}) => {
     if (withAuth) {
       config = {
