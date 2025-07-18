@@ -33,7 +33,7 @@ const GlobalHeroSection = ({ data }) => {
                 }
               </div>
 
-              <Link href="/apply">
+              <Link href="/">
                 <button
                   className={`apply-btn apply-btn-dark flex gap-2 font-16 font-weight-medium`}
                 >

@@ -139,7 +139,7 @@ const Header = ({ isDark = false, data }) => {
           {/* CTA Buttons */}
           <div className="flex items-center gap-3">
             <div className="hidden md:flex items-center gap-3">
-              <Link href={data?.cta?.applyLink || "#"}>
+              <Link href={data?.cta?.applyLink || "/"}>
                 <button
                   // type="primary"
                   className={`apply-btn apply-btn-green`}

@@ -128,7 +128,7 @@ const PersonalLoan = ({ data }) => {
             <h2 className="font-48 font-weight-bold">{data?.title}</h2>
             <span className="font-16">{data?.subtitle}</span>
             <div className="hidden md:flex items-center gap-3">
-              <Link href={"/apply"}>
+              <Link href={"/"}>
               {/* <Link href={data.cta.apply.link || "#"}> */}
                 <button className="apply-btn apply-btn-green dark-color min-w-[180px]">
                   Apply Now
