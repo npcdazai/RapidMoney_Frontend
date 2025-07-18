@@ -3,7 +3,8 @@ import React from 'react';
 import { FaCheck } from 'react-icons/fa6';
 import styles from './privacy-policy.module.scss';
 
-const PrivacyPolicy = ({data}) => {
+const PrivacyPolicy = ({ data }) => {
+  console.log(data)
   return (
     <section className={`container mx-auto pt-120 pb-120 ${styles.section}`}>
       <h1 className={`${styles.topHeading} pb-60 font-40 font-weight-bold text-center`}>{data?.title}</h1>
@@ -47,3 +48,38 @@ const PrivacyPolicy = ({data}) => {
 };
 
 export default PrivacyPolicy;
+
+// 'use client';
+// import React from 'react';
+// import styles from './privacy-policy.module.scss';
+
+// const PrivacyPolicy = ({ data }) => {
+//   if (!data) return null;
+
+//   return (
+//     <section className={`container mx-auto pt-120 pb-120 ${styles.section}`}>
+//       <h1 className={`${styles.topHeading} pb-60 font-40 font-weight-bold text-center`}>
+//         {data.title}
+//       </h1>
+
+//       {data?.intro?.text && (
+//         <div className={`pb-10 ${styles.introWrapper}`}>
+//           <p className={styles.sectionIntro}>{data.intro.text}</p>
+//         </div>
+//       )}
+
+//       {data?.sections?.map((sec, idx) => (
+//         <div key={idx} className={styles.sectionBlock}>
+//           {sec?.title && <h2 className={styles.sectionHeading}>{sec.title}</h2>}
+//           <div
+//             className={styles.richTextWrapper}
+//             dangerouslySetInnerHTML={{ __html: sec.description }}
+//           />
+//         </div>
+//       ))}
+//     </section>
+//   );
+// };
+
+// export default PrivacyPolicy;
+

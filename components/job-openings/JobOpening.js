@@ -34,6 +34,8 @@ const JobOpening = ({ data }) => {
   // Pagination logic
   const paginatedJobs = jobs.slice((currentPage - 1) * pageSize, currentPage * pageSize);
 
+  console.log(data);
+
   return (
     <section className={`${styles.section} pb-120 pt-60`}>
       <div className="container mx-auto">
@@ -48,7 +50,8 @@ const JobOpening = ({ data }) => {
             <div key={index} className="bg-white border border-[var(--border-color)] rounded-lg p-6  md:flex-row  text-black ">
               <div className='flex items-center flex-wrap gap-3 justify-between w-full'>
                 <h3 className="font-24 font-weight-semibold w-1/3 lg:w-1/2">{job.title}</h3>
-                <span className="font-18 w-1/3 lg:w-1/4">Experience: {job.experience}</span>
+                <span className="font-18 w-1/3 lg:w-1/4">{job.experience}</span>
+                {/* <span className="font-18 w-1/3 lg:w-1/4">Experience: {job.experience}</span> */}
                 <div className='w-1/3 lg:w-1/6 text-end'>
                   <button
                     // type={index === 0 ? 'default' : 'primary'}

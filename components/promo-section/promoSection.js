@@ -66,6 +66,8 @@ const PromoSection = ({ data }) => {
 
   }, []);
 
+  console.log(data)
+
   return (
     <section className={`${styles.section}`}>
       <div className="flex flex-col gap-4 pt-60 container mx-auto">
@@ -93,7 +95,8 @@ const PromoSection = ({ data }) => {
             className={`flex lg:mt-[-100px]  mt-[-50px] ${styles.bannerImageBkl}`}
           >
             <Image
-              src={bannerImage}
+              // src={bannerImage}
+              src={data?.image?.[0]?.url}
               alt="..."
               width={1920}
               height={600}

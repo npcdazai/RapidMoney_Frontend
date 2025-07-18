@@ -91,6 +91,8 @@ const PersonalLoan = ({ data }) => {
     });
   }, []);
 
+  // console.log(data);
+
   return (
     <section className={`${styles.section} light-color pt-60 relative overflow-hidden`}>
       <svg
@@ -119,19 +121,25 @@ const PersonalLoan = ({ data }) => {
       <Image src={curve} alt="Curve" className={styles.curve} width={100} height={100} priority ref={curveRef} />
 
       <div className="container mx-auto text-center pt-[50px] sm:pt-[120px] md:pt-[200px]">
-        <div ref={labelRef} className={styles.sectionLabel}>{data.backgroundText}</div>
+        <div ref={labelRef} className={styles.sectionLabel}>{data?.backgroundText}</div>
 
         <div className="flex justify-center">
           <div className="flex flex-col gap-5 max-w-[600px] items-center md:pt-0 pt-[80px] px-4 z-10">
-            <h2 className="font-48 font-weight-bold">{data.title}</h2>
-            <span className="font-16">{data.subtitle}</span>
+            <h2 className="font-48 font-weight-bold">{data?.title}</h2>
+            <span className="font-16">{data?.subtitle}</span>
             <div className="hidden md:flex items-center gap-3">
-              <Link href={data.cta.apply.link || "#"}>
-                <button className="apply-btn apply-btn-green dark-color min-w-[180px]">{data.cta.apply.label}</button>
+              <Link href={"/apply"}>
+              {/* <Link href={data.cta.apply.link || "#"}> */}
+                <button className="apply-btn apply-btn-green dark-color min-w-[180px]">
+                  Apply Now
+                  {/* {data.cta.apply.label} */}
+                </button>
               </Link>
-              <Link href={data.cta.download.link || "#"}>
+              <Link href={"#"}>
+              {/* <Link href={data.cta.download.link || "#"}> */}
                 <button className="apply-btn apply-btn-dark flex items-center gap-3 min-w-[180px]">
-                  <span>{data.cta.download.label}</span>
+                  <span>Download</span>
+                  {/* <span>{data.cta.download.label}</span> */}
                   <Image src={darkIphone} width={24} height={24} alt="iPhone" />
                   <Image src={playStore} width={24} height={24} alt="Play Store" />
                 </button>
@@ -146,7 +154,7 @@ const PersonalLoan = ({ data }) => {
               <Image src={personImage} alt="Mobile Promo" width={600} height={600} className="relative z-10 mx-auto" />
             </div>
 
-            {data.stats.map((stat, idx) => {
+            {data?.stats?.map((stat, idx) => {
               const positionMap = [
                 // 'top-0 left-0',
                 // 'top-0 right-0',
@@ -168,8 +176,8 @@ const PersonalLoan = ({ data }) => {
                     height={20}
                     alt={stat.label}
                   />
-                  <span className="font-40 font-weight-bold">{stat.value}</span>
-                  <span className="font-20">{stat.label}</span>
+                  <span className="font-40 font-weight-bold">{stat?.value}</span>
+                  <span className="font-20">{stat?.label}</span>
                 </div>
               );
             })}

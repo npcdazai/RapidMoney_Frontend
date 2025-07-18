@@ -7,6 +7,8 @@ export default function ImgCard({ imageSrc, imageAlt }) {
       <Image
         src={imageSrc}
         alt={imageAlt}
+        width={100}
+        height={100}
         className="w-full !h-full object-cover rounded-xl transform transition-transform duration-500 group-hover:scale-105"
       />
     </div>

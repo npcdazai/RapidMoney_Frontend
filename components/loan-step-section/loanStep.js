@@ -23,7 +23,7 @@ const imageArray = {
 
 const LoanStep = ({ data }) => {
   const [current, setCurrent] = useState(0);
-  const stepsCount = data.steps.length;
+  const stepsCount = data?.steps?.length;
   const moneyRef = useRef(null);
   const coinRef = useRef(null);
   const curveRef = useRef(null);
@@ -36,7 +36,8 @@ const LoanStep = ({ data }) => {
     return () => clearInterval(timer);
   }, [stepsCount]);
 
-  const currentStep = data.steps[current];
+  const currentStep = data?.steps[current];
+  
 
   useEffect(() => {
     if (moneyRef.current && coinRef.current && curveRef.current) {
@@ -68,7 +69,7 @@ const LoanStep = ({ data }) => {
     }
   }, []);
 
-
+  // console.log(data);
   return (
     <section className={`pt-120 ${styles.section}`}>
       <Image
@@ -81,7 +82,7 @@ const LoanStep = ({ data }) => {
         {/* Section Title */}
         <span className="flex justify-center items-center">
           <h2 className="font-48 font-weight-bold text-center pb-6 max-w-[480px]">
-            {data.title}
+            {data?.title}
           </h2>
         </span>
 
@@ -94,17 +95,17 @@ const LoanStep = ({ data }) => {
               onChange={(index) => setCurrent(index)}
               className={styles.loanStep}
             >
-              {data.steps.map((step, idx) => (
+              {data?.steps?.map((step, idx) => (
                 <Step
                   key={idx}
                   title={
                     <span className="font-24 font-weight-bold ">
-                      {step.title}
+                      {step?.title}
                     </span>
                   }
                   description={
                     <span className="font-16 pb-[60px]">
-                      {step.description}
+                      {step?.description}
                     </span>
                   }
                   icon={
@@ -145,11 +146,11 @@ const LoanStep = ({ data }) => {
             {/* <Col xs={24} lg={{ span: 11, offset: 1 }} className={styles.imageBkl}> */}
             <div className="flex justify-center items-center">
               <Image
-                // src={currentStep.image}
-                src={imageArray[currentStep.flag]}
-                alt={`Step ${currentStep.step}`}
-                // width={400}
-                // height={500}
+                src={currentStep?.image?.[0]?.url}
+                // src={imageArray[currentStep.flag]}
+                alt={`Step ${currentStep?.step}`}
+                width={400}
+                height={500}
                 className="max-h-[550px] object-scale-down"
               />
             </div>

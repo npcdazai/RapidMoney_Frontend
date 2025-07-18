@@ -42,7 +42,101 @@
     gap: 10px;
   }
 
-
-
-
 }
+
+// privacy-policy.module.scss
+
+// .section {
+//   .topHeading {
+//     font-size: 40px;
+//     font-weight: 700;
+//     line-height: 1.2;
+//     color: #212121;
+//   }
+
+//   // .introWrapper {
+//   //   max-width: 850px;
+//   //   margin: 0 auto;
+//   // }
+
+//   .sectionIntro {
+//     font-size: 18px;
+//     line-height: 1.6;
+//     color: #555;
+//   }
+
+//   .sectionBlock {
+//     margin-bottom: 48px;
+//   }
+
+//   .sectionHeading {
+//     font-size: 28px;
+//     font-weight: 700;
+//     margin-bottom: 16px;
+//     color: #1a1a1a;
+//   }
+
+//   .richTextWrapper {
+//     font-size: 16px;
+//     color: #333;
+//     line-height: 1.7;
+
+//     p {
+//       margin-bottom: 12px;
+//     }
+
+//     ul,
+//     ol {
+//       padding-left: 0;
+//       margin-left: 0;
+//     }
+
+//     ol {
+//       list-style: none;
+//       padding-left: 0;
+
+//       li {
+//         display: flex;
+//         align-items: flex-start;
+//         gap: 10px;
+//         margin-bottom: 10px;
+
+//         &::before {
+//           content: '✔';
+//           font-size: 14px;
+//           color: var(--primary-color, #28a745);
+//           background-color: #e3ffe5;
+//           border-radius: 50%;
+//           width: 22px;
+//           height: 22px;
+//           display: flex;
+//           align-items: center;
+//           justify-content: center;
+//           margin-top: 2px;
+//           flex-shrink: 0;
+//         }
+//       }
+//     }
+
+//     // ol {
+//     //   list-style: none;
+//     //   counter-reset: item;
+
+//     //   li {
+//     //     counter-increment: item;
+//     //     display: flex;
+//     //     align-items: flex-start;
+//     //     gap: 10px;
+//     //     margin-bottom: 10px;
+
+//     //     &::before {
+//     //       content: counter(item) '.';
+//     //       font-weight: bold;
+//     //       color: var(--primary-color, #007bff);
+//     //       min-width: 22px;
+//     //       text-align: right;
+//     //     }
+//     //   }
+//     // }
+//   }
+// }

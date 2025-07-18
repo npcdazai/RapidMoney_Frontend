@@ -1,21 +1,19 @@
 {
     "careerHeroSection": {
         "title": "Career",
-        "description": "Chillin' at RapidMoney",
+        "subtitle": "Chillin' at RapidMoney",
         "images": [
             "/components/career-section/assets/career.png",
             "/components/career-section/assets/career2.png",
             "/components/career-section/assets/career3.png"
         ],
-        "coreValues": {
-            "title": "Core Values",
-            "values": [
-                "Our employees are our perennial assets",
-                "Due recognitions and rewards for individuals ability's and performance",
-                "Create and maintain a safe and healthy working environment",
-                "Recruit and promote based on merit and performance"
-            ]
-        }
+        "coreTitle": "Core Values",
+        "coreValues": [
+            "Our employees are our perennial assets",
+            "Due recognitions and rewards for individuals ability's and performance",
+            "Create and maintain a safe and healthy working environment",
+            "Recruit and promote based on merit and performance"
+        ]
     },
     "lifeAtRapidMoney": {
         "title": "Life at RapidMoney",

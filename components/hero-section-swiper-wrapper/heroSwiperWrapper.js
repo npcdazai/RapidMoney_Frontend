@@ -15,56 +15,59 @@ import Image from 'next/image';
 
 const heroSection = homePageData.heroSection;
 
-const heroSlides = [
-    {
-        "title": "Your <span>Dreams</span/>. Our Loans.",
-        "description": "Empower your aspirations with customizable loan solutions that adapt to your needs—enjoy transparent terms, swift approvals, and a seamless digital experience from application to funding.",
-        "ctaButton": {
-            "label": "Apply Now",
-            "link": "/apply"
-        },
-        "image": "happy-man-phone.png",
-        "floatingCoins": [
-            "coin-left.png",
-            "coin-top-right.png",
-            "coin-bottom-right.png",
-            "note-float.png"
-        ]
-    },
-    {
-        "title": "Smart Loans for <span>Health</span/> Needs",
-        "description": "Empower your aspirations with customizable loan solutions that adapt to your needs—enjoy transparent terms, swift approvals, and a seamless digital experience from application to funding.",
-        "ctaButton": {
-            "label": "Apply Now",
-            "link": "/apply"
-        },
-        "image": "happy-man-phone.png",
-        "floatingCoins": [
-            "coin-left.png",
-            "coin-top-right.png",
-            "coin-bottom-right.png",
-            "note-float.png"
-        ]
-    },
-    {
-        "title": "<span>Business</span/> Loans On Demand",
-        "description": "Empower your aspirations with customizable loan solutions that adapt to your needs—enjoy transparent terms, swift approvals, and a seamless digital experience from application to funding.",
-        "ctaButton": {
-            "label": "Apply Now",
-            "link": "/apply"
-        },
-        "image": "happy-man-phone.png",
-        "floatingCoins": [
-            "coin-left.png",
-            "coin-top-right.png",
-            "coin-bottom-right.png",
-            "note-float.png"
-        ]
-    },
-]
+// const heroSlides = [
+//     {
+//         "title": "Your <span>Dreams</span/>. Our Loans.",
+//         "description": "Empower your aspirations with customizable loan solutions that adapt to your needs—enjoy transparent terms, swift approvals, and a seamless digital experience from application to funding.",
+//         "ctaButton": {
+//             "label": "Apply Now",
+//             "link": "/apply"
+//         },
+//         "image": "happy-man-phone.png",
+//         "floatingCoins": [
+//             "coin-left.png",
+//             "coin-top-right.png",
+//             "coin-bottom-right.png",
+//             "note-float.png"
+//         ]
+//     },
+//     {
+//         "title": "Smart Loans for <span>Health</span/> Needs",
+//         "description": "Empower your aspirations with customizable loan solutions that adapt to your needs—enjoy transparent terms, swift approvals, and a seamless digital experience from application to funding.",
+//         "ctaButton": {
+//             "label": "Apply Now",
+//             "link": "/apply"
+//         },
+//         "image": "happy-man-phone.png",
+//         "floatingCoins": [
+//             "coin-left.png",
+//             "coin-top-right.png",
+//             "coin-bottom-right.png",
+//             "note-float.png"
+//         ]
+//     },
+//     {
+//         "title": "<span>Business</span/> Loans On Demand",
+//         "description": "Empower your aspirations with customizable loan solutions that adapt to your needs—enjoy transparent terms, swift approvals, and a seamless digital experience from application to funding.",
+//         "ctaButton": {
+//             "label": "Apply Now",
+//             "link": "/apply"
+//         },
+//         "image": "happy-man-phone.png",
+//         "floatingCoins": [
+//             "coin-left.png",
+//             "coin-top-right.png",
+//             "coin-bottom-right.png",
+//             "note-float.png"
+//         ]
+//     },
+// ]
 
 
-export default function HeroSwiperWrapper() {
+export default function HeroSwiperWrapper({ data }) {
+    const heroSlides = data || [];
+    
+    // console.log(heroSlides);
 
     const paginationRef = useRef([]);
 

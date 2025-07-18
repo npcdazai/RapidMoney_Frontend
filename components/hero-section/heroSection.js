@@ -97,6 +97,7 @@ const HeroSection = ({ data, paginationRef  }) => {
   return () => context.revert();
 }, []);
 
+  // console.log(data);
 
   return (
     <section className={`${styles.section} dark-bg flex items-center pt-[150px] sm:pt-[200px] hero-section-container`}>
@@ -113,9 +114,11 @@ const HeroSection = ({ data, paginationRef  }) => {
                 {data?.description}
               </span>
 
-              <Link href={data?.ctaButton.link} className="hero-button">
+              <Link href={'/apply'} className="hero-button">
+              {/* <Link href={data?.ctaButton.link} className="hero-button"> */}
                 <button className="apply-btn apply-btn-dark flex gap-2" >
-                  {data?.ctaButton.label}
+                  {/* {data?.ctaButton.label} */}
+                  Apply Now
                   <span className="primary-color"><RiArrowRightLine size={24} /></span>
                 </button>
               </Link>
@@ -129,7 +132,8 @@ const HeroSection = ({ data, paginationRef  }) => {
           <Col xs={24} lg={24} xl={16}>
             <div className={`w-full flex justify-center ${styles.personImage}`}>
               <Image
-                src={personImage}
+                // src={personImage}
+                src={data?.swiper_image?.[0]?.url}
                 alt="Hero"
                 width={900}
                 height={800}

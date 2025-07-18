@@ -12,6 +12,9 @@ import PersonalLoan from "@/components/personal-loan-section/personalLoan";
 import Testimonials from "@/components/testimonial-section/TestiMonials";
 import HeroBgSection from "@/components/hero-bg-section/heroBgSection";
 import HeroSwiperWrapper from "@/components/hero-section-swiper-wrapper/heroSwiperWrapper";
+import endpoints from "@/constants/endpoints";
+import { Suspense } from "react";
+import Loading from "./loading";
 
 
 // console.log(homePageData);
@@ -25,23 +28,60 @@ const loanData = homePageData.loanStep;
 const heroSection = homePageData.heroSection;
 const personalLoan = homePageData.personalLoanSection;
 const testimonialsData = homePageData.testimonialSection;
-export default function Home() {
+
+
+const getCMSPageBySlug = async () => {
+  try {
+    const response = await fetch(
+      process.env.NEXT_PUBLIC_API_URL +
+      endpoints.get_cms_page +
+      "/home",
+      { next: { revalidate: 3600 } }
+    );
+
+    return await response.json();
+  } catch (error) {
+    console.log("API call failed: ", error);
+    return null;
+  }
+};
+
+export default async function Home() {
+
+  const response = await getCMSPageBySlug();
+  // console.log(response);
 
   return (
+    // <>
+    //   <Header isDark={true} data={header} />
+    //   <HeroSection data={heroSection} />
+    //   <HeroBgSection/>
+    //   <HeroSwiperWrapper />
+    //   <Benefits data={benefitsData} />
+    //   <PersonalLoan data={personalLoan}/>
+    //   <LoanStep data={ loanData} />
+    //   <PartnersSection data={partner} />
+    //   <NewsSection data={newsData} />
+    //   <Testimonials data={testimonialsData} />
+      // <FaqSection data={faqSteps} />
+    //   <PromoSection data={promo} />
+    // </>
+
+
     <>
-      <Header isDark={true} data={header} />
-      {/* <HeroSection data={heroSection} /> */}
-      {/* <HeroBgSection/> */}
-      <HeroSwiperWrapper />
-      <Benefits data={benefitsData} />
-      <PersonalLoan data={personalLoan}/>
-      <LoanStep data={ loanData} />
-      <PartnersSection data={partner} />
-      <NewsSection data={newsData} />
-      {/* <Testimonials data={testimonialsData} /> */}
-      <FaqSection data={faqSteps} />
-      <PromoSection data={promo} />
-      {/* <Header isDark={!true } /> */}
+      <Suspense fallback={<Loading />}>
+        <Header isDark={true} data={header} />
+
+        <HeroSwiperWrapper data={response?.data?.pageData?.heroSlides} />
+        <Benefits data={response?.data?.pageData?.benefitSection} />
+        <PersonalLoan data={response?.data?.pageData?.personalLoanSection}/>
+        <LoanStep data={response?.data?.pageData?.loanStep} />
+        <PartnersSection data={response?.data?.pageData?.partnerSection} />
+        <NewsSection data={newsData} />
+        {/* <FaqSection data={faqSteps} /> */}
+        <FaqSection data={response?.data?.pageData?.faqSection} />
+        <PromoSection data={response?.data?.pageData?.promoSection} />
+      </Suspense>
     </>
 
   );

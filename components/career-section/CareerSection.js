@@ -8,8 +8,10 @@ import correct from "./assets/correct.svg"
 import { RiCheckLine } from 'react-icons/ri';
 
 const CareerSection = ({ data }) => {
-    if (!data) return null;
-    const { images, coreValues } = data;
+    // if (!data) return null;
+    // const { images, coreValues } = data;
+
+    // console.log(data);
 
     return (
         <section className={`${styles.section} pt-120 pb-60`}>
@@ -21,25 +23,48 @@ const CareerSection = ({ data }) => {
                             {data.title}
                         </h1>
                         <span className="block font-40 font-weight-bold">
-                            {data.description}
+                            {data.subtitle}
                         </span>
                     </div>
                 </div>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <span className='h-full'><Image src={career} width={580} height={280} alt="career image 1" className="rounded-xl w-full !h-full object-cover max-h-[280px]" /></span>
-                    <span className='h-full'><Image src={career2} width={580} height={280} alt="career image 2" className="rounded-xl w-full !h-full object-cover max-h-[280px]" /></span>
+                    <span className='h-full'>
+                        <Image
+                            src={data?.images1?.[0].url}
+                            // src={career}
+                            width={580}
+                            height={280}
+                            alt="career image 1"
+                            className="rounded-xl w-full !h-full object-cover max-h-[280px]"
+                        />
+                    </span>
+                    <span className='h-full'>
+                        <Image
+                            src={data?.images2?.[0].url}
+                            // src={career2}
+                            width={580}
+                            height={280}
+                            alt="career image 2"
+                            className="rounded-xl w-full !h-full object-cover max-h-[280px]"
+                        />
+                    </span>
                 </div>
                 <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 mt-4">
                     {/* Left - Core Values List */}
                     <div className="bg-[#F9F9F9] p-8 rounded-xl text-black lg:col-span-1">
-                        <h2 className="text-4xl font-bold mb-6">{coreValues.title}</h2>
+                        <h2 className="text-4xl font-bold mb-6">
+                            {data.coreTitle}
+                        </h2>
+
                         <ul className="space-y-10">
-                            {coreValues.values.map((item, index) => (
+                            {data.coreValues.map((item, index) => (
                                 <li key={index} className="flex items-start gap-3">
                                     <span className="w-6 h-6 min-w-[24px] text-[#6379F9] flex justify-center items-center rounded-full bg-[#4d43fe1c] self-start mt-1">
                                         <RiCheckLine size={18} />
                                     </span>
-                                    <span className="font-16 leading-tight">{item}</span>
+                                    <span className="font-16 leading-tight">
+                                        {item}
+                                    </span>
                                 </li>
                             ))}
                         </ul>
@@ -48,7 +73,8 @@ const CareerSection = ({ data }) => {
                     {/* Right - Image */}
                     <div className="lg:col-span-2">
                         <Image
-                            src={career3}
+                            // src={career3}
+                            src={data?.images3?.[0].url}
                             width={580}
                             height={350}
                             alt="career image 3"

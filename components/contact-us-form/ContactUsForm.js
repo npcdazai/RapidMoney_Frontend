@@ -13,6 +13,8 @@ const ContactUs = ({ data }) => {
         console.log('Form submitted:', values);
     };
 
+    console.log(data)
+
     return (
         <>
             <section className="container mx-auto pt-[80px] pb-60">
@@ -22,7 +24,7 @@ const ContactUs = ({ data }) => {
                             {data.title}
                         </h1>
                         <span className="block font-40 font-weight-bold">
-                            {data.description}
+                            {data.subtitle}
                         </span>
                     </div>
                 </div>
@@ -74,7 +76,14 @@ const ContactUs = ({ data }) => {
                                     <span className='font-16'>{data.address}</span>
                                 </div>
                                 <span className={`${styles.personImageContainer}`}>
-                                    <Image src={personImage} width={200} height={250} alt="person" className={styles.personImage} />
+                                    <Image
+                                        // src={personImage}
+                                        src={data?.contact_image?.[0]?.url}
+                                        width={200}
+                                        height={250}
+                                        alt="person"
+                                        className={styles.personImage}
+                                    />
                                 </span>
                             </div>
                             <div className='flex flex-wrap sm:flex-nowrap gap-4 w-full'>
