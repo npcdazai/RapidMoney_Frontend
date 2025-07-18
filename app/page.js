@@ -15,6 +15,7 @@ import HeroSwiperWrapper from "@/components/hero-section-swiper-wrapper/heroSwip
 import endpoints from "@/constants/endpoints";
 import { Suspense } from "react";
 import Loading from "./loading";
+import DynamicHead from "@/components/head/dynamicHead";
 
 
 // console.log(homePageData);
@@ -70,7 +71,7 @@ export default async function Home() {
 
     <>
       <Suspense fallback={<Loading />}>
-        <Header isDark={true} data={header} />
+        <DynamicHead isDark={true} />
 
         <HeroSwiperWrapper data={response?.data?.pageData?.heroSlides} />
         <Benefits data={response?.data?.pageData?.benefitSection} />

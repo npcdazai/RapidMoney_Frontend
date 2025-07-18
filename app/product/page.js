@@ -10,6 +10,7 @@ import ProductInstantAccess from "@/components/product-instant-access/productIns
 import productPageData from "@/json/product/product.json"
 import endpoints from "@/constants/endpoints";
 import Loading from "../loading";
+import DynamicHead from "@/components/head/dynamicHead";
 
 const getCMSPageBySlug = async () => {
   try {
@@ -40,7 +41,8 @@ export default async function page() {
   return (
     <>
       <Suspense fallback={<Loading />}>
-      <Header isDark={true} data={header} />
+        {/* <Header isDark={true} data={header} /> */}
+      <DynamicHead isDark={true} />
 
       <GlobalHeroSection data={response?.data?.pageData?.heroSection} />
       <ProductRepayment data={response?.data?.pageData?.repaymentData} />

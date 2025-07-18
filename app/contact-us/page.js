@@ -6,6 +6,7 @@ import homePageData from "@/json/homepage/home.json";
 import ContactMap from '@/components/contact-us-map/ContactMap';
 import endpoints from '@/constants/endpoints';
 import Loading from '../loading';
+import DynamicHead from '@/components/head/dynamicHead';
 
 const header = homePageData.header;
 
@@ -33,7 +34,8 @@ export default async function page() {
     <>
       {/* <ContactUs /> */}
       <Suspense fallback={<Loading />}>
-        <Header data={header} />
+        {/* <Header data={header} /> */}
+         <DynamicHead  />
         <ContactUsForm data={response?.data?.pageData?.contactSection} />
         {/* <ContactUsForm data={contactData} /> */}
         <ContactMap />

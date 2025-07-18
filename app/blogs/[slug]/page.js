@@ -6,6 +6,7 @@ import BlogDetailsData from "@/json/blogdetails/blogdetails.json";
 import PromoSection from "@/components/promo-section/promoSection";
 import endpoints from "@/constants/endpoints";
 import Loading from "@/app/loading";
+import DynamicHead from "@/components/head/dynamicHead";
 
 const header = homePageData.header;
 const promo = homePageData.promoSection;
@@ -118,7 +119,8 @@ const Page = async ({ params }) => {
   return (
     <>
       <Suspense fallback={<Loading />}>
-        <Header data={header} />
+        {/* <Header data={header} /> */}
+        <DynamicHead  />
         <BlogDetails data={response?.data} />
         <PromoSection data={promo} />
       </Suspense>

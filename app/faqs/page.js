@@ -5,6 +5,7 @@ import faqData from "@/json/faqs/faqs.json"
 import FaqSection from '@/components/faq/faq-section';
 import endpoints from '@/constants/endpoints';
 import Loading from '../loading';
+import DynamicHead from '@/components/head/dynamicHead';
 
 const header = homePageData.header;
 const faqSteps = faqData?.faqSteps
@@ -36,7 +37,8 @@ export default async function page() {
   return (
     <>
       <Suspense fallback={<Loading />}>
-        <Header data={header} />
+        {/* <Header data={header} /> */}
+         <DynamicHead  />
         <FaqSection data={response?.data?.pageData?.faqSection} />
       </Suspense>
     </>

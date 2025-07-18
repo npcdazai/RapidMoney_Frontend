@@ -6,6 +6,7 @@ import LendingPartners from '@/components/lending-partners-section/LendingPartne
 import PromoSection from '@/components/promo-section/promoSection';
 import endpoints from '@/constants/endpoints';
 import Loading from '../loading';
+import DynamicHead from '@/components/head/dynamicHead';
 
 
 const header = homePageData.header;
@@ -36,7 +37,8 @@ export default async function page() {
   return (
     <>
        <Suspense fallback={<Loading />}>
-      <Header data={header} />
+      {/* <Header data={header} /> */}
+       <DynamicHead  />
       {/* <LendingPartners data={partnerData} /> */}
       <LendingPartners data={response?.data?.pageData?.partners} />
         <PromoSection data={response?.data?.pageData?.promoSection} />

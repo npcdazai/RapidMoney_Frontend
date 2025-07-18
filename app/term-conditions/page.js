@@ -5,6 +5,7 @@ import termJson from "@/json/termConditions/term.json"
 import homePageData from "@/json/homepage/home.json";
 import { Suspense } from "react";
 import Loading from "../loading";
+import DynamicHead from "@/components/head/dynamicHead";
 
 
 const header = homePageData.header;
@@ -31,7 +32,8 @@ export default async function page() {
   return (
     <>
       <Suspense fallback={<Loading />}>
-          <Header data={header} />
+          {/* <Header data={header} /> */}
+           <DynamicHead  />
           <TermCondition data={termJson}/>
       </Suspense>
     </>

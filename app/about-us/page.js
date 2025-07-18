@@ -10,6 +10,7 @@ import homePageData from "@/json/homepage/home.json";
 import PromoSection from "@/components/promo-section/promoSection";
 import endpoints from "@/constants/endpoints";
 import Loading from "../loading";
+import DynamicHead from "@/components/head/dynamicHead";
 
 const getCMSPageBySlug = async () => {
   try {
@@ -38,7 +39,8 @@ export default async function page() {
   return (
     <>
        <Suspense fallback={<Loading />}>
-      <Header data={header} />
+      {/* <Header data={header} /> */}
+       <DynamicHead  />
       <AboutHero data={response?.data?.pageData?.whoWeAre} />
       <AboutSlider data={ response?.data?.pageData?.sliderSection} />
       <WhatSetsUsApart />

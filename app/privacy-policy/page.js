@@ -5,6 +5,7 @@ import homePageData from "@/json/homepage/home.json";
 import privacyData from "@/json/privacy/privacy.json"
 import { Suspense } from "react";
 import Loading from "../loading";
+import DynamicHead from "@/components/head/dynamicHead";
 
 
 const header = homePageData.header;
@@ -34,7 +35,8 @@ export default async function Home() {
   return (
     <>
       <Suspense fallback={<Loading />}>
-        <Header data={header} />
+        {/* <Header data={header} /> */}
+         <DynamicHead  />
         {/* <PrivacyPolicy data={response?.data?.pageData} /> */}
         <PrivacyPolicy data={privacyData} />
       </Suspense>

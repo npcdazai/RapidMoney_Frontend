@@ -7,6 +7,7 @@ import careerData from "@/json/career/career.json";
 import headerData from "@/json/header/header.json"
 import Loading from "../loading";
 import { Suspense } from "react";
+import DynamicHead from "@/components/head/dynamicHead";
 
 const career = careerData.careerHeroSection
 const lifeRapidData = careerData.lifeAtRapidMoney
@@ -36,7 +37,8 @@ export default async function CareerPage() {
   return (
     <>
       <Suspense fallback={<Loading />}>
-        <Header data={header} />
+        {/* <Header data={header} /> */}
+         <DynamicHead />
         <CareerSection data={response?.data?.pageData?.careerHeroSection} />
         <LifeAtRapidMoney data={response?.data?.pageData?.lifeAtRapidMoney} />
         <JobOpening data={response?.data?.pageData?.jobOpenings} />
