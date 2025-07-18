@@ -1,70 +1,16 @@
 // "use client";
 
-import { Row, Col, Input, Divider, Avatar } from "antd";
+import { Row, Col, Divider, Avatar } from "antd";
 import Image from "next/image";
 import styles from "./blog-details.module.scss";
 import Link from "next/link";
-import linkedin from "./assets/linkedin.svg";
-import twitter from "./assets/twitter.svg";
-import instagram from "./assets/instagram.svg";
-import facebook from "./assets/facebook.svg";
-// import { Swiper, SwiperSlide } from "swiper/react";
-// import "swiper/css";
-// import "swiper/css/navigation";
-// import { Navigation } from "swiper/modules";
 import BlogCard from "../blogs/BlogCard";
-// import blog1 from "./assets/blog-1.jpg";
-// import blog2 from "./assets/blog-2.jpg";
-// import blog3 from "./assets/blog-3.jpg";
-import authorImage from "./assets/author.png";
-// import { useEffect, useRef, useState } from "react";
-import {
-  RiArrowLeftLine,
-  RiArrowRightLine,
-  RiSearchLine,
-} from "react-icons/ri";
+import { RiArrowLeftLine, RiArrowRightLine } from "react-icons/ri";
 import dayjs from "dayjs";
 import BlogCategory from "@/components/blog-details-section/BlogCategoy";
-
-const socialLinks = [
-  {
-    platform: "LinkedIn",
-    icon: "linkedin",
-    url: "/#",
-  },
-  {
-    platform: "X",
-    icon: "x-twitter",
-    url: "/#",
-  },
-  {
-    platform: "Instagram",
-    icon: "instagram",
-    url: "/#",
-  },
-  {
-    platform: "Facebook",
-    icon: "facebook",
-    url: "/#",
-  },
-];
+import BlogShare from "@/components/blog-details-section/BlogShare";
 
 const BlogDetails = ({ data }) => {
-  //   const imageArray = [blog1, blog2, blog3];
-  //   const prevRef = useRef(null);
-  //   const nextRef = useRef(null);
-
-  //   const [isSwiperReady, setIsSwiperReady] = useState(false);
-
-  //   useEffect(() => {
-  //     setIsSwiperReady(true); // Trigger re-render when refs are mounted
-  //   }, []);
-  const socialIcons = {
-    linkedin: linkedin,
-    "x-twitter": twitter,
-    instagram: instagram,
-    facebook: facebook,
-  };
   return (
     <section className={`${styles.section} pt-120 pb-120`}>
       <div className="container mx-auto">
@@ -109,16 +55,16 @@ const BlogDetails = ({ data }) => {
               ></div>
             </div>
 
-            {/* <div className='border-dashed border-t border-[#B9B9B9]'></div> */}
             <Divider
               variant="dashed"
               style={{ borderColor: "#B9B9B9" }}
               dashed
             ></Divider>
 
-            <div className="flex gap-6 pt-10">
-              <span className="font-24">Share On</span>
-              <div className="flex items-center gap-3 flex-wrap">
+            {data?.title ? (
+              <div className="flex gap-6 pt-10">
+                {/* <span className="font-24">Share On</span> */}
+                {/* <div className="flex items-center gap-3 flex-wrap">
                 {socialLinks?.map((link, idx) => {
                   return (
                     <Link
@@ -138,47 +84,23 @@ const BlogDetails = ({ data }) => {
                     </Link>
                   );
                 })}
+              </div> */}
+                <BlogShare title={data?.title} />
               </div>
-            </div>
+            ) : null}
 
-            {/* Author Bio Swiper */}
             <div className="pt-8">
-              {/* {isSwiperReady && ( */}
-              {/* <Swiper
-                modules={[Navigation]}
-                navigation={{
-                  prevEl: prevRef.current,
-                  nextEl: nextRef.current,
-                }}
-                onInit={(swiper) => {
-                  swiper.params.navigation.prevEl = prevRef.current;
-                  swiper.params.navigation.nextEl = nextRef.current;
-                  swiper.navigation.init();
-                  swiper.navigation.update();
-                }}
-                spaceBetween={24}
-                slidesPerView={1}
-                className={`mb-8 ${styles.blogSwiper}`}
-              >
-                {data.authorBio.map((author, idx) => ( */}
-              {/* <SwiperSlide key={idx}> */}
               <div className="border border-[#C7C7C7] p-4 rounded-[24px] px-8 py-6 bg-white shadow flex flex-col gap-5">
                 <div className="flex gap-5">
-                  {/* <div className="w-16 h-16 rounded-full overflow-hidden bg-[#FFF5D6] flex items-center justify-center flex-shrink-0"> */}
-                  {/* <Image
-                      src={data?.author?.profileImg?.[0]?.url || authorImage}
-                      alt={
-                        data?.author?.firstName + " " + data?.author?.lastName
-                      }
-                      width={65}
-                      height={65}
-                      className="object-contain"
-                    /> */}
-                  <Avatar src={data?.author?.profileImg?.[0]?.url} size={65}>
-                    {data?.author?.firstName?.charAt(0) +
-                      data?.author?.lastName?.charAt(0)}
-                  </Avatar>
-                  {/* </div> */}
+                  {data?.author?.profileImg?.[0]?.url ? (
+                    <Avatar src={data?.author?.profileImg?.[0]?.url} size={65}>
+                    </Avatar>
+                  ) : (
+                    <Avatar size={65}>
+                      {data?.author?.firstName?.charAt(0) +
+                        data?.author?.lastName?.charAt(0)}
+                    </Avatar>
+                  )}
                   <div className="flex-1 gap-2 flex flex-col justify-center">
                     <span className="font-14 font-semibold text-[#737373]">
                       Author
@@ -196,10 +118,6 @@ const BlogDetails = ({ data }) => {
                   </span>
                 </div>
               </div>
-              {/* </SwiperSlide> */}
-              {/* ))}
-              </Swiper> */}
-              {/* )} */}
 
               <div className="flex justify-between items-center mt-4">
                 {data?.hasPrevious ? (
@@ -255,29 +173,6 @@ const BlogDetails = ({ data }) => {
           </Col>
 
           <Col xs={24} lg={8}>
-            {/* <div className="lg:sticky top-[100px] z-10">
-              <div className="border border-[#D9D9D9] rounded-t-lg p-[30px] bg-white">
-                <Input
-                  placeholder="Search Here..."
-                  className={`px-4 py-2 border border-[#D0D5DD] focus:border-[#B9B9B9] shadow-none ${styles.categoriesSearch}`}
-                  prefix={<RiSearchLine size={20} color="#667085" />}
-                />
-              </div>
-              <div className="border-t-0 border border-[#D9D9D9] rounded-b-lg p-[30px] bg-white">
-                <h4 className="font-semibold font-24 dark-color mb-4 mt-2">
-                  Categories
-                </h4>
-                <ul
-                  className={`font-16 space-y-4 text-[#4C4C4C] ${styles.categoriesList}`}
-                >
-                  {data.categories.map((cat, idx) => (
-                    <li key={idx} className="pl-2 list-disc list-inside">
-                      {cat}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </div> */}
             <BlogCategory />
           </Col>
         </Row>
