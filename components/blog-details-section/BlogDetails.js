@@ -1,5 +1,4 @@
-// "use client";
-
+"use client";
 import { Row, Col, Divider, Avatar } from "antd";
 import Image from "next/image";
 import styles from "./blog-details.module.scss";
@@ -9,8 +8,60 @@ import { RiArrowLeftLine, RiArrowRightLine } from "react-icons/ri";
 import dayjs from "dayjs";
 import BlogCategory from "@/components/blog-details-section/BlogCategoy";
 import BlogShare from "@/components/blog-details-section/BlogShare";
+import DOMPurify from "dompurify";
+
+const decodeHTMLEntities = (text) => {
+  if (typeof window === "undefined") return text; 
+
+  const textArea = document.createElement("textarea");
+  textArea.innerHTML = text;
+  return textArea.value;
+};
 
 const BlogDetails = ({ data }) => {
+   const decodedHTML = decodeHTMLEntities(data?.description);
+  const sanitizedHTML = DOMPurify.sanitize(decodedHTML, {
+    ADD_TAGS: ["iframe"],
+    ADD_ATTR: [
+      "allow",
+      "allowfullscreen",
+      "frameborder",
+      "scrolling",
+      "referrerpolicy",
+      "width",
+      "height",
+      "src",
+      "title",
+      "loading",
+    ],
+  });
+
+  const htmlWithLazyIframes = sanitizedHTML.replace(
+    /<iframe([^>]*?)src="([^"]+)"([^>]*)><\/iframe>/g,
+    (match, before, src, after) => {
+      const videoIdMatch = src.match(/\/embed\/([^/?]+)/);
+      const videoId = videoIdMatch ? videoIdMatch[1] : null;
+
+      if (!videoId) {
+        return match; 
+      }
+
+      const srcdocContent = `
+        <style>
+          * { padding: 0; margin: 0; overflow: hidden; }
+          html, body { height: 100%; }
+          img, span { position: absolute; width: 100%; top: 0; bottom: 0; margin: auto; }
+          span { height: 1.5em; text-align: center; font: 48px/1.5 sans-serif; color: white; text-shadow: 0 0 0.5em black; }
+        </style>
+        <a href="${src}">
+          <img src="https://img.youtube.com/vi/${videoId}/hqdefault.jpg" alt="Video Thumbnail">
+          <span>▶</span>
+        </a>
+      `.replace(/\n\s+/g, " "); // Minify the srcdoc content
+
+      return `<iframe ${before} src="${src}" srcdoc='${srcdocContent}' loading="lazy" style="max-width:560px; width:100%;  border-radius:20px" ${after}></iframe>`;
+    }
+  );
   return (
     <section className={`${styles.section} pt-120 pb-120`}>
       <div className="container mx-auto">
@@ -27,13 +78,13 @@ const BlogDetails = ({ data }) => {
         <Row gutter={[32, 32]}>
           {/* Main Content */}
           <Col xs={24} lg={16}>
-            <div className="rounded-xl overflow-hidden pb-[60px]">
+            <div className="rounded-xl overflow-hidden pb-[32px]">
               <Image
                 src={data?.featuredImg?.[0]?.url}
                 alt={data?.title}
                 width={740}
                 height={400}
-                className="rounded-[24px] object-cover max-w-[740px] w-full"
+                className="rounded-[24px] object-cover  w-full"
               />
             </div>
 
@@ -49,8 +100,9 @@ const BlogDetails = ({ data }) => {
 
             <div className="pb-11">
               <div
+              className={styles.blogContent}
                 dangerouslySetInnerHTML={{
-                  __html: data?.description || "",
+                  __html: htmlWithLazyIframes || data?.description || "",
                 }}
               ></div>
             </div>
@@ -93,8 +145,10 @@ const BlogDetails = ({ data }) => {
               <div className="border border-[#C7C7C7] p-4 rounded-[24px] px-8 py-6 bg-white shadow flex flex-col gap-5">
                 <div className="flex gap-5">
                   {data?.author?.profileImg?.[0]?.url ? (
-                    <Avatar src={data?.author?.profileImg?.[0]?.url} size={65}>
-                    </Avatar>
+                    <Avatar
+                      src={data?.author?.profileImg?.[0]?.url}
+                      size={65}
+                    ></Avatar>
                   ) : (
                     <Avatar size={65}>
                       {data?.author?.firstName?.charAt(0) +
@@ -111,10 +165,8 @@ const BlogDetails = ({ data }) => {
                   </div>
                 </div>
                 <div>
-                  <span className="dark-color font-16">
-                    Lorem Ipsum is simply dummy text of the printing and
-                    typesetting industry. Lorem Ipsum has been the industry's
-                    standard dummy text ever .
+                  <span className="dark-color font-14">
+                    {data?.author?.bio}
                   </span>
                 </div>
               </div>
