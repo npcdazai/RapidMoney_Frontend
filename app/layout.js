@@ -37,12 +37,12 @@ export default function RootLayout({ children }) {
             <ConfigProvider theme={antdConfig}>
               {/* <Header /> */}
               {/* <main className="min-h-[200px] py-8"> */}
-              {/* {children} */}
-              {/* </main> */}
-              {/* <Footer /> */}
-              <AppLayout>
                 {children}
-              </AppLayout>
+              {/* </main> */}
+              <Footer />
+              {/* <AppLayout>
+                {children}
+              </AppLayout> */}
             </ConfigProvider>
           </AntdRegistry>
         </body>

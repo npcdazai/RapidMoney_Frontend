@@ -73,7 +73,8 @@ export default function AboutHero({ data }) {
   }, []);
 
   return (
-    <section className="container mx-auto px-4 my-80">
+    <section className="relative">
+      <div className="container mx-auto px-4 my-80">
       <h2 ref={headingRef} className="font-36 text-black text-center font-bold mb-7">
         {data?.title}
       </h2>
@@ -88,13 +89,16 @@ export default function AboutHero({ data }) {
           </p>
         </div>
 
-        <Image
-          ref={imageRef}
-          src={aboutHeroImage}
-          alt="About"
-          className="absolute lg:relative right-0 -top-28 lg:top-0"
-        />
       </div>
+    </div>
+      <Image
+        ref={imageRef}
+        src={aboutHeroImage}
+        alt="About"
+        className="absolute  right-[80px] -top-28 lg:top-[50px]"
+        // className="absolute lg:relative right-0 -top-28 lg:top-0"
+      />
     </section>
+
   );
 }

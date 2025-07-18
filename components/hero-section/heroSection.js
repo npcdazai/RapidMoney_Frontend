@@ -100,7 +100,7 @@ const HeroSection = ({ data, paginationRef  }) => {
   // console.log(data);
 
   return (
-    <section className={`${styles.section} dark-bg flex items-center pt-[150px] sm:pt-[200px] hero-section-container`}>
+    <section className={`${styles.section} dark-bg flex items-center pt-[150px] sm:pt-[250px] hero-section-container`}>
       <div className="container mx-auto relative">
         <Row gutter={[32, 32]}>
           <Col xs={24} lg={24} xl={8}>
