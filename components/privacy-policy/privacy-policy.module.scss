@@ -42,6 +42,28 @@
     gap: 10px;
   }
 
+   li[data-list="bullet"] {
+    position: relative;
+    padding-left: 30px;
+    // padding-bottom: 16px;
+    /* space for the icon */
+    display: flex;
+    gap: 10px;
+  }
+
+  li[data-list="bullet"]::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 4px;
+    // top: 0.6em;
+    width: 24px;
+    height: 24px;
+    background-image: url('./assets/tik.svg');
+    background-size: contain;
+    background-repeat: no-repeat;
+  }
+
 }
 
 // privacy-policy.module.scss
