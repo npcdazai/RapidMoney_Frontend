@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 import styles from "./job-opening.module.scss"
 import { Input, Pagination, Modal, Form, Upload, Button, message, Row, Col } from 'antd';
 import { RiArrowRightLine, RiCloseLine, RiSearchLine } from 'react-icons/ri';
-import { UploadOutlined } from '@ant-design/icons';
+
 
 const JobOpening = ({ data }) => {
   const [currentPage, setCurrentPage] = useState(1);
@@ -46,16 +46,31 @@ const JobOpening = ({ data }) => {
           </div>
         </div>
         <div className='flex flex-col gap-6'>
-          {paginatedJobs.map((job, index) => (
+          {/* {paginatedJobs.map((job, index) => (
             <div key={index} className="bg-white border border-[var(--border-color)] rounded-lg p-6  md:flex-row  text-black ">
               <div className='flex items-center flex-wrap gap-3 justify-between w-full'>
                 <h3 className="font-24 font-weight-semibold w-1/3 lg:w-1/2">{job.title}</h3>
                 <span className="font-18 w-1/3 lg:w-1/4">{job.experience}</span>
-                {/* <span className="font-18 w-1/3 lg:w-1/4">Experience: {job.experience}</span> */}
                 <div className='w-1/3 lg:w-1/6 text-end'>
                   <button
                     // type={index === 0 ? 'default' : 'primary'}
                     className={`apply-btn  gap-2 ${index === 0 ? 'apply-btn-transparent' : 'apply-btn-green'} `}
+                    onClick={() => handleApply(job)}
+                  >
+                    Apply Now <RiArrowRightLine size={22} />
+                  </button>
+                </div>
+              </div>
+            </div>
+          ))} */}
+          {paginatedJobs.map((job, index) => (
+            <div key={index} className="bg-white border border-[var(--border-color)] rounded-lg p-6 text-black">
+              <div className="flex flex-col md:flex-row md:items-center md:gap-3 gap-4 justify-between w-full">
+                <h3 className="font-24 font-weight-semibold md:w-1/2">{job.title}</h3>
+                <span className="font-18 md:w-1/4">{job.experience}</span>
+                <div className="md:w-1/6 w-full md:text-end">
+                  <button
+                    className={`apply-btn gap-2 ${index === 0 ? 'apply-btn-transparent' : 'apply-btn-green'} w-full md:w-auto`}
                     onClick={() => handleApply(job)}
                   >
                     Apply Now <RiArrowRightLine size={22} />
@@ -95,7 +110,7 @@ const JobOpening = ({ data }) => {
               aria-label="Close"
               type="button"
             >
-             <RiCloseLine size={24}/>
+              <RiCloseLine size={24} />
             </button>
           </div>
           <div className='py-6 px-8'>

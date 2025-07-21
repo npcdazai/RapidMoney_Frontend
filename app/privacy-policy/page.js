@@ -29,16 +29,16 @@ const getCMSPageBySlug = async () => {
 
 export default async function Home() {
   const response = await getCMSPageBySlug();
-  console.log(response)
+  console.log(response?.data?.pageData)
 
 
   return (
     <>
       <Suspense fallback={<Loading />}>
         {/* <Header data={header} /> */}
-         <DynamicHead  />
-        {/* <PrivacyPolicy data={response?.data?.pageData} /> */}
-        <PrivacyPolicy data={privacyData} />
+        <DynamicHead />
+        <PrivacyPolicy data={response?.data?.pageData} />
+        {/* <PrivacyPolicy data={privacyData} /> */}
       </Suspense>
     </>
 
