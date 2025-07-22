@@ -103,23 +103,26 @@ const LifeAtRapidMoney = ({ data }) => {
         investment: investment,
         emotion: emotion,
         shield: shield,
-        invoice : invoice
+        invoice: invoice
     }
+
+    // console.log(data);
 
     return (
         <section className={`${styles.section} pb-60 pt-60`}>
             <div className="container mx-auto">
                 <h2 className="text-center font-40 font-weight-bold dark-color md:pb-[55px] pb-[25px]">{data?.title}</h2>
                 <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-                    {data?.benefits.map((benefit, index) => (
+                    {data?.features.map((feature, index) => (
                         <div key={index} className={`h-full flex flex-col gap-2 justify-between p-8 ${styles.benefitsCard}`}>
                             <div className="flex justify-between">
-                                <span className="font-18 font-weight-medium dark-color" dangerouslySetInnerHTML={{ __html: benefit.text }}></span>
+                                <span className="font-18 font-weight-medium dark-color" dangerouslySetInnerHTML={{ __html: feature.text }}></span>
                             </div>
                             <div className="flex justify-end">
                                 <Image
-                                    src={icon[benefit.icon]}
-                                    alt={benefit.text}
+                                    src={feature?.icon?.[0]?.url}
+                                    // src={icon[benefit.icon]}
+                                    alt={feature.text}
                                     width={40}
                                     height={40}
                                     className="object-contain"

@@ -8,6 +8,7 @@ export default function ContentCard({ title, description, imageSrc, imageAlt }) 
         <Image
           src={imageSrc}
           alt={imageAlt}
+          width={90}
           height={90}
           className="mb-4"
         />

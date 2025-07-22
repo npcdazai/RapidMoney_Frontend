@@ -75,14 +75,14 @@ export default function ResponsiveDrawer({ open, onClose, data }) {
                             <button
                                 type="primary"
                                 className="apply-btn apply-btn-green border-none font-semibold w-full mt-2"
-                                href="/apply"
+                                href="/"
                             >
                                 {data?.cta?.applyLabel}
                             </button>
 
                             <button
                                 type="default"
-                                href="/apply"
+                                href="/"
                                 className="apply-btn apply-btn-light flex justify-between items-center gap-2 border w-full mt-2"
                             >
                                 <span>Download</span>

@@ -73,7 +73,7 @@ useEffect(() => {
 
 
             <div className="flex-shrink-0 pt-6 px-6 z-10 relative">
-                <button onClick={() => setStep(prev => prev - 1)} className='text-[#333333] font-24 font-bold flex gap-2 items-center cursor-pointer'>
+                <button onClick={() => setStep(prev => prev - 1)} className='text-[#fff] font-24 font-bold flex gap-2 items-center cursor-pointer'>
                     <RiArrowLeftLine size={24} />
                     <span>Back</span>
                 </button>

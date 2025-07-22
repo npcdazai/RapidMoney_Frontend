@@ -5,7 +5,7 @@
       "textSecondary": "Money",
       "tagline": "Money when you need it - Rapidly and Reliably"
     },
-    "menu": [
+    "menus": [
       {
         "label": "Home",
         "link": "/",
@@ -14,13 +14,13 @@
       {
         "label": "About Us",
         "link": "/about-us",
-        "type": "dropdown",
+        "type": "link",
         "option": []
       },
       {
         "label": "Products",
         "link": "/product",
-        "type": "dropdown",
+        "type": "link",
         "option": []
       },
       {
