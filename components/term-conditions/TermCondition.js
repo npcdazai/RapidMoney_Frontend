@@ -103,7 +103,7 @@ function TermCondition({ data }) {
             className={`${styles.sectionHeading} font-32`}
             dangerouslySetInnerHTML={{ __html: section?.title }}
           />
-          <div dangerouslySetInnerHTML={{ __html: section?.content }} className="flex flex-col gap-4" />
+          <div dangerouslySetInnerHTML={{ __html: section?.content }} className="flex flex-col" />
         </div>
       ))}
     </section>
