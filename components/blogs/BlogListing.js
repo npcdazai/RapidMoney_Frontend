@@ -1,6 +1,6 @@
 "use client";
 import { Row, Col, Button, Spin, Empty, Result } from "antd";
-import React, { useEffect, useRef, useState } from "react";
+import React, { useCallback, useEffect, useRef, useState } from "react";
 import BlogCard from "@/components/blogs/BlogCard";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
