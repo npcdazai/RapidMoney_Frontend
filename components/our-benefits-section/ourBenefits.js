@@ -255,7 +255,7 @@ const Benefits = ({ data }) => {
       ctx.revert();
       ScrollTrigger.getAll().forEach(trigger => trigger.kill());
     };
-  }, [data?.features?.length]);
+  }, [data]);
 
   // Add loading state if data is not available
   if (!data || !data.features || !Array.isArray(data.features)) {

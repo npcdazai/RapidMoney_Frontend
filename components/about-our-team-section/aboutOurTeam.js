@@ -162,56 +162,115 @@
 //   );
 // }
 
+// "use client";
+
+// import React, { useRef } from "react";
+// import Image from "next/image";
+// import useScrollFadeInOnce from "@/animations/useScrollFadeInOnce";
+// import useStaggerFadeIn from "@/animations/useStaggerFadeIn";
+// import MemberCard from "./memberCard";
+
+// import HemaliImg from "@/components/about-our-team-section/assets/hemali.png";
+// import ChintanImg from "@/components/about-our-team-section/assets/chintan.png";
+// import AnkurImg from "@/components/about-our-team-section/assets/ankur.png";
+// import AshwaniImg from "@/components/about-our-team-section/assets/ashwani.png";
+
+
+// export default function AboutOurTeam({ data }) {
+//   const sectionTitleRefs = data.sections.map(() => useScrollFadeInOnce());
+//   const sectionCardRefs = data.sections.map(() => useStaggerFadeIn());
+
+//   const titleRef1 = useScrollFadeInOnce();
+//   const titleRef2 = useScrollFadeInOnce();
+//   const leaderRefs = useStaggerFadeIn();
+//   const teamRefs = useStaggerFadeIn();
+//   return (
+//     <section className="bg-white px-4 z-50 relative">
+//       <div className="py-24 max-w-6xl mx-auto">
+//         {data.sections.map((section, sectionIndex) => (
+//           <div key={section.title} className="mb-20 md:mb-24">
+//             <h2
+//               className="font-40 text-black font-bold text-center mb-10"
+//               ref={sectionTitleRefs[sectionIndex]}
+//             >
+//               {section.title}
+//             </h2>
+//             <div className="flex justify-center flex-wrap gap-8">
+//               {section.persons.map((person, i) => {
+//                 const imgObj = person.image?.[0] || {};
+//                 return (
+//                   <MemberCard
+//                     key={person.name}
+//                     name={person.name}
+//                     title={person.designation}
+//                     description={person.description}
+//                     imgUrl={imgObj.url}
+//                     alt={imgObj.alt_name || person.name}
+//                     linkedin={person.linkedin}
+//                     cardRef={(el) =>
+//                       (sectionCardRefs[sectionIndex].current[i] = el)
+//                     }
+//                   />
+//                 );
+//               })}
+//             </div>
+//           </div>
+//         ))}
+//       </div>
+//     </section>
+//   );
+// }
+
+
 "use client";
 
-import React, { useRef } from "react";
-import Image from "next/image";
+import React from "react";
 import useScrollFadeInOnce from "@/animations/useScrollFadeInOnce";
 import useStaggerFadeIn from "@/animations/useStaggerFadeIn";
 import MemberCard from "./memberCard";
 
-import HemaliImg from "@/components/about-our-team-section/assets/hemali.png";
-import ChintanImg from "@/components/about-our-team-section/assets/chintan.png";
-import AnkurImg from "@/components/about-our-team-section/assets/ankur.png";
-import AshwaniImg from "@/components/about-our-team-section/assets/ashwani.png";
-
-
 export default function AboutOurTeam({ data }) {
-  const sectionTitleRefs = data.sections.map(() => useScrollFadeInOnce());
-  const sectionCardRefs = data.sections.map(() => useStaggerFadeIn());
+  // Assuming two sections (customize as needed)
+  const titleRef1 = useScrollFadeInOnce();
+  const titleRef2 = useScrollFadeInOnce();
+  const cardRefs1 = useStaggerFadeIn();
+  const cardRefs2 = useStaggerFadeIn();
 
   return (
     <section className="bg-white px-4 z-50 relative">
       <div className="py-24 max-w-6xl mx-auto">
-        {data.sections.map((section, sectionIndex) => (
-          <div key={section.title} className="mb-20 md:mb-24">
-            <h2
-              className="font-40 text-black font-bold text-center mb-10"
-              ref={sectionTitleRefs[sectionIndex]}
-            >
-              {section.title}
-            </h2>
-            <div className="flex justify-center flex-wrap gap-8">
-              {section.persons.map((person, i) => {
-                const imgObj = person.image?.[0] || {};
-                return (
-                  <MemberCard
-                    key={person.name}
-                    name={person.name}
-                    title={person.designation}
-                    description={person.description}
-                    imgUrl={imgObj.url}
-                    alt={imgObj.alt_name || person.name}
-                    linkedin={person.linkedin}
-                    cardRef={(el) =>
-                      (sectionCardRefs[sectionIndex].current[i] = el)
-                    }
-                  />
-                );
-              })}
+        {data.sections.map((section, sectionIndex) => {
+          const titleRef = sectionIndex === 0 ? titleRef1 : titleRef2;
+          const cardRefs = sectionIndex === 0 ? cardRefs1 : cardRefs2;
+
+          return (
+            <div key={section.title} className="mb-20 md:mb-24">
+              <h2
+                className="font-40 text-black font-bold text-center mb-10"
+                ref={titleRef}
+              >
+                {section.title}
+              </h2>
+              <div className="flex justify-center flex-wrap gap-8">
+                {section.persons.map((person, i) => {
+                  const imgObj = person.image?.[0] || {};
+                  return (
+                    <MemberCard
+                      key={person.name}
+                      name={person.name}
+                      title={person.designation}
+                      description={person.description}
+                      imgUrl={imgObj.url}
+                      alt={imgObj.alt_name || person.name}
+                      linkedin={person.linkedin}
+                      cardRef={(el) => (cardRefs.current[i] = el)}
+                    />
+                  );
+                })}
+              </div>
             </div>
-          </div>
-        ))}
+          );
+        })}
       </div>
     </section>
   );

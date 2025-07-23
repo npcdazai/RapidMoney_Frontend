@@ -26,7 +26,41 @@ export default function BlogListing() {
   const searchParams = useSearchParams();
   const category = searchParams.get("category");
 
-  const getBlogs = async (pageNum = 1, initialLoad = false) => {
+  // const getBlogs = async (pageNum = 1, initialLoad = false) => {
+  //   if (isFetching) return;
+  //   if (total !== null && blogs.length >= total) return;
+
+  //   setIsFetching(true);
+  //   if (!initialLoad) setLoadingMore(true);
+  //   else setLoading(true);
+
+  //   try {
+  //     const api = requests();
+  //     let url = `${endpoints.get_blogs}?page=${pageNum}&limit=6`;
+  //     if (category) url += `&category=${category}`;
+
+  //     const response = await api.get(url);
+
+  //     const data = response?.data || {
+  //       data: [],
+  //       total: 0,
+  //       current_page: pageNum,
+  //     };
+
+  //     setBlogs((prev) => (pageNum === 1 ? data.data : [...prev, ...data.data]));
+  //     setTotal(data?.pagination?.total);
+  //     setPage(data?.pagination?.currentPage);
+  //   } catch (error) {
+  //     console.error("Failed to fetch blogs:", error);
+  //   } finally {
+  //     setLoading(false);
+  //     setLoadingMore(false);
+  //     setIsFetching(false);
+  //   }
+  // };
+
+  const getBlogs = useCallback(
+  async (pageNum = 1, initialLoad = false) => {
     if (isFetching) return;
     if (total !== null && blogs.length >= total) return;
 
@@ -57,7 +91,9 @@ export default function BlogListing() {
       setLoadingMore(false);
       setIsFetching(false);
     }
-  };
+  },
+  [isFetching, total, blogs.length, category] // include all dependencies used inside the function
+);
 
   // Animation + initial data fetch
   useEffect(() => {
@@ -81,7 +117,7 @@ export default function BlogListing() {
     return () => {
       ScrollTrigger.getAll().forEach((t) => t.kill());
     };
-  }, [category]);
+  }, [category,getBlogs]);
 
   // Animate blog cards on update
   useEffect(() => {
