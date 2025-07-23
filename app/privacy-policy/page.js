@@ -39,7 +39,7 @@ export default async function Home() {
       <Suspense fallback={<Loading />}>
         {/* <Header data={header} /> */}
         <DynamicHead />
-        <PrivacyPolicy data={response?.data?.pageData} />
+        <PrivacyPolicy data={response?.data?.pageData?.privacySection} />
         {/* <PrivacyPolicy data={privacyData} /> */}
       </Suspense>
     </>

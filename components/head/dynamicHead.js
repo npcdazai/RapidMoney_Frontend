@@ -1,8 +1,9 @@
+import Loading from "@/app/loading";
 import Header from "@/components/head/head";
 
 import endpoints from "@/constants/endpoints";
-// import { Suspense } from "react";
-// import Loading from "./loading";
+import { Suspense } from "react";
+
 
 const getCMSPageBySlug = async () => {
   try {
@@ -10,7 +11,9 @@ const getCMSPageBySlug = async () => {
       process.env.NEXT_PUBLIC_API_URL +
       endpoints.get_cms_page +
       "/header",
-      { next: { revalidate: 3600 } }
+      {
+        next: { revalidate: 300 }, // 300 seconds = 5 minutes
+      }
     );
 
     return await response.json();
@@ -28,9 +31,9 @@ export default async function DynamicHead({ isDark }) {
   return (
 
     <>
-      {/* <Suspense fallback={<Loading />}> */}
+      <Suspense fallback={<Loading />}>
       <Header data={response?.data?.pageData?.header} isDark={isDark} />
-      {/* </Suspense> */}
+      </Suspense>
     </>
 
   );

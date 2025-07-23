@@ -21,5 +21,34 @@
       "proof reading and alignment required YOU DO NOT AGREE TO THIS POLICY OR ANY PART THEREOF, PLEASE DO NOT USE/ ACCESS/ DOWNLOAD/ INSTALL THE PLATFORM OR ANY PART THEREOF",
       "For the users consenting to continue accessing the Platform and avail the Services, this Privacy Policy explains our policies and practices regarding the collection, use, and disclosure of Your information."
     ]
-  }
+  },
+
+    "privacySection": {
+        "sections": [
+            {
+                "description": "<ol><li data-list=\"bullet\"><span class=\"ql-ui\" contenteditable=\"false\"></span>You hereby expressly consent to provide the information that may be required in relation to the Services (as defined below) being rendered on the Platform by us. You acknowledge that we shall collect the information detailed under this Privacy Policy to facilitate lending &amp; non-lending services by partnering with various financial lenders, third parties, service providers, etc based on your requirement to avail such Services (“Services”). </li></ol>",
+                "title": "CONSENT"
+            },
+            {
+                "description": "<p> The collection of information under this Privacy Policy are conducted for the following categories of services:</p>",
+                "title": "COLLECTION OF INFORMATION"
+            }
+        ],
+        "title": "Privacy Policy",
+        "intro": "<ol><li data-list=\"bullet\"><span class=\"ql-ui\" contenteditable=\"false\"></span>We, at RapidMoney. (“MoneyTime Technology Solutions Pvt Ltd” or “We”) understand Privacy and its value. Therefore, it is all the more important for us to make You (“You” or “Customer” or “User”), the User of the website www.rapidmoney.in (the “Website”) and its associated mobile applications, MoneyTime Technology Solutions Pvt Ltd (“Application\" or \"App”) (collectively, the “Platform”) understand the reason behind collection of your information and its usage and the manner in which we collect, use, store and share information about you (“Privacy Policy”). This Privacy Policy has been prepared in compliance with: a.Information Technology (Reasonable Security Practices and Procedures and Sensitive Personal Data or Information) Rules, 2011; b.Information Technology (Intermediary Guidelines and Digital Media Ethics Code) Rules, 2021 c.Guidelines on Digital Lending issued by the Reserve Bank of India (RBI), 2025; d. Other applicable acts, regulations and rules which require the publishing of a privacy policy for handling of or dealing in personal information including sensitive personal data or information and all applicable laws, regulations, guidelines provided by applicable regulatory authorities including but not limited to the RBI. </li></ol>"
+    },
+    "seoSetting": {
+        "meta_title": "Rapid Money",
+        "meta_description": "Rapid Money",
+        "feature_image": [
+            {
+                "uid": 1753254760844,
+                "url": "http://qg8gwsg8okkoww4sowwgs0c8.3.7.92.238.sslip.io/uploads/1753254760681-166519946.png",
+                "name": "Group 1000002601.png",
+                "title": "Group 1000002601",
+                "alt_name": "Group 1000002601",
+                "is_visible": true
+            }
+        ]
+    }
 }

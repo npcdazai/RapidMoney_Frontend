@@ -92,9 +92,9 @@ function TermCondition({ data }) {
           className={`${styles.topHeading} font-40 font-weight-bold`}
           dangerouslySetInnerHTML={{ __html: data?.heading }}
         />
-        <p className="text-[#5047FE] font-16 text-center font-weight-medium">
+        {/* <p className="text-[#5047FE] font-16 text-center font-weight-medium">
           Last updated {data?.lastUpdated}
-        </p>
+        </p> */}
       </div>
 
       {data?.sections && data?.sections?.map((section, index) => (

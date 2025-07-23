@@ -21,7 +21,9 @@ const getCMSPageBySlug = async () => {
             process.env.NEXT_PUBLIC_API_URL +
             endpoints.get_cms_page +
             '/footer',
-            { next: { revalidate: 3600 } }
+            {
+                next: { revalidate: 300 }, // 300 seconds = 5 minutes
+            }
         );
         return await response.json();
     } catch (error) {
@@ -44,7 +46,7 @@ const Footer = async () => {
         google,
     };
 
-    const socialData = [    
+    const socialData = [
         { icon: 'linkedin', url: social_link.linkdin_link },
         { icon: 'twitter', url: social_link.twitter_link },
         { icon: 'youtube', url: social_link.youtube_link },

@@ -18,7 +18,7 @@ const getCMSPageBySlug = async () => {
       process.env.NEXT_PUBLIC_API_URL +
       endpoints.get_cms_page +
       "/lending-partners",
-       {
+      {
         next: { revalidate: 300 }, // 300 seconds = 5 minutes
       }
     );
@@ -38,13 +38,13 @@ export default async function page() {
 
   return (
     <>
-       <Suspense fallback={<Loading />}>
-      {/* <Header data={header} /> */}
-       <DynamicHead  />
-      {/* <LendingPartners data={partnerData} /> */}
-      <LendingPartners data={response?.data?.pageData?.partners} />
+      <Suspense fallback={<Loading />}>
+        {/* <Header data={header} /> */}
+        <DynamicHead />
+        {/* <LendingPartners data={partnerData} /> */}
+        <LendingPartners data={response?.data?.pageData?.partners} />
         <PromoSection data={response?.data?.pageData?.promoSection} />
-        </Suspense>
+      </Suspense>
     </>
   )
 }

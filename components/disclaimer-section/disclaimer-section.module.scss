@@ -1,0 +1,67 @@
+.section {
+
+
+  .checkCircle {
+    color: var(--primary-color);
+    background-color: #e3ffe5;
+    border-radius: 50%;
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    // margin-top: 10px;
+  }
+
+  .sectionHeading {
+    font-size: 32px;
+    font-weight: 700;
+    line-height: 128%;
+    text-align: start;
+    padding-bottom: 24px;
+
+  }
+
+  .section1Subtitle {
+
+    line-height: 128%;
+    font-size: 16px;
+    word-wrap: break-word;
+  }
+
+
+  .sectionContent {
+    font-size: 16px;
+    line-height: 148%;
+    padding-top: 8px;
+
+    word-wrap: break-word;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+   li[data-list="bullet"] {
+    position: relative;
+    padding-left: 30px;
+    // padding-bottom: 16px;
+    /* space for the icon */
+    display: flex;
+    gap: 10px;
+  }
+
+  li[data-list="bullet"]::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 4px;
+    // top: 0.6em;
+    width: 24px;
+    height: 24px;
+    background-image: url('./assets/tik.svg');
+    background-size: contain;
+    background-repeat: no-repeat;
+  }
+
+}

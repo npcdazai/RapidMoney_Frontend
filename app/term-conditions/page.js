@@ -38,7 +38,7 @@ export default async function page() {
           {/* <Header data={header} /> */}
            <DynamicHead  />
           {/* <TermCondition data={termJson}/> */}
-          <TermCondition data={response?.data?.pageData}/>
+          <TermCondition data={response?.data?.pageData?.termConditionSection}/>
 
       </Suspense>
     </>

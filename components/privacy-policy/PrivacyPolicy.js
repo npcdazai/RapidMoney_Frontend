@@ -56,15 +56,17 @@ import styles from './privacy-policy.module.scss';
 const PrivacyPolicy = ({ data }) => {
   if (!data) return null;
 
+  console.log(data)
+
   return (
     <section className={`container mx-auto pt-120 pb-120 ${styles.section}`}>
       <h1 className={`${styles.topHeading} pb-60 font-40 font-weight-bold text-center`}>
         {data.title}
       </h1>
 
-      {data?.intro?.text && (
+      {data?.intro && (
         <div className={`pb-10 ${styles.introWrapper}`}>
-          <p className={styles.sectionIntro}>{data.intro.text}</p>
+          <p className={styles.sectionIntro} dangerouslySetInnerHTML={{ __html: data?.intro }} />
         </div>
       )}
 
