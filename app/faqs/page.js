@@ -17,7 +17,9 @@ const getCMSPageBySlug = async () => {
       process.env.NEXT_PUBLIC_API_URL +
       endpoints.get_cms_page +
       "/faq",
-      { next: { revalidate: 3600 } }
+      {
+        next: { revalidate: 300 }, // 300 seconds = 5 minutes
+      }
     );
 
     return await response.json();

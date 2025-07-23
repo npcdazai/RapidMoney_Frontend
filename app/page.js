@@ -37,7 +37,9 @@ const getCMSPageBySlug = async () => {
       process.env.NEXT_PUBLIC_API_URL +
       endpoints.get_cms_page +
       "/home",
-      { next: { revalidate: 3600 } }
+      {
+        next: { revalidate: 300 }, // 300 seconds = 5 minutes
+      }
     );
 
     return await response.json();
@@ -64,7 +66,7 @@ export default async function Home() {
     //   <PartnersSection data={partner} />
     //   <NewsSection data={newsData} />
     //   <Testimonials data={testimonialsData} />
-      // <FaqSection data={faqSteps} />
+    // <FaqSection data={faqSteps} />
     //   <PromoSection data={promo} />
     // </>
 
@@ -75,7 +77,7 @@ export default async function Home() {
 
         <HeroSwiperWrapper data={response?.data?.pageData?.heroSlides} />
         <Benefits data={response?.data?.pageData?.benefitSection} />
-        <PersonalLoan data={response?.data?.pageData?.personalLoanSection}/>
+        <PersonalLoan data={response?.data?.pageData?.personalLoanSection} />
         <LoanStep data={response?.data?.pageData?.loanStep} />
         <PartnersSection data={response?.data?.pageData?.partnerSection} />
         <NewsSection data={response?.data?.pageData?.newsSection} />

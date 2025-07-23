@@ -18,7 +18,9 @@ const getCMSPageBySlug = async () => {
       process.env.NEXT_PUBLIC_API_URL +
       endpoints.get_cms_page +
       "/about-us",
-      { next: { revalidate: 3600 } }
+     {
+        next: { revalidate: 300 }, // 300 seconds = 5 minutes
+      }
     );
 
     return await response.json();
@@ -38,15 +40,15 @@ export default async function page() {
 
   return (
     <>
-       <Suspense fallback={<Loading />}>
-      {/* <Header data={header} /> */}
-       <DynamicHead  />
-      <AboutHero data={response?.data?.pageData?.whoWeAre} />
-      <AboutSlider data={ response?.data?.pageData?.sliderSection} />
-      <WhatSetsUsApart />
-      <AboutCEO data={response?.data?.pageData?.aboutCeo}/>
-      <AboutOurTeam data={response?.data?.pageData?.ourTeam}/>
-      <PromoSection data={response?.data?.pageData?.promoSection} />
+      <Suspense fallback={<Loading />}>
+        {/* <Header data={header} /> */}
+        <DynamicHead />
+        <AboutHero data={response?.data?.pageData?.whoWeAre} />
+        <AboutSlider data={response?.data?.pageData?.sliderSection} />
+        <WhatSetsUsApart />
+        <AboutCEO data={response?.data?.pageData?.aboutCeo} />
+        <AboutOurTeam data={response?.data?.pageData?.ourTeam} />
+        <PromoSection data={response?.data?.pageData?.promoSection} />
       </Suspense>
 
       {/* <Header data={header} />

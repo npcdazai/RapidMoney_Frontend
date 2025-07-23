@@ -17,9 +17,8 @@ const getBlog = async (slug) => {
       process.env.NEXT_PUBLIC_API_URL +
         endpoints.get_blogs_by_slug +
         `/${slug}`,
-      {
-        // next: { revalidate: 600 }
-        next: { revalidate: 3600 },
+       {
+        next: { revalidate: 300 }, // 300 seconds = 5 minutes
       }
     );
 
