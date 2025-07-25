@@ -13,7 +13,7 @@ export default function RefundPolicy({ data }) {
                 <div key={idx} className={`${styles.sectionBlock} *: ${idx > 0 ? 'mt-8' : ''}`}>
                     {sec?.title && <h2 className={styles.sectionHeading}>{sec.title}</h2>}
                     <div
-                        className={styles.richTextWrapper}
+                        className={`${styles.richTextWrapper} ql-editor`}
                         dangerouslySetInnerHTML={{ __html: sec.description }}
                     />
                 </div>

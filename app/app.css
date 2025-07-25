@@ -13,3 +13,27 @@
   --breakpoint-xl: 1200px;
   --breakpoint-xxl: 1600px;
 }
+
+.ql-editor ol {
+  counter-reset: custom-counter;
+  /* padding-left: 30px; */
+}
+
+.ql-editor li[data-list="ordered"] {
+  position: relative;
+  counter-increment: custom-counter;
+  padding-left: 30px;
+  display: flex;
+  /* gap: 10px; */
+  align-items: flex-start;
+  padding-bottom: 16px;
+}
+
+.ql-editor li[data-list="ordered"]::before {
+  content: counter(custom-counter) ".";
+  position: absolute;
+  left: 6px;
+  /* top: 2px; */
+  font-weight: bold;
+  font-size: 16px;
+}
