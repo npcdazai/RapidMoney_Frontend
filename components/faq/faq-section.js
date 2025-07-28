@@ -243,12 +243,33 @@ const FaqSection = ({ data }) => {
               className={`${styles.faqTabs}`}
             >
               {steps.map((step, index) => (
+                // <TabPane
+                //   tab={
+                //     index === 0 ? (
+                //       // step.step === 1 ? (
+                //       <div className="flex items-center w-full gap-2">
+                //         <span className="inline-block">{step.tabTitle}</span>
+                //         <Image
+                //           src={rapidMoneyLogo}
+                //           alt="Rapid Money Logo"
+                //           className="inline-block object-contain align-middle max-w-[95px] min-w-[95px] w-full"
+                //         />
+                //       </div>
+                //     ) : (
+                //       step.tabTitle
+                //     )
+                //   }
+                //   key={String(step.step || index)}
+                //   className={styles.faqTabsPane}
+                // >
                 <TabPane
                   tab={
-                    index === 0 ? (
+                    // index === 0 ? (
                       // step.step === 1 ? (
-                      <div className="flex items-center w-full gap-2">
-                        <span className="inline-block">{step.tabTitle}</span>
+                      (step.tabTitle?.includes("Rapid Money")) ?
+                      (
+                        <div className="flex items-center w-full gap-2">
+                        <span className="inline-block"> {step.tabTitle?.replace("Rapid Money", "").trim()}</span>
                         <Image
                           src={rapidMoneyLogo}
                           alt="Rapid Money Logo"

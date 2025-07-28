@@ -1,54 +1,20 @@
 .section {
 
-
-  .checkCircle {
-    color: var(--primary-color);
-    background-color: #e3ffe5;
-    border-radius: 50%;
-    width: 24px;
-    height: 24px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-shrink: 0;
-    // margin-top: 10px;
+  p,
+  span,
+  li {
+    text-align: justify;
   }
 
-  .sectionHeading {
-    font-size: 32px;
-    font-weight: 700;
-    line-height: 128%;
-    text-align: start;
-    padding-bottom: 24px;
-
+  a {
+    color: #1155cc;
+    cursor: pointer;
   }
 
-  .section1Subtitle {
-
-    line-height: 128%;
-    font-size: 16px;
-    word-wrap: break-word;
-  }
-
-
-  .sectionContent {
-    font-size: 16px;
-    line-height: 148%;
-    padding-top: 8px;
-
-    word-wrap: break-word;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-  }
-
-   li[data-list="bullet"] {
+  li[data-list="bullet"] {
     position: relative;
     padding-left: 30px;
     padding-bottom: 16px;
-    /* space for the icon */
-    // display: flex;
-    gap: 10px;
   }
 
   li[data-list="bullet"]::before {
@@ -65,100 +31,3 @@
   }
 
 }
-
-// privacy-policy.module.scss
-
-// .section {
-//   .topHeading {
-//     font-size: 40px;
-//     font-weight: 700;
-//     line-height: 1.2;
-//     color: #212121;
-//   }
-
-//   // .introWrapper {
-//   //   max-width: 850px;
-//   //   margin: 0 auto;
-//   // }
-
-//   .sectionIntro {
-//     font-size: 18px;
-//     line-height: 1.6;
-//     color: #555;
-//   }
-
-//   .sectionBlock {
-//     margin-bottom: 48px;
-//   }
-
-//   .sectionHeading {
-//     font-size: 28px;
-//     font-weight: 700;
-//     margin-bottom: 16px;
-//     color: #1a1a1a;
-//   }
-
-//   .richTextWrapper {
-//     font-size: 16px;
-//     color: #333;
-//     line-height: 1.7;
-
-//     p {
-//       margin-bottom: 12px;
-//     }
-
-//     ul,
-//     ol {
-//       padding-left: 0;
-//       margin-left: 0;
-//     }
-
-//     ol {
-//       list-style: none;
-//       padding-left: 0;
-
-//       li {
-//         display: flex;
-//         align-items: flex-start;
-//         gap: 10px;
-//         margin-bottom: 10px;
-
-//         &::before {
-//           content: '✔';
-//           font-size: 14px;
-//           color: var(--primary-color, #28a745);
-//           background-color: #e3ffe5;
-//           border-radius: 50%;
-//           width: 22px;
-//           height: 22px;
-//           display: flex;
-//           align-items: center;
-//           justify-content: center;
-//           margin-top: 2px;
-//           flex-shrink: 0;
-//         }
-//       }
-//     }
-
-//     // ol {
-//     //   list-style: none;
-//     //   counter-reset: item;
-
-//     //   li {
-//     //     counter-increment: item;
-//     //     display: flex;
-//     //     align-items: flex-start;
-//     //     gap: 10px;
-//     //     margin-bottom: 10px;
-
-//     //     &::before {
-//     //       content: counter(item) '.';
-//     //       font-weight: bold;
-//     //       color: var(--primary-color, #007bff);
-//     //       min-width: 22px;
-//     //       text-align: right;
-//     //     }
-//     //   }
-//     // }
-//   }
-// }

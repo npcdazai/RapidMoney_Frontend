@@ -23,9 +23,6 @@
   position: relative;
   counter-increment: custom-counter;
   padding-left: 30px;
-  display: flex;
-  /* gap: 10px; */
-  align-items: flex-start;
   padding-bottom: 16px;
 }
 

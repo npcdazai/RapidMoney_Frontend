@@ -18,12 +18,15 @@ import {
   RiMenuUnfold4Fill,
 } from "react-icons/ri";
 import ResponsiveDrawer from "../responsive-drawer/ResponsiveDrawer";
+import { usePathname } from "next/navigation";
 
 const Header = ({ isDark = false, data }) => {
   const [open, setOpen] = useState(false);
   const [showHeader, setShowHeader] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
   const [isAtTop, setIsAtTop] = useState(true);
+
+  const pathName = usePathname()
 
   const showDrawer = () => setOpen(true);
   const onClose = () => setOpen(false);
@@ -47,7 +50,7 @@ const Header = ({ isDark = false, data }) => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, [lastScrollY]);
 
-  
+
 
   return (
 
@@ -82,52 +85,57 @@ const Header = ({ isDark = false, data }) => {
         <div className="flex items-center gap-5">
           {/* Desktop Menu */}
           <nav className="hidden xl:flex items-center gap-5">
-            {data?.menus?.map((item, idx) =>
-              item?.type === "dropdown" ? (
-                // <Dropdown
-                //     trigger="click"
-                //     menu={{
-                //         items: item?.option?.length > 0 && item?.option?.map((sub) => ({
-                //             key: sub?.link,
-                //             label: (
-                //                 <Link
-                //                     href={sub?.link}
-                //                     className="font-16 font-weight-medium"
-                //                     target={sub?.link_type === "external" ? "_blank" : "_self"}
-                //                 >
-                //                     {sub?.label}
-                //                 </Link>
-                //             ),
-                //         })),
-                //     }}
-                //     className={[
-                //         'navBarDropDown',
-                //         styles.dropdownWithArrow,
-                //     ].join(" ")}
-                //     key={idx}
-                // >
-                //         <Link key={idx} href={item?.link}>
-                //             <Flex align="center" gap={10}>
-                //                 <span className={styles.dropDownLink}>{item?.label}</span>
-                //                 <RiArrowDownSLine size={18} color={isDark ? "#fff" : "#000"} />
-                //             </Flex>
-                //         </Link>
-                // </Dropdown>
-                <Link key={idx} href={item?.redirect_path}>
-                  <Flex align="center" gap={10}>
-                    <span className={styles.dropDownLink}>{item?.item_name}</span>
-                    <RiArrowDownSLine
-                      className={styles.dropDownArrow}
-                      size={18}
-                      color={isDark && showHeader && isAtTop ? "#fff" : "#000"}
-                    />
-                  </Flex>
-                </Link>
-              ) : (
-                <Link key={idx} className="" href={item?.redirect_path}>
-                  <span className={styles.navLink}>{item?.item_name}</span>
-                </Link>
+            {data?.menus?.map((item, idx) => {
+              const isActive = pathName === item?.redirect_path;
+              // console.log(pathName, item?.redirect_path)
+              return (
+                item?.type === "dropdown" ? (
+                  // <Dropdown
+                  //     trigger="click"
+                  //     menu={{
+                  //         items: item?.option?.length > 0 && item?.option?.map((sub) => ({
+                  //             key: sub?.link,
+                  //             label: (
+                  //                 <Link
+                  //                     href={sub?.link}
+                  //                     className="font-16 font-weight-medium"
+                  //                     target={sub?.link_type === "external" ? "_blank" : "_self"}
+                  //                 >
+                  //                     {sub?.label}
+                  //                 </Link>
+                  //             ),
+                  //         })),
+                  //     }}
+                  //     className={[
+                  //         'navBarDropDown',
+                  //         styles.dropdownWithArrow,
+                  //     ].join(" ")}
+                  //     key={idx}
+                  // >
+                  //         <Link key={idx} href={item?.link}>
+                  //             <Flex align="center" gap={10}>
+                  //                 <span className={styles.dropDownLink}>{item?.label}</span>
+                  //                 <RiArrowDownSLine size={18} color={isDark ? "#fff" : "#000"} />
+                  //             </Flex>
+                  //         </Link>
+                  // </Dropdown>
+                  <Link key={idx} href={item?.redirect_path}>
+                    <Flex align="center" gap={10}>
+                      <span className={`${styles.dropDownLink} ${isActive ? '!text-[#79CA00]' : ''}`}>{item?.item_name}</span>
+                      <RiArrowDownSLine
+                        className={styles.dropDownArrow}
+                        size={18}
+                        color={isDark && showHeader && isAtTop ? "#fff" : "#000"}
+                      />
+                    </Flex>
+                  </Link>
+                ) : (
+                  <Link key={idx} className="" href={item?.redirect_path}>
+                    <span className={`${styles.navLink} ${isActive ? '!text-[#79CA00]' : ''}`}>{item?.item_name}</span>
+                  </Link>
+                )
               )
+            }
             )}
           </nav>
 
@@ -151,7 +159,7 @@ const Header = ({ isDark = false, data }) => {
                 >
                   <span>
                     {
-                      data?.cta?.downloadLabel 
+                      data?.cta?.downloadLabel
                     }
                   </span>
                   <Image

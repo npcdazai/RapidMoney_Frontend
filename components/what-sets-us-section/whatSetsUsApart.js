@@ -3,44 +3,44 @@ import React from "react";
 import useScrollStaggerFadeIn from "@/animations/useScrollStaggerFadeIn";
 import Image from "next/image";
 
-export default function WhatSetsUsApart() {
+export default function WhatSetsUsApart({data}) {
   const Bg = ['#007BFF', '#32CD85', '#1D3557'];
 
-  const data = {
-    title: "What Sets Us Apart?",
-    cards: [
-      {
-        title: "Speed",
-        description: "Quick approvals and fast disbursal so you can move forward without delay.",
-        image: [
-          {
-            is_visible: true,
-            url: "http://192.168.1.32:5020/uploads/1752737649850-392382954.svg",
-          }
-        ]
-      },
-      {
-        title: "Flexibility",
-        description: "A range of Loan Options designed to fit your lifestyle and financial situation.",
-        image: [
-          {
-            is_visible: true,
-            url: "http://192.168.1.32:5020/uploads/1752737655999-360734872.svg",
-          }
-        ]
-      },
-      {
-        title: "Trust",
-        description: "Clear communication, no hidden fees and a commitment to responsible lending.",
-        image: [
-          {
-            is_visible: true,
-            url: "http://192.168.1.32:5020/uploads/1752737663485-718417891.svg",
-          }
-        ]
-      }
-    ]
-  };
+  // const data = {
+  //   title: "What Sets Us Apart?",
+  //   cards: [
+  //     {
+  //       title: "Speed",
+  //       description: "Quick approvals and fast disbursal so you can move forward without delay.",
+  //       image: [
+  //         {
+  //           is_visible: true,
+  //           url: "http://192.168.1.32:5020/uploads/1752737649850-392382954.svg",
+  //         }
+  //       ]
+  //     },
+  //     {
+  //       title: "Flexibility",
+  //       description: "A range of Loan Options designed to fit your lifestyle and financial situation.",
+  //       image: [
+  //         {
+  //           is_visible: true,
+  //           url: "http://192.168.1.32:5020/uploads/1752737655999-360734872.svg",
+  //         }
+  //       ]
+  //     },
+  //     {
+  //       title: "Trust",
+  //       description: "Clear communication, no hidden fees and a commitment to responsible lending.",
+  //       image: [
+  //         {
+  //           is_visible: true,
+  //           url: "http://192.168.1.32:5020/uploads/1752737663485-718417891.svg",
+  //         }
+  //       ]
+  //     }
+  //   ]
+  // };
 
   const sectionRef = useScrollStaggerFadeIn({ stagger: 0.2 });
 
@@ -58,7 +58,13 @@ export default function WhatSetsUsApart() {
             style={{ backgroundColor: Bg[i % Bg.length] }} // ✅ Correct dynamic color
           >
             <div className="mb-8 rounded-full bg-white p-5 w-fit transition-transform duration-300 group-hover:rotate-6 hover:scale-110">
-              <Image width={28} height={28} src={card.image[0].url} alt={card.title} />
+              <Image
+                width={28}
+                height={28}
+                // src={card.image[0].url}
+                src={card?.image?.[0]?.url}
+                alt={card.title}
+              />
             </div>
             <div className="mt-auto">
               <h3 className="font-28 font-bold text-white mb-4">

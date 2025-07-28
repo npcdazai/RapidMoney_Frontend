@@ -17,71 +17,79 @@
 // }
 
 .contactForm {
-    :global(.ant-form) {
-      :global(.ant-form-item-label) {
-        label {
-          font-weight: 600;
-          font-size: 14px;
-          line-height: 140%;
-          color: #333333;
-          flex-direction: row-reverse;
-          gap: 1px;
-          align-items: flex-start;
-          
-          &::after {
-            content: none !important;
-          }
+  :global(.ant-form) {
+    :global(.ant-form-item-label) {
+      label {
+        font-weight: 600;
+        font-size: 14px;
+        line-height: 140%;
+        color: #333333;
+        flex-direction: row-reverse;
+        gap: 1px;
+        align-items: flex-start;
+
+        &::after {
+          content: none !important;
         }
       }
-  
-      :global(.ant-form-item-control) {
-        :global(.ant-form-item-control-input) {
-          :global(.ant-form-item-control-input-content) {
-            input::placeholder,  textarea::placeholder {
-              font-weight: 400;
-              font-size: 14px;
-              line-height: 140%;
-              color: rgba(51, 51, 51, 0.32);
-            }
+    }
+
+    :global(.ant-form-item-control) {
+      :global(.ant-form-item-control-input) {
+        :global(.ant-form-item-control-input-content) {
+
+          input::placeholder,
+          textarea::placeholder {
+            font-weight: 400;
+            font-size: 14px;
+            line-height: 140%;
+            color: rgba(51, 51, 51, 0.32);
+          }
+
+          input,
+          textarea {
+            border-radius: 8px !important;
           }
         }
       }
     }
+  }
 }
+
 .addressContainer {
-    position: relative;
-    overflow: hidden;
-    background-image: url('./assets/clippath.png');
-    background-repeat: no-repeat;
-    background-position: bottom;
-    background-size: cover;
-    flex-grow: 1;
+  position: relative;
+  overflow: hidden;
+  background-image: url('./assets/clippath.png');
+  background-repeat: no-repeat;
+  background-position: bottom;
+  background-size: cover;
+  flex-grow: 1;
+  display: flex;
+
+  .personImageContainer {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
     display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+    margin-top: 300px;
 
-    .personImageContainer {
-      width: 100%;
-      height: 100%;
-      object-fit: contain;
-      display: flex;
-      justify-content: flex-end;
-      align-items: flex-end;
-      margin-top: 300px;
-
-      @media (max-width: 992px) {
+    @media (max-width: 992px) {
       margin-top: 400px;
     }
-      @media (max-width: 576px) {
+
+    @media (max-width: 576px) {
       margin-top: 350px;
     }
-    }
+  }
 }
 
 .personImage {
-    position: absolute;
-    bottom: 0;
-    right: 0;
-    width: 50%;
-    height: auto;
-    object-fit: contain;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 50%;
+  height: auto;
+  object-fit: contain;
 }
-  

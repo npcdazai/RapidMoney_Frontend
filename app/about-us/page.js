@@ -45,7 +45,7 @@ export default async function page() {
         <DynamicHead />
         <AboutHero data={response?.data?.pageData?.whoWeAre} />
         <AboutSlider data={response?.data?.pageData?.sliderSection} />
-        <WhatSetsUsApart />
+        <WhatSetsUsApart data={response?.data?.pageData?.setUsApart} />
         <AboutCEO data={response?.data?.pageData?.aboutCeo} />
         <AboutOurTeam data={response?.data?.pageData?.ourTeam} />
         <PromoSection data={response?.data?.pageData?.promoSection} />

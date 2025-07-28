@@ -249,29 +249,46 @@ body {
 .font-24 {
   font-size: 24px;
   line-height: 120%;
+
+  @media (max-width: 575px) {
+    font-size: 20px;
+  }
 }
 
 .font-28 {
   font-size: 28px;
   line-height: 140%;
+
+  @media (max-width: 575px) {
+    font-size: 22px;
+  }
+
 }
 
 .font-32 {
   font-size: 32px;
   line-height: 140%;
+
+  @media (max-width: 575px) {
+    font-size: 24px;
+  }
 }
 
 .font-36 {
   font-size: 36px;
   line-height: 140%;
+
+  @media (max-width: 575px) {
+    font-size: 28px;
+  }
 }
 
 .font-40 {
   font-size: 40px;
   line-height: 110%;
 
-  @media (max-width: 767px) {
-    font-size: 26px;
+  @media (max-width: 575px) {
+    font-size: 32px;
   }
 }
 
@@ -280,7 +297,11 @@ body {
   line-height: 110%;
 
   @media (max-width: 767px) {
-    font-size: 24px;
+    font-size: 40px;
+  }
+
+  @media (max-width: 575px) {
+    font-size: 32px;
   }
 
 }
