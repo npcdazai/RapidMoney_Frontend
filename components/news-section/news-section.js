@@ -67,6 +67,8 @@ const NewsSection = ({ data }) => {
     };
   }, []);
 
+  // console.log(data?.sectionTitle)
+
   return (
     <section className={`py-12 bg-[#FAFAFA] ${styles.section}`}>
       <div className="container mx-auto">
@@ -74,16 +76,31 @@ const NewsSection = ({ data }) => {
           ref={titleRef}
           className="flex justify-center flex-wrap items-center gap-2 pb-12"
         >
-          <Image
-            src={rapidMoney}
-            alt="rapid_money"
-            width={270}
-            height={45}
-            className="object-contain mt-2"
-          />
-          <span className="text-[40px] font-bold leading-none text-black">
-            {data?.sectionTitle}
-          </span>
+
+          {
+            data?.sectionTitle?.includes("Rapid Money") ? (
+              <span className="text-[40px] font-bold leading-none text-black">
+                {data?.sectionTitle.split("Rapid Money").map((part, index, arr) => (
+                  <React.Fragment key={index}>
+                    {part}
+                    {index < arr.length - 1 && (
+                      <Image
+                        src={rapidMoney}
+                        alt="rapid_money"
+                        width={270}
+                        height={45}
+                        className="inline-block object-contain mx-1"
+                      />
+                    )}
+                  </React.Fragment>
+                ))}
+              </span>
+            ) : (
+              <span className="text-[40px] font-bold leading-none text-black">
+                {data?.sectionTitle}
+              </span>
+            )
+          }
 
         </div>
 

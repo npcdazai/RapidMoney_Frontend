@@ -43,7 +43,7 @@ export default async function page() {
         <DynamicHead />
         {/* <LendingPartners data={partnerData} /> */}
         <LendingPartners data={response?.data?.pageData?.partners} />
-        <PromoSection data={response?.data?.pageData?.promoSection} />
+        <PromoSection  />
       </Suspense>
     </>
   )

@@ -51,7 +51,7 @@ export default async function page() {
       <ProductTermLoans data={response?.data?.pageData?.productTermLoanSection} /> 
       <ProductInstantAccess data={response?.data?.pageData?.instantAccess} />
       <ProductFAQ data={response?.data?.pageData?.faqSection} />
-      <PromoSection data={response?.data?.pageData?.promoSection} />
+      <PromoSection />
       </Suspense>
 
 

@@ -121,7 +121,7 @@ const Page = async ({ params }) => {
         {/* <Header data={header} /> */}
         <DynamicHead  />
         <BlogDetails data={response?.data} />
-        <PromoSection data={promo} />
+        <PromoSection />
       </Suspense>
     </>
   );

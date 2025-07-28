@@ -6,6 +6,7 @@ import FaqSection from '@/components/faq/faq-section';
 import endpoints from '@/constants/endpoints';
 import Loading from '../loading';
 import DynamicHead from '@/components/head/dynamicHead';
+import PromoSection from '@/components/promo-section/promoSection';
 
 const header = homePageData.header;
 const faqSteps = faqData?.faqSteps
@@ -40,8 +41,9 @@ export default async function page() {
     <>
       <Suspense fallback={<Loading />}>
         {/* <Header data={header} /> */}
-         <DynamicHead  />
+        <DynamicHead />
         <FaqSection data={response?.data?.pageData?.faqSection} />
+        <PromoSection />
       </Suspense>
     </>
   )

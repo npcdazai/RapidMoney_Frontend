@@ -83,7 +83,7 @@ export default async function Home() {
         <NewsSection data={response?.data?.pageData?.newsSection} />
         {/* <FaqSection data={faqSteps} /> */}
         <FaqSection data={response?.data?.pageData?.faqSection} />
-        <PromoSection data={response?.data?.pageData?.promoSection} />
+        <PromoSection  />
       </Suspense>
     </>
 

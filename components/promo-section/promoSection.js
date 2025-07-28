@@ -7,17 +7,24 @@ import Link from "next/link";
 import darkIphone from "./assets/dark_iphone.svg";
 import playStore from "./assets/playstore.svg";
 import useScrollFadeInOnce from "@/animations/useScrollFadeInOnce";
-import { useRef, useEffect } from "react";
+import { useRef, useEffect, useContext } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import curvePattern from "./assets/curve_pattern.svg";
+import { UserContext } from "@/contexts/user";
 
 gsap.registerPlugin(ScrollTrigger);
 
-const PromoSection = ({ data }) => {
+const PromoSection = () => {
   const textRef = useScrollFadeInOnce();
   const imageRef = useRef(null);
   const curveRef = useRef(null);
+
+  const { promoSection } = useContext(UserContext);
+
+  const data = promoSection ? promoSection : []
+
+  // console.log(promoSection);
 
   useEffect(() => {
     if (!imageRef.current) return;
@@ -66,7 +73,7 @@ const PromoSection = ({ data }) => {
 
   }, []);
 
-  console.log(data)
+  // console.log(data);
 
   return (
     <section className={`${styles.section}`}>
@@ -82,7 +89,7 @@ const PromoSection = ({ data }) => {
             </h2>
             <Link href={"/"}>
               <button className="apply-btn apply-btn-dark flex items-center gap-3">
-                <span>Download</span>
+                <span>{ data?.downloadLabel}</span>
                 <Image src={darkIphone} width={24} height={24} alt="iphone" />
                 <Image src={playStore} width={24} height={24} alt="playstore" />
               </button>

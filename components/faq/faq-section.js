@@ -238,7 +238,7 @@ const FaqSection = ({ data }) => {
         <Row>
           <Col span={24} offset={0} lg={{ offset: 4, span: 16 }}>
             <Tabs
-              defaultActiveKey="1"
+              defaultActiveKey="0"
               tabPosition="top"
               className={`${styles.faqTabs}`}
             >

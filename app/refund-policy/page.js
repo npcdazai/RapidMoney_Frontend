@@ -1,13 +1,9 @@
 
 import endpoints from "@/constants/endpoints";
-import homePageData from "@/json/homepage/home.json";
 import { Suspense } from "react";
 import Loading from "../loading";
 import DynamicHead from "@/components/head/dynamicHead";
 import RefundPolicy from "@/components/refund-policy-section/refundPolicy";
-
-
-const header = homePageData.header;
 
 const getCMSPageBySlug = async () => {
   try {

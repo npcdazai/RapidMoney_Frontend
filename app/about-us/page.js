@@ -48,7 +48,7 @@ export default async function page() {
         <WhatSetsUsApart data={response?.data?.pageData?.setUsApart} />
         <AboutCEO data={response?.data?.pageData?.aboutCeo} />
         <AboutOurTeam data={response?.data?.pageData?.ourTeam} />
-        <PromoSection data={response?.data?.pageData?.promoSection} />
+        <PromoSection  />
       </Suspense>
 
       {/* <Header data={header} />
