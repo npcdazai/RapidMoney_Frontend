@@ -26,7 +26,7 @@ const getCMSPageBySlug = async () => {
 export default async function DynamicHead({ isDark }) {
 
   const response = await getCMSPageBySlug();
-  console.log(response?.data?.pageData?.header)
+  // console.log(response?.data?.pageData?.header)
 
   return (
 

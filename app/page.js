@@ -1,34 +1,34 @@
-import Header from "@/components/head/head";
-import HeroSection from "@/components/hero-section/heroSection";
+// import Header from "@/components/head/head";
+// import HeroSection from "@/components/hero-section/heroSection";
 import PromoSection from "@/components/promo-section/promoSection";
-import Image from "next/image";
-import homePageData from "@/json/homepage/home.json";
+// import Image from "next/image";
+// import homePageData from "@/json/homepage/home.json";
 import FaqSection from "@/components/faq/faq-section";
 import NewsSection from "@/components/news-section/news-section";
 import PartnersSection from "@/components/partner-section/partnerSection";
 import Benefits from "@/components/our-benefits-section/ourBenefits";
 import LoanStep from "@/components/loan-step-section/loanStep";
 import PersonalLoan from "@/components/personal-loan-section/personalLoan";
-import Testimonials from "@/components/testimonial-section/TestiMonials";
-import HeroBgSection from "@/components/hero-bg-section/heroBgSection";
+// import Testimonials from "@/components/testimonial-section/TestiMonials";
 import HeroSwiperWrapper from "@/components/hero-section-swiper-wrapper/heroSwiperWrapper";
 import endpoints from "@/constants/endpoints";
 import { Suspense } from "react";
 import Loading from "./loading";
 import DynamicHead from "@/components/head/dynamicHead";
+import defaultSEO from "@/constants/defaultSEO";
 
 
 // console.log(homePageData);
-const header = homePageData.header;
-const promo = homePageData.promoSection;
-const faqSteps = homePageData.faqSteps;
-const newsData = homePageData.newsSection;
-const partner = homePageData.partnerSection;
-const benefitsData = homePageData.benefitSection;
-const loanData = homePageData.loanStep;
-const heroSection = homePageData.heroSection;
-const personalLoan = homePageData.personalLoanSection;
-const testimonialsData = homePageData.testimonialSection;
+// const header = homePageData.header;
+// const promo = homePageData.promoSection;
+// const faqSteps = homePageData.faqSteps;
+// const newsData = homePageData.newsSection;
+// const partner = homePageData.partnerSection;
+// const benefitsData = homePageData.benefitSection;
+// const loanData = homePageData.loanStep;
+// const heroSection = homePageData.heroSection;
+// const personalLoan = homePageData.personalLoanSection;
+// const testimonialsData = homePageData.testimonialSection;
 
 
 const getCMSPageBySlug = async () => {
@@ -48,6 +48,56 @@ const getCMSPageBySlug = async () => {
     return null;
   }
 };
+// console.log(process.env.NEXT_PUBLIC_ENVIRONMENT)
+export async function generateMetadata() {
+  const res = await getCMSPageBySlug();
+  const data = res?.data?.pageData?.seoSetting;
+  const isProduction = process.env.NEXT_PUBLIC_ENVIRONMENT === "production";
+  const canonicalURL = process.env.NEXT_PUBLIC_REDIRECT_URL;
+
+  const title =
+    isProduction && data?.meta_title
+      ? data.meta_title
+      : defaultSEO.home.title;
+
+  const description =
+    isProduction && data?.meta_description
+      ? data.meta_description
+      : defaultSEO.home.description;
+
+  const featureImage =
+    data?.feature_image?.[0]?.url || defaultSEO.home.featureImage;
+
+  return {
+    title,
+    description,
+    robots: isProduction
+      ? "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+      : "noindex, nofollow",
+    alternates: {
+      canonical: isProduction ? canonicalURL : undefined,
+    },
+    openGraph: {
+      title,
+      description,
+      siteName: defaultSEO.defaultSiteName,
+      locale: defaultSEO.defaultLocale,
+      type: defaultSEO.defaultType,
+      images: [
+        {
+          url: featureImage,
+          alt: title,
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description,
+      images: [featureImage],
+    },
+  };
+}
 
 export default async function Home() {
 
@@ -69,8 +119,6 @@ export default async function Home() {
     // <FaqSection data={faqSteps} />
     //   <PromoSection data={promo} />
     // </>
-
-
     <>
       <Suspense fallback={<Loading />}>
         <DynamicHead isDark={true} />

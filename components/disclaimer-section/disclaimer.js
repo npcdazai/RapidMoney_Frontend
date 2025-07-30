@@ -3,7 +3,7 @@ import styles from "./disclaimer-section.module.scss"
 
 export default function Disclaimer({ data }) {
     
-    console.log(data)
+    // console.log(data)
 
   if (!data) return null;
   return (
