@@ -18,7 +18,7 @@ const getCMSPageBySlug = async () => {
       endpoints.get_cms_page +
       "/privacy-policy",
      {
-        next: { revalidate: 300 }, // 300 seconds = 5 minutes
+        next: { revalidate: 3600 }, // 300 seconds = 5 minutes
       }
     );
 
