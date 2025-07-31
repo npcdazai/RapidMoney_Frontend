@@ -121,7 +121,7 @@ const PersonalLoan = ({ data }) => {
       <Image src={curve} alt="Curve" className={styles.curve} width={100} height={100} priority ref={curveRef} />
 
       <div className="container mx-auto text-center pt-[50px] sm:pt-[120px] md:pt-[200px]">
-        <div ref={labelRef} className={styles.sectionLabel}>{data?.backgroundText}</div>
+        <div ref={labelRef} className={`${styles.sectionLabel} hidden sm:block`}>{data?.backgroundText}</div>
 
         <div className="flex justify-center">
           <div className="flex flex-col gap-5 max-w-[600px] items-center md:pt-0 pt-[80px] px-4 z-10">
@@ -159,7 +159,7 @@ const PersonalLoan = ({ data }) => {
                 // 'top-0 left-0',
                 // 'top-0 right-0',
                 // 'bottom-0 left-0',
-                'bottom-0 right-0',
+                // 'bottom-0 right-0',
               ];
               return (
                 <div
