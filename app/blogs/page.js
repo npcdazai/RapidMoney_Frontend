@@ -57,7 +57,8 @@ async function fetchBlogs(pageNum = 1, category = null) {
 }
 
 export default async function Page({ searchParams }) {
-  const category = searchParams?.category || null;
+  // console.log(searchParams);
+  const category = await searchParams?.category || null;
   const initialBlogs = await fetchBlogs(1, category);
 
   return (

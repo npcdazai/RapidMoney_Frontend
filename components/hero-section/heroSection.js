@@ -136,7 +136,9 @@ const HeroSection = ({ data, paginationRef  }) => {
                 src={data?.swiper_image?.[0]?.url}
                 alt="Hero"
                 width={900}
-                height={800}
+                // height={800}
+                height={600}
+                // fill
                 className="object-cover"
               />
               <div className="absolute inset-0 z-[4] pointer-events-none">
