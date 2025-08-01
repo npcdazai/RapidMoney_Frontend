@@ -8,7 +8,7 @@
 
 
 
- .leftCoin {
+  .leftCoin {
     position: absolute;
     left: -5%;
     top: 60%;
@@ -123,6 +123,10 @@
   .personImage {
     position: relative;
     // overflow: hidden;
+    width: 100%;
+    max-width: 400px; // or your preferred max width
+    margin: 0 auto;
+    aspect-ratio: 1 / 1;
 
     &::after {
       content: "";

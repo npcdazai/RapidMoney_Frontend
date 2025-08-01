@@ -129,16 +129,16 @@ const PersonalLoan = ({ data }) => {
             <span className="font-16">{data?.subtitle}</span>
             <div className="hidden md:flex items-center gap-3">
               <Link href={"/"}>
-              {/* <Link href={data.cta.apply.link || "#"}> */}
+                {/* <Link href={data.cta.apply.link || "#"}> */}
                 <button className="apply-btn apply-btn-green dark-color min-w-[180px]">
                   {/* Apply Now */}
                   {data.applyLabel}
                 </button>
               </Link>
               <Link href={"/"}>
-              {/* <Link href={data.cta.download.link || "#"}> */}
+                {/* <Link href={data.cta.download.link || "#"}> */}
                 <button className="apply-btn apply-btn-dark flex items-center gap-3 min-w-[180px]">
-                  <span>{ data?.downloadLabel}</span>
+                  <span>{data?.downloadLabel}</span>
                   {/* <span>{data.cta.download.label}</span> */}
                   <Image src={darkIphone} width={24} height={24} alt="iPhone" />
                   <Image src={playStore} width={24} height={24} alt="Play Store" />
@@ -153,11 +153,11 @@ const PersonalLoan = ({ data }) => {
             <div className={styles.personImage}>
               <Image
                 src={data?.mainImage?.[0]?.url}
-                // src={personImage}
                 alt="Mobile Promo"
-                width={600}
-                height={600}
-                className="relative z-10 mx-auto"
+                fill
+                style={{ objectFit: "cover" }} // or "cover"
+                className="z-10"
+                priority
               />
             </div>
 

@@ -35,67 +35,67 @@ import { gsap } from 'gsap';
 //   fontWeight: "bold"
 // };
 
-const HeroSection = ({ data, paginationRef  }) => {  
- useEffect(() => {
-  const context = gsap.context(() => {
-    const elements = gsap.utils.toArray(".floating-image");
-    const heroTitle = document.querySelector(".hero-title");
-    const heroDescription = document.querySelector(".hero-description");
-    const heroButton = document.querySelector(".hero-button");
+const HeroSection = ({ data, paginationRef }) => {
+  useEffect(() => {
+    const context = gsap.context(() => {
+      const elements = gsap.utils.toArray(".floating-image");
+      const heroTitle = document.querySelector(".hero-title");
+      const heroDescription = document.querySelector(".hero-description");
+      const heroButton = document.querySelector(".hero-button");
 
-    gsap.set(elements, { y: -100, opacity: 0, visibility: "hidden" });
-    gsap.set([heroTitle, heroDescription, heroButton], { y: 60, opacity: 0 });
+      gsap.set(elements, { y: -100, opacity: 0, visibility: "hidden" });
+      gsap.set([heroTitle, heroDescription, heroButton], { y: 60, opacity: 0 });
 
-    const tl = gsap.timeline({
-      scrollTrigger: {
-        trigger: ".hero-section-container",
-        start: "top 80%",
-        once: true,
-      },
-    });
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: ".hero-section-container",
+          start: "top 80%",
+          once: true,
+        },
+      });
 
-    tl.to([heroTitle, heroDescription, heroButton], {
-      y: 0,
-      opacity: 1,
-      duration: 0.6,
-      ease: "power2.out",
-      stagger: 0.1,
-    }, 0)
-
-    .set(elements, { visibility: "visible" }, 0)
-
-    .fromTo(
-      elements,
-      { y: -100, opacity: 0 },
-      {
+      tl.to([heroTitle, heroDescription, heroButton], {
         y: 0,
         opacity: 1,
-        duration: 0.5,
-        ease: "power1.out",
-        stagger: 0.07,
-      },
-      0.1
-    )
+        duration: 0.6,
+        ease: "power2.out",
+        stagger: 0.1,
+      }, 0)
 
-    // 👇 Start bounce at 0.6s (after drop finishes)
-    .add(() => {
-      elements.forEach((el, index) => {
-        gsap.to(el, {
-          y: -40,
-          rotation: 10,
-          duration: 2,
-          repeat: -1,
-          yoyo: true,
-          ease: "power1.inOut",
-          delay: index * 0.2,
-        });
-      });
-    }, 0.6); // ⏱ This starts right after the drop finishes
+        .set(elements, { visibility: "visible" }, 0)
 
-  });
+        .fromTo(
+          elements,
+          { y: -100, opacity: 0 },
+          {
+            y: 0,
+            opacity: 1,
+            duration: 0.5,
+            ease: "power1.out",
+            stagger: 0.07,
+          },
+          0.1
+        )
 
-  return () => context.revert();
-}, []);
+        // 👇 Start bounce at 0.6s (after drop finishes)
+        .add(() => {
+          elements.forEach((el, index) => {
+            gsap.to(el, {
+              y: -40,
+              rotation: 10,
+              duration: 2,
+              repeat: -1,
+              yoyo: true,
+              ease: "power1.inOut",
+              delay: index * 0.2,
+            });
+          });
+        }, 0.6); // ⏱ This starts right after the drop finishes
+
+    });
+
+    return () => context.revert();
+  }, []);
 
   // console.log(data);
 
@@ -115,7 +115,7 @@ const HeroSection = ({ data, paginationRef  }) => {
               </span>
 
               <Link href={'/'} className="hero-button">
-              {/* <Link href={data?.ctaButton.link} className="hero-button"> */}
+                {/* <Link href={data?.ctaButton.link} className="hero-button"> */}
                 <button className="apply-btn apply-btn-dark flex gap-2" >
                   {/* {data?.ctaButton.label} */}
                   Apply Now
@@ -123,8 +123,8 @@ const HeroSection = ({ data, paginationRef  }) => {
                 </button>
               </Link>
 
-               {/* <div className="pagination-placeholder" /> */}
-                <div className="custom-swiper-pagination"  ref={paginationRef} />
+              {/* <div className="pagination-placeholder" /> */}
+              <div className="custom-swiper-pagination" ref={paginationRef} />
             </div>
 
           </Col>
@@ -132,14 +132,12 @@ const HeroSection = ({ data, paginationRef  }) => {
           <Col xs={24} lg={24} xl={16}>
             <div className={`w-full flex justify-center ${styles.personImage}`}>
               <Image
-                // src={personImage}
                 src={data?.swiper_image?.[0]?.url}
                 alt="Hero"
-                width={900}
-                // height={800}
-                height={600}
-                // fill
-                className="object-cover"
+                fill
+                style={{ objectFit: "contain" }} // or "cover" if you want it to fill the box
+                className="object-contain"
+                priority
               />
               <div className="absolute inset-0 z-[4] pointer-events-none">
                 <Image
