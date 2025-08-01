@@ -1,5 +1,6 @@
+import { Image } from 'antd';
 import React from 'react';
-import Image from 'next/image';
+// import Image from 'next/image';
 
 export default function ContentCard({ title, description, imageSrc, imageAlt }) {
   return (
@@ -8,9 +9,10 @@ export default function ContentCard({ title, description, imageSrc, imageAlt }) 
         <Image
           src={imageSrc}
           alt={imageAlt}
-          width={90}
-          height={90}
-          className="mb-4"
+          // width={90}
+          // height={90}
+          className="mb-4 w-full h-full object-cover rounded-lg"
+          preview={false}
         />
       </div>
       <div className="mt-auto">

@@ -131,14 +131,14 @@ const PersonalLoan = ({ data }) => {
               <Link href={"/"}>
               {/* <Link href={data.cta.apply.link || "#"}> */}
                 <button className="apply-btn apply-btn-green dark-color min-w-[180px]">
-                  Apply Now
-                  {/* {data.cta.apply.label} */}
+                  {/* Apply Now */}
+                  {data.applyLabel}
                 </button>
               </Link>
-              <Link href={"#"}>
+              <Link href={"/"}>
               {/* <Link href={data.cta.download.link || "#"}> */}
                 <button className="apply-btn apply-btn-dark flex items-center gap-3 min-w-[180px]">
-                  <span>Download</span>
+                  <span>{ data?.downloadLabel}</span>
                   {/* <span>{data.cta.download.label}</span> */}
                   <Image src={darkIphone} width={24} height={24} alt="iPhone" />
                   <Image src={playStore} width={24} height={24} alt="Play Store" />
@@ -151,7 +151,14 @@ const PersonalLoan = ({ data }) => {
         <Row align="middle" justify="center" gutter={[24, 24]}>
           <Col xs={24}>
             <div className={styles.personImage}>
-              <Image src={personImage} alt="Mobile Promo" width={600} height={600} className="relative z-10 mx-auto" />
+              <Image
+                src={data?.mainImage?.[0]?.url}
+                // src={personImage}
+                alt="Mobile Promo"
+                width={600}
+                height={600}
+                className="relative z-10 mx-auto"
+              />
             </div>
 
             {data?.stats?.map((stat, idx) => {

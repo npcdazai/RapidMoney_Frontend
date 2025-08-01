@@ -74,7 +74,7 @@ const NewsSection = ({ data }) => {
       <div className="container mx-auto">
         <div
           ref={titleRef}
-          className="flex justify-center flex-wrap items-center gap-2 pb-12"
+          className="flex justify-center flex-wrap items-center gap-2 pb-12 text-center"
         >
 
           {
@@ -109,35 +109,36 @@ const NewsSection = ({ data }) => {
             <Col
               key={idx}
               xs={24}
-              sm={24}
-              md={8}
+              sm={12}
+              // md={12}
+              lg={8}
               ref={(el) => (cardsRef.current[idx] = el)}
             >
               <div className="flex flex-col gap-4 h-full group">
-                <Link href={`/blogs/${item.slug}`} className="h-full">
-                  <div className="overflow-hidden h-full rounded-3xl ">
+                <Link href={`/blogs/${item?.slug}`}>
+                  <div className="overflow-hidden w-full rounded-3xl ">
                     <Image
-                      src={item.image}
-                      alt={item.title}
+                      src={item?.image}
+                      alt={item?.title}
                       width={500}
                       height={300}
-                      className="w-full h-full object-cover transform transition-transform duration-500 ease-in-out group-hover:scale-105 group-hover:brightness-105 rounded-3xl"
+                      className="sm:max-w-[370px] sm:max-h-[270px] w-full object-cover transform transition-transform duration-500 ease-in-out group-hover:scale-105 group-hover:brightness-105 rounded-3xl"
                     />
                   </div>
                 </Link>
 
                 <p className="font-14 font-weight-semibold purple-color">
-                  {item.authorName} • {dayjs(item.date).format("DD MMM YYYY")}
+                  {item?.authorName} • {dayjs(item?.date).format("DD MMM YYYY")}
                 </p>
 
-                <Link href={`/blogs/${item.slug}`}>
+                <Link href={`/blogs/${item?.slug}`}>
                   <h3 className="font-24 font-weight-bold dark-color">
-                    {item.title}
+                    {item?.title}
                   </h3>
                 </Link>
 
                 <Link
-                  href={`/blogs/${item.slug}`}
+                  href={`/blogs/${item?.slug}`}
                   className="font-18 font-weight-medium dark-color flex items-center gap-2 group hover:!text-[#79CA00] transition-colors duration-300"
                 >
                   Learn More

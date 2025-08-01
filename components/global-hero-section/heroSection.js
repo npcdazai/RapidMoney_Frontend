@@ -16,7 +16,7 @@ const GlobalHeroSection = ({ data }) => {
       <div className="container mx-auto relative">
         <Row gutter={[32, 32]} align="">
           <Col xs={24} lg={24} xl={8}>
-            <div className="flex flex-col gap-[20px]">
+            <div className="flex flex-col gap-[20px] mt-0 lg:mt-20">
               <h1 className={`font-48 light-color font-weight-bold ${styles.title}`}
                 dangerouslySetInnerHTML={{ __html: data?.title }}
               />
@@ -52,11 +52,11 @@ const GlobalHeroSection = ({ data }) => {
           <Col xs={24} lg={24} xl={16}>
             <div className={`w-full flex justify-center ${styles.personImage}`}>
               <Image
-                // src={data?.image?.[0]?.url}
-                src={productImage}
+                src={data?.image?.[0]?.url}
+                // src={productImage}
                 alt="Hero"
-                // width={900}
-                // height={800}
+                width={450}
+                height={600}
                 className={`object-cover`}
               />
             </div>

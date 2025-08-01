@@ -5,21 +5,21 @@ import { Col, Row, Steps } from "antd";
 import Image from "next/image";
 const { Step } = Steps;
 import styles from "./loan-step.module.scss";
-import install from "./assets/install.png"
-import loanApp from "./assets/loanApp.png"
-import verify from "./assets/verify.png"
-import qrImg from './assets/qr.png';
+// import install from "./assets/install.png"
+// import loanApp from "./assets/loanApp.png"
+// import verify from "./assets/verify.png"
+// import qrImg from './assets/qr.png';
 import moneyImg from './assets/money.png';
 import coinImage from './assets/coin.png';
 import curveImage from './assets/curve.png';
 import gsap from "gsap";
 
 const AUTO_PLAY_INTERVAL = 3000;
-const imageArray = {
-  install: install,
-  verify: verify,
-  loanApp: loanApp
-}
+// const imageArray = {
+//   install: install,
+//   verify: verify,
+//   loanApp: loanApp
+// }
 
 const LoanStep = ({ data }) => {
   const [current, setCurrent] = useState(0);
@@ -73,13 +73,15 @@ const LoanStep = ({ data }) => {
   return (
     <section className={`pt-120 ${styles.section}`}>
       <Image
-        src={qrImg}
+        // src={qrImg}
+        src = {data?.cta?.qrImage?.[0]?.url}
         alt="QR"
         className={styles.qrDecor}
         priority
+        width={250}
+        height={120}
       />
       <div className="container mx-auto px-4">
-        {/* Section Title */}
         <span className="flex justify-center items-center">
           <h2 className="font-48 font-weight-bold text-center pb-6 max-w-[480px]">
             {data?.title}
@@ -87,7 +89,6 @@ const LoanStep = ({ data }) => {
         </span>
 
         <Row gutter={[32, 32]} justify={"center"} align="bottom">
-          {/* Left Column: Steps */}
           <Col xs={24} lg={12} className={`${styles.stepCol} ${styles.stepColPadTop}`}>
             <Steps
               direction="vertical"

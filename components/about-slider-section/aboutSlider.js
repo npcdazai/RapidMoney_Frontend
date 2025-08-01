@@ -11,7 +11,7 @@ import useScrollFadeIn from "@/animations/useScrollFadeIn";
 
 const AboutSlider = ({ data = [] }) => {
   const fadeInRef = useScrollFadeIn();
-console.log(data)
+  // console.log(data);
   return (
     <section ref={fadeInRef} className="mx-auto my-20">
       <Swiper
