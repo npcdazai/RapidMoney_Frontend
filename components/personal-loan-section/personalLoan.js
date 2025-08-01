@@ -123,7 +123,7 @@ const PersonalLoan = ({ data }) => {
       <div className="container mx-auto text-center pt-[50px] sm:pt-[120px] md:pt-[200px]">
         <div ref={labelRef} className={`${styles.sectionLabel} hidden sm:block`}>{data?.backgroundText}</div>
 
-        <div className="flex justify-center">
+        <div className="flex justify-center pb-10">
           <div className="flex flex-col gap-5 max-w-[600px] items-center md:pt-0 pt-[80px] px-4 z-10">
             <h2 className="font-48 font-weight-bold">{data?.title}</h2>
             <span className="font-16">{data?.subtitle}</span>

@@ -47,7 +47,7 @@ export default function ProductInstantAccess({ data }) {
               width={450}
               height={550}
               alt="Rapid Money"
-              className={`max-w-full h-auto mx-auto relative lg:absolute bottom-0  z-10  `}
+              className={`max-w-full h-auto mx-auto relative lg:absolute bottom-0  z-10 max-h-[550px]`}
               priority
             />
 
