@@ -7,11 +7,12 @@ import Link from "next/link";
 import darkIphone from "./assets/dark_iphone.svg";
 import playStore from "./assets/playstore.svg";
 import useScrollFadeInOnce from "@/animations/useScrollFadeInOnce";
-import { useRef, useEffect, useContext } from "react";
+import { useRef, useEffect, useContext, Suspense } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import curvePattern from "./assets/curve_pattern.svg";
 import { UserContext } from "@/contexts/user";
+import Loading from "@/app/loading";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -20,7 +21,7 @@ const PromoSection = () => {
   const imageRef = useRef(null);
   const curveRef = useRef(null);
 
-  const { promoSection } = useContext(UserContext);
+  const { promoSection, promoLoading } = useContext(UserContext);
 
   const data = promoSection ? promoSection : []
 
@@ -76,64 +77,66 @@ const PromoSection = () => {
   // console.log(data);
 
   return (
-    <section className={`${styles.section}`}>
-      <div className="flex flex-col gap-4 pt-60 container mx-auto">
-        <div className="flex flex-col gap-8">
-          {/* Heading & CTA */}
-          <div
-            className="flex flex-col gap-5 max-w-[550px] relative z-10"
-            ref={textRef}
-          >
-            <h2 className={`${styles.promoHeading} font-40 light-color font-weight-bold`}>
-              {data?.title}
-            </h2>
-            <Link href={"/"}>
-              <button className="apply-btn apply-btn-dark flex items-center gap-3">
-                <span>{ data?.downloadLabel}</span>
-                <Image src={darkIphone} width={24} height={24} alt="iphone" />
-                <Image src={playStore} width={24} height={24} alt="playstore" />
-              </button>
-            </Link>
-          </div>
+    <Suspense fallback={promoLoading && <Loading />}>
+      <section className={`${styles.section}`}>
+        <div className="flex flex-col gap-4 pt-60 container mx-auto">
+          <div className="flex flex-col gap-8">
+            {/* Heading & CTA */}
+            <div
+              className="flex flex-col gap-5 max-w-[550px] relative z-10"
+              ref={textRef}
+            >
+              <h2 className={`${styles.promoHeading} font-40 light-color font-weight-bold`}>
+                {data?.title}
+              </h2>
+              <Link href={"/"}>
+                <button className="apply-btn apply-btn-dark flex items-center gap-3">
+                  <span>{data?.downloadLabel}</span>
+                  <Image src={darkIphone} width={24} height={24} alt="iphone" />
+                  <Image src={playStore} width={24} height={24} alt="playstore" />
+                </button>
+              </Link>
+            </div>
 
-          {/* Banner Image */}
-          <div
-            ref={imageRef}
-            className={`flex lg:mt-[-100px]  mt-[-50px] ${styles.bannerImageBkl}`}
-          >
-            <Image
-              // src={bannerImage}
-              src={data?.image?.[0]?.url}
-              alt={data?.image?.[0]?.alt_name}
-              width={1920}
-              height={600}
-              className="w-full h-auto object-cover"
-              priority
-            />
-
-            <div className={styles.curvePattern}>
+            {/* Banner Image */}
+            <div
+              ref={imageRef}
+              className={`flex lg:mt-[-100px]  mt-[-50px] ${styles.bannerImageBkl}`}
+            >
               <Image
-                src={curvePattern}
-                alt="Curve Pattern"
-                ref={curveRef}
-                width={80}
-                height={180}
-                style={{
-                  position: "absolute",
-                  left: "53.06%",
-                  top: 0,
-                  zIndex: -1,
-                  pointerEvents: "none"
-                }}
-                draggable={false}
-                priority
+                // src={bannerImage}
+                src={data?.image?.[0]?.url}
+                alt={data?.image?.[0]?.alt_name}
+                width={1920}
+                height={600}
+                className="w-full h-auto object-cover"
+              // priority
               />
 
+              <div className={styles.curvePattern}>
+                <Image
+                  src={curvePattern}
+                  alt="Curve Pattern"
+                  ref={curveRef}
+                  width={80}
+                  height={180}
+                  style={{
+                    position: "absolute",
+                    left: "53.06%",
+                    top: 0,
+                    zIndex: -1,
+                    pointerEvents: "none"
+                  }}
+                  draggable={false}
+                // priority
+                />
+
+              </div>
             </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
+    </Suspense>
   );
 };
 

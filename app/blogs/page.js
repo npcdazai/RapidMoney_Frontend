@@ -29,8 +29,9 @@ import DynamicHead from "@/components/head/dynamicHead";
 import Loading from "../loading";
 import endpoints from "@/constants/endpoints";
 import requests from "@/utils/api";
+import defaultSEO from "@/constants/defaultSEO";
 
-async function fetchBlogs(pageNum = 1, category = null) {
+async function getCMSPageBySlug(pageNum = 1, category = null) {
   try {
     const api = requests();
     let url = `${endpoints.get_blogs}?page=${pageNum}&limit=6`;
@@ -56,10 +57,60 @@ async function fetchBlogs(pageNum = 1, category = null) {
   }
 }
 
+export async function generateMetadata() {
+  const res = await getCMSPageBySlug();
+  const data = res?.data?.pageData?.seoSetting;
+  const isProduction = process.env.NEXT_PUBLIC_ENVIRONMENT === "production";
+  const canonicalURL = `${process.env.NEXT_PUBLIC_SITE_URL}/blogs`;
+
+  const title =
+    isProduction && data?.meta_title
+      ? data.meta_title
+      : defaultSEO.blog.title;
+
+  const description =
+    isProduction && data?.meta_description
+      ? data.meta_description
+      : defaultSEO.blog.description;
+
+  const featureImage =
+    data?.feature_image?.[0]?.url || defaultSEO.blog.featureImage;
+
+  return {
+    title,
+    description,
+    robots: isProduction
+      ? "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+      : "noindex, nofollow",
+    alternates: {
+      canonical: isProduction ? canonicalURL : undefined,
+    },
+    openGraph: {
+      title,
+      description,
+      siteName: defaultSEO.defaultSiteName,
+      locale: defaultSEO.defaultLocale,
+      type: defaultSEO.defaultType,
+      images: [
+        {
+          url: featureImage,
+          alt: title,
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description,
+      images: [featureImage],
+    },
+  };
+}
+
+
 export default async function Page({ searchParams }) {
-  // console.log(searchParams);
-  const category = await searchParams?.category || null;
-  const initialBlogs = await fetchBlogs(1, category);
+  const category = await searchParams;
+  const initialBlogs = await getCMSPageBySlug(1, category.category || null);
 
   return (
     <>

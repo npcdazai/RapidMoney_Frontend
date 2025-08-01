@@ -353,8 +353,8 @@ export default function BlogListing({
               <Col
                 key={index}
                 xs={24}
-                sm={24}
-                md={8}
+                sm={12}
+                lg={8}
                 ref={(el) => (cardsRef.current[index] = el)}
               >
                 {loading ? <BlogCardSkeleton /> : <BlogCard item={blog} />}

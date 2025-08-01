@@ -133,7 +133,7 @@ const NewsSection = ({ data }) => {
 
                 <Link href={`/blogs/${item?.slug}`}>
                   <h3 className="font-24 font-weight-bold dark-color">
-                    {item?.title}
+                    {item?.title.length > 38 ? `${item.title.slice(0, 52)}....` : item.title}
                   </h3>
                 </Link>
 

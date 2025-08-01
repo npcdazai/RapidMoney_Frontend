@@ -11,6 +11,7 @@ const UserContext = createContext();
 const UserProvider = ({ children }) => {
 
     const [promoSection, setPromoSection] = useState([])
+    const [promoLoading, setPromoLoading] = useState(true);
     // console.log(loginStatus)
 
     // const login = async () => {
@@ -86,6 +87,8 @@ const UserProvider = ({ children }) => {
             setPromoSection(response?.data?.pageData?.promoSection)
         } catch (error) {
             console.log(error)
+        } finally {
+             setPromoLoading(false);
         }
 
     }
@@ -95,7 +98,7 @@ const UserProvider = ({ children }) => {
     }, [])
 
     return (
-        <UserContext.Provider value={{ promoSection }}>
+        <UserContext.Provider value={{ promoSection, promoLoading }}>
             {children}
         </UserContext.Provider>
     )

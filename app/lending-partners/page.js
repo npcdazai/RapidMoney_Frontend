@@ -35,7 +35,7 @@ export async function generateMetadata() {
   const res = await getCMSPageBySlug();
   const data = res?.data?.pageData?.seoSetting;
   const isProduction = process.env.NEXT_PUBLIC_ENVIRONMENT === "production";
-  const canonicalURL = process.env.NEXT_PUBLIC_REDIRECT_URL;
+  const canonicalURL = `${process.env.NEXT_PUBLIC_SITE_URL}/lending-partners`;
 
   const title =
     isProduction && data?.meta_title
