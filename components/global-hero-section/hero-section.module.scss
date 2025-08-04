@@ -50,6 +50,10 @@
     .personImage {
         position: relative;
         z-index: 2;
+        width: 100%;
+        max-width: 700px;
+        margin: 0 auto;
+        aspect-ratio: 3 / 2;
 
         &::after {
             content: "";
