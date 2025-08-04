@@ -239,7 +239,7 @@ export default function AboutOurTeam({ data }) {
   return (
     <section className="bg-white px-4 z-50 relative">
       <div className="py-24 max-w-6xl mx-auto">
-        {data.sections.map((section, sectionIndex) => {
+        {data?.sections?.map((section, sectionIndex) => {
           const titleRef = sectionIndex === 0 ? titleRef1 : titleRef2;
           const cardRefs = sectionIndex === 0 ? cardRefs1 : cardRefs2;
 
@@ -249,11 +249,11 @@ export default function AboutOurTeam({ data }) {
                 className="font-40 text-black font-bold text-center mb-10"
                 ref={titleRef}
               >
-                {section.title}
+                {section?.title}
               </h2>
               <div className="flex justify-center flex-wrap gap-8">
-                {section.persons.map((person, i) => {
-                  const imgObj = person.image?.[0] || {};
+                {section?.persons?.map((person, i) => {
+                  const imgObj = person?.image?.[0] || {};
                   return (
                     <MemberCard
                       key={person.name}

@@ -5,32 +5,40 @@ import styles from "./contact-form.module.scss"
 import Image from 'next/image';
 import personImage from './assets/personImage.png';
 import { RiMailLine, RiMapPinLine, RiPhoneLine } from 'react-icons/ri';
+import useScrollFadeIn from '@/animations/useScrollFadeIn';
+import useScrollCardFadeIn from '@/animations/useScrollCardFadeIn';
 
 const ContactUs = ({ data }) => {
     const [form] = Form.useForm();
+    const headingRef = useScrollFadeIn();
+    const descRef = useScrollFadeIn();
+    const formRef = useScrollFadeIn();
+    const addressRef = useScrollFadeIn();
+    const phoneCardRef = useScrollCardFadeIn(0); // Animation for phone card
+    const mailCardRef = useScrollCardFadeIn(1);
 
     const onFinish = (values) => {
         console.log('Form submitted:', values);
     };
 
-    console.log(data)
+    // console.log(data)
 
     return (
         <>
             <section className="container mx-auto pt-[80px] pb-60">
                 <div className="pb-[70px] w-full text-center">
                     <div className="max-w-[660px] mx-auto">
-                        <h1 className="font-18 pb-6">
+                        <h1 className="font-18 pb-6" ref={headingRef}>
                             {data.title}
                         </h1>
-                        <span className="block font-40 font-weight-bold">
+                        <span className="block font-40 font-weight-bold" ref={descRef}>
                             {data.subtitle}
                         </span>
                     </div>
                 </div>
                 <Row gutter={[32, 32]}>
                     <Col xs={{ span: 24, offset: 0 }} lg={{ span: 12, offset: 2 }}>
-                        <div className={`${styles.contactForm} border border-[var(--border-color)] rounded-4xl pt-10 pb-2 px-8`}>
+                        <div className={`${styles.contactForm} border border-[var(--border-color)] rounded-4xl pt-10 pb-2 px-8`} ref={formRef}>
                             <Form layout="vertical" form={form} onFinish={onFinish}>
                                 <Form.Item
                                     label="Full Name"
@@ -69,7 +77,7 @@ const ContactUs = ({ data }) => {
                         </div>
                     </Col>
                     <Col xs={24} lg={10} >
-                        <div className={`${styles.addressBkl} flex flex-col gap-5`}>
+                        <div className={`${styles.addressBkl} flex flex-col gap-5`} ref={addressRef}>
                             <div className={`${styles.addressContainer} border border-[var(--border-color)] rounded-3xl pt-4 pl-4`}>
                                 <div className="flex flex-col items-start gap-4 mb-4 max-w-[240px]">
                                     <RiMapPinLine size={32} />
@@ -86,16 +94,22 @@ const ContactUs = ({ data }) => {
                                     />
                                 </span>
                             </div>
-                            <div className='flex flex-wrap sm:flex-nowrap gap-4 w-full'>
-                                <div className="flex flex-col p-4 border rounded-[10px]  border-[var(--border-color)] gap-4 w-full">
-                                    <RiPhoneLine size={24} />
-                                    <span className='font-16'>{data.phone}</span>
+                            <div className='flex flex-wrap sm:flex-nowrap lg:flex-wrap xl:flex-nowrap gap-4 w-full'>
+                                <div className="flex flex-col p-4 border rounded-[10px] border-[var(--border-color)] gap-4 w-full hover:shadow-md transition-shadow duration-300 group" ref={phoneCardRef}>
+                                    <RiPhoneLine size={24} className="transition-transform duration-300 group-hover:scale-110" />
+                                    <a href={`tel:${data?.phone}`} target='_blank' className='!text-black hover:!text-black'>
+                                        <span className='font-16'>{data?.phone}</span>
+                                    </a>
                                 </div>
-                                <div className="flex flex-col p-4 border rounded-[10px]  border-[var(--border-color)] gap-4 w-full">
-                                    <RiMailLine size={24} />
-                                    <span className='font-16'>{data.email}</span>
+
+                                <div className="flex flex-col p-4 border rounded-[10px] border-[var(--border-color)] gap-4 w-full hover:shadow-md transition-shadow duration-300 group" ref={mailCardRef}>
+                                    <RiMailLine size={24} className="transition-transform duration-300 group-hover:scale-110" />
+                                    <a href={`mailto:${data?.email}`} target='_blank' className='!text-black hover:!text-black'>
+                                        <span className='font-16'>{data?.email}</span>
+                                    </a>
                                 </div>
                             </div>
+
                         </div>
                     </Col>
                 </Row>

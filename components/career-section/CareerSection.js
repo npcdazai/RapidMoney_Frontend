@@ -1,17 +1,30 @@
+'use client'
+
 import React from 'react';
 import Image from 'next/image';
 import styles from "./career.module.scss"
-import career from "./assets/career.png"
-import career2 from "./assets/career2.png"
-import career3 from "./assets/career3.png"
-import correct from "./assets/correct.svg"
+// import career from "./assets/career.png"
+// import career2 from "./assets/career2.png"
+// import career3 from "./assets/career3.png"
+// import correct from "./assets/correct.svg"
 import { RiCheckLine } from 'react-icons/ri';
+import useScrollFadeIn from '@/animations/useScrollFadeIn';
+import useScrollCardFadeIn from '@/animations/useScrollCardFadeIn';
 
 const CareerSection = ({ data }) => {
-    // if (!data) return null;
-    // const { images, coreValues } = data;
+    // const headingRef = useScrollFadeIn();
+    // const descRef = useScrollFadeIn();
 
-    // console.log(data);
+    // const image1Ref = useScrollCardFadeIn(0);
+    // const image2Ref = useScrollCardFadeIn(0.2);
+    // const coreValuesRef = useScrollCardFadeIn(0.4);
+    // const image3Ref = useScrollCardFadeIn(0.6);
+
+    // const coreValues = data?.coreValues || [];
+
+    //   const listItemRefs = coreValues.map((_, index) =>
+    //     useScrollCardFadeIn(0.8 + index * 0.1)
+    //   );
 
     return (
         <section className={`${styles.section} pt-120 pb-60`}>
@@ -28,7 +41,7 @@ const CareerSection = ({ data }) => {
                     </div>
                 </div>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <span className='h-full'>
+                    <span className='h-full' >
                         <Image
                             src={data?.images1?.[0].url}
                             // src={career}
@@ -38,7 +51,7 @@ const CareerSection = ({ data }) => {
                             className="rounded-xl w-full !h-full object-cover max-h-[280px]"
                         />
                     </span>
-                    <span className='h-full'>
+                    <span className='h-full' >
                         <Image
                             src={data?.images2?.[0].url}
                             // src={career2}
@@ -52,12 +65,12 @@ const CareerSection = ({ data }) => {
                 <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 mt-4">
                     {/* Left - Core Values List */}
                     <div className="bg-[#F9F9F9] p-8 rounded-xl text-black lg:col-span-1">
-                        <h2 className="text-4xl font-bold mb-6">
+                        <h2 className="text-4xl font-bold mb-6" >
                             {data.coreTitle}
                         </h2>
 
                         <ul className="space-y-10">
-                            {data.coreValues.map((item, index) => (
+                            {data?.coreValues?.map((item, index) => (
                                 <li key={index} className="flex items-start gap-3">
                                     <span className="w-6 h-6 min-w-[24px] text-[#6379F9] flex justify-center items-center rounded-full bg-[#4d43fe1c] self-start mt-1">
                                         <RiCheckLine size={18} />

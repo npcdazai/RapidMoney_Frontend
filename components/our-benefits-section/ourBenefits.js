@@ -258,9 +258,9 @@ const Benefits = ({ data }) => {
   }, [data]);
 
   // Add loading state if data is not available
-  if (!data || !data.features || !Array.isArray(data.features)) {
-    return <div>Loading...</div>;
-  }
+  // if (!data || !data.features || !Array.isArray(data.features)) {
+  //   return <div>Loading...</div>;
+  // }
 
   return (
     <section ref={sectionRef} className={`${styles.section}`}>

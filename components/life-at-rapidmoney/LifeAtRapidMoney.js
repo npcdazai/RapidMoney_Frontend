@@ -80,41 +80,112 @@
 // };
 // export default LifeAtRapidMoney;
 
+"use client";
 
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import Image from 'next/image';
 import styles from "./life-rapidmoney.module.scss";
-import culture from "./assets/culture.svg"
-import stability from "./assets/stability.svg"
-import growth from "./assets/growth.svg"
-import trophy from "./assets/trophy.svg"
-import investment from "./assets/investment.svg"
-import emotion from "./assets/emotion.svg"
-import shield from "./assets/shield.svg"
-import invoice from "./assets/invoice.svg"
+// import culture from "./assets/culture.svg"
+// import stability from "./assets/stability.svg"
+// import growth from "./assets/growth.svg"
+// import trophy from "./assets/trophy.svg"
+// import investment from "./assets/investment.svg"
+// import emotion from "./assets/emotion.svg"
+// import shield from "./assets/shield.svg"
+// import invoice from "./assets/invoice.svg"
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 const LifeAtRapidMoney = ({ data }) => {
 
-    const icon = {
-        culture: culture,
-        stability: stability,
-        growth: growth,
-        trophy: trophy,
-        investment: investment,
-        emotion: emotion,
-        shield: shield,
-        invoice: invoice
-    }
+    // const icon = {
+    //     culture: culture,
+    //     stability: stability,
+    //     growth: growth,
+    //     trophy: trophy,
+    //     investment: investment,
+    //     emotion: emotion,
+    //     shield: shield,
+    //     invoice: invoice
+    // }
 
     // console.log(data);
 
+    const sectionRef = useRef(null);
+    const titleRef = useRef(null);
+    const cardRefs = useRef([]);
+
+    useEffect(() => {
+        if (!data || !data.features || !Array.isArray(data.features)) {
+            console.warn("Benefits component: Invalid data prop");
+            return;
+        }
+        if (
+            !sectionRef.current ||
+            !titleRef.current ||
+            !cardRefs.current.length ||
+            cardRefs.current.some(ref => !ref)
+        ) {
+            console.warn("Benefits component: Refs not ready");
+            return;
+        }
+
+        const ctx = gsap.context(() => {
+            ScrollTrigger.refresh();
+            gsap.fromTo(
+                titleRef.current,
+                { autoAlpha: 0, y: 40 },
+                {
+                    autoAlpha: 1,
+                    y: 0,
+                    duration: 1,
+                    ease: "power2.out",
+                    scrollTrigger: {
+                        trigger: sectionRef.current,
+                        start: "top 80%",
+                        end: "bottom 20%",
+                        toggleActions: "play none none reverse",
+                    },
+                }
+            );
+
+            gsap.fromTo(
+                cardRefs.current.filter(ref => ref !== null),
+                { autoAlpha: 0, y: 50 },
+                {
+                    autoAlpha: 1,
+                    y: 0,
+                    duration: 1,
+                    ease: "power2.out",
+                    stagger: 0.2,
+                    scrollTrigger: {
+                        trigger: sectionRef.current,
+                        start: "top 85%",
+                        end: "bottom 15%",
+                        toggleActions: "play none none reverse",
+                    },
+                }
+            );
+        }, sectionRef);
+
+        return () => {
+            ctx.revert();
+            ScrollTrigger.getAll().forEach(trigger => trigger.kill());
+        };
+    }, [data]);
+
     return (
-        <section className={`${styles.section} pb-60 pt-60`}>
+        <section className={`${styles.section} pb-60 pt-60`} ref={sectionRef}>
             <div className="container mx-auto">
-                <h2 className="text-center font-40 font-weight-bold dark-color md:pb-[55px] pb-[25px]">{data?.title}</h2>
+                <h2 className="text-center font-40 font-weight-bold dark-color md:pb-[55px] pb-[25px]" ref={titleRef}>{data?.title}</h2>
                 <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+                    {cardRefs.current = []}
                     {data?.features.map((feature, index) => (
-                        <div key={index} className={`h-full flex flex-col gap-2 justify-between p-8 ${styles.benefitsCard}`}>
+                        <div key={index} className={`h-full flex flex-col gap-2 justify-between p-8 ${styles.benefitsCard}`} ref={(el) => {
+                  if (el) {
+                    cardRefs.current[index] = el;
+                  }
+                }}>
                             <div className="flex justify-between">
                                 <span className="font-18 font-weight-medium dark-color" dangerouslySetInnerHTML={{ __html: feature.text }}></span>
                             </div>
