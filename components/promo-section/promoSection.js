@@ -101,15 +101,15 @@ const PromoSection = () => {
             {/* Banner Image */}
             <div
               ref={imageRef}
-              className={`flex lg:mt-[-100px]  mt-[-50px] ${styles.bannerImageBkl}`}
+              className={`flex justify-center sm:justify-end ${styles.bannerImageBkl}`}
             >
               <Image
                 // src={bannerImage}
                 src={data?.image?.[0]?.url}
                 alt={data?.image?.[0]?.alt_name}
-                width={1920}
+                width={1200}
                 height={600}
-                className="w-full h-auto object-cover"
+                className="max-w-[1000px] w-full h-auto object-cover"
               // priority
               />
 

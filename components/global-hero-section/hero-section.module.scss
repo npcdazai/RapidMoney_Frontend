@@ -23,11 +23,11 @@
         width: 100%;
         max-width: 1200px;
         height: 100%;
-        max-height: 813px;
         position: absolute;
         right: 0%;
-        // right: 5%;
         top: 0%;
+
+
     }
 
     // &::after {
@@ -54,6 +54,7 @@
         max-width: 700px;
         margin: 0 auto;
         aspect-ratio: 3 / 2;
+        height: 100%;
 
         &::after {
             content: "";

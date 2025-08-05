@@ -93,7 +93,8 @@ export default function productRepayment({ data }) {
   return (
     <section className={`${styles.section} pb-120 pt-[30px]`}>
       <div className="container mx-auto px-4 ">
-        <h2 className="text-[#191515] font-bold text-3xl mb-14 text-center">
+
+        <h2 className="font-40 text-black font-bold text-center mb-12">
           {data.title}
         </h2>
         <div className="flex flex-col lg:flex-row justify-between px-8 py-16 dark-bg light-color rounded-[32px] items-center gap-12 overflow-hidden">
@@ -110,7 +111,7 @@ export default function productRepayment({ data }) {
                   <ul className="flex flex-col gap-6">
                     {sec.items.map((item, itemIdx) => (
                       <li key={itemIdx} className="flex items-start gap-2 text-white">
-                        <span className="bg-[var(--primary-color)] text-[var(--light-color)] inline-flex justify-center items-center w-6 h-6 rounded-full">
+                        <span className="bg-[var(--primary-color)] text-[var(--light-color)] inline-flex justify-center items-center w-6 h-6 rounded-full shrink-0">
                           <RiCheckLine size={18} />
                         </span>
                         <span>{item}</span>
@@ -138,7 +139,7 @@ export default function productRepayment({ data }) {
           </div>
         </div>
       </div>
-    </section>
+    </section >
   );
 }
 // "use client";

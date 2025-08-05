@@ -298,31 +298,32 @@ import { FiFileText } from "react-icons/fi";
 import { RiShieldCheckLine, RiCheckLine } from "react-icons/ri";
 
 
-export default function ProductTermLoans({data}) {
+export default function ProductTermLoans({ data }) {
   const { documentsSection, eligibilitySection, criteriaTable } =
     data;
 
   return (
     <section className="container px-4 bg-white pb-24">
       <h2 className="font-40 text-black font-bold text-center mb-12">
-        Term Loans
+        {data?.termLoansTitle}
       </h2>
 
       <div className="flex flex-col lg:flex-row gap-4 lg:gap-[30px] relative">
         {/* Documents Section */}
         <div className="w-full lg:w-1/2 bg-[#F9FAFF] rounded-4xl  p-7">
-          <div className="flex justify-between">
+          {/* <div className="flex justify-between"> */}
+          <div className="flex justify-between items-center sm:items-start pb-4 sm:pb-3">
             <h3 className="text-black font-28 font-semibold">
               {documentsSection.sectionTitle}
             </h3>
-            <span className="bg-white w-20 h-20 rounded-full text-[#6379F9] inline-flex items-center justify-center">
+            <span className="bg-white w-20 h-20 rounded-full text-[#6379F9] inline-flex items-center justify-center shrink-0">
               <FiFileText size={28} />
             </span>
           </div>
           <div className="text-black font-16 font-bold flex flex-col gap-6">
             {documentsSection.documents.map((doc, idx) => (
               <div key={idx} className="flex gap-3 items-center">
-                <span className="bg-[#4D43FE1C] text-[#121114] font-semibold font-18 inline-flex justify-center items-center w-10 h-10 rounded-full">
+                <span className="bg-[#4D43FE1C] text-[#121114] font-semibold font-18 inline-flex justify-center items-center w-10 h-10 rounded-full shrink-0">
                   {String(idx + 1).padStart(2, "0")}
                 </span>
                 <div>
@@ -338,18 +339,19 @@ export default function ProductTermLoans({data}) {
 
         {/* Eligibility Section */}
         <div className="w-full lg:w-1/2 bg-[#F9FAFF] rounded-4xl p-7">
-          <div className="flex justify-between">
+          {/* <div className="flex justify-between"> */}
+          <div className="flex justify-between items-center sm:items-start pb-4 sm:pb-3">
             <h3 className="text-black font-28 font-semibold">
               {eligibilitySection.sectionTitle}
             </h3>
-            <span className="bg-white w-20 h-20 rounded-full text-[#6379F9] inline-flex items-center justify-center">
+            <span className="bg-white w-20 h-20 rounded-full text-[#6379F9] inline-flex items-center justify-center shrink-0">
               <RiShieldCheckLine size={28} />
             </span>
           </div>
           <div className="text-black font-16 font-normal flex flex-col gap-5">
             {eligibilitySection.items.map((item, idx) => (
               <div key={idx} className="flex gap-3 items-center">
-                <span className="bg-[#4D43FE1C] text-[#6379F9] inline-flex justify-center items-center w-7 h-7 rounded-full">
+                <span className="bg-[#4D43FE1C] text-[#6379F9] inline-flex justify-center items-center w-7 h-7 rounded-full shrink-0">
                   <RiCheckLine size={18} />
                 </span>{" "}
                 {item.eligibility}

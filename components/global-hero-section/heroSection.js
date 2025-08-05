@@ -16,7 +16,7 @@ const GlobalHeroSection = ({ data }) => {
       <div className="container mx-auto relative">
         <Row gutter={[32, 32]} align="">
           <Col xs={24} lg={24} xl={8}>
-            <div className="flex flex-col gap-[20px] mt-0 lg:mt-20">
+            <div className="flex flex-col gap-[20px] mt-0 lg:mt-10">
               <h1 className={`font-48 light-color font-weight-bold ${styles.title}`}
                 dangerouslySetInnerHTML={{ __html: data?.title }}
               />
@@ -24,7 +24,7 @@ const GlobalHeroSection = ({ data }) => {
                 {
                   data?.descriptions?.map((desc, idx) => (
                     <div className="flex gap-2 items-center" key={idx}>
-                      <span className="bg-[#E2E0FF36] inline-flex justify-center items-center w-7 h-7 rounded-full">
+                      <span className="bg-[#E2E0FF36] inline-flex justify-center items-center w-7 h-7 rounded-full shrink-0">
                         <RiCheckLine size={18} />
                       </span>{" "}
                       {desc}
