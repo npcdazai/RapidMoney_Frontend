@@ -8,6 +8,7 @@ import Loading from '../loading';
 import DynamicHead from '@/components/head/dynamicHead';
 import PromoSection from '@/components/promo-section/promoSection';
 import defaultSEO from '@/constants/defaultSEO';
+import { notFound } from 'next/navigation';
 
 const header = homePageData.header;
 const faqSteps = faqData?.faqSteps
@@ -24,10 +25,16 @@ const getCMSPageBySlug = async () => {
       }
     );
 
-    return await response.json();
+    const data = await response.json();
+
+    if (!data?.data?.pageData) {
+      notFound();
+    }
+    return data;
   } catch (error) {
     console.log("API call failed: ", error);
-    return null;
+    notFound();
+    // return null;
   }
 };
 

@@ -30,6 +30,7 @@ import Loading from "../loading";
 import endpoints from "@/constants/endpoints";
 import requests from "@/utils/api";
 import defaultSEO from "@/constants/defaultSEO";
+import { notFound } from "next/navigation";
 
 async function getCMSPageBySlug(pageNum = 1, category = null) {
   try {
@@ -38,6 +39,13 @@ async function getCMSPageBySlug(pageNum = 1, category = null) {
     if (category) url += `&category=${category}`;
 
     const response = await api.get(url);
+
+    // console.log("Blogs response:", response);
+
+    if (!response?.data) {
+      notFound();
+    }
+
     return {
       data: response?.data?.data || [],
       pagination: {
@@ -47,13 +55,14 @@ async function getCMSPageBySlug(pageNum = 1, category = null) {
     };
   } catch (error) {
     console.error("Failed to fetch blogs on server:", error);
-    return {
-      data: [],
-      pagination: {
-        total: 0,
-        currentPage: pageNum,
-      }
-    };
+    notFound();
+    // return {
+    //   data: [],
+    //   pagination: {
+    //     total: 0,
+    //     currentPage: pageNum,
+    //   }
+    // };
   }
 }
 
@@ -118,9 +127,9 @@ export default async function Page({ searchParams }) {
         <DynamicHead />
         <BlogListing
           initialBlogs={initialBlogs.data}
-          initialTotal={initialBlogs.pagination.total} 
-          initialPage={initialBlogs.pagination.currentPage} 
-          category={category}
+          initialTotal={initialBlogs.pagination.total}
+          initialPage={initialBlogs.pagination.currentPage}
+          category={category.category || null}
         />
         <PromoSection />
       </Suspense>

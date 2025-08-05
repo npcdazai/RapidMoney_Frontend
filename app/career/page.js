@@ -9,6 +9,7 @@ import Loading from "../loading";
 import { Suspense } from "react";
 import DynamicHead from "@/components/head/dynamicHead";
 import defaultSEO from "@/constants/defaultSEO";
+import { notFound } from "next/navigation";
 
 const career = careerData.careerHeroSection
 const lifeRapidData = careerData.lifeAtRapidMoney
@@ -25,11 +26,16 @@ const getCMSPageBySlug = async () => {
         next: { revalidate: 3600 }, // 300 seconds = 5 minutes
       }
     );
+    const data = await response.json();
 
-    return await response.json();
+    if (!data?.data?.pageData) {
+      notFound();
+    }
+    return data;
   } catch (error) {
     console.log("API call failed: ", error);
-    return null;
+    notFound();
+    // return null;
   }
 };
 
@@ -92,7 +98,7 @@ export default async function CareerPage() {
     <>
       <Suspense fallback={<Loading />}>
         {/* <Header data={header} /> */}
-         <DynamicHead />
+        <DynamicHead />
         <CareerSection data={response?.data?.pageData?.careerHeroSection} />
         <LifeAtRapidMoney data={response?.data?.pageData?.lifeAtRapidMoney} />
         <JobOpening data={response?.data?.pageData?.jobOpenings} />

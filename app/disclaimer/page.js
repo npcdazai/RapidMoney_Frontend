@@ -6,6 +6,7 @@ import Loading from "../loading";
 import DynamicHead from "@/components/head/dynamicHead";
 import Disclaimer from "@/components/disclaimer-section/disclaimer";
 import defaultSEO from "@/constants/defaultSEO";
+import { notFound } from "next/navigation";
 
 
 const header = homePageData.header;
@@ -20,11 +21,16 @@ const getCMSPageBySlug = async () => {
         next: { revalidate: 3600 }, // 300 seconds = 5 minutes
       }
     );
+    const data = await response.json();
 
-    return await response.json();
+    if (!data?.data?.pageData) {
+      notFound();
+    }
+    return data;
   } catch (error) {
     console.log("API call failed: ", error);
-    return null;
+    notFound();
+    // return null;
   }
 };
 

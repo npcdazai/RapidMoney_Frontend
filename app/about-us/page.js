@@ -19,15 +19,22 @@ const getCMSPageBySlug = async () => {
       process.env.NEXT_PUBLIC_API_URL +
       endpoints.get_cms_page +
       "/about-us",
-     {
+      {
         next: { revalidate: 3600 }, // 300 seconds = 5 minutes
       }
     );
 
-    return await response.json();
+    const data = await response.json();
+
+    if (!data?.data?.pageData) {
+      notFound(); 
+    }
+    return data;
+    
   } catch (error) {
     console.log("API call failed: ", error);
-    return null;
+    notFound();
+    // return null;
   }
 };
 export async function generateMetadata() {
@@ -99,7 +106,7 @@ export default async function page() {
         <WhatSetsUsApart data={response?.data?.pageData?.setUsApart} />
         <AboutCEO data={response?.data?.pageData?.aboutCeo} />
         <AboutOurTeam data={response?.data?.pageData?.ourTeam} />
-        <PromoSection  />
+        <PromoSection />
       </Suspense>
 
       {/* <Header data={header} />

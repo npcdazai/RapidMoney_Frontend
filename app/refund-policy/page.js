@@ -5,6 +5,7 @@ import Loading from "../loading";
 import DynamicHead from "@/components/head/dynamicHead";
 import RefundPolicy from "@/components/refund-policy-section/refundPolicy";
 import defaultSEO from "@/constants/defaultSEO";
+import { notFound } from "next/navigation";
 
 const getCMSPageBySlug = async () => {
   try {
@@ -12,15 +13,21 @@ const getCMSPageBySlug = async () => {
       process.env.NEXT_PUBLIC_API_URL +
       endpoints.get_cms_page +
       "/refund-policy",
-     {
+      {
         next: { revalidate: 3600 }, // 300 seconds = 5 minutes
       }
     );
+    const data = await response.json();
 
-    return await response.json();
+    if (!data?.data?.pageData) {
+      notFound();
+    }
+    return data;
+
   } catch (error) {
     console.log("API call failed: ", error);
-    return null;
+    notFound();
+    // return null;
   }
 };
 
@@ -85,7 +92,7 @@ export default async function Home() {
     <>
       <Suspense fallback={<Loading />}>
         <DynamicHead />
-        <RefundPolicy data={response?.data?.pageData?.refundPolicySection}/>
+        <RefundPolicy data={response?.data?.pageData?.refundPolicySection} />
       </Suspense>
     </>
 

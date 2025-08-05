@@ -12,6 +12,7 @@ import endpoints from "@/constants/endpoints";
 import Loading from "../loading";
 import DynamicHead from "@/components/head/dynamicHead";
 import defaultSEO from "@/constants/defaultSEO";
+import { notFound } from "next/navigation";
 
 const getCMSPageBySlug = async () => {
   try {
@@ -24,10 +25,16 @@ const getCMSPageBySlug = async () => {
       }
     );
 
-    return await response.json();
+     const data = await response.json();
+ 
+     if (!data?.data?.pageData) {
+       notFound();
+     }
+     return data;;
   } catch (error) {
     console.log("API call failed: ", error);
-    return null;
+    notFound();
+    // return null;
   }
 };
 

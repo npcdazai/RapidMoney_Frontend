@@ -8,6 +8,7 @@ import endpoints from "@/constants/endpoints";
 import Loading from "@/app/loading";
 import DynamicHead from "@/components/head/dynamicHead";
 import defaultSEO from "@/constants/defaultSEO";
+import { notFound } from "next/navigation";
 
 const header = homePageData.header;
 const promo = homePageData.promoSection;
@@ -16,9 +17,9 @@ const getBlog = async (slug) => {
   try {
     const response = await fetch(
       process.env.NEXT_PUBLIC_API_URL +
-        endpoints.get_blogs_by_slug +
-        `/${slug}`,
-       {
+      endpoints.get_blogs_by_slug +
+      `/${slug}`,
+      {
         next: { revalidate: 3600 }, // 300 seconds = 5 minutes
       }
     );
@@ -26,11 +27,18 @@ const getBlog = async (slug) => {
     // console.log("Response from APIs:", response.json()?.status, process.env.NEXT_PUBLIC_API_URL +
     //     endpoints.get_blogs_by_slug +
     //     `/${slug}`);
+    const data = await response.json();
+    // console.log(data?.data, "data from API");
 
-    return await response?.json();
+    if (!data?.data) {
+      notFound();
+    }
+
+    return data
   } catch (error) {
     console.log("API call failed: ", error);
-    return null;
+    notFound();
+    // return null;
   }
 };
 
@@ -52,7 +60,7 @@ export async function generateMetadata({ params }) {
     meta_description: response?.data?.seo_setting?.meta_description,
   };
 
-  const isProduction =  process.env.NEXT_PUBLIC_ENVIRONMENT === "production";
+  const isProduction = process.env.NEXT_PUBLIC_ENVIRONMENT === "production";
 
   let canonicalURL = `${process.env.NEXT_PUBLIC_SITE_URL}/blogs/${params.slug}`;
 
@@ -67,9 +75,9 @@ export async function generateMetadata({ params }) {
     description: isProduction
       ? seo_setting?.meta_description || defaultSEO?.blog?.description
       : defaultSEO?.blog?.description,
-    robots:  isProduction
-        ? "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
-        : "noindex, nofollow",
+    robots: isProduction
+      ? "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+      : "noindex, nofollow",
     alternates: {
       canonical: isProduction ? canonicalURL : undefined,
     },
@@ -95,7 +103,7 @@ export async function generateMetadata({ params }) {
       type: 'article',
       publishedTime: response?.data?.created_at,
       modifiedTime: response?.data?.updated_at,
-    authors: response?.data?.auther?.name ? [response?.data?.auther?.name] : [],
+      authors: response?.data?.auther?.name ? [response?.data?.auther?.name] : [],
     },
     twitter: {
       card: "summary_large_image",
@@ -120,7 +128,7 @@ const Page = async ({ params }) => {
     <>
       <Suspense fallback={<Loading />}>
         {/* <Header data={header} /> */}
-        <DynamicHead  />
+        <DynamicHead />
         <BlogDetails data={response?.data} />
         <PromoSection />
       </Suspense>
