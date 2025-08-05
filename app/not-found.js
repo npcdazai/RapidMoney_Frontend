@@ -1,7 +1,9 @@
-// import Custom404 from '@/components/404/Custom404'
+import Custom404Page from "@/components/custom-not-found-page/Custom404Page";
+import DynamicHead from "@/components/head/dynamicHead";
 
 export default function NotFound() {
   return <>
-  {/* <Custom404 /> */}
+    <DynamicHead />
+    <Custom404Page />
   </>
 }
