@@ -139,7 +139,7 @@ const NewsSection = ({ data }) => {
 
                 <Link
                   href={`/blogs/${item?.slug}`}
-                  className="font-18 font-weight-medium dark-color flex items-center gap-2 group hover:!text-[#79CA00] transition-colors duration-300"
+                  className="font-18 font-weight-medium dark-color flex items-end gap-2 group hover:!text-[#79CA00] transition-colors duration-300  flex-1"
                 >
                   Learn More
                   <span className="text-[#79CA00] transform transition-transform duration-300 group-hover:translate-x-1">

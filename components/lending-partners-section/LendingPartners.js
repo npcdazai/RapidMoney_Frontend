@@ -114,6 +114,7 @@ import {
   RiPhoneLine,
   RiGlobalLine,
 } from "react-icons/ri";
+import useScrollFadeIn from "@/animations/useScrollFadeIn";
 
 const iconMap = {
   email: RiMailLine,
@@ -124,19 +125,23 @@ const iconMap = {
 };
 
 const LendingPartners = ({ data }) => {
+
+  const titleRef = useScrollFadeIn()
+  const logoRef = useScrollFadeIn()
+
   if (!data || !Array.isArray(data)) return null;
 
   return (
     <section className={`${styles.section} pb-28 pt-28`}>
       <div className="container mx-auto">
-        {data.map((partner, i) => (
+        {data?.map((partner, i) => (
           <div key={i} className="mb-14">
-            <h1 className="text-4xl font-bold text-center pb-12">{partner.title}</h1>
+            <h1 className="text-4xl font-bold text-center pb-12" ref={titleRef}>{partner.title}</h1>
 
             <div className="bg-[#afafb214] p-7 rounded-3xl">
               {/* Logo */}
               {partner.logo?.[0]?.url && (
-                <div className="pb-8">
+                <div className="pb-8" ref={logoRef}>
                   <Image
                     src={partner.logo[0].url}
                     alt={partner.logo[0].alt_name || "Partner Logo"}
@@ -147,7 +152,6 @@ const LendingPartners = ({ data }) => {
               )}
 
               <div className="grid lg:grid-cols-2 gap-5">
-                {/* Offices (Delhi, Registered, etc.) */}
                 {["delhiOffice", "registeredOffice"].map((officeKey) => {
                   const office = partner[officeKey];
                   if (!office) return null;
@@ -170,7 +174,6 @@ const LendingPartners = ({ data }) => {
                         </div>
                       </div>
 
-                      {/* Other Contact Info (email, phone, website, etc.) */}
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                         {Object.entries(office)
                           .filter(([key]) => key !== "address")

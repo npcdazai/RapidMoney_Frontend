@@ -139,7 +139,7 @@ const Footer = async () => {
             <Divider style={{ borderColor: '#FFFFFF3B' }} />
 
             <div
-                className={`border-[#DBDBDB] gap-3 container text-center md:text-left mx-auto flex flex-wrap justify-center md:justify-between ${styles.footerLastBottom}`}
+                className={`border-[#DBDBDB] gap-3 container text-center md:text-left mx-auto flex flex-wrap justify-center md:justify-between items-center ${styles.footerLastBottom}`}
             >
                 <span className={styles.notes}>{copyright.description}</span>
                 <div className="flex flex-wrap gap-4 justify-center mt-3 md:mt-0">

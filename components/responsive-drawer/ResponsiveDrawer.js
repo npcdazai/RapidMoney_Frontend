@@ -17,8 +17,8 @@ export default function ResponsiveDrawer({ open, onClose, data }) {
                 open={open}
                 className="navbarDrawer"
             >
-                <nav className="px-4 py-2 flex flex-col gap-2">
-                    {data?.menu?.map((item, idx) =>
+                <nav className="px-4 py-2 flex flex-col gap-2 h-full">
+                    {data?.menus?.map((item, idx) =>
                         item.type === "dropdown" ? (
                             // <Dropdown
                             //     key={idx}
@@ -50,9 +50,9 @@ export default function ResponsiveDrawer({ open, onClose, data }) {
                             //         <RiArrowDropDownLine size={24} />
                             //     </div>
                             // </Dropdown>
-                            <Link key={idx} href={item?.link}  className={`block py-2 px-2 rounded ${styles.drawerDropDownLink}`}>
+                            <Link key={idx} href={item?.redirect_path}  className={`block py-2 px-2 rounded ${styles.drawerDropDownLink}`}>
                                 <Flex align="center" gap={10}>
-                                    <span className={styles.dropDownLink}>{item?.label}</span>
+                                    <span className={styles.dropDownLink}>{item?.item_name}</span>
                                     <RiArrowDownSLine
                                         className={styles.dropDownArrow}
                                         size={18}
@@ -63,15 +63,15 @@ export default function ResponsiveDrawer({ open, onClose, data }) {
                         ) : (
                             <Link
                                 key={idx}
-                                href={item?.link}
+                                href={item?.redirect_path}
                                 className={`block py-2 px-2 rounded ${styles.drawerNavLink}` }
                             >
-                                <span>{item?.label}</span>
+                                <span>{item?.item_name}</span>
                             </Link>
                         )
                     )}
                     {
-                        <div className="md:hidden block">
+                        <div className="md:hidden block flex-1 content-end">
                             <button
                                 type="primary"
                                 className="apply-btn apply-btn-green border-none font-semibold w-full mt-2"
