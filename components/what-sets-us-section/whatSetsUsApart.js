@@ -64,9 +64,10 @@ export default function WhatSetsUsApart({data}) {
                 // src={card.image[0].url}
                 src={card?.image?.[0]?.url}
                 alt={card.title}
+                className="w-full max-w-[28px] max-h-[28px] h-full object-cover rounded-full"
               />
             </div>
-            <div className="mt-auto">
+            <div className="">
               <h3 className="font-28 font-bold text-white mb-4">
                 {card.title}
               </h3>

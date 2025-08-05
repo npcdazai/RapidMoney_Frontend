@@ -3,18 +3,18 @@ const { Image } = require("antd");
 function MemberCard({ name, title, imgUrl, alt, linkedin, description, cardRef }) {
   return (
     <div className="max-w-[270px] [perspective:1000px] group" ref={cardRef}>
-      <div className="relative w-full h-[370px] transition-transform duration-700 [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)]">
+      <div className="relative w-full h-auto transition-transform duration-700 [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)]">
         {/* Front Side */}
         <div>
-          <div className="bg-[#F4F5F8] rounded-4xl relative w-full mx-auto overflow-hidden mb-[10px]">
-            <div className="overflow-hidden rounded-xl pt-8">
+          <div className="bg-[#F4F5F8] rounded-4xl relative w-full mx-auto overflow-hidden mb-3 pt-4">
+            <div className="overflow-hidden rounded-xl w-full h-[310px]">
               <Image
                 src={imgUrl}
                 alt={alt}
                 preview={false}
                 width={270}
-                height={300}
-                className="w-auto h-[300px] object-cover transform group-hover:opacity-0 transition-opacity duration-1000"
+                height={310}
+                className="w-full h-full object-cover transform group-hover:opacity-0 transition-opacity duration-1000"
               />
             </div>
             {linkedin && (
@@ -55,11 +55,15 @@ function MemberCard({ name, title, imgUrl, alt, linkedin, description, cardRef }
               )}
             </div>
             <p className="text-sm text-[#00000087] font-normal leading-relaxed">
-              {description}
+              {
+               description && description?.length > 300
+                  ? `${description.slice(0, 300)}...`
+                  : description
+              }
             </p>
           </div>
           <div className="flex items-center mt-auto">
-            <div className="w-11 h-11 rounded-full overflow-hidden mr-3 bg-white">
+            <div className="w-11 h-11 rounded-full overflow-hidden mr-3 bg-white shrink-0">
               <Image
                 src={imgUrl}
                 alt={alt}

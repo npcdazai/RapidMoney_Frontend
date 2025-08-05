@@ -22,7 +22,10 @@ export default function AboutCEO({ data }) {
           {/* Left Text Content */}
           <div className="lg:w-2/3 py-10 xl:py-14" ref={textRef}>
             <p className="text-white text-base lg:text-lg leading-relaxed mb-6">
-              {data?.description}
+              {
+                data?.description?.length > 300 ?
+                `${(data?.description).slice(0, 300)}...` : (data?.description)
+              }
             </p>
 
             <h3 className="text-white text-xl font-bold flex items-center gap-2 mb-1">
@@ -42,10 +45,10 @@ export default function AboutCEO({ data }) {
             <Image
               src={CEOBG}
               alt="CEO Background Design"
-              className="hidden lg:block absolute bottom-0 -right-14 xl:-right-24 z-0 object-cover"
+              className="hidden lg:block absolute bottom-0 -right-14 xl:-right-24 z-0 object-cover h-full"
             />
             <Image
-              // src={CEO}
+              // src={CEO}  
               src={data?.image?.[0]?.url}
               width={470}
               height={420}

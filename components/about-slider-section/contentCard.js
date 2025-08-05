@@ -11,7 +11,7 @@ export default function ContentCard({ title, description, imageSrc, imageAlt }) 
           alt={imageAlt}
           // width={90}
           // height={90}
-          className="mb-4 w-full h-full object-cover rounded-lg"
+          className="mb-4 max-w-[110px] max-h-[110px] w-full h-full object-cover rounded-lg"
           preview={false}
         />
       </div>

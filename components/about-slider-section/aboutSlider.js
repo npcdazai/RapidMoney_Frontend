@@ -22,7 +22,7 @@ const AboutSlider = ({ data = [] }) => {
           delay: 3000,
           disableOnInteraction: false,
         }}
-        className={"about-hero-slider"}
+        className={"aboutSliderSwiper"}
         breakpoints={{
           320: { slidesPerView: 1 },
           640: { slidesPerView: 2 },
