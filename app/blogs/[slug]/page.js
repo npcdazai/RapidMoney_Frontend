@@ -43,13 +43,14 @@ const getBlog = async (slug) => {
 };
 
 export async function generateMetadata({ params }) {
-  const response = await getBlog(params.slug);
+  const resolvedParams = await params; // Await params if it's a Promise
+  const response = await getBlog(resolvedParams.slug);
 
   console.log("Response from API:", response);
 
   if (!response || !response.data) {
     return {
-      title: "Page Not Found",
+      title: "Rapid Money - Page Not Found",
       description: "This page does not exist.",
       robots: "noindex, nofollow",
     };
@@ -62,13 +63,14 @@ export async function generateMetadata({ params }) {
 
   const isProduction = process.env.NEXT_PUBLIC_ENVIRONMENT === "production";
 
-  let canonicalURL = `${process.env.NEXT_PUBLIC_SITE_URL}/blogs/${params.slug}`;
+  let canonicalURL = `${process.env.NEXT_PUBLIC_SITE_URL}/blogs/${resolvedParams.slug}`;
 
   const featureImage =
     response?.data?.feature_image?.[0]?.url ||
     defaultSEO?.blog?.featureImage;
 
   return {
+    metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL),
     title: isProduction
       ? seo_setting?.meta_title || defaultSEO?.blog?.title
       : defaultSEO?.blog?.title,
@@ -127,7 +129,6 @@ const Page = async ({ params }) => {
   return (
     <>
       <Suspense fallback={<Loading />}>
-        {/* <Header data={header} /> */}
         <DynamicHead />
         <BlogDetails data={response?.data} />
         <PromoSection />

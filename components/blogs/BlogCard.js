@@ -37,10 +37,12 @@ export default function BlogCard({ item }) {
         href={"/blogs/" + item?.seo?.slug}
         className="font-18 font-weight-medium dark-color flex gap-2 group hover:!text-[#79CA00] transition-colors duration-300 flex-1 items-end"
       >
-        Learn More
-        <span className="text-[#79CA00] transform transition-transform duration-300 group-hover:translate-x-1">
-          <RiArrowRightLine size={24} />
-        </span>
+        <div className="flex items-center gap-2">
+          Learn More
+          <span className="text-[#79CA00] transform transition-transform duration-300 group-hover:translate-x-1">
+            <RiArrowRightLine size={24} />
+          </span>
+        </div>
       </Link>
     </div>
   );

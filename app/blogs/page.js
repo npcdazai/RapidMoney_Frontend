@@ -118,8 +118,8 @@ export async function generateMetadata() {
 
 
 export default async function Page({ searchParams }) {
-  const category = await searchParams;
-  const initialBlogs = await getCMSPageBySlug(1, category.category || null);
+  const category =  searchParams?.category || null; 
+  const initialBlogs = await getCMSPageBySlug(1, category);
 
   return (
     <>
@@ -129,7 +129,7 @@ export default async function Page({ searchParams }) {
           initialBlogs={initialBlogs.data}
           initialTotal={initialBlogs.pagination.total}
           initialPage={initialBlogs.pagination.currentPage}
-          category={category.category || null}
+          category={category}
         />
         <PromoSection />
       </Suspense>

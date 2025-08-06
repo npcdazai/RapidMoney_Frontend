@@ -177,9 +177,9 @@ const BlogDetails = ({ data }) => {
                     href={`/blogs/${data?.previousSlug}`}
                     className="flex items-center gap-3 group !cursor-pointer"
                   >
-                    <button className="w-12 h-12 rounded-full bg-[#F8F8F9] flex items-center justify-center hover:shadow-md cursor-pointer">
+                    <span className="w-12 h-12 rounded-full bg-[#F8F8F9] flex items-center justify-center hover:shadow-md cursor-pointer">
                       <RiArrowLeftLine size={24} color="#000" />
-                    </button>
+                    </span>
                     <span className="font-16 dark-color group-hover:text-primary transition">
                       Previous Article
                     </span>
@@ -205,9 +205,9 @@ const BlogDetails = ({ data }) => {
                     <span className="font-16 dark-color group-hover:text-primary transition cursor-pointer">
                       Next Article
                     </span>
-                    <button className="w-12 h-12 rounded-full bg-[#F8F8F9] flex items-center justify-center hover:shadow-md !cursor-pointer">
+                    <span className="w-12 h-12 rounded-full bg-[#F8F8F9] flex items-center justify-center hover:shadow-md !cursor-pointer">
                       <RiArrowRightLine size={24} color="#000" />
-                    </button>
+                    </span>
                   </Link>
                 ) : (
                   <div className="flex items-center gap-3 opacity-40 !cursor-not-allowed">
