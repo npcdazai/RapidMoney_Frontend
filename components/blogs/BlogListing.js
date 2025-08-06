@@ -330,7 +330,7 @@ export default function BlogListing({
 
   return (
     <section className="container mx-auto pt-120 pb-120">
-      <h1 ref={titleRef} className="text-4xl font-bold text-center pb-12">
+      <h1 ref={titleRef} className="font-40 font-bold text-center pb-12">
         Blogs
       </h1>
 
