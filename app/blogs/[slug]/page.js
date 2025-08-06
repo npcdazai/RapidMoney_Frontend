@@ -46,8 +46,6 @@ export async function generateMetadata({ params }) {
   const resolvedParams = await params; // Await params if it's a Promise
   const response = await getBlog(resolvedParams.slug);
 
-  console.log("Response from API:", response);
-
   if (!response || !response.data) {
     return {
       title: "Rapid Money - Page Not Found",
@@ -119,19 +117,18 @@ export async function generateMetadata({ params }) {
 }
 
 const Page = async ({ params }) => {
-  const { slug } = params;
+  const { slug } = await params;
 
   console.log("Slug from params:", slug);
 
   const response = await getBlog(slug);
 
-  console.log("Response from API:", response);
   return (
     <>
       <Suspense fallback={<Loading />}>
-        <DynamicHead />
+        {/* <DynamicHead /> */}
         <BlogDetails data={response?.data} />
-        <PromoSection />
+        {/* <PromoSection /> */}
       </Suspense>
     </>
   );
