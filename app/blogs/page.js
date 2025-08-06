@@ -124,7 +124,7 @@ export default async function Page({ searchParams }) {
   return (
     <>
       <Suspense fallback={<Loading />}>
-        <DynamicHead />
+        {/* <DynamicHead /> */}
         <BlogListing
           initialBlogs={initialBlogs.data}
           initialTotal={initialBlogs.pagination.total}

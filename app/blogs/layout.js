@@ -9,7 +9,7 @@ export default function BlogsLayout({ children }) {
         <>
             <DynamicHead />
             {children}
-            <PromoSection />
+            {/* <PromoSection /> */}
         </>
     );
 }

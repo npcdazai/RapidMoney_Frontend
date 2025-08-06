@@ -128,7 +128,7 @@ const Page = async ({ params }) => {
       <Suspense fallback={<Loading />}>
         {/* <DynamicHead /> */}
         <BlogDetails data={response?.data} />
-        {/* <PromoSection /> */}
+        <PromoSection />
       </Suspense>
     </>
   );
