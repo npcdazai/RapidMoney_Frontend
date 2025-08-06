@@ -3,7 +3,7 @@ import React, { Suspense } from "react";
 import homePageData from "@/json/homepage/home.json";
 import BlogDetails from "@/components/blog-details-section/BlogDetails";
 import BlogDetailsData from "@/json/blogdetails/blogdetails.json";
-import PromoSection from "@/components/promo-section/promoSection";
+import PromoSection from "@/components/promo-section/promoWrapper";
 import endpoints from "@/constants/endpoints";
 import Loading from "@/app/loading";
 import DynamicHead from "@/components/head/dynamicHead";

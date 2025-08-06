@@ -6,7 +6,7 @@ import FaqSection from '@/components/faq/faq-section';
 import endpoints from '@/constants/endpoints';
 import Loading from '../loading';
 import DynamicHead from '@/components/head/dynamicHead';
-import PromoSection from '@/components/promo-section/promoSection';
+import PromoSection from "@/components/promo-section/promoWrapper";
 import defaultSEO from '@/constants/defaultSEO';
 import { notFound } from 'next/navigation';
 

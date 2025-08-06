@@ -7,7 +7,7 @@ import AboutCEO from "@/components/about-ceo-section/aboutCE0";
 import AboutOurTeam from "@/components/about-our-team-section/aboutOurTeam";
 // import Header from "@/components/head/head";
 // import homePageData from "@/json/homepage/home.json";
-import PromoSection from "@/components/promo-section/promoSection";
+import PromoSection from "@/components/promo-section/promoWrapper";
 import endpoints from "@/constants/endpoints";
 import Loading from "../loading";
 import DynamicHead from "@/components/head/dynamicHead";

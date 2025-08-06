@@ -1,7 +1,7 @@
 import React, { Suspense } from "react";
 // import Header from "@/components/head/head";
 // import homePageData from "@/json/homepage/home.json";
-import PromoSection from "@/components/promo-section/promoSection";
+import PromoSection from "@/components/promo-section/promoWrapper";
 import GlobalHeroSection from "@/components/global-hero-section/heroSection";
 import ProductFAQ from "@/components/product-faq/productFAQ";
 import ProductRepayment from "@/components/product-repayment/productRepayment";

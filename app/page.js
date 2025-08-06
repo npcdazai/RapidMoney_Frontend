@@ -1,6 +1,6 @@
 // import Header from "@/components/head/head";
 // import HeroSection from "@/components/hero-section/heroSection";
-import PromoSection from "@/components/promo-section/promoSection";
+import PromoSection from "@/components/promo-section/promoWrapper";
 // import Image from "next/image";
 // import homePageData from "@/json/homepage/home.json";
 import FaqSection from "@/components/faq/faq-section";

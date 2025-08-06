@@ -24,13 +24,13 @@
 
 import BlogListing from "@/components/blogs/BlogListing";
 import React, { Suspense } from "react";
-import PromoSection from "@/components/promo-section/promoSection";
 import DynamicHead from "@/components/head/dynamicHead";
 import Loading from "../loading";
 import endpoints from "@/constants/endpoints";
 import requests from "@/utils/api";
 import defaultSEO from "@/constants/defaultSEO";
 import { notFound } from "next/navigation";
+import PromoSection from "@/components/promo-section/promoWrapper";
 
 async function getCMSPageBySlug(pageNum = 1, category = null) {
   try {
