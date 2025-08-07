@@ -42,6 +42,7 @@ export async function generateMetadata() {
     data?.feature_image?.[0]?.url || defaultSEO.blog.featureImage;
 
   return {
+    metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL),
     title,
     description,
     robots: isProduction
@@ -184,7 +185,7 @@ export default function page() {
 
 
 // export default async function Page({ searchParams }) {
-//   const category =  searchParams?.category || null; 
+//   const category =  searchParams?.category || null;
 //   const initialBlogs = await getCMSPageBySlug(1, category);
 
 //   return (
