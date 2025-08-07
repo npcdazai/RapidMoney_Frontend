@@ -115,7 +115,7 @@ const NewsSection = ({ data }) => {
               ref={(el) => (cardsRef.current[idx] = el)}
             >
               <div className="flex flex-col gap-4 h-full group">
-                <Link href={`/blogs/${item?.slug}`}>
+                <Link href={`/blogs/${item?.slug}`} className="h-auto">
                   <div className="overflow-hidden w-full rounded-3xl ">
                     <Image
                       src={item?.image}
@@ -141,10 +141,12 @@ const NewsSection = ({ data }) => {
                   href={`/blogs/${item?.slug}`}
                   className="font-18 font-weight-medium dark-color flex items-end gap-2 group hover:!text-[#79CA00] transition-colors duration-300  flex-1"
                 >
-                  Learn More
-                  <span className="text-[#79CA00] transform transition-transform duration-300 group-hover:translate-x-1">
-                    <RiArrowRightLine size={24} />
-                  </span>
+                  <div className="flex items-center gap-2">
+                    Learn More
+                    <span className="text-[#79CA00] transform transition-transform duration-300 group-hover:translate-x-1">
+                      <RiArrowRightLine size={24} />
+                    </span>
+                  </div>
                 </Link>
               </div>
             </Col>

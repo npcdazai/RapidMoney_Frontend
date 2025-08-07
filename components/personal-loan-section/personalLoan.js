@@ -181,7 +181,7 @@ const PersonalLoan = ({ data }) => {
                     }
                     width={20}
                     height={20}
-                    alt={stat.label}
+                    alt={stat.label || "Stat Icon"}
                   />
                   <span className="font-40 font-weight-bold">{stat?.value}</span>
                   <span className="font-20">{stat?.label}</span>

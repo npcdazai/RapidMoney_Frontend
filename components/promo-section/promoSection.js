@@ -106,7 +106,7 @@ const PromoSection = () => {
               <Image
                 // src={bannerImage}
                 src={data?.image?.[0]?.url}
-                alt={data?.image?.[0]?.alt_name}
+                alt={data?.image?.[0]?.alt_name || "Promo Banner"}
                 width={1200}
                 height={600}
                 className="max-w-[1000px] w-full h-auto object-cover"

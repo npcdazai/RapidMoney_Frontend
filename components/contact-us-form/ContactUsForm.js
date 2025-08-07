@@ -66,8 +66,7 @@ const ContactUs = ({ data }) => {
                                 </Form.Item>
                                 <Form.Item>
                                     <button
-
-                                        htmlType="submit"
+                                        type="submit"
                                         className="apply-btn apply-btn-green max-w-[140px] w-full"
                                     >
                                         Submit
