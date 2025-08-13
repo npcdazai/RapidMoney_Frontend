@@ -15,7 +15,7 @@ export default function BlogCard({ item }) {
             alt={item?.title}
             width={500}
             height={300}
-            className="sm:max-w-[370px] sm:max-h-[270px] w-full object-cover transform transition-transform duration-500 ease-in-out group-hover:scale-105 group-hover:brightness-105 rounded-3xl"
+            className="sm:max-h-[270px] w-full object-cover transform transition-transform duration-500 ease-in-out group-hover:scale-105 group-hover:brightness-105 rounded-3xl"
           />
         </div>
       </Link>

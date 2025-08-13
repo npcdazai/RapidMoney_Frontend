@@ -251,7 +251,7 @@ export default function AboutOurTeam({ data }) {
               >
                 {section?.title}
               </h2>
-              <div className="flex justify-center flex-wrap gap-8">
+              <div className="flex justify-center flex-wrap gap-x-8 gap-y-16">
                 {section?.persons?.map((person, i) => {
                   const imgObj = person?.image?.[0] || {};
                   return (
