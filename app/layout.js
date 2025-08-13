@@ -29,10 +29,10 @@ export default function RootLayout({ children }) {
   const antdConfig = config(notoSans.style.fontFamily);
   return (
     <html lang="en">
-      <UserProvider>
         <body
           className={`${notoSans.className}`}
         >
+      <UserProvider>
           <AntdRegistry>
             <ConfigProvider theme={antdConfig}>
               {/* <Header /> */}
@@ -45,8 +45,8 @@ export default function RootLayout({ children }) {
               </AppLayout> */}
             </ConfigProvider>
           </AntdRegistry>
-        </body>
       </UserProvider>
+        </body>
     </html>
   );
 }
