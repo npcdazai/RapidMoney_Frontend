@@ -1,5 +1,5 @@
 import CareerSection from "@/components/career-section/CareerSection";
-import Header from "@/components/head/head";
+// import Header from "@/components/head/head";
 import JobOpening from "@/components/job-openings/JobOpening";
 import LifeAtRapidMoney from "@/components/life-at-rapidmoney/LifeAtRapidMoney";
 import endpoints from "@/constants/endpoints";
@@ -11,10 +11,10 @@ import DynamicHead from "@/components/head/dynamicHead";
 import defaultSEO from "@/constants/defaultSEO";
 import { notFound } from "next/navigation";
 
-const career = careerData.careerHeroSection
-const lifeRapidData = careerData.lifeAtRapidMoney
-const jobData = careerData.jobOpenings
-const header = headerData.header
+// const career = careerData.careerHeroSection
+// const lifeRapidData = careerData.lifeAtRapidMoney
+// const jobData = careerData.jobOpenings
+// const header = headerData.header
 
 const getCMSPageBySlug = async () => {
   try {
@@ -93,7 +93,7 @@ export async function generateMetadata() {
 
 export default async function CareerPage() {
   const response = await getCMSPageBySlug();
-  console.log(response)
+  // console.log(response)
   return (
     <>
       <Suspense fallback={<Loading />}>
