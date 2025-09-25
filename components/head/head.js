@@ -119,7 +119,7 @@ const Header = ({ isDark = false, data }) => {
                   //             </Flex>
                   //         </Link>
                   // </Dropdown>
-                  <Link key={idx} href={item?.redirect_path}>
+                  <Link key={idx} href={item?.redirect_path || '#'}>
                     <Flex align="center" gap={10}>
                       <span className={`${styles.dropDownLink} ${isActive ? '!text-[#79CA00]' : ''}`}>{item?.item_name}</span>
                       <RiArrowDownSLine
@@ -130,7 +130,7 @@ const Header = ({ isDark = false, data }) => {
                     </Flex>
                   </Link>
                 ) : (
-                  <Link key={idx} className="" href={item?.redirect_path}>
+                  <Link key={idx} className="" href={item?.redirect_path || '#'}>
                     <span className={`${styles.navLink} ${isActive ? '!text-[#79CA00]' : ''}`}>{item?.item_name}</span>
                   </Link>
                 )
@@ -142,7 +142,7 @@ const Header = ({ isDark = false, data }) => {
           {/* CTA Buttons */}
           <div className="flex items-center gap-3">
             <div className="hidden md:flex items-center gap-3">
-              <Link href={data?.cta?.applyLink || "/"}>
+              <Link href={"https://chatgpt.com/"} target="_blank">
                 <button
                   // type="primary"
                   className={`apply-btn apply-btn-green`}

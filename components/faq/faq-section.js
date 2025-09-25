@@ -9,8 +9,7 @@
 // import styles from "./faq-section.module.scss";
 // import Image from "next/image";
 
-// const { Panel } = Collapse;
-// const { TabPane } = Tabs;
+// // const { TabPane } = Tabs;
 // gsap.registerPlugin(ScrollTrigger);
 
 // const FaqSection = ({ data }) => {
@@ -177,8 +176,6 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import styles from "./faq-section.module.scss";
 import rapidMoneyLogo from "./assets/rapid_money.png";
 
-const { Panel } = Collapse;
-const { TabPane } = Tabs;
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -241,48 +238,21 @@ const FaqSection = ({ data }) => {
               defaultActiveKey="0"
               tabPosition="top"
               className={`${styles.faqTabs}`}
-            >
-              {steps.map((step, index) => (
-                // <TabPane
-                //   tab={
-                //     index === 0 ? (
-                //       // step.step === 1 ? (
-                //       <div className="flex items-center w-full gap-2">
-                //         <span className="inline-block">{step.tabTitle}</span>
-                //         <Image
-                //           src={rapidMoneyLogo}
-                //           alt="Rapid Money Logo"
-                //           className="inline-block object-contain align-middle max-w-[95px] min-w-[95px] w-full"
-                //         />
-                //       </div>
-                //     ) : (
-                //       step.tabTitle
-                //     )
-                //   }
-                //   key={String(step.step || index)}
-                //   className={styles.faqTabsPane}
-                // >
-                <TabPane
-                  tab={
-                    // index === 0 ? (
-                      // step.step === 1 ? (
-                      (step.tabTitle?.includes("Rapid Money")) ?
-                      (
-                        <div className="flex items-center w-full gap-2">
-                        <span className="inline-block"> {step.tabTitle?.replace("Rapid Money", "").trim()}</span>
-                        <Image
-                          src={rapidMoneyLogo}
-                          alt="Rapid Money Logo"
-                          className="inline-block object-contain align-middle max-w-[95px] min-w-[95px] w-full"
-                        />
-                      </div>
-                    ) : (
-                      step.tabTitle
-                    )
-                  }
-                  key={String(step.step || index)}
-                  className={styles.faqTabsPane}
-                >
+              items={steps.map((step, index) => ({
+                key: String(step.step || index),
+                label: step.tabTitle?.includes("Rapid Money") ? (
+                  <div className="flex items-center w-full gap-2">
+                    <span className="inline-block">{step.tabTitle?.replace("Rapid Money", "").trim()}</span>
+                    <Image
+                      src={rapidMoneyLogo}
+                      alt="Rapid Money Logo"
+                      className="inline-block object-contain align-middle max-w-[95px] min-w-[95px] w-full"
+                    />
+                  </div>
+                ) : (
+                  step.tabTitle
+                ),
+                children: (
                   <Collapse
                     accordion
                     expandIconPosition="end"
@@ -299,33 +269,29 @@ const FaqSection = ({ data }) => {
                     bordered={false}
                     className={styles.faqCollapse}
                     defaultActiveKey={["1"]}
-                  >
-                    {step?.questions
-                      && step?.questions
-                        ?.length > 0 && step?.questions?.map((q, i) => (
-                          <Panel
-                            ref={(el) => (panelRefs.current[i] = el)}
-                            header={
-                              <div className="flex justify-between items-center w-full">
-                                <span className="font-18 font-weight-medium">
-                                  {q.question}
-                                </span>
-                              </div>
-                            }
-                            key={(i + 1).toString()}
-                            className={`${styles.faqCollapsePanel} w-full`}
-                          >
-                            <div className="flex justify-between items-center gap-10">
-                              <p className="font-14 text-[rgba(33, 33, 33, 0.8)]">
-                                {q.answer}
-                              </p>
-                            </div>
-                          </Panel>
-                        ))}
-                  </Collapse>
-                </TabPane>
-              ))}
-            </Tabs>
+                    items={step?.questions && step?.questions?.length > 0 ? step.questions.map((q, i) => ({
+                      key: (i + 1).toString(),
+                      label: (
+                        <div className="flex justify-between items-center w-full">
+                          <span className="font-18 font-weight-medium">
+                            {q.question}
+                          </span>
+                        </div>
+                      ),
+                      children: (
+                        <div className="flex justify-between items-center gap-10">
+                          <p className="font-14 text-[rgba(33, 33, 33, 0.8)]">
+                            {q.answer}
+                          </p>
+                        </div>
+                      ),
+                      className: `${styles.faqCollapsePanel} w-full`
+                    })) : []}
+                  />
+                ),
+                className: styles.faqTabsPane
+              }))}
+            />
           </Col>
         </Row>
       </div>

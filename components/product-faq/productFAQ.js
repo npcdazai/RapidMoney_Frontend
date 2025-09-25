@@ -4,7 +4,6 @@ import React from "react";
 import styles from "./faq-section.module.scss";
 import { Collapse } from "antd";
 import { RiArrowDropDownLine } from "react-icons/ri";
-const { Panel } = Collapse;
 
 // const productFAQs = [
 //   {
@@ -54,7 +53,6 @@ export default function ProductFAQ({data}) {
         <Collapse
           accordion
           expandIconPosition="end"
-          // expandIcon={({ isActive }) => <RiArrowDropDownLine size={26} color="" rotate={isActive ? 90 : 0} />}
           expandIcon={({ isActive }) => (
             <RiArrowDropDownLine
               size={32}
@@ -68,29 +66,23 @@ export default function ProductFAQ({data}) {
           bordered={false}
           className={styles.faqCollapse}
           defaultActiveKey={["1"]}
-        >
-          {data?.questions?.map((faq, index) => {
-            // console.log(index);
-            return (
-              <Panel
-                // header={<span className="font-18 font-weight-medium">{q.question}</span>}
-                header={
-                  <div className="flex justify-between items-center w-full">
-                    <span className="font-18 font-weight-medium">
-                      {faq?.question}
-                    </span>
-                  </div>
-                }
-                key={index + 1}
-                className={`${styles.faqCollapsePanel} w-full`}
-              >
-                <p className="font-14 text-[rgba(33, 33, 33, 0.8)]">
-                  {faq?.answer}
-                </p>
-              </Panel>
-            );
-          })}
-        </Collapse>
+          items={data?.questions?.map((faq, index) => ({
+            key: index + 1,
+            label: (
+              <div className="flex justify-between items-center w-full">
+                <span className="font-18 font-weight-medium">
+                  {faq?.question}
+                </span>
+              </div>
+            ),
+            children: (
+              <p className="font-14 text-[rgba(33, 33, 33, 0.8)]">
+                {faq?.answer}
+              </p>
+            ),
+            className: `${styles.faqCollapsePanel} w-full`
+          })) || []}
+        />
       </div>
     </section>
   );
