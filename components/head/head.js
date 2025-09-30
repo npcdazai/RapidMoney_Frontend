@@ -142,7 +142,7 @@ const Header = ({ isDark = false, data }) => {
           {/* CTA Buttons */}
           <div className="flex items-center gap-3">
             <div className="hidden md:flex items-center gap-3">
-              <Link href={"https://chatgpt.com/"} target="_blank">
+              <Link href={"https://uat.rapidmoney.in/borrower/login"} target="_blank">
                 <button
                   // type="primary"
                   className={`apply-btn apply-btn-green`}
