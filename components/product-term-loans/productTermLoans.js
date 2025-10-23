@@ -295,78 +295,178 @@
 
 import React from "react";
 import { FiFileText } from "react-icons/fi";
-import { RiShieldCheckLine, RiCheckLine } from "react-icons/ri";
+import { RiShieldCheckLine } from "react-icons/ri";
+import { RiCheckLine } from "react-icons/ri";
 
+const data = [
+  ["Bureau Score", "650 to 900"],
+  ["Age", "21 years to 58 years"],
+  ["Tenure", "Upto 6 Months"],
+  ["Income-NTH", "20,000/-"],
+  ["Banking Norms", "3 Months"],
+  ["ABB to EMI Ratio", "1"],
+  ["Loan Amount", "Rs 5000 to Rs 50000"],
+  ["ROI (Per Day)", "0.1% to 0.15%"],
+  ["Processing Fees", "5 to 10% Excluding GST"],
+];
 
-export default function ProductTermLoans({ data }) {
-  const { documentsSection, eligibilitySection, criteriaTable } =
-    data;
-
+export default function ProductTermLoans() {
   return (
     <section className="container px-4 bg-white pb-24">
       <h2 className="font-40 text-black font-bold text-center mb-12">
-        {data?.termLoansTitle}
+        Term Loans
       </h2>
-
       <div className="flex flex-col lg:flex-row gap-4 lg:gap-[30px] relative">
-        {/* Documents Section */}
         <div className="w-full lg:w-1/2 bg-[#F9FAFF] rounded-4xl  p-7">
-          {/* <div className="flex justify-between"> */}
-          <div className="flex justify-between items-center sm:items-start pb-4 sm:pb-3">
+          <div className="flex justify-between items-center sm:items-start pb-4 sm:pb-0">
             <h3 className="text-black font-28 font-semibold">
-              {documentsSection.sectionTitle}
+              Document Required
             </h3>
-            <span className="bg-white w-20 h-20 rounded-full text-[#6379F9] inline-flex items-center justify-center shrink-0">
+            <span className="bg-white w-20 h-20 rounded-full text-[#6379F9] inline-flex items-center justify-center">
               <FiFileText size={28} />
             </span>
           </div>
           <div className="text-black font-16 font-bold flex flex-col gap-6">
-            {documentsSection.documents.map((doc, idx) => (
-              <div key={idx} className="flex gap-3 items-center">
-                <span className="bg-[#4D43FE1C] text-[#121114] font-semibold font-18 inline-flex justify-center items-center w-10 h-10 rounded-full shrink-0">
-                  {String(idx + 1).padStart(2, "0")}
+            <div className="flex gap-3 items-center">
+              <span className="bg-[#4D43FE1C] text-[#121114] font-semibold font-18  inline-flex justify-center items-center min-w-10 min-h-10 rounded-full">
+                01
+              </span>{" "}
+              <div>
+                <div className="font-18 font-bold">Proof of Identity</div>
+                <span className="font-14 font-normal text-[#000000CC]">
+                  Aadhar, PAN Card
                 </span>
-                <div>
-                  <div className="font-18 font-bold">{doc.title}</div>
-                  <span className="font-14 font-normal text-[#000000CC]">
-                    {doc.description}
-                  </span>
-                </div>
               </div>
-            ))}
+            </div>
+            <div className="flex gap-3 items-center">
+              <span className="bg-[#4D43FE1C] text-[#121114] font-semibold font-18  inline-flex justify-center items-center min-w-10 min-h-10 rounded-full">
+                02
+              </span>{" "}
+              <div>
+                <div className="font-18 font-bold">Proof of Address</div>
+                <span className="font-14 font-normal text-[#000000CC]">
+                  Aadhar, Utility Bill, Bank/ Home Loan Statement, Rent
+                  Agreement
+                </span>
+              </div>
+            </div>
+            <div className="flex gap-3 items-center">
+              <span className="bg-[#4D43FE1C] text-[#121114] font-semibold font-18  inline-flex justify-center items-center min-w-10 min-h-10 rounded-full">
+                03
+              </span>{" "}
+              <div>
+                <div className="font-18 font-bold">Proof of Income</div>
+                <span className="font-14 font-normal text-[#000000CC]">
+                  Bank Statement, PaySlip, work Email
+                </span>
+              </div>
+            </div>
           </div>
         </div>
-
-        {/* Eligibility Section */}
         <div className="w-full lg:w-1/2 bg-[#F9FAFF] rounded-4xl p-7">
-          {/* <div className="flex justify-between"> */}
-          <div className="flex justify-between items-center sm:items-start pb-4 sm:pb-3">
-            <h3 className="text-black font-28 font-semibold">
-              {eligibilitySection.sectionTitle}
-            </h3>
-            <span className="bg-white w-20 h-20 rounded-full text-[#6379F9] inline-flex items-center justify-center shrink-0">
+          <div className="flex justify-between items-center sm:items-start pb-4 sm:pb-0">
+            <h3 className="text-black font-28 font-semibold">Eligibility</h3>
+            <span className="bg-white w-20 h-20 rounded-full text-[#6379F9] inline-flex items-center justify-center">
               <RiShieldCheckLine size={28} />
             </span>
           </div>
           <div className="text-black font-16 font-normal flex flex-col gap-5">
-            {eligibilitySection.items.map((item, idx) => (
-              <div key={idx} className="flex gap-3 items-center">
-                <span className="bg-[#4D43FE1C] text-[#6379F9] inline-flex justify-center items-center w-7 h-7 rounded-full shrink-0">
-                  <RiCheckLine size={18} />
-                </span>{" "}
-                {item.eligibility}
-              </div>
-            ))}
+            <div className="flex gap-3 items-center">
+              <span className="bg-[#4D43FE1C] text-[#6379F9] inline-flex justify-center items-center w-7 h-7 rounded-full">
+                <RiCheckLine size={18} />
+              </span>{" "}
+              Indian Citizen
+            </div>
+            <div className="flex gap-3 items-center">
+              <span className="bg-[#4D43FE1C] text-[#6379F9] inline-flex justify-center items-center w-7 h-7 rounded-full">
+                <RiCheckLine size={18} />
+              </span>{" "}
+              21 years of age and above
+            </div>
+            <div className="flex gap-3 items-center">
+              <span className="bg-[#4D43FE1C] text-[#6379F9] inline-flex justify-center items-center w-7 h-7 rounded-full">
+                <RiCheckLine size={18} />
+              </span>{" "}
+              Minimum salary: ₹20,000/month
+            </div>
+            <div className="flex gap-3 items-center">
+              <span className="bg-[#4D43FE1C] text-[#6379F9] inline-flex justify-center items-center w-7 h-7 rounded-full">
+                <RiCheckLine size={18} />
+              </span>{" "}
+              Regular salary credit to bank account
+            </div>
+            <div className="flex gap-3 items-center">
+              <span className="bg-[#4D43FE1C] text-[#6379F9] inline-flex justify-center items-center w-7 h-7 rounded-full">
+                <RiCheckLine size={18} />
+              </span>{" "}
+              For Terms Loans only.
+            </div>
+            <div className="flex gap-3 items-center">
+              <span className="bg-[#4D43FE1C] text-[#6379F9] inline-flex justify-center items-center w-7 h-7 rounded-full">
+                <RiCheckLine size={18} />
+              </span>{" "}
+              Loan Disbursement within 24 hrs
+            </div>
           </div>
         </div>
       </div>
+      {/* <div className="flex flex-col lg:flex-row gap-4 lg:gap-[30px] ">
+        <div className="w-full lg:w-1/2 bg-[#F9FAFF] text-black rounded-4xl border border-[#DDDDDD] overflow-hidden">
+          <div className="bg-[#F6FFE8] text-start p-5 font-24 font-semibold ">
+            Personal Loan criteria-Salaried
+          </div>
+        </div>
+      </div> */}
+      {/* <div className="flex flex-col lg:flex-row gap-4 lg:gap-[30px] mt-10">
+        <div className="w-full bg-[#F9FAFF] text-black rounded-4xl border border-[#DDDDDD] overflow-x-auto">
+          <table className="min-w-[700px] w-full  text-sm text-center">
+            <thead>
+              <tr className="bg-[#F6FFE8] text-black text-[18px] font-semibold">
+                <th className="px-6 py-4 rounded-tl-2xl">
+                  Personal Loan criteria-Salaried
+                </th>
+                <th className="px-6 py-4">Minimum</th>
+                <th className="px-6 py-4 rounded-tr-2xl">Maximum</th>
+              </tr>
+            </thead>
+            <tbody className="text-[15px]">
+              {[
+                ["Bureau Score", "650", "900"],
+                ["Age", "21 years", "58 years (EOT)"],
+                ["Tenure", "15 Days", "9 Months"],
+                ["Income-NTH", "20,000/-", "-"],
+                ["Banking Norms", "3 Months", "-"],
+                ["ABB to EMI Ratio", "1", "-"],
+                ["Loan Amount", "3,000", "50,000"],
+                ["ROI (Per Day)", "0.10%", "0.15%"],
+                ["Processing Fees", "0 to 15% Excluding GST", "-"],
+                ["PF", "Required for all customers", "-"],
+              ].map(([criteria, min, max], idx) => (
+                <tr
+                  key={idx}
+                  // className={`border-t border-[#E5E5E5] ${
+                  //   idx % 2 === 0 ? "bg-white" : "bg-[#F9FAFF]"
+                  // }`}
+                  className={`border-t border-[#E5E5E5] bg-white`}
+                >
+                  <td className="px-6 py-4 font-bold">{criteria}</td>
+                  <td className="px-6 py-4">{min}</td>
+                  <td className="px-6 py-4">{max}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </div> */}
 
-      {/* Table Section */}
+      {/* ------------------------------------------------------------------------------------ */}
+
       <div className="flex flex-col mt-10">
-        {/* Desktop */}
+        {/* Desktop View – 2 vertical column tables side by side */}
+        <span className="text-sm text-gray-500 mb-3 ml-3">( <span className="text-red-500">* </span>Indicative parameters)</span>
         <div className="hidden lg:flex gap-[30px]">
-          {/* Column: Criteria */}
-          <div className="w-[40%] bg-[#F9FAFF] rounded-2xl border border-[#DDDDDD] overflow-hidden">
+          {/* Criteria Table */}
+          <div className="w-[50%] bg-[#F9FAFF] rounded-2xl border border-[#DDDDDD] overflow-hidden">
             <table className="w-full text-sm text-left">
               <thead>
                 <tr className="bg-[#F6FFE8] text-black text-[18px] font-semibold">
@@ -374,78 +474,95 @@ export default function ProductTermLoans({ data }) {
                 </tr>
               </thead>
               <tbody className="text-[15px]">
-                {criteriaTable.map((item, idx) => (
+                {data.map(([criteria], idx) => (
                   <tr key={idx} className="border-t border-[#E5E5E5] bg-white">
-                    <td className="px-6 py-4 font-bold">{item.criteria}</td>
+                    <td className="px-6 py-4 font-bold">{criteria}</td>
                   </tr>
                 ))}
               </tbody>
-
             </table>
           </div>
 
-          {/* Column: Minimum */}
-          <div className="w-[30%] bg-[#F9FAFF] border rounded-2xl border-[#DDDDDD] overflow-hidden">
+          {/* Details / Parameters Table */}
+          <div className="w-[50%] bg-[#F9FAFF] border rounded-2xl border-[#DDDDDD] overflow-hidden">
             <table className="w-full text-sm text-left">
               <thead>
                 <tr className="bg-[#F6FFE8] text-black text-[18px] font-semibold">
-                  <th className="px-6 py-4">Minimum</th>
+                  <th className="px-6 py-4">Details / Parameters</th>
                 </tr>
               </thead>
               <tbody className="text-[15px]">
-                {criteriaTable.map((item, idx) => (
-                  <tr key={idx} className="border-t border-[#E5E5E5] bg-white">
-                    <td className="px-6 py-4">{item.min}</td>
+                {data.map(([, details], idx) => (
+                  <tr key={idx} className="border-t border-[#E5E5E5] bg-white ">
+                    <td className="px-6 py-4">{details}</td>
                   </tr>
                 ))}
               </tbody>
-
-            </table>
-          </div>
-
-          {/* Column: Maximum */}
-          <div className="w-[30%] bg-[#F9FAFF] rounded-2xl border border-[#DDDDDD] overflow-hidden">
-            <table className="w-full text-sm text-left">
-              <thead>
-                <tr className="bg-[#F6FFE8] text-black text-[18px] font-semibold">
-                  <th className="px-6 py-4">Maximum</th>
-                </tr>
-              </thead>
-              <tbody className="text-[15px]">
-                {criteriaTable.map((item, idx) => (
-                  <tr key={idx} className="border-t border-[#E5E5E5] bg-white">
-                    <td className="px-6 py-4">{item.max}</td>
-                  </tr>
-                ))}
-              </tbody>
-
             </table>
           </div>
         </div>
 
-        {/* Mobile */}
+        {/* Mobile View – Single full table */}
         <div className="lg:hidden w-full bg-[#F9FAFF] rounded-4xl border border-[#DDDDDD] overflow-x-auto mt-8">
-          <table className="min-w-[700px] w-full text-sm text-center">
+          <table className="min-w-[500px] w-full text-sm text-center">
             <thead>
               <tr className="bg-[#F6FFE8] text-black text-[18px] font-semibold">
                 <th className="px-6 py-4 rounded-tl-2xl">Criteria</th>
-                <th className="px-6 py-4">Minimum</th>
-                <th className="px-6 py-4 rounded-tr-2xl">Maximum</th>
+                <th className="px-6 py-4 rounded-tr-2xl">
+                  Details / Parameters
+                </th>
               </tr>
             </thead>
             <tbody className="text-[15px]">
-              {criteriaTable.map((item, idx) => (
+              {data.map(([criteria, details], idx) => (
                 <tr key={idx} className="border-t border-[#E5E5E5] bg-white">
-                  <td className="px-6 py-4 font-bold">{item.criteria}</td>
-                  <td className="px-6 py-4">{item.min}</td>
-                  <td className="px-6 py-4">{item.max}</td>
+                  <td className="px-6 py-4 font-bold">{criteria}</td>
+                  <td className="px-6 py-4">{details}</td>
                 </tr>
               ))}
             </tbody>
-
           </table>
         </div>
       </div>
+
+      {/* ------------------------------------------------------------------------------------ */}
+
+      {/* <div className="flex justify-center w-full overflow-x-auto mt-10">
+        <table className="border-separate border-spacing-x-5 min-w-[700px] text-center text-sm rounded-2xl">
+          <thead>
+            <tr className="bg-[#F6FFE8] text-black text-[18px] font-semibold">
+              <th className="px-6 py-4 rounded-tl-2xl">
+                Personal Loan criteria-Salaried
+              </th>
+              <th className="px-6 py-4">Minimum</th>
+              <th className="px-6 py-4 rounded-tr-2xl">Maximum</th>
+            </tr>
+          </thead>
+          <tbody className="text-[15px]">
+            {[
+              ["Bureau Score", "650", "900"],
+              ["Age", "21 years", "58 years (EOT)"],
+              ["Tenure", "15 Days", "9 Months"],
+              ["Income-NTH", "20,000/-", "-"],
+              ["Banking Norms", "3 Months", "-"],
+              ["ABB to EMI Ratio", "1", "-"],
+              ["Loan Amount", "3,000", "40,000"],
+              ["ROI (Per Day)", "0.10%", "0.15%"],
+              ["Processing Fees", "0 to 15% Excluding GST", "-"],
+              ["PF", "Required for all customers", "-"],
+            ].map(([label, min, max], idx) => (
+              <tr
+                key={idx}
+                className={`bg-white text-center text-black`}
+              >
+                <td className="px-6 py-4">{label}</td>
+                <td className="px-6 py-4">{min}</td>
+                <td className="px-6 py-4">{max}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div> */}
     </section>
   );
 }
