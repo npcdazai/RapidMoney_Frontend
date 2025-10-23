@@ -7,28 +7,83 @@
       },
       "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
       "socialLinks": [
-        { "platform": "LinkedIn", "icon": "linkedin", "url": "/#" },
-        { "platform": "X", "icon": "x-twitter", "url": "/#" },
-        { "platform": "YouTube", "icon": "youtube", "url": "/#" },
-        { "platform": "Instagram", "icon": "instagram", "url": "/#" },
-        { "platform": "Facebook", "icon": "facebook", "url": "/#" },
-        { "platform": "Google", "icon": "google", "url": "/#", "rating": 4.7 }
+        {
+          "platform": "LinkedIn",
+          "icon": "linkedin",
+          "url": "https://www.linkedin.com/company/rapidmoney"
+        },
+        {
+          "platform": "X",
+          "icon": "x-twitter",
+          "url": "https://x.com/Rapidmoney2025"
+        },
+        {
+          "platform": "YouTube",
+          "icon": "youtube",
+          "url": "https://www.youtube.com/channel/UCUR-xUhGJHyrf_u84fDeD6Q"
+        },
+        {
+          "platform": "Instagram",
+          "icon": "instagram",
+          "url": "https://www.instagram.com/officialrapidmoney/"
+        },
+        {
+          "platform": "Facebook",
+          "icon": "facebook",
+          "url": "https://www.facebook.com/people/Rapid-Money/"
+        }
       ]
     },
     "sections": [
       {
         "title": "Company",
         "links": [
-          { "label": "About Us", "url": "/about-us" },
-          { "label": "Lending Partners", "url": "/lending-partners" },
-          { "label": "Career", "url": "/career" },
-          { "label": "FAQs", "url": "/faqs" }
+          {
+            "label": "About Us",
+            "url": "/about-us"
+          },
+          {
+            "label": "Product",
+            "url": "/product"
+          },
+          {
+            "label": "Lending Partners",
+            "url": "/lending-partners"
+          },
+          {
+            "label": "Contact Us",
+            "url": "/contact-us"
+          }
         ]
       },
       {
-        "title": "Products",
+        "title": "Policies",
         "links": [
-          { "label": "Product Overview", "url": "/product" }
+          {
+            "label": "Disclaimer",
+            "url": "/disclaimer"
+          },
+          {
+            "label": "Refund Policy",
+            "url": "/refund-policy"
+          },
+          {
+            "label": "Terms of Conditions",
+            "url": "/term-conditions"
+          },
+          {
+            "label": "Privacy Policy",
+            "url": "/privacy-policy"
+          },
+          {
+            "label": "RBI CMS",
+            "url": "https://www.rbi.org.in/commonperson/English/scripts/RBICMS.aspx"
+          },
+          {
+            "label": "Sachet Portal",
+            "url": "https://sachet.rbi.org.in/"
+            
+          }
         ]
       },
       {
@@ -42,10 +97,6 @@
       }
     ],
     "bottomNote": "Copyright © 2025 MoneyTime Technology Solutions Private Limited. All rights reserved.",
-    "legalLinks": [
-      { "label": "Disclaimer", "url": "/#" },
-      { "label": "Terms of Conditions", "url": "/term-conditions" },
-      { "label": "Privacy Policy", "url": "/privacy-policy" }
-    ]
+    "legalLinks": []
   }
 }
