@@ -151,7 +151,7 @@ const Header = ({ isDark = false, data }) => {
                   {data?.cta?.applyLabel}
                 </button>
               </Link>
-              <Link href={"#"}>
+              {/* <Link href={"#"}>
                 <button
                   // type="default
                   className={`apply-btn ${isDark && showHeader && isAtTop ? "apply-btn-dark" : "apply-btn-light"
@@ -175,7 +175,7 @@ const Header = ({ isDark = false, data }) => {
                     alt="playstore"
                   ></Image>
                 </button>
-              </Link>
+              </Link> */}
             </div>
             <button
               className="xl:hidden text-white"

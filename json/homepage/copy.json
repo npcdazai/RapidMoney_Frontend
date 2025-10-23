@@ -169,8 +169,8 @@
     "promoSection": {
         "title": "Join the RapidMoney app for instant personal loans!",
         "buttonLabel": "Download",
-        "apple": true,
-        "android": true,
+        "apple": false,
+        "android": false,
         "image": "app-promo-banner.png",
         "appleLink": "https://apps.apple.com/",
         "androidLink": "https://play.google.com/"
