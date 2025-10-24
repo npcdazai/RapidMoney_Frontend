@@ -15,8 +15,12 @@
 //     width: 45%;
 //     height: auto;
 // }
+:global(.ant-col-lg-offset-2) {
+  margin-inline-start: 0 !important;
+}
 
 .contactForm {
+  
   :global(.ant-form) {
     :global(.ant-form-item-label) {
       label {
@@ -53,7 +57,10 @@
         }
       }
     }
+    
   }
+
+ 
 }
 
 .addressContainer {

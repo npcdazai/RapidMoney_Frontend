@@ -48,8 +48,8 @@ const ContactUs = ({ data }) => {
     return (
         <>
             <section className="container mx-auto pt-[80px] pb-60">
-                <div className="pb-[70px] w-full text-center">
-                    <div className="max-w-[660px] mx-auto">
+                <div className=" w-full text-center">
+                    <div className="mx-auto">
                         <h1 className="font-18 pb-6">
                             {data.title}
                         </h1>
@@ -58,10 +58,10 @@ const ContactUs = ({ data }) => {
                         </span>
                     </div>
                 </div>
-                <Row gutter={[32, 32]}>
-                    <Col xs={{ span: 24, offset: 0 }} lg={{ span: 12, offset: 2 }}>
+                <Row gutter={[32, 32]} justify="center">
+                    <Col xs={{ span: 24, offset: 0 }} lg={{ span: 12, offset: 2 }} style={{justifyContent: 'center'}}>
                         <div className={`${styles.contactForm} border border-[var(--border-color)] rounded-4xl pt-10 pb-2 px-8`}>
-                            <Form layout="vertical" form={form} onFinish={onFinish}>
+                            <Form layout="vertical" form={form} onFinish={onFinish} style={{marginInlineStart : 0}}>
                                 <Form.Item
                                     label="Full Name"
                                     name="fullName"
@@ -124,7 +124,7 @@ const ContactUs = ({ data }) => {
                     <Col xs={24} lg={10} >
                         <div className={`${styles.addressBkl} flex flex-col gap-5`}>
                             <div className={`${styles.addressContainer} border border-[var(--border-color)] rounded-3xl pt-4 pl-4`}>
-                                <div className="flex flex-col items-start gap-4 mb-4 max-w-[240px]">
+                                <div className="flex flex-col items-start gap-4 mb-4 x">
                                     <div className='flex gap-2'> 
                                         <RiMapPinLine size={32} className='min-h-[24px] min-w-[24px]'/>
                                         <span className='font-16 font-medium'>{data?.location_side}</span>
