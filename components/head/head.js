@@ -119,7 +119,7 @@ const Header = ({ isDark = false, data }) => {
                   //             </Flex>
                   //         </Link>
                   // </Dropdown>
-                  <Link key={idx} href={item?.redirect_path || '#'}>
+                  <Link key={idx} href={item?.redirect_path}>
                     <Flex align="center" gap={10}>
                       <span className={`${styles.dropDownLink} ${isActive ? '!text-[#79CA00]' : ''}`}>{item?.item_name}</span>
                       <RiArrowDownSLine
@@ -130,7 +130,7 @@ const Header = ({ isDark = false, data }) => {
                     </Flex>
                   </Link>
                 ) : (
-                  <Link key={idx} className="" href={item?.redirect_path || '#'}>
+                  <Link key={idx} className="" href={item?.redirect_path}>
                     <span className={`${styles.navLink} ${isActive ? '!text-[#79CA00]' : ''}`}>{item?.item_name}</span>
                   </Link>
                 )
@@ -142,7 +142,7 @@ const Header = ({ isDark = false, data }) => {
           {/* CTA Buttons */}
           <div className="flex items-center gap-3">
             <div className="hidden md:flex items-center gap-3">
-              <Link href={"https://uat.rapidmoney.in/borrower/login"} target="_blank">
+              <Link href={data?.cta?.applyLink || "/"}>
                 <button
                   // type="primary"
                   className={`apply-btn apply-btn-green`}
@@ -151,7 +151,7 @@ const Header = ({ isDark = false, data }) => {
                   {data?.cta?.applyLabel}
                 </button>
               </Link>
-              {/* <Link href={"#"}>
+              <Link href={"#"}>
                 <button
                   // type="default
                   className={`apply-btn ${isDark && showHeader && isAtTop ? "apply-btn-dark" : "apply-btn-light"
@@ -175,7 +175,7 @@ const Header = ({ isDark = false, data }) => {
                     alt="playstore"
                   ></Image>
                 </button>
-              </Link> */}
+              </Link>
             </div>
             <button
               className="xl:hidden text-white"
