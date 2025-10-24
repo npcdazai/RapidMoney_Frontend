@@ -50,7 +50,7 @@ const ContactUs = ({ data }) => {
             <section className="container mx-auto pt-[80px] pb-60">
                 <div className=" w-full text-center">
                     <div className="mx-auto">
-                        <h1 className="font-18 pb-6">
+                        <h1 className="font-bold text-4xl pb-6 ">
                             {data.title}
                         </h1>
                         <span className="block font-40 font-weight-bold">
