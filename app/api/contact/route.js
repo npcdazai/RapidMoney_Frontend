@@ -1,5 +1,4 @@
 import { NextResponse } from 'next/server';
-const nodemailer = require('nodemailer');
 
 export const runtime = 'nodejs';
 
@@ -16,19 +15,6 @@ const SMTP_PASSWORD = process.env.NEXT_PUBLIC_SMTP_PASSWORD;
 const CONTACT_EMAIL_RECIPIENT = process.env.NEXT_PUBLIC_CONTACT_EMAIL_RECIPIENT || "support@rapidmoney.in";
 const CONTACT_EMAIL_FROM = process.env.NEXT_PUBLIC_CONTACT_EMAIL_FROM || "support@rapidmoney.in";
 
-const transporter = nodemailer.createTransport({
-    host: SMTP_ENDPOINT,
-    port: 587, 
-    secure: false,
-    auth: {
-        user: SMTP_USERNAME, 
-        pass: SMTP_PASSWORD,
-    },
-    tls: {
-        rejectUnauthorized: false
-    }
-});
-
 async function sendContactEmail(formData) {
     const { fullName, email, mobileNumber, message } = formData;
 
@@ -41,6 +27,30 @@ async function sendContactEmail(formData) {
         });
         throw new Error('SMTP credentials are not configured.');
     }
+
+    // Dynamically import nodemailer at runtime to prevent build-time module resolution errors
+    let nodemailerModule;
+    try {
+        nodemailerModule = await import('nodemailer');
+    } catch (err) {
+        console.error('nodemailer import failed:', err?.message || err);
+        throw new Error("MISSING_NODEMAILER_MODULE: Please install nodemailer (e.g. `npm install nodemailer`) in the project.");
+    }
+
+    const nodemailer = nodemailerModule?.default || nodemailerModule;
+
+    const transporter = nodemailer.createTransport({
+        host: SMTP_ENDPOINT,
+        port: 587, 
+        secure: false,
+        auth: {
+            user: SMTP_USERNAME, 
+            pass: SMTP_PASSWORD,
+        },
+        tls: {
+            rejectUnauthorized: false
+        }
+    });
 
     console.log('Attempting to send email with config:', {
         host: SMTP_ENDPOINT,
@@ -123,6 +133,13 @@ export async function POST(request) {
         if (error.message.includes('SMTP credentials')) {
             return NextResponse.json(
                 { status: "Error", message: 'Email service is not configured. Please contact administrator.' },
+                { status: 500, headers: corsHeaders }
+            );
+        }
+
+        if (error.message.includes('MISSING_NODEMAILER_MODULE')) {
+            return NextResponse.json(
+                { status: "Error", message: 'Server dependency missing: please run `npm install nodemailer` and restart the dev server.' },
                 { status: 500, headers: corsHeaders }
             );
         }
