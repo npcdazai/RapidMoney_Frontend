@@ -19,7 +19,7 @@ export default function ProductInstantAccess({ data }) {
             <h2 className={`text-white font-bold font-40 lg:max-w-[500px] ${styles.title}`} dangerouslySetInnerHTML={{ __html: data?.description }} />
              
 
-            {/* <Link href={"#"}>
+            <Link href={"#"}>
               <button
                 // type="default
                 className={`apply-btn apply-btn-light flex item-center gap-3 mt-8`}
@@ -38,7 +38,7 @@ export default function ProductInstantAccess({ data }) {
                   alt="playstore"
                 ></Image>
               </button>
-            </Link> */}
+            </Link>
           </div>
           <div className="w-full text-center lg:text-left lg:w-1/2 relative">
             <Image
