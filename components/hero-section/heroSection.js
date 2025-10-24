@@ -135,7 +135,7 @@ const HeroSection = ({ data, paginationRef }) => {
                 src={data?.swiper_image?.[0]?.url}
                 alt="Hero"
                 fill
-                style={{ objectFit: "contain" }} // or "cover" if you want it to fill the box
+                style={{ objectFit: "contain" }} 
                 className="object-contain"
                 priority
               />
