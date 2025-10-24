@@ -9,7 +9,7 @@ import twitter from './assets/twitter.svg';
 import youtube from './assets/youtube.svg';
 import instagram from './assets/instagram.svg';
 import facebook from './assets/facebook.svg';
-import google from './assets/google-logo.svg';
+// import google from './assets/google-logo.svg';
 import ratingStar from './assets/rating_star.svg';
 import emailIcon from './assets/email.svg';
 import footerLogo from './assets/dark_rapid_money_logo.png';
@@ -43,7 +43,7 @@ const Footer = async () => {
         youtube,
         instagram,
         facebook,
-        google,
+        // google,
     };
 
     const socialData = [
@@ -52,7 +52,7 @@ const Footer = async () => {
         { icon: 'youtube', url: social_link.youtube_link },
         { icon: 'instagram', url: social_link.instagram_link },
         { icon: 'facebook', url: social_link.facebook_link },
-        { icon: 'google', url: social_link.google_link?.url, rating: social_link.google_link?.rating },
+        // { icon: 'google', url: social_link.google_link?.url, rating: social_link.google_link?.rating },
     ];
 
     return (
@@ -70,25 +70,27 @@ const Footer = async () => {
                                 {socialData.map((link, idx) => {
                                     if (!link.url) return null;
 
-                                    if (link.icon === 'google' && link.rating) {
-                                        return (
-                                            <Link key={idx} href={link.url} target="_blank" rel="noopener noreferrer">
-                                                <Button className="flex items-center justify-center !bg-transparent !border-[#FFFFFF3B]" type="default">
-                                                    <div className="flex items-center gap-2">
-                                                        <div className="flex gap-1">
-                                                            <Image src={ratingStar} alt="Rating Star" width={16} height={6} />
-                                                            <span className="light-color">{link.rating}</span>
-                                                        </div>
-                                                        <Image src={socialIcons[link.icon]} alt={link.icon} width={70} height={24} />
-                                                    </div>
-                                                </Button>
-                                            </Link>
-                                        );
-                                    }
+                                    // if (link.icon === 'google' && link.rating) {
+                                    //     return (
+                                    //         <Link key={idx} href={link.url} target="_blank" rel="noopener noreferrer">
+                                    //             <Button className="flex items-center justify-center !bg-transparent !border-[#FFFFFF3B]" type="default">
+                                    //                 <div className="flex items-center gap-2">
+                                    //                     <div className="flex gap-1">
+                                    //                         <Image src={ratingStar} alt="Rating Star" width={16} height={6} />
+                                    //                         <span className="light-color">{link.rating}</span>
+                                    //                     </div>
+                                    //                     <Image src={socialIcons[link.icon]} alt={link.icon} width={70} height={24} />
+                                    //                 </div>
+                                    //             </Button>
+                                    //         </Link>
+                                    //     );
+                                    // }
                                     return (
                                         <Link key={idx} href={link.url} target="_blank" rel="noopener noreferrer">
                                             <Image
                                                 src={socialIcons[link.icon]}
+
+
                                                 alt={link.icon}
                                                 width={24}
                                                 height={24}
@@ -113,7 +115,7 @@ const Footer = async () => {
                     </Col>
 
                     <Col xs={12} md={8} xl={4}>
-                        <h4 className={`${styles.footerHeader} xl:pb-7 pb-4`}>Products</h4>
+                        <h4 className={`${styles.footerHeader} xl:pb-7 pb-4`}>Policies</h4>
                         {product_links.map((link, i) => (
                             <Link key={i} href={link.redirect_path} className={styles.footerLink}>
                                 {link.link_name}
@@ -213,6 +215,8 @@ export default Footer;
 //     const {company_links,copyright,product_links,social_link,support} = response?.data?.pageData;
 
 //     const socialIcons = {
+
+
 //         linkedin: linkedin,
 //         'x-twitter': twitter,
 //         youtube: youtube,

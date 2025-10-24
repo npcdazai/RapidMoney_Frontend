@@ -98,7 +98,7 @@ export default async function page() {
         <DynamicHead />
         <ContactUsForm data={response?.data?.pageData?.contactSection} />
         {/* <ContactUsForm data={contactData} /> */}
-        <ContactMap />
+        {/* <ContactMap /> */}
       </Suspense>
     </>
   )

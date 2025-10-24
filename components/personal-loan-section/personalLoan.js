@@ -135,15 +135,15 @@ const PersonalLoan = ({ data }) => {
                   {data.applyLabel}
                 </button>
               </Link>
-              <Link href={"/"}>
+              {/* <Link href={"/"}> */}
                 {/* <Link href={data.cta.download.link || "#"}> */}
-                <button className="apply-btn apply-btn-dark flex items-center gap-3 min-w-[180px]">
-                  <span>{data?.downloadLabel}</span>
+                {/* <button className="apply-btn apply-btn-dark flex items-center gap-3 min-w-[180px]"> */}
+                  {/* <span>{data?.downloadLabel}</span> */}
                   {/* <span>{data.cta.download.label}</span> */}
-                  <Image src={darkIphone} width={24} height={24} alt="iPhone" />
-                  <Image src={playStore} width={24} height={24} alt="Play Store" />
-                </button>
-              </Link>
+                  {/* <Image src={darkIphone} width={24} height={24} alt="iPhone" /> */}
+                  {/* <Image src={playStore} width={24} height={24} alt="Play Store" /> */}
+                {/* </button> */}
+              {/* </Link> */}
             </div>
           </div>
         </div>

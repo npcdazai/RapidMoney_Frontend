@@ -89,13 +89,13 @@ const PromoSection = () => {
               <h2 className={`${styles.promoHeading} font-40 light-color font-weight-bold`}>
                 {data?.title}
               </h2>
-              <Link href={"/"}>
+              {/* <Link href={"/"}>
                 <button className="apply-btn apply-btn-dark flex items-center gap-3">
                   <span>{data?.downloadLabel}</span>
                   <Image src={darkIphone} width={24} height={24} alt="iphone" />
                   <Image src={playStore} width={24} height={24} alt="playstore" />
                 </button>
-              </Link>
+              </Link> */}
             </div>
 
             {/* Banner Image */}

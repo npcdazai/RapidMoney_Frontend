@@ -136,7 +136,7 @@ export default async function Home() {
         <PersonalLoan data={response?.data?.pageData?.personalLoanSection} />
         <LoanStep data={response?.data?.pageData?.loanStep} />
         <PartnersSection data={response?.data?.pageData?.partnerSection} />
-        <NewsSection data={response?.data?.pageData?.newsSection} />
+        {/* <NewsSection data={response?.data?.pageData?.newsSection} /> */}
         {/* <FaqSection data={faqSteps} /> */}
         <FaqSection data={response?.data?.pageData?.faqSection} />
         <PromoSection />

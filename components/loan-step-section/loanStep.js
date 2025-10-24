@@ -72,7 +72,7 @@ const LoanStep = ({ data }) => {
   // console.log(data);
   return (
     <section className={`pt-120 ${styles.section}`}>
-      <Image
+      {/* <Image
         // src={qrImg}
         src = {data?.cta?.qrImage?.[0]?.url}
         alt="QR"
@@ -80,7 +80,7 @@ const LoanStep = ({ data }) => {
         priority
         width={250}
         height={120}
-      />
+      /> */}
       <div className="container mx-auto px-4">
         <span className="flex justify-center items-center">
           <h2 className="font-48 font-weight-bold text-center pb-6 max-w-[480px]">
