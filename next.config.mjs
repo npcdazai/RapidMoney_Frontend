@@ -10,7 +10,7 @@ const nextConfig = {
       },
       {
         protocol: "http",
-        hostname: "web-backend.rapidmoney.in",
+        hostname: "qg8gwsg8okkoww4sowwgs0c8.3.7.92.238.sslip.io",
         pathname: "/uploads/**",
       },
     ],
