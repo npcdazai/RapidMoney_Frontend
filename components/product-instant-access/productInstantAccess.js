@@ -5,19 +5,20 @@ import lightIphone from "./assets/light_iphone.svg";
 import playStore from "./assets/playstore.svg";
 import Util1 from "./assets/util1.svg";
 import Link from "next/link";
-import styles from "./product-instant.module.scss"
+import styles from "./product-instant.module.scss";
 
 export default function ProductInstantAccess({ data }) {
-  
-  console.log(data)
+  console.log(data);
 
   return (
     <section className="bg-[#0573DB] lg:mt-44">
       <div className="container mx-auto px-4 relative">
         <div className="flex flex-col lg:flex-row gap-4 lg:gap-9 relative">
           <div className="w-full text-center lg:text-left lg:w-1/2 py-16 lg:py-[86px]">
-            <h2 className={`text-white font-bold font-40 lg:max-w-[500px] ${styles.title}`} dangerouslySetInnerHTML={{ __html: data?.description }} />
-             
+            <h2
+              className={`text-white font-bold font-40 lg:max-w-[500px] ${styles.title}`}
+              dangerouslySetInnerHTML={{ __html: data?.description }}
+            />
 
             {/* <Link href={"#"}>
               <button
@@ -51,7 +52,7 @@ export default function ProductInstantAccess({ data }) {
               priority
             />
 
-             <Image
+            <Image
               src={Util1}
               alt="Rapid Money"
               className={`max-w-full hidden sm:block h-auto absolute -top-16 right-0 z-10  `}
@@ -59,7 +60,6 @@ export default function ProductInstantAccess({ data }) {
             />
           </div>
         </div>
-        
       </div>
     </section>
   );
@@ -120,7 +120,7 @@ export default function ProductInstantAccess({ data }) {
 //             />
 //           </div>
 //         </div>
-        
+
 //       </div>
 //     </section>
 //   );
