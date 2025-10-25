@@ -1,11 +1,11 @@
-'use client';
+"use client";
 
-import React, { useEffect, useState } from 'react';
-import { Row, Col } from 'antd';
-import Image from 'next/image';
-import Link from 'next/link';
-import styles from './hero-section.module.scss';
-import { RiArrowRightLine } from 'react-icons/ri';
+import React, { useEffect, useState } from "react";
+import { Row, Col } from "antd";
+import Image from "next/image";
+import Link from "next/link";
+import styles from "./hero-section.module.scss";
+import { RiArrowRightLine } from "react-icons/ri";
 import personImage from "./assets/heroPerson.png";
 import moneyCoin1 from "./assets/money1.png";
 import moneyCoin2 from "./assets/money2.png";
@@ -15,8 +15,7 @@ import moneyNote1 from "./assets/note1.png";
 import moneyNote2 from "./assets/note2.png";
 import "swiper/css";
 
-
-import { gsap } from 'gsap';
+import { gsap } from "gsap";
 // const slideStyle = {
 //   position: "relative",
 //   padding: "2rem",
@@ -54,13 +53,17 @@ const HeroSection = ({ data, paginationRef }) => {
         },
       });
 
-      tl.to([heroTitle, heroDescription, heroButton], {
-        y: 0,
-        opacity: 1,
-        duration: 0.6,
-        ease: "power2.out",
-        stagger: 0.1,
-      }, 0)
+      tl.to(
+        [heroTitle, heroDescription, heroButton],
+        {
+          y: 0,
+          opacity: 1,
+          duration: 0.6,
+          ease: "power2.out",
+          stagger: 0.1,
+        },
+        0
+      )
 
         .set(elements, { visibility: "visible" }, 0)
 
@@ -91,7 +94,6 @@ const HeroSection = ({ data, paginationRef }) => {
             });
           });
         }, 0.6); // ⏱ This starts right after the drop finishes
-
     });
 
     return () => context.revert();
@@ -100,33 +102,36 @@ const HeroSection = ({ data, paginationRef }) => {
   // console.log(data);
 
   return (
-    <section className={`${styles.section} dark-bg flex items-center pt-[150px] sm:pt-[250px] hero-section-container`}>
+    <section
+      className={`${styles.section} dark-bg flex items-center pt-[150px] sm:pt-[250px] hero-section-container`}
+    >
       <div className="container mx-auto relative">
         <Row gutter={[32, 32]}>
           <Col xs={24} lg={24} xl={8}>
             <div className="flex flex-col gap-[24px] z-10 relative">
               <h1
                 className={`font-48 light-color font-weight-bold ${styles.heroTitle} max-w-[340px] hero-title `}
-                dangerouslySetInnerHTML={{ __html: data?.title || '' }}
+                dangerouslySetInnerHTML={{ __html: data?.title || "" }}
               />
 
               <span className="font-16 light-color hero-description">
                 {data?.description}
               </span>
 
-              <Link href={'/'} className="hero-button">
-                {/* <Link href={data?.ctaButton.link} className="hero-button"> */}
-                <button className="apply-btn apply-btn-dark flex gap-2" >
+              {/* <Link href={'/'} className="hero-button"> */}
+              <Link href={data?.ctaButton.link} className="hero-button">
+                <button className="apply-btn apply-btn-dark flex gap-2">
                   {/* {data?.ctaButton.label} */}
                   Apply Now
-                  <span className="primary-color"><RiArrowRightLine size={24} /></span>
+                  <span className="primary-color">
+                    <RiArrowRightLine size={24} />
+                  </span>
                 </button>
               </Link>
 
               {/* <div className="pagination-placeholder" /> */}
               <div className="custom-swiper-pagination" ref={paginationRef} />
             </div>
-
           </Col>
 
           <Col xs={24} lg={24} xl={16}>
@@ -135,7 +140,7 @@ const HeroSection = ({ data, paginationRef }) => {
                 src={data?.swiper_image?.[0]?.url}
                 alt="Hero"
                 fill
-                style={{ objectFit: "contain" }} 
+                style={{ objectFit: "contain" }}
                 className="object-contain"
                 priority
               />
@@ -146,7 +151,7 @@ const HeroSection = ({ data, paginationRef }) => {
                   priority
                   loading="eager"
                   className="absolute w-[140px] top-[-50px] left-[60px] sm:w-[250px] sm:top-[-80px] sm:left-[130px] floating-image"
-                  style={{ visibility: 'hidden' }}
+                  style={{ visibility: "hidden" }}
                 />
                 <Image
                   src={moneyCoin2}
@@ -154,7 +159,7 @@ const HeroSection = ({ data, paginationRef }) => {
                   priority
                   loading="eager"
                   className="absolute w-[140px] top-[-10px] right-[20px] sm:w-[250px] sm:top-[-20px] sm:right-[0px] floating-image"
-                  style={{ visibility: 'hidden' }}
+                  style={{ visibility: "hidden" }}
                 />
                 <Image
                   src={moneyCoin3}
@@ -162,7 +167,7 @@ const HeroSection = ({ data, paginationRef }) => {
                   priority
                   loading="eager"
                   className="absolute w-[120px] top-[100px] left-[30px] sm:w-[200px] sm:top-[140px] sm:left-[60px] z-1 floating-image"
-                  style={{ visibility: 'hidden' }}
+                  style={{ visibility: "hidden" }}
                 />
                 <Image
                   src={moneyCoin4}
@@ -170,7 +175,7 @@ const HeroSection = ({ data, paginationRef }) => {
                   priority
                   loading="eager"
                   className="absolute w-[120px] top-[110px] right-[-20px] sm:w-[200px] sm:top-[150px] sm:right-[-60px] z-1 floating-image"
-                  style={{ visibility: 'hidden' }}
+                  style={{ visibility: "hidden" }}
                 />
                 <Image
                   src={moneyNote1}
@@ -178,7 +183,7 @@ const HeroSection = ({ data, paginationRef }) => {
                   priority
                   loading="eager"
                   className="absolute w-[100px] top-[140px] left-[20px] sm:w-[150px] sm:top-[200px] sm:left-[50px] z-0 floating-image"
-                  style={{ visibility: 'hidden' }}
+                  style={{ visibility: "hidden" }}
                 />
                 <Image
                   src={moneyNote2}
@@ -186,11 +191,9 @@ const HeroSection = ({ data, paginationRef }) => {
                   priority
                   loading="eager"
                   className="absolute w-[100px] top-[90px] right-[-20px] sm:w-[150px] sm:top-[120px] sm:right-[-60px] floating-image"
-                  style={{ visibility: 'hidden' }}
+                  style={{ visibility: "hidden" }}
                 />
               </div>
-
-
             </div>
           </Col>
         </Row>
