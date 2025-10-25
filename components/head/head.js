@@ -141,7 +141,7 @@ const Header = ({ isDark = false, data }) => {
 
           {/* CTA Buttons */}
           <div className="flex items-center gap-3">
-            <div className="hidden md:flex items-center gap-3">
+            {/* <div className="hidden md:flex items-center gap-3">
               <Link href={data?.cta?.applyLink || "/"}>
                 <button
                   // type="primary"
@@ -151,8 +151,8 @@ const Header = ({ isDark = false, data }) => {
                   {data?.cta?.applyLabel}
                 </button>
               </Link>
-              {/* <Link href={"#"}>
-                <button
+              {/* <Link href={"#"}> */}
+                {/* <button
                   // type="default
                   className={`apply-btn ${isDark && showHeader && isAtTop ? "apply-btn-dark" : "apply-btn-light"
                     } flex item-center gap-3`}
@@ -174,9 +174,9 @@ const Header = ({ isDark = false, data }) => {
                     height={24}
                     alt="playstore"
                   ></Image>
-                </button>
-              </Link> */}
-            </div>
+                </button> */}
+              {/* </Link> */} 
+            {/* </div> */}
             <button
               className="xl:hidden text-white"
               onClick={() => showDrawer(!open)}
