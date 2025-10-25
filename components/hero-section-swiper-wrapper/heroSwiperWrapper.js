@@ -67,7 +67,7 @@ const heroSection = homePageData.heroSection;
 export default function HeroSwiperWrapper({ data }) {
     const heroSlides = data || [];
     
-    // console.log(heroSlides);
+    console.log(heroSlides);
 
     const paginationRef = useRef([]);
 

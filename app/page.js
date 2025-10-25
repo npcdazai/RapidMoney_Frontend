@@ -1,3 +1,4 @@
+
 // import Header from "@/components/head/head";
 // import HeroSection from "@/components/hero-section/heroSection";
 import PromoSection from "@/components/promo-section/promoWrapper";
@@ -44,6 +45,8 @@ const getCMSPageBySlug = async () => {
     );
 
     const data = await response.json();
+
+    console.log(" Home data" , JSON.stringify(data))
 
     if (!data?.data?.pageData) {
       notFound();
