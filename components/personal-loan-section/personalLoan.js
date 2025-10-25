@@ -1,9 +1,9 @@
-'use client';
+"use client";
 
 import { useRef, useEffect } from "react";
-import { Row, Col } from 'antd';
-import Image from 'next/image';
-import Link from 'next/link';
+import { Row, Col } from "antd";
+import Image from "next/image";
+import Link from "next/link";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
@@ -11,8 +11,8 @@ import darkIphone from "./assets/dark_iphone.svg";
 import playStore from "./assets/playstore.svg";
 import personImage from "./assets/personImage.png";
 import google from "./assets/google.svg";
-import coin from "./assets/blue-coin.png"
-import curve from "./assets/curve.png"
+import coin from "./assets/blue-coin.png";
+import curve from "./assets/curve.png";
 
 import styles from "./personal-loan.module.scss";
 
@@ -22,9 +22,9 @@ const paths = {
   step1: {
     filled: "M 0 100 V 0 Q 50 0 100 0 V 100 Z",
     inBetween: {
-      curve1: "M 0 100 V 37.845 Q 50 0 100 37.845 V 100 Z"
-    }
-  }
+      curve1: "M 0 100 V 37.845 Q 50 0 100 37.845 V 100 Z",
+    },
+  },
 };
 
 const PersonalLoan = ({ data }) => {
@@ -42,11 +42,11 @@ const PersonalLoan = ({ data }) => {
           y: 0,
           opacity: 0.12,
           duration: 1.2,
-          ease: 'power3.out',
+          ease: "power3.out",
           scrollTrigger: {
             trigger: labelRef.current,
-            start: 'top 80%',
-            toggleActions: 'play none none none',
+            start: "top 80%",
+            toggleActions: "play none none none",
             once: true,
           },
         }
@@ -71,30 +71,34 @@ const PersonalLoan = ({ data }) => {
 
   useEffect(() => {
     gsap.set(".overlay__path-reverse", {
-      attr: { d: paths.step1.inBetween.curve1 }
+      attr: { d: paths.step1.inBetween.curve1 },
     });
 
     gsap.utils.toArray(".overlay__path-reverse").forEach((overlayPath) => {
-      gsap.timeline({
-        scrollTrigger: {
-          trigger: ".overlay-reverse",
-          start: "top 80%",
-          end: "top top",
-          scrub: true,
-          toggleActions: "play none reverse none"
-        }
-      }).to(overlayPath, {
-        duration: 1.8,
-        ease: "power1.inOut",
-        attr: { d: paths.step1.filled }
-      });
+      gsap
+        .timeline({
+          scrollTrigger: {
+            trigger: ".overlay-reverse",
+            start: "top 80%",
+            end: "top top",
+            scrub: true,
+            toggleActions: "play none reverse none",
+          },
+        })
+        .to(overlayPath, {
+          duration: 1.8,
+          ease: "power1.inOut",
+          attr: { d: paths.step1.filled },
+        });
     });
   }, []);
 
   // console.log(data);
 
   return (
-    <section className={`${styles.section} light-color pt-60 relative overflow-hidden`}>
+    <section
+      className={`${styles.section} light-color pt-60 relative overflow-hidden`}
+    >
       <svg
         className="overlay-reverse"
         viewBox="0 0 100 100"
@@ -106,7 +110,7 @@ const PersonalLoan = ({ data }) => {
           width: "100%",
           height: "100%",
           zIndex: 0,
-          pointerEvents: "none"
+          pointerEvents: "none",
         }}
       >
         <path
@@ -116,33 +120,62 @@ const PersonalLoan = ({ data }) => {
         />
       </svg>
 
-      <Image src={coin} alt="Blue Coin Left" className={styles.leftCoin} width={200} height={200} priority ref={leftCoinRef} />
-      <Image src={coin} alt="Blue Coin Right" className={styles.rightCoin} width={200} height={200} priority ref={rightCoinRef} />
-      <Image src={curve} alt="Curve" className={styles.curve} width={100} height={100} priority ref={curveRef} />
+      <Image
+        src={coin}
+        alt="Blue Coin Left"
+        className={styles.leftCoin}
+        width={200}
+        height={200}
+        priority
+        ref={leftCoinRef}
+      />
+      <Image
+        src={coin}
+        alt="Blue Coin Right"
+        className={styles.rightCoin}
+        width={200}
+        height={200}
+        priority
+        ref={rightCoinRef}
+      />
+      <Image
+        src={curve}
+        alt="Curve"
+        className={styles.curve}
+        width={100}
+        height={100}
+        priority
+        ref={curveRef}
+      />
 
       <div className="container mx-auto text-center pt-[50px] sm:pt-[120px] md:pt-[200px]">
-        <div ref={labelRef} className={`${styles.sectionLabel} hidden sm:block`}>{data?.backgroundText}</div>
+        <div
+          ref={labelRef}
+          className={`${styles.sectionLabel} hidden sm:block`}
+        >
+          {data?.backgroundText}
+        </div>
 
         <div className="flex justify-center pb-10">
           <div className="flex flex-col gap-5 max-w-[600px] items-center md:pt-0 pt-[80px] px-4 z-10">
             <h2 className="font-48 font-weight-bold">{data?.title}</h2>
             <span className="font-16">{data?.subtitle}</span>
             <div className="hidden md:flex items-center gap-3">
-              <Link href={"/"}>
-                {/* <Link href={data.cta.apply.link || "#"}> */}
+              {/* <Link href={"/"}> */}
+              <Link href={data.cta.apply.link || "#"}>
                 <button className="apply-btn apply-btn-green dark-color min-w-[180px]">
                   {/* Apply Now */}
                   {data.applyLabel}
                 </button>
               </Link>
               {/* <Link href={"/"}> */}
-                {/* <Link href={data.cta.download.link || "#"}> */}
-                {/* <button className="apply-btn apply-btn-dark flex items-center gap-3 min-w-[180px]"> */}
-                  {/* <span>{data?.downloadLabel}</span> */}
-                  {/* <span>{data.cta.download.label}</span> */}
-                  {/* <Image src={darkIphone} width={24} height={24} alt="iPhone" /> */}
-                  {/* <Image src={playStore} width={24} height={24} alt="Play Store" /> */}
-                {/* </button> */}
+              {/* <Link href={data.cta.download.link || "#"}> */}
+              {/* <button className="apply-btn apply-btn-dark flex items-center gap-3 min-w-[180px]"> */}
+              {/* <span>{data?.downloadLabel}</span> */}
+              {/* <span>{data.cta.download.label}</span> */}
+              {/* <Image src={darkIphone} width={24} height={24} alt="iPhone" /> */}
+              {/* <Image src={playStore} width={24} height={24} alt="Play Store" /> */}
+              {/* </button> */}
               {/* </Link> */}
             </div>
           </div>
@@ -174,7 +207,8 @@ const PersonalLoan = ({ data }) => {
                   className={`absolute ${positionMap[idx]} m-4 p-4 flex flex-col items-center gap-1 z-10`}
                 >
                   <Image
-                    src={google
+                    src={
+                      google
                       // stat.icon === 'download'
                       //   ? require('./assets/download.svg')
                       //   : require('./assets/money.svg')
@@ -183,7 +217,9 @@ const PersonalLoan = ({ data }) => {
                     height={20}
                     alt={stat.label || "Stat Icon"}
                   />
-                  <span className="font-40 font-weight-bold">{stat?.value}</span>
+                  <span className="font-40 font-weight-bold">
+                    {stat?.value}
+                  </span>
                   <span className="font-20">{stat?.label}</span>
                 </div>
               );
