@@ -118,8 +118,8 @@ const HeroSection = ({ data, paginationRef }) => {
                 {data?.description}
               </span>
 
-              {/* <Link href={'/'} className="hero-button"> */}
-              <Link href={data?.ctaButton.link} className="hero-button">
+              <Link href={'https://web.rapidmoney.in/borrower/login'} className="hero-button">
+              {/* <Link href={data?.ctaButton.link} className="hero-button"> */}
                 <button className="apply-btn apply-btn-dark flex gap-2">
                   {/* {data?.ctaButton.label} */}
                   Apply Now
