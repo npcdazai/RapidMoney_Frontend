@@ -1,4 +1,3 @@
-
 // import Header from "@/components/head/head";
 // import HeroSection from "@/components/hero-section/heroSection";
 import PromoSection from "@/components/promo-section/promoWrapper";
@@ -35,18 +34,38 @@ import { notFound } from "next/navigation";
 
 const getCMSPageBySlug = async () => {
   try {
-    const response = await fetch(
-      process.env.NEXT_PUBLIC_API_URL +
-      endpoints.get_cms_page +
-      "/home",
-      {
-        next: { revalidate: 3600 }, // 300 seconds = 5 minutes
-      }
+    const REVALIDATE_SECONDS =
+      parseInt(process.env.NEXT_PUBLIC_REVALIDATE_SECONDS || "") ||
+      3600; // default 3600 if env not set
+
+    const url =
+      process.env.NEXT_PUBLIC_API_URL + endpoints.get_cms_page + "/home";
+
+    console.log(
+      `[getCMSPageBySlug] called at ${new Date().toISOString()} - revalidate=${REVALIDATE_SECONDS}s - url=${url}`
     );
+
+    const response = await fetch(url, {
+      next: { revalidate: REVALIDATE_SECONDS },
+    });
+
+    try {
+      const headersObj = {};
+      for (const [k, v] of response.headers) {
+        headersObj[k] = v;
+      }
+      console.log(
+        `[getCMSPageBySlug] response status=${response.status} headers=${JSON.stringify(
+          headersObj
+        )}`
+      );
+    } catch (hErr) {
+      console.log("[getCMSPageBySlug] failed to read headers:", hErr);
+    }
 
     const data = await response.json();
 
-    console.log(" Home data" , JSON.stringify(data))
+    console.log("[getCMSPageBySlug] fetched data timestamp:", new Date().toISOString());
 
     if (!data?.data?.pageData) {
       notFound();
