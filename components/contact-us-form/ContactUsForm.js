@@ -11,6 +11,26 @@ const ContactUs = ({ data }) => {
   const [loading, setLoading] = useState(false);
   const [messageApi, contextHolder] = message.useMessage();
 
+  const showSuccessMessage = (content) => {
+    messageApi.success({
+      content,
+      duration: 5,
+      style: {
+        marginTop: '19vh',
+      },
+    });
+  };
+
+  const showErrorMessage = (content) => {
+    messageApi.error({
+      content,
+      duration: 5,
+      style: {
+        marginTop: '20vh',
+      },
+    });
+  };
+
   const onFinish = async (values) => {
     console.log("Form submitted:", values);
     setLoading(true);
@@ -19,6 +39,9 @@ const ContactUs = ({ data }) => {
     const loadingMessage = messageApi.loading({
       content: "Sending your message...",
       duration: 0,
+      style: {
+        marginTop: '20vh',
+      },
     });
 
     try {
@@ -40,19 +63,13 @@ const ContactUs = ({ data }) => {
       }
 
       // Show success message
-      messageApi.success({
-        content: result.message || "Message sent successfully!",
-        duration: 5,
-      });
+      showSuccessMessage(result.message || "Message sent successfully!");
 
       // Reset form
       form.resetFields();
     } catch (error) {
       console.error("Error submitting form:", error);
-      messageApi.error({
-        content: error.message || "Failed to send message. Please try again.",
-        duration: 5,
-      });
+      showErrorMessage(error.message || "Failed to send message. Please try again.");
     } finally {
       setLoading(false);
     }
