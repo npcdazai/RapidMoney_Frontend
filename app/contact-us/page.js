@@ -1,23 +1,21 @@
-import ContactUsForm from '@/components/contact-us-form/ContactUsForm'
-import Header from '@/components/head/head'
-import contactData from "@/json/contactus/contactus.json"
-import React, { Suspense } from 'react'
+import ContactUsForm from "@/components/contact-us-form/ContactUsForm";
+import Header from "@/components/head/head";
+import contactData from "@/json/contactus/contactus.json";
+import React, { Suspense } from "react";
 import homePageData from "@/json/homepage/home.json";
-import ContactMap from '@/components/contact-us-map/ContactMap';
-import endpoints from '@/constants/endpoints';
-import Loading from '../loading';
-import DynamicHead from '@/components/head/dynamicHead';
-import defaultSEO from '@/constants/defaultSEO';
-import { notFound } from 'next/navigation';
+import ContactMap from "@/components/contact-us-map/ContactMap";
+import endpoints from "@/constants/endpoints";
+import Loading from "../loading";
+import DynamicHead from "@/components/head/dynamicHead";
+import defaultSEO from "@/constants/defaultSEO";
+import { notFound } from "next/navigation";
 
 const header = homePageData.header;
 
 const getCMSPageBySlug = async () => {
   try {
     const response = await fetch(
-      process.env.NEXT_PUBLIC_API_URL +
-      endpoints.get_cms_page +
-      "/contact-us",
+      process.env.NEXT_PUBLIC_API_URL + endpoints.get_cms_page + "/contact-us",
       {
         next: { revalidate: 3600 }, // 300 seconds = 5 minutes
       }
@@ -85,8 +83,6 @@ export async function generateMetadata() {
   };
 }
 
-
-
 export default async function page() {
   const response = await getCMSPageBySlug();
   console.log(response);
@@ -101,5 +97,5 @@ export default async function page() {
         {/* <ContactMap /> */}
       </Suspense>
     </>
-  )
+  );
 }
