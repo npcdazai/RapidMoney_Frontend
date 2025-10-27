@@ -66,7 +66,7 @@ async function sendContactEmail(formData) {
   const mailOptions = {
     from: CONTACT_EMAIL_FROM,
     to: CONTACT_EMAIL_RECIPIENT,
-    subject: `New Contact Form Submission from ${fullName}`,
+    subject: `New Delete Form Submission from ${fullName}`,
     html: `
             <div style="font-family: Arial, sans-serif; line-height: 1.6;">
                 <h2>Contact Request Details</h2>
