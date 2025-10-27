@@ -161,13 +161,13 @@ const PersonalLoan = ({ data }) => {
             <h2 className="font-48 font-weight-bold">{data?.title}</h2>
             <span className="font-16">{data?.subtitle}</span>
             <div className="hidden md:flex items-center gap-3">
-              <Link href={"https://web.rapidmoney.in/borrower/login"}>
+              {/* <Link href={"https://web.rapidmoney.in/borrower/login"}> */}
               {/* <Link href={data.cta.apply.link || "#"}> */}
-                <button className="apply-btn apply-btn-green dark-color min-w-[180px]">
+                {/* <button className="apply-btn apply-btn-green dark-color min-w-[180px]"> */}
                   {/* Apply Now */}
-                  {data.applyLabel}
+                  {/* {data.applyLabel}
                 </button>
-              </Link>
+              </Link> */}
               {/* <Link href={"/"}> */}
               {/* <Link href={data.cta.download.link || "#"}> */}
               {/* <button className="apply-btn apply-btn-dark flex items-center gap-3 min-w-[180px]"> */}
