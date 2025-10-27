@@ -1,6 +1,6 @@
 "use client";
 import React, { useState } from "react";
-import { Col, Form, Input, Row, message } from "antd";
+import { Col, Form, Input, Row, Alert } from "antd";
 import styles from "./contact-form.module.scss";
 import Image from "next/image";
 import personImage from "./assets/personImage.png";
@@ -9,40 +9,12 @@ import { RiMailLine, RiMapPinLine, RiPhoneLine } from "react-icons/ri";
 const ContactUs = ({ data }) => {
   const [form] = Form.useForm();
   const [loading, setLoading] = useState(false);
-  const [messageApi, contextHolder] = message.useMessage();
-
-  const showSuccessMessage = (content) => {
-    messageApi.success({
-      content,
-      duration: 5,
-      style: {
-        marginTop: '19vh',
-      },
-    });
-  };
-
-  const showErrorMessage = (content) => {
-    messageApi.error({
-      content,
-      duration: 5,
-      style: {
-        marginTop: '20vh',
-      },
-    });
-  };
+  const [alertInfo, setAlertInfo] = useState(null);
 
   const onFinish = async (values) => {
     console.log("Form submitted:", values);
     setLoading(true);
-
-    // Show loading message
-    const loadingMessage = messageApi.loading({
-      content: "Sending your message...",
-      duration: 0,
-      style: {
-        marginTop: '20vh',
-      },
-    });
+    setAlertInfo({ type: "info", message: "Sending your message..." });
 
     try {
       const response = await fetch("/api/contact", {
@@ -55,21 +27,34 @@ const ContactUs = ({ data }) => {
 
       const result = await response.json();
 
-      // Dismiss loading message
-      loadingMessage();
-
       if (!response.ok) {
         throw new Error(result.message || "Something went wrong");
       }
 
-      // Show success message
-      showSuccessMessage(result.message || "Message sent successfully!");
+      // Show success alert
+      setAlertInfo({
+        type: "success",
+        message: result.message || "Message sent successfully!",
+      });
 
       // Reset form
       form.resetFields();
+
+      // Clear alert after 5 seconds
+      setTimeout(() => {
+        setAlertInfo(null);
+      }, 5000);
     } catch (error) {
       console.error("Error submitting form:", error);
-      showErrorMessage(error.message || "Failed to send message. Please try again.");
+      setAlertInfo({
+        type: "error",
+        message: error.message || "Failed to send message. Please try again.",
+      });
+
+      // Clear alert after 5 seconds
+      setTimeout(() => {
+        setAlertInfo(null);
+      }, 5000);
     } finally {
       setLoading(false);
     }
@@ -79,8 +64,20 @@ const ContactUs = ({ data }) => {
 
   return (
     <>
-      {contextHolder}
       <section className="container mx-auto pt-[80px] pb-60">
+        {/* Alert positioned at top */}
+        {alertInfo && (
+          <div className="fixed top-[19vh]  transform -translate-x-1/2 z-50 w-full px-4">
+            <Alert
+              message={alertInfo.message}
+              type={alertInfo.type}
+              showIcon
+              closable
+              onClose={() => setAlertInfo(null)}
+            />
+          </div>
+        )}
+
         <div className=" w-full text-center">
           <div className="mx-auto">
             <h1 className="font-bold text-4xl pb-6 ">{data.title}</h1>
