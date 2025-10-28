@@ -29,17 +29,19 @@ export default function RootLayout({ children }) {
   const antdConfig = config(notoSans.style.fontFamily);
   return (
     <html lang="en">
-      <body className={`${notoSans.className}`}>
+      <head>
         <Script
           src="https://www.googletagmanager.com/gtag/js?id=G-GTC8M3645P"
-          strategy="afterInteractive"
+          strategy="beforeInteractive"
         />
-        <Script id="gtag-init" strategy="afterInteractive">
+        <Script id="gtag-init" strategy="beforeInteractive">
           {`window.dataLayer = window.dataLayer || [];
-function gtag(){dataLayer.push(arguments);
+function gtag(){dataLayer.push(arguments);}
 gtag('js', new Date());
 gtag('config', 'G-GTC8M3645P');`}
         </Script>
+      </head>
+      <body className={`${notoSans.className}`}>
         <UserProvider>
           <AntdRegistry>
             <ConfigProvider theme={antdConfig}>
