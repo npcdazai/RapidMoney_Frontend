@@ -51,7 +51,6 @@ const ContactUs = ({ data }) => {
         message: error.message || "Failed to send message. Please try again.",
       });
 
-      // Clear alert after 5 seconds
       setTimeout(() => {
         setAlertInfo(null);
       }, 5000);
