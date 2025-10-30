@@ -63,10 +63,10 @@ const ContactUs = ({ data }) => {
 
   return (
     <>
-      <section className="container mx-auto pt-[80px] pb-60">
+      <section className="container mx-auto pt-[80px] pb-60 flex flex-col items-center">
         {/* Alert positioned at top */}
         {alertInfo && (
-          <div className="fixed top-[19vh]  transform -translate-x-1/2 z-50 w-full px-4">
+          <div className="z-50 w-[80%] px-4">
             <Alert
               message={alertInfo.message}
               type={alertInfo.type}
