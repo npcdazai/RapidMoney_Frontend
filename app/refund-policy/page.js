@@ -14,7 +14,7 @@ const getCMSPageBySlug = async () => {
       endpoints.get_cms_page +
       "/refund-policy",
       {
-        next: { revalidate: 3600 }, // 300 seconds = 5 minutes
+        cache: 'no-store',
       }
     );
     const data = await response.json();

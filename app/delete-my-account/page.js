@@ -17,7 +17,7 @@ const getCMSPageBySlug = async () => {
     const response = await fetch(
       process.env.NEXT_PUBLIC_API_URL + endpoints.get_cms_page + "/contact-us",
       {
-        next: { revalidate: 3600 }, // 300 seconds = 5 minutes
+        cache: 'no-store',
       }
     );
     const data = await response.json();

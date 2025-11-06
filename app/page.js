@@ -39,7 +39,7 @@ const getCMSPageBySlug = async () => {
       endpoints.get_cms_page +
       "/home",
       {
-        next: { revalidate: 3600 }, 
+        cache: 'no-store',
       }
     );
 

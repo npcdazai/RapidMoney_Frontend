@@ -20,17 +20,17 @@ const getCMSPageBySlug = async () => {
       endpoints.get_cms_page +
       "/about-us",
       {
-        next: { revalidate: 3600 }, // 300 seconds = 5 minutes
+        cache: 'no-store',
       }
     );
 
     const data = await response.json();
 
     if (!data?.data?.pageData) {
-      notFound(); 
+      notFound();
     }
     return data;
-    
+
   } catch (error) {
     console.log("API call failed: ", error);
     notFound();

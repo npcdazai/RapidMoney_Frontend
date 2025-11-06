@@ -20,7 +20,7 @@ const getBlog = async (slug) => {
       endpoints.get_blogs_by_slug +
       `/${slug}`,
       {
-        next: { revalidate: 3600 }, // 300 seconds = 5 minutes
+        cache: 'no-store',
       }
     );
 
