@@ -12,6 +12,9 @@ import endpoints from "@/constants/endpoints";
 import Loading from "../loading";
 import DynamicHead from "@/components/head/dynamicHead";
 import defaultSEO from "@/constants/defaultSEO";
+import { notFound } from "next/navigation";
+
+export const dynamic = 'force-dynamic';
 
 const getCMSPageBySlug = async () => {
   try {

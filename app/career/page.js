@@ -16,6 +16,8 @@ import { notFound } from "next/navigation";
 // const jobData = careerData.jobOpenings
 // const header = headerData.header
 
+export const dynamic = 'force-dynamic';
+
 const getCMSPageBySlug = async () => {
   try {
     const response = await fetch(
