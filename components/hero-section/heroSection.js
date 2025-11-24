@@ -118,16 +118,16 @@ const HeroSection = ({ data, paginationRef }) => {
                 {data?.description}
               </span>
 
-              {/* <Link href={'https://web.rapidmoney.in/borrower/login'} className="hero-button"> */}
-              {/* <Link href={data?.ctaButton.link} className="hero-button"> */}
-                {/* <button className="apply-btn apply-btn-dark flex gap-2"> */}
-                  {/* {data?.ctaButton.label} */}
-                  {/* Apply Now
+              <Link href={'https://web.rapidmoney.in/borrower/login'} target="_Blank" className="hero-button">
+                {/* <Link href={data?.ctaButton.link} className="hero-button"> */}
+                <button className="apply-btn apply-btn-dark flex gap-2">
+                  {/* {pdata?.ctaButton.label} */}
+                  Apply Now
                   <span className="primary-color">
                     <RiArrowRightLine size={24} />
                   </span>
-                </button> */}
-              {/* </Link> */}
+                </button>
+              </Link>
 
               {/* <div className="pagination-placeholder" /> */}
               <div className="custom-swiper-pagination" ref={paginationRef} />
