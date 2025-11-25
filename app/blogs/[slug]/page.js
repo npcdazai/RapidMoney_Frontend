@@ -50,7 +50,6 @@ export async function generateMetadata({ params }) {
     return {
       title: "Rapid Money - Page Not Found",
       description: "This page does not exist.",
-      robots: "noindex, nofollow",
     };
   }
 
@@ -75,9 +74,7 @@ export async function generateMetadata({ params }) {
     description: isProduction
       ? seo_setting?.meta_description || defaultSEO?.blog?.description
       : defaultSEO?.blog?.description,
-    robots: isProduction
-      ? "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
-      : "noindex, nofollow",
+    robots: "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
     alternates: {
       canonical: isProduction ? canonicalURL : undefined,
     },

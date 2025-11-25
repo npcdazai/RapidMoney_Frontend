@@ -45,9 +45,7 @@ export async function generateMetadata() {
     metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL),
     title,
     description,
-    robots: isProduction
-      ? "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
-      : "noindex, nofollow",
+    robots: "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
     alternates: {
       canonical: isProduction ? canonicalURL : undefined,
     },

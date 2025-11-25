@@ -80,9 +80,7 @@ export async function generateMetadata() {
   return {
     title,
     description,
-    robots: isProduction
-      ? "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
-      : "noindex, nofollow",
+    robots: "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
     alternates: {
       canonical: isProduction ? canonicalURL : undefined,
     },
