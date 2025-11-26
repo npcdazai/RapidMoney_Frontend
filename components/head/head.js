@@ -147,6 +147,7 @@ const Header = ({ isDark = false, data }) => {
                   // type="primary"
                   className={`apply-btn apply-btn-green`}
                 // className={`apply-btn ${isDark ? 'apply-btn-green' : 'apply-btn-blue'}`}
+                
                 >
                   {data?.cta?.applyLabel}
                 </button>
