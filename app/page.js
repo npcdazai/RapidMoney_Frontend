@@ -62,7 +62,7 @@ export async function generateMetadata() {
   const res = await getCMSPageBySlug();
   const data = res?.data?.pageData?.seoSetting;
   const isProduction = process.env.NEXT_PUBLIC_ENVIRONMENT === "production";
-  const canonicalURL = `${process.env.NEXT_PUBLIC_SITE_URL}`;
+  const canonicalURL = "";
 
   const title =
     isProduction && data?.meta_title
@@ -83,6 +83,9 @@ export async function generateMetadata() {
     robots: "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
     alternates: {
       canonical: isProduction ? canonicalURL : undefined,
+    },
+    other: {
+      "google-site-verification": "twL_GolMQqEgollqmMmpUNK8CAqnO1iN1NgPXT9jbVE",
     },
     openGraph: {
       title,
