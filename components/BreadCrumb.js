@@ -9,7 +9,7 @@ export default function Breadcrumb() {
   const pathSegments = pathname.split("/").filter(Boolean);
 
   return (
-    <div className="max-w-6xl mx-auto w-full pt-4 flex justify-start">
+    <div className="max-w-6xl mx-auto w-full  pt-4 pl-3 md:pl-1 flex justify-start">
 
       <nav aria-label="Breadcrumb">
         <ol className="flex items-center gap-2 text-sm">
