@@ -78,9 +78,9 @@ export default function AboutHero({ data }) {
   return (
     <section className="relative">
       <div className="container mx-auto px-4 my-80">
-        <h2 ref={headingRef} className="font-36 text-black text-center font-bold mb-7">
+        <h1 ref={headingRef} className="font-36 text-black text-center font-bold mb-7">
           {data?.title}
-        </h2>
+        </h1>
 
         <div className="flex flex-col lg:flex-row gap-4 lg:gap-[50px] relative">
           <div className="flex flex-col gap-4 w-full text-center">

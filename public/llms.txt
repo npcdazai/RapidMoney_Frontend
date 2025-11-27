@@ -1,0 +1,11 @@
+# www.rapidmoney.in llms.txt
+
+- [About RapidMoney](https://www.rapidmoney.in/about-us): To present RapidMoney's mission, vision, team, and unique loan services for financial inclusion.
+- [RapidMoney Contact Page](https://www.rapidmoney.in/contact-us): Provide contact information and customer support for RapidMoney services.
+- [Instant Personal Loans](https://www.rapidmoney.in/product): Offer instant personal and term loans online with quick approval and minimal documentation for eligible Indian citizens.
+- [RapidMoney Privacy Policy](https://www.rapidmoney.in/privacy-policy): Explain RapidMoney's data collection, usage, sharing, and user rights regarding privacy for lending and non-lending services.
+- [RapidMoney Terms & Conditions](https://www.rapidmoney.in/term-conditions): Outline terms and conditions for users accessing RapidMoney loan services platform in India.
+- [Disclaimer and Policies](https://www.rapidmoney.in/disclaimer): Inform users about data protection, fraud warnings, and document preservation policies of RapidMoney.
+- [Lending Partners Info](https://www.rapidmoney.in/lending-partners): Showcase and provide contact information for RapidMoney's lending partners and corporate details.
+- [Refund Policy](https://www.rapidmoney.in/refund-policy): Explain refund policy and process for digital payment transactions on RapidMoney platform.
+- [RapidMoney Instant Loans](https://www.rapidmoney.in): Offer instant, hassle-free personal loans online to support diverse financial needs and dreams.

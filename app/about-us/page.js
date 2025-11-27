@@ -13,6 +13,7 @@ import Loading from "../loading";
 import DynamicHead from "@/components/head/dynamicHead";
 import defaultSEO from "@/constants/defaultSEO";
 import { notFound } from "next/navigation";
+import Breadcrumb from "@/components/BreadCrumb";
 
 export const dynamic = 'force-dynamic';
 
@@ -44,7 +45,7 @@ export async function generateMetadata() {
   const res = await getCMSPageBySlug();
   const data = res?.data?.pageData?.seoSetting;
   const isProduction = process.env.NEXT_PUBLIC_ENVIRONMENT === "production";
-  const canonicalURL = `${process.env.NEXT_PUBLIC_SITE_URL}/about-us`;
+  const canonicalURL = "https://www.rapidmoney.in/about-us";
 
   const title =
     isProduction && data?.meta_title
@@ -64,7 +65,7 @@ export async function generateMetadata() {
     description,
     robots: "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
     alternates: {
-      canonical: isProduction ? canonicalURL : undefined,
+      canonical: canonicalURL,
     },
     openGraph: {
       title,
@@ -102,6 +103,7 @@ export default async function page() {
       <Suspense fallback={<Loading />}>
         {/* <Header data={header} /> */}
         <DynamicHead />
+        <Breadcrumb/>
         <AboutHero data={response?.data?.pageData?.whoWeAre} />
         <AboutSlider data={response?.data?.pageData?.sliderSection} />
         <WhatSetsUsApart data={response?.data?.pageData?.setUsApart} />

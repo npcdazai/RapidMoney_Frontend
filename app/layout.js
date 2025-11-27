@@ -14,6 +14,7 @@ import Header from "@/components/head/head";
 import Footer from "@/components/footer/footer";
 import AppLayout from "@/components/layout/AppLayout";
 import Script from "next/script";
+import ScrollToTop from "@/components/ScrollToTop";
 
 const notoSans = Noto_Sans({
   subsets: ["latin"],
@@ -53,6 +54,7 @@ gtag('config', 'G-GTC8M3645P');`}
               {/* <Header /> */}
               {/* <main className="min-h-[200px] py-8"> */}
               {children}
+              <ScrollToTop/>
               {/* </main> */}
               <Footer />
               {/* <AppLayout>
