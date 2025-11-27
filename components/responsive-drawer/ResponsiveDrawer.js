@@ -71,37 +71,37 @@ export default function ResponsiveDrawer({ open, onClose, data }) {
                         )
                     )}
                     {
-                        <div className="md:hidden block flex-1 content-end">
-                            <button
-                                type="primary"
-                                className="apply-btn apply-btn-green border-none font-semibold w-full mt-2"
-                                href="/"
-                            >
-                                {data?.cta?.applyLabel}
-                            </button>
+                        // <div className="md:hidden block flex-1 content-end">
+                        //     <button
+                        //         type="primary"
+                        //         className="apply-btn apply-btn-green border-none font-semibold w-full mt-2"
+                        //         href="/"
+                        //     >
+                        //         {data?.cta?.applyLabel}
+                        //     </button>
 
-                            <button
-                                type="default"
-                                href="/"
-                                className="apply-btn apply-btn-light flex justify-between items-center gap-2 border w-full mt-2"
-                            >
-                                <span>Download</span>
-                                <div className="flex items-center gap-2">
-                                    <Image
-                                        src={lightIphone}
-                                        width={20}
-                                        height={20}
-                                        alt="iphone"
-                                    />
-                                    <Image
-                                        src={playStore}
-                                        width={20}
-                                        height={20}
-                                        alt="playstore"
-                                    />
-                                </div>
-                            </button>
-                        </div>
+                        //     <button
+                        //         type="default"
+                        //         href="/"
+                        //         className="apply-btn apply-btn-light flex justify-between items-center gap-2 border w-full mt-2"
+                        //     >
+                        //         <span>Download</span>
+                        //         <div className="flex items-center gap-2">
+                        //             <Image
+                        //                 src={lightIphone}
+                        //                 width={20}
+                        //                 height={20}
+                        //                 alt="iphone"
+                        //             />
+                        //             <Image
+                        //                 src={playStore}
+                        //                 width={20}
+                        //                 height={20}
+                        //                 alt="playstore"
+                        //             />
+                        //         </div>
+                        //     </button>
+                        // </div>
                     }
                 </nav>
             </Drawer></div>
