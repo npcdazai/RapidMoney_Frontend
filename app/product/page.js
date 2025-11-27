@@ -106,7 +106,7 @@ export default async function page() {
       <DynamicHead isDark={true} />
 
       <GlobalHeroSection data={response?.data?.pageData?.heroSection} />
-      <div className="ml-170"><Breadcrumb/></div>
+     <Breadcrumb/>
       <ProductRepayment data={response?.data?.pageData?.repaymentData} />
       <ProductTermLoans data={response?.data?.pageData?.productTermLoanSection} /> 
       <ProductInstantAccess data={response?.data?.pageData?.instantAccess} />
