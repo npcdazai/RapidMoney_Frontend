@@ -13,6 +13,7 @@ import Loading from "../loading";
 import DynamicHead from "@/components/head/dynamicHead";
 import defaultSEO from "@/constants/defaultSEO";
 import { notFound } from "next/navigation";
+import Breadcrumb from "@/components/BreadCrumb";
 
 const getCMSPageBySlug = async () => {
   try {
@@ -42,7 +43,7 @@ export async function generateMetadata() {
   const res = await getCMSPageBySlug();
   const data = res?.data?.pageData?.seoSetting;
   const isProduction = process.env.NEXT_PUBLIC_ENVIRONMENT === "production";
-  const canonicalURL = `${process.env.NEXT_PUBLIC_SITE_URL}/product`;
+  const canonicalURL = "https://www.rapidmoney.in/product";
 
   const title =
     isProduction && data?.meta_title
@@ -62,7 +63,7 @@ export async function generateMetadata() {
     description,
     robots: "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
     alternates: {
-      canonical: isProduction ? canonicalURL : undefined,
+      canonical: canonicalURL,
     },
     openGraph: {
       title,
@@ -105,6 +106,7 @@ export default async function page() {
       <DynamicHead isDark={true} />
 
       <GlobalHeroSection data={response?.data?.pageData?.heroSection} />
+      <div className="ml-170"><Breadcrumb/></div>
       <ProductRepayment data={response?.data?.pageData?.repaymentData} />
       <ProductTermLoans data={response?.data?.pageData?.productTermLoanSection} /> 
       <ProductInstantAccess data={response?.data?.pageData?.instantAccess} />
