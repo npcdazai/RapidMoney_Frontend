@@ -138,7 +138,7 @@ const HeroSection = ({ data, paginationRef }) => {
             <div className={`w-full flex justify-center ${styles.personImage}`}>
               <Image
                 src={data?.swiper_image?.[0]?.url}
-                alt="Rapid Money - Loans"
+                alt="Rapid Money - Personal Loan"
                 fill
                 style={{ objectFit: "contain" }}
                 className="object-contain"

@@ -167,7 +167,7 @@ import Lottie from "lottie-react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import styles from "./our-benefits.module.scss";
-import rapidMoneyLogo from "./assets/rapid_money.png";
+
 
 const icon = {
   bank: bank,
@@ -273,18 +273,6 @@ const Benefits = ({ data }) => {
             {data?.title}
           </h1>
 
-          <Image
-            src={rapidMoneyLogo}
-            alt="Rapid Money Logo"
-            className="
-      object-contain 
-      w-[120px]     
-      sm:w-[160px]  
-      md:w-[220px]  
-      lg:w-[280px]   
-      pt-3
-    "
-          />
         </div>
 
         <Row gutter={[30, 30]} justify="center">

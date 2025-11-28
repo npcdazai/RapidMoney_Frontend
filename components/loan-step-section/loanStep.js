@@ -149,7 +149,7 @@ const LoanStep = ({ data }) => {
               <Image
                 src={currentStep?.image?.[0]?.url}
                 // src={imageArray[currentStep.flag]}
-                alt={`Step ${currentStep?.step}`}
+                alt={"Rapid Money - Steps to Appply for Personal Loan"}
                 width={400}
                 height={500}
                 className="max-h-[550px] object-scale-down"
