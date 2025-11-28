@@ -11,7 +11,7 @@ export default function ProductInstantAccess({ data }) {
   console.log(data);
 
   return (
-    <section className="bg-[#0573DB] lg:mt-44">
+    <section className="bg-[#0573DB] lg:mt-48">
       <div className="container mx-auto px-4 relative">
         <div className="flex flex-col lg:flex-row gap-4 lg:gap-9 relative">
           <div className="w-full text-center lg:text-left lg:w-1/2 py-16 lg:py-[86px]">

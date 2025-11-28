@@ -97,7 +97,7 @@ export default function productRepayment({ data }) {
         <h2 className="font-40 text-black font-bold text-center mb-12">
           {data.title}
         </h2>
-        <div className="flex flex-col lg:flex-row justify-between px-8 py-16 dark-bg light-color rounded-[32px] items-center gap-12 overflow-hidden">
+        <div className="flex flex-col lg:flex-row justify-between px-8 py-16 dark-bg light-color rounded-[32px] items-center gap-0 md:gap-12 overflow-hidden">
           <div className="w-full lg:w-1/2 z-1">
             {
               data?.sections?.map((sec, idx) => (
@@ -124,7 +124,7 @@ export default function productRepayment({ data }) {
           </div>
 
           {/* Right: Image */}
-          <div className="w-full lg:w-1/2 flex justify-center">
+          <div className="  lg:w-[650px] md:w-[650px] w-[600px] flex justify-center">
             <div className={styles.imageWrapper}>
               <Image
                 src={data?.image?.[0]?.url}
@@ -132,8 +132,8 @@ export default function productRepayment({ data }) {
                 // ref={imageRef}
                 alt="Gold Coins"
                 width={450}
-                height={320}
-                className="object-contain w-full max-w-[450px] h-full max-h-[320px]"
+                height={400}
+                className="object-contain w-full max-w-[900px] h-full max-h-[400px] top-19"
               />
             </div>
           </div>

@@ -3,7 +3,7 @@ import React, { Suspense } from "react";
 // import homePageData from "@/json/homepage/home.json";
 import PromoSection from "@/components/promo-section/promoWrapper";
 import GlobalHeroSection from "@/components/global-hero-section/heroSection";
-import ProductFAQ from "@/components/product-faq/productFAQ";
+import ProductFAQ from "@/app/product-faq/page";
 import ProductRepayment from "@/components/product-repayment/productRepayment";
 import ProductTermLoans from "@/components/product-term-loans/productTermLoans";
 import ProductInstantAccess from "@/components/product-instant-access/productInstantAccess";
@@ -126,7 +126,7 @@ export default async function page() {
           data={response?.data?.pageData?.productTermLoanSection}
         />
         <ProductInstantAccess data={response?.data?.pageData?.instantAccess} />
-        <ProductFAQ data={response?.data?.pageData?.faqSection} />
+        <ProductFAQ respone={response} />
         <PromoSection />
       </Suspense>
 

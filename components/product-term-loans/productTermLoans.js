@@ -504,20 +504,20 @@ export default function ProductTermLoans() {
 
         {/* Mobile View – Single full table */}
         <div className="lg:hidden w-full bg-[#F9FAFF] rounded-4xl border border-[#DDDDDD] overflow-x-auto mt-8">
-          <table className="min-w-[500px] w-full text-sm text-center">
+          <table className="min-w-[320px] w-full text-sm text-center">
             <thead>
-              <tr className="bg-[#F6FFE8] text-black text-[18px] font-semibold">
-                <th className="px-6 py-4 rounded-tl-2xl">Criteria</th>
-                <th className="px-6 py-4 rounded-tr-2xl">
+              <tr className="bg-[#F6FFE8] text-black text-[15px] font-semibold">
+                <th className="px-3 py-3 rounded-tl-2xl">Criteria</th>
+                <th className="px-3 py-2 rounded-tr-2xl">
                   Details / Parameters
                 </th>
               </tr>
             </thead>
-            <tbody className="text-[15px]">
+            <tbody className="text-[13px]">
               {data.map(([criteria, details], idx) => (
                 <tr key={idx} className="border-t border-[#E5E5E5] bg-white">
-                  <td className="px-6 py-4 font-bold">{criteria}</td>
-                  <td className="px-6 py-4">{details}</td>
+                  <td className="px-2 py-2 font-bold">{criteria}</td>
+                  <td className="px-3 py-4">{details}</td>
                 </tr>
               ))}
             </tbody>
