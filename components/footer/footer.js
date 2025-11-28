@@ -1,164 +1,202 @@
-import React from 'react';
-import Link from 'next/link';
-import Image from 'next/image';
-import { Button, Col, Divider, Row } from 'antd';
-import styles from './footer.module.scss';
+import React from "react";
+import Link from "next/link";
+import Image from "next/image";
+import { Button, Col, Divider, Row } from "antd";
+import styles from "./footer.module.scss";
 
-import linkedin from './assets/linkedin.svg';
-import twitter from './assets/twitter.svg';
-import youtube from './assets/youtube.svg';
-import instagram from './assets/instagram.svg';
-import facebook from './assets/facebook.svg';
+import linkedin from "./assets/linkedin.svg";
+import twitter from "./assets/twitter.svg";
+import youtube from "./assets/youtube.svg";
+import instagram from "./assets/instagram.svg";
+import facebook from "./assets/facebook.svg";
 // import google from './assets/google-logo.svg';
-import ratingStar from './assets/rating_star.svg';
-import emailIcon from './assets/email.svg';
-import footerLogo from './assets/dark_rapid_money_logo.png';
-import endpoints from '@/constants/endpoints';
+import ratingStar from "./assets/rating_star.svg";
+import emailIcon from "./assets/email.svg";
+import footerLogo from "./assets/dark_rapid_money_logo.png";
+import endpoints from "@/constants/endpoints";
+import { RiPhoneLine } from "react-icons/ri";
 
 const getCMSPageBySlug = async () => {
-    try {
-        const response = await fetch(
-            process.env.NEXT_PUBLIC_API_URL +
-            endpoints.get_cms_page +
-            '/footer',
-            {
-                cache: 'no-store',
-            }
-        );
-        return await response.json();
-    } catch (error) {
-        console.log('API call failed: ', error);
-        return null;
-    }
+  try {
+    const response = await fetch(
+      process.env.NEXT_PUBLIC_API_URL + endpoints.get_cms_page + "/footer",
+      {
+        cache: "no-store",
+      }
+    );
+    return await response.json();
+  } catch (error) {
+    console.log("API call failed: ", error);
+    return null;
+  }
 };
 
 const Footer = async () => {
-    const response = await getCMSPageBySlug();
-    const { company_links = [], product_links = [], copyright = {}, social_link = {}, support = {} } =
-        response?.data?.pageData || {};
+  const response = await getCMSPageBySlug();
+  const {
+    company_links = [],
+    product_links = [],
+    copyright = {},
+    social_link = {},
+    support = {},
+  } = response?.data?.pageData || {};
 
-    const socialIcons = {
-        linkedin,
-        twitter,
-        youtube,
-        instagram,
-        facebook,
-        // google,
-    };
+  const socialIcons = {
+    linkedin,
+    twitter,
+    youtube,
+    instagram,
+    facebook,
+    // google,
+  };
 
-    const socialData = [
-        { icon: 'linkedin', url: social_link.linkdin_link },
-        { icon: 'twitter', url: social_link.twitter_link },
-        { icon: 'youtube', url: social_link.youtube_link },
-        { icon: 'instagram', url: social_link.instagram_link },
-        { icon: 'facebook', url: social_link.facebook_link },
-        // { icon: 'google', url: social_link.google_link?.url, rating: social_link.google_link?.rating },
-    ];
+  const socialData = [
+    { icon: "linkedin", url: social_link.linkdin_link },
+    { icon: "twitter", url: social_link.twitter_link },
+    { icon: "youtube", url: social_link.youtube_link },
+    { icon: "instagram", url: social_link.instagram_link },
+    { icon: "facebook", url: social_link.facebook_link },
+    // { icon: 'google', url: social_link.google_link?.url, rating: social_link.google_link?.rating },
+  ];
 
-    return (
-        <footer className={`pt-10 pb-6 ${styles.section} dark-bg`}>
-            <div className="container mx-auto md:pb-8 pb-6">
-                <Row gutter={[24, 24]}>
-                    <Col xl={8} xs={24}>
-                        <div>
-                            <div className="flex gap-1 flex-col">
-                                <Link href="/">
-                                    <Image src={footerLogo} alt="RapidMoney Logo" width={225} height={50} />
-                                </Link>
-                            </div>
-                            <div className="flex items-center gap-3 flex-wrap pt-6 xl:pt-[100px]">
-                                {socialData.map((link, idx) => {
-                                    if (!link.url) return null;
+  return (
+    <footer className={`pt-10 pb-6 ${styles.section} dark-bg`}>
+      <div className="container mx-auto md:pb-8 pb-6">
+        <Row gutter={[24, 24]}>
+          <Col xl={8} xs={24}>
+            <div>
+              <div className="flex gap-1 flex-col">
+                <Link href="/">
+                  <Image
+                    src={footerLogo}
+                    alt="RapidMoney Logo"
+                    width={225}
+                    height={50}
+                  />
+                </Link>
+              </div>
+              <p className="text-gray-300 text-[16px]   pt-2">
+                Shubhjivan Arcade, A-902, Swami Vivekananda Rd, near Borivali
+                Station, opp. Moksh Plaza, Mhatre Wadi, Borivali West, Mumbai,
+                Maharashtra 400092
+              </p>
+              <div className="flex items-center gap-3 flex-wrap pt-6 xl:pt-[100px]">
+                {socialData.map((link, idx) => {
+                  if (!link.url) return null;
 
-                                    // if (link.icon === 'google' && link.rating) {
-                                    //     return (
-                                    //         <Link key={idx} href={link.url} target="_blank" rel="noopener noreferrer">
-                                    //             <Button className="flex items-center justify-center !bg-transparent !border-[#FFFFFF3B]" type="default">
-                                    //                 <div className="flex items-center gap-2">
-                                    //                     <div className="flex gap-1">
-                                    //                         <Image src={ratingStar} alt="Rating Star" width={16} height={6} />
-                                    //                         <span className="light-color">{link.rating}</span>
-                                    //                     </div>
-                                    //                     <Image src={socialIcons[link.icon]} alt={link.icon} width={70} height={24} />
-                                    //                 </div>
-                                    //             </Button>
-                                    //         </Link>
-                                    //     );
-                                    // }
-                                    return (
-                                        <Link key={idx} href={link.url} target="_blank" rel="noopener noreferrer">
-                                            <Image
-                                                src={socialIcons[link.icon]}
-
-
-                                                alt={link.icon}
-                                                width={24}
-                                                height={24}
-                                                className="hover:scale-110 transition-transform"
-                                            />
-                                        </Link>
-                                    );
-                                })}
-                            </div>
-                        </div>
-                    </Col>
-
-                    <Col xs={0} lg={0} xl={3} />
-
-                    <Col xs={12} md={8} xl={4}>
-                        <h4 className={`${styles.footerHeader} xl:pb-7 pb-4`}>Company</h4>
-                        {company_links.map((link, i) => (
-                            <Link key={i} href={link.redirect_path} className={styles.footerLink}>
-                                {link.link_name}
-                            </Link>
-                        ))}
-                    </Col>
-
-                    <Col xs={12} md={8} xl={4}>
-                        <h4 className={`${styles.footerHeader} xl:pb-7 pb-4`}>Policies</h4>
-                        {product_links.map((link, i) => (
-                            <Link key={i} href={link.redirect_path} className={styles.footerLink}>
-                                {link.link_name}
-                            </Link>
-                        ))}
-                    </Col>
-
-                    <Col xs={24} md={8} xl={5}>
-                        <h4 className={`${styles.footerHeader} xl:pb-7 pb-4`}>Support</h4>
-                        {support?.description && <p className={styles.contactDesc}>{support.description}</p>}
-                        <div className="flex items-center gap-2 mt-2">
-                            <Image src={emailIcon} width={18} height={18} alt="email" />
-                            <span>
-                                <a className={styles.footerEmail} href={`mailto:${support.email}`}>
-                                    {support.email}
-                                </a>
-                            </span>
-                        </div>
-                    </Col>
-                </Row>
+                  // if (link.icon === 'google' && link.rating) {
+                  //     return (
+                  //         <Link key={idx} href={link.url} target="_blank" rel="noopener noreferrer">
+                  //             <Button className="flex items-center justify-center !bg-transparent !border-[#FFFFFF3B]" type="default">
+                  //                 <div className="flex items-center gap-2">
+                  //                     <div className="flex gap-1">
+                  //                         <Image src={ratingStar} alt="Rating Star" width={16} height={6} />
+                  //                         <span className="light-color">{link.rating}</span>
+                  //                     </div>
+                  //                     <Image src={socialIcons[link.icon]} alt={link.icon} width={70} height={24} />
+                  //                 </div>
+                  //             </Button>
+                  //         </Link>
+                  //     );
+                  // }
+                  return (
+                    <Link
+                      key={idx}
+                      href={link.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <Image
+                        src={socialIcons[link.icon]}
+                        alt={link.icon}
+                        width={24}
+                        height={24}
+                        className="hover:scale-110 transition-transform"
+                      />
+                    </Link>
+                  );
+                })}
+              </div>
             </div>
+          </Col>
 
-            <Divider style={{ borderColor: '#FFFFFF3B' }} />
+          <Col xs={0} lg={0} xl={3} />
 
-            <div
-                className={`border-[#DBDBDB] gap-3 container text-center md:text-left mx-auto flex flex-wrap justify-center md:justify-between items-center ${styles.footerLastBottom}`}
+          <Col xs={12} md={8} xl={4}>
+            <h4 className={`${styles.footerHeader} xl:pb-7 pb-4`}>Company</h4>
+            {company_links.map((link, i) => (
+              <Link
+                key={i}
+                href={link.redirect_path}
+                className={styles.footerLink}
+              >
+                {link.link_name}
+              </Link>
+            ))}
+          </Col>
+
+          <Col xs={12} md={8} xl={4}>
+            <h4 className={`${styles.footerHeader} xl:pb-7 pb-4`}>Policies</h4>
+            {product_links.map((link, i) => (
+              <Link
+                key={i}
+                href={link.redirect_path}
+                className={styles.footerLink}
+              >
+                {link.link_name}
+              </Link>
+            ))}
+          </Col>
+
+          <Col xs={24} md={8} xl={5}>
+            <h4 className={`${styles.footerHeader} xl:pb-7 pb-4`}>Support</h4>
+            {support?.description && (
+              <p className={styles.contactDesc}>{support.description}</p>
+            )}
+            <div className="flex items-center gap-3 mt-2">
+              <Image src={emailIcon} width={18} height={18} alt="email" />
+              <span>
+                <a
+                  className={styles.footerEmail}
+                  href={`mailto:${support.email}`}
+                >
+                  {support.email}
+                </a>
+              </span>
+            </div>
+            <div className="flex items-center gap-2">
+              <RiPhoneLine size={24} style={{ color: "#7DC802" }} />
+              <a href="tel:8097880793" className={styles.footerPhone}>
+                8097880793
+              </a>
+            </div>
+          </Col>
+        </Row>
+      </div>
+
+      <Divider style={{ borderColor: "#FFFFFF3B" }} />
+
+      <div
+        className={`border-[#DBDBDB] gap-3 container text-center md:text-left mx-auto flex flex-wrap justify-center md:justify-between items-center ${styles.footerLastBottom}`}
+      >
+        <span className={styles.notes}>{copyright.description}</span>
+        <div className="flex flex-wrap gap-4 justify-center mt-3 md:mt-0">
+          {copyright.copyright_links?.map((item, idx) => (
+            <Link
+              key={idx}
+              href={item.redirect_path || "#"}
+              className={styles.copyRight}
             >
-                <span className={styles.notes}>{copyright.description}</span>
-                <div className="flex flex-wrap gap-4 justify-center mt-3 md:mt-0">
-                    {copyright.copyright_links?.map((item, idx) => (
-                        <Link key={idx} href={item.redirect_path || '#'} className={styles.copyRight}>
-                            {item.link_name}
-                        </Link>
-                    ))}
-                </div>
-            </div>
-        </footer>
-    );
+              {item.link_name}
+            </Link>
+          ))}
+        </div>
+      </div>
+    </footer>
+  );
 };
 
 export default Footer;
-
-
 
 // import React from 'react';
 // import Link from 'next/link';
@@ -209,13 +247,11 @@ export default Footer;
 //     const response =  await getCMSPageBySlug();
 //     console.log(response);
 
-
 //     const { companyInfo, sections, bottomNote, legalLinks } = footerData.footer;
 
 //     const {company_links,copyright,product_links,social_link,support} = response?.data?.pageData;
 
 //     const socialIcons = {
-
 
 //         linkedin: linkedin,
 //         'x-twitter': twitter,

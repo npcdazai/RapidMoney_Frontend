@@ -187,17 +187,35 @@ const ContactUs = ({ data }) => {
                 <span className={`${styles.personImageContainer}`}>
                   <Image
                     src={personImage}
-                    width={200}
-                    height={250}
+                    width={120}
+                    height={200}
                     alt="person"
                     className={styles.personImage}
                   />
                 </span>
               </div>
-              <div className="flex flex-wrap sm:flex-nowrap gap-4 w-full">
-                <div className="flex flex-col p-4 border rounded-[10px]  border-[var(--border-color)] gap-4 w-full">
-                  <RiMailLine size={24} />
-                  <span className="font-16">{data.email}</span>
+              <div className="flex flex-col p-4 border rounded-[10px] border-[var(--border-color)] gap-4 w-full">
+                <div className="flex items-center gap-2 ">
+                  {" "}
+                  <RiMailLine size={24} style={{ color: "black" }} />
+                  <a
+                    href={`mailto:${data.email}`}
+                    className="font-16 hover:underline break-all"
+                    style={{ color: "#7DC802" }}
+                  >
+                    {data.email}
+                  </a>
+                </div>
+                <div className="flex items-center gap-2 ">
+                  {" "}
+                  <RiPhoneLine size={24} style={{ color: "black" }} />
+                  <a
+                    href={`tel:${data.email}`}
+                    className="font-16 hover:underline break-all"
+                    style={{ color: "#7DC802" }}
+                  >
+                    8097880793
+                  </a>
                 </div>
               </div>
             </div>
