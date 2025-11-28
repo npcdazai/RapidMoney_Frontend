@@ -10,6 +10,7 @@ import DynamicHead from "@/components/head/dynamicHead";
 import defaultSEO from "@/constants/defaultSEO";
 import { notFound } from "next/navigation";
 import Breadcrumb from "@/components/BreadCrumb";
+import Script from "next/script";
 
 const header = homePageData.header;
 
@@ -18,7 +19,7 @@ const getCMSPageBySlug = async () => {
     const response = await fetch(
       process.env.NEXT_PUBLIC_API_URL + endpoints.get_cms_page + "/contact-us",
       {
-        cache: 'no-store',
+        cache: "no-store",
       }
     );
     const data = await response.json();
@@ -56,7 +57,8 @@ export async function generateMetadata() {
   return {
     title,
     description,
-    robots: "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
+    robots:
+      "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
     alternates: {
       canonical: canonicalURL,
     },
@@ -87,11 +89,38 @@ export default async function page() {
   console.log(response);
   return (
     <>
+      <Script id="contact-schema" type="application/ld+json">
+        {`
+{
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "name": "Rapid Money",
+  "image": "https://www.rapidmoney.in/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Flight_rapid_money_logo.ca23ec80.png&w=640&q=75",
+  "email": "support@rapidmoney.com",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "902, 9th Floor, Shubhjyoti Building, Swami Vivekananda Rd, Datta Park, Borivali West",
+    "addressLocality": "Mumbai",
+    "addressRegion": "Maharashtra",
+    "postalCode": "400092",
+    "addressCountry": "IN"
+  },
+  "url": "https://www.rapidmoney.in/contact-us",
+  "sameAs": [
+    "https://www.linkedin.com/company/rapidmoney",
+    "https://x.com/Rapidmoney2025",
+    "https://x.com/Rapidmoney2025",
+    "https://www.instagram.com/officialrapidmoney",
+    "https://www.facebook.com/rapidmoney"
+  ]
+}
+`}
+      </Script>
       {/* <ContactUs /> */}
       <Suspense fallback={<Loading />}>
         {/* <Header data={header} /> */}
         <DynamicHead />
-       <Breadcrumb/>
+        <Breadcrumb />
         <ContactUsForm data={response?.data?.pageData?.contactSection} />
         {/* <ContactUsForm data={contactData} /> */}
         {/* <ContactMap /> */}

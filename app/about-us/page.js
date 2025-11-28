@@ -14,17 +14,16 @@ import DynamicHead from "@/components/head/dynamicHead";
 import defaultSEO from "@/constants/defaultSEO";
 import { notFound } from "next/navigation";
 import Breadcrumb from "@/components/BreadCrumb";
+import Script from "next/script";
 
-export const dynamic = 'force-dynamic';
+export const dynamic = "force-dynamic";
 
 const getCMSPageBySlug = async () => {
   try {
     const response = await fetch(
-      process.env.NEXT_PUBLIC_API_URL +
-      endpoints.get_cms_page +
-      "/about-us",
+      process.env.NEXT_PUBLIC_API_URL + endpoints.get_cms_page + "/about-us",
       {
-        cache: 'no-store',
+        cache: "no-store",
       }
     );
 
@@ -34,7 +33,6 @@ const getCMSPageBySlug = async () => {
       notFound();
     }
     return data;
-
   } catch (error) {
     console.log("API call failed: ", error);
     notFound();
@@ -48,9 +46,7 @@ export async function generateMetadata() {
   const canonicalURL = "https://www.rapidmoney.in/about-us";
 
   const title =
-    isProduction && data?.meta_title
-      ? data.meta_title
-      : defaultSEO.about.title;
+    isProduction && data?.meta_title ? data.meta_title : defaultSEO.about.title;
 
   const description =
     isProduction && data?.meta_description
@@ -63,7 +59,8 @@ export async function generateMetadata() {
   return {
     title,
     description,
-    robots: "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
+    robots:
+      "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
     alternates: {
       canonical: canonicalURL,
     },
@@ -89,21 +86,85 @@ export async function generateMetadata() {
   };
 }
 
-
-
 export default async function page() {
   const response = await getCMSPageBySlug();
-  console.log(response)
+  console.log(response);
 
   // const header = homePageData.header;
   // const promo = homePageData.promoSection;
 
   return (
     <>
+      <Script id="about-schema" type="application/ld+json">
+        {`
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Person",
+      "name": "Hemali Bhatt",
+      "jobTitle": "Director",
+        "image": "https://www.rapidmoney.in/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fhemali.b2ba3a89.png&w=3840&q=75",
+  "sameAs": "https://www.linkedin.com/in/hemali-bhatt-51099647",
+      "url": "https://www.rapidmoney.in/about-us",
+      "worksFor": {
+        "@type": "Organization",
+        "name": "Rapid Money"
+      }
+    },
+        {
+      "@type": "Person",
+      "name": "Chintan Panchmatya",
+      "jobTitle": "Director",
+              "image": "https://www.rapidmoney.in/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fchintan.9895c2d4.png&w=3840&q=75",
+  "sameAs": "https://www.linkedin.com/in/chintan-panchmatya-0a959815",
+      "url": "https://www.rapidmoney.in/about-us",
+      "worksFor": {
+        "@type": "Organization",
+        "name": "Rapid Money"
+      }
+          },
+        {
+      "@type": "Person",
+      "name": "Ashwani Manaktala",
+      "jobTitle": "Chief Executive Officer",
+              "image": "https://www.rapidmoney.in/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fashwani.7d844404.png&w=1080&q=75",
+  "sameAs": "https://www.linkedin.com/in/ashwani-manaktala-522349b/",
+      "url": "https://www.rapidmoney.in/about-us",
+      "worksFor": {
+        "@type": "Organization",
+        "name": "Rapid Money"
+      }
+          },
+        {
+      "@type": "Person",
+      "name": "Ankur Chandra",
+      "jobTitle": "AVP-Products",
+              "image": "https://www.rapidmoney.in/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fankur2.59350f0d.png&w=1080&q=75",
+  "sameAs": "https://www.linkedin.com/in/ankurcs",
+      "url": "https://www.rapidmoney.in/about-us",
+      "worksFor": {
+        "@type": "Organization",
+        "name": "Rapid Money"
+      }
+          },
+    {
+      "@type": "Person",
+      "name": "Amit Agashe",
+      "jobTitle": "AVP- Operations",
+              "image": "https://www.rapidmoney.in/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Famit.c4afe92a.png&w=1080&q=75",
+      "url": "https://www.rapidmoney.in/about-us",
+       "worksFor": {
+        "@type": "Organization",
+        "name": "Rapid Money"
+      }
+    }
+  ]
+`}
+      </Script>
       <Suspense fallback={<Loading />}>
         {/* <Header data={header} /> */}
         <DynamicHead />
-        <Breadcrumb/>
+        <Breadcrumb />
         <AboutHero data={response?.data?.pageData?.whoWeAre} />
         <AboutSlider data={response?.data?.pageData?.sliderSection} />
         <WhatSetsUsApart data={response?.data?.pageData?.setUsApart} />

@@ -5,34 +5,35 @@
     // .faqTabsPane {
 
     :global(.ant-tabs-nav) {
-      margin: 0px 20px 16px;
-      // padding: 0 20px;
+      margin: 0 !important;
+      padding: 0 !important;
+      background: #f5f5f5;
+      border-radius: 20px;
+      border: 1px solid #ddd;
+    }
+    :global(.ant-tabs-tab-active) {
+      background: #ffffff !important;
+      border-color: #212121 !important;
+    }
+    :global(.ant-tabs-nav-list) {
+      gap: 10px !important;
+      justify-content: center !important;
+      flex-wrap: wrap !important; // key to remove scrolling
+      width: 100% !important;
+    }
 
-      :global(.ant-tabs-nav-wrap) {
-        width: 100%;
+    :global(.ant-tabs-tab) {
+      padding: 6px 10px !important;
+      font-size: 14px !important;
+      flex: 0 0 auto;
+      white-space: normal !important; // allow text to wrap
+      text-align: center;
+      max-width: 120px; // prevents very large width
+    }
 
-        :global(.ant-tabs-nav-list) {
-          display: flex;
-          justify-content: space-between !important;
-          width: 100%;
-          gap: 40px;
-          margin: 0;
-
-          :global(.ant-tabs-tab-active) {
-            :global(.ant-tabs-tab-btn) {
-              color: var(--dark-color);
-            }
-          }
-
-          :global(.ant-tabs-tab) {
-            margin: 0;
-            font-weight: 500;
-            font-size: 18px;
-            line-height: 113%;
-            color: rgba(0, 0, 0, 0.4);
-          }
-        }
-      }
+    :global(img) {
+      max-width: 55px !important; // reduce RapidMoney logo size
+      min-width: 55px !important;
     }
 
     .faqCollapse {
@@ -52,7 +53,7 @@
       }
 
       // :global(.ant-collapse-item) {
-        .faqCollapsePanel {
+      .faqCollapsePanel {
         border: 1px solid #dedede;
         border-radius: 15px;
         // padding: 16px 20px;
@@ -80,7 +81,6 @@
           :global(.ant-collapse-content-box) {
             padding: 0px 36px 26px;
           }
-
         }
       }
 

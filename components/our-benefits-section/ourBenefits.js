@@ -154,7 +154,6 @@
 
 // export default Benefits;
 
-
 "use client";
 import { useEffect, useRef } from "react";
 import { Row, Col } from "antd";
@@ -168,6 +167,7 @@ import Lottie from "lottie-react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import styles from "./our-benefits.module.scss";
+import rapidMoneyLogo from "./assets/rapid_money.png";
 
 const icon = {
   bank: bank,
@@ -199,7 +199,7 @@ const Benefits = ({ data }) => {
       !sectionRef.current ||
       !titleRef.current ||
       !cardRefs.current.length ||
-      cardRefs.current.some(ref => !ref)
+      cardRefs.current.some((ref) => !ref)
     ) {
       console.warn("Benefits component: Refs not ready");
       return;
@@ -232,7 +232,7 @@ const Benefits = ({ data }) => {
 
       // Cards animation with improved ScrollTrigger config
       gsap.fromTo(
-        cardRefs.current.filter(ref => ref !== null), // Filter out null refs
+        cardRefs.current.filter((ref) => ref !== null), // Filter out null refs
         { autoAlpha: 0, y: 50 },
         {
           autoAlpha: 1,
@@ -253,7 +253,7 @@ const Benefits = ({ data }) => {
     // Cleanup function
     return () => {
       ctx.revert();
-      ScrollTrigger.getAll().forEach(trigger => trigger.kill());
+      ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
     };
   }, [data]);
 
@@ -265,15 +265,31 @@ const Benefits = ({ data }) => {
   return (
     <section ref={sectionRef} className={`${styles.section}`}>
       <div className="container mx-auto">
-        <h2
-          ref={titleRef}
-          className="text-center font-48 font-weight-bold dark-color md:pb-[55px] pb-[25px]"
-        >
-          {data?.title}
-        </h2>
+        <div className="flex items-center justify-center gap-4 md:pb-[55px] pb-[25px]">
+          <h1
+            ref={titleRef}
+            className="font-48 font-weight-bold dark-color text-center"
+          >
+            {data?.title}
+          </h1>
+
+          <Image
+            src={rapidMoneyLogo}
+            alt="Rapid Money Logo"
+            className="
+      object-contain 
+      w-[120px]     
+      sm:w-[160px]  
+      md:w-[220px]  
+      lg:w-[280px]   
+      pt-3
+    "
+          />
+        </div>
+
         <Row gutter={[30, 30]} justify="center">
           {/* Clear cardRefs array at the start of each render */}
-          {cardRefs.current = []}
+          {(cardRefs.current = [])}
           {data.features.map((item, i) => {
             // const lottieRef = useRef(null);
 
@@ -349,7 +365,6 @@ const Benefits = ({ data }) => {
 };
 
 export default Benefits;
-
 
 // "use client";
 // import { useEffect, useRef } from "react";

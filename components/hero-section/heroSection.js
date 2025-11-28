@@ -109,7 +109,7 @@ const HeroSection = ({ data, paginationRef }) => {
         <Row gutter={[32, 32]}>
           <Col xs={24} lg={24} xl={8}>
             <div className="flex flex-col gap-[24px] z-10 relative">
-              <h1
+              <h2
                 className={`font-48 light-color font-weight-bold ${styles.heroTitle} max-w-[340px] hero-title `}
                 dangerouslySetInnerHTML={{ __html: data?.title || "" }}
               />
@@ -138,7 +138,7 @@ const HeroSection = ({ data, paginationRef }) => {
             <div className={`w-full flex justify-center ${styles.personImage}`}>
               <Image
                 src={data?.swiper_image?.[0]?.url}
-                alt="Hero"
+                alt="Rapid Money - Loans"
                 fill
                 style={{ objectFit: "contain" }}
                 className="object-contain"

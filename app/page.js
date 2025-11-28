@@ -17,7 +17,7 @@ import Loading from "./loading";
 import DynamicHead from "@/components/head/dynamicHead";
 import defaultSEO from "@/constants/defaultSEO";
 import { notFound } from "next/navigation";
-
+import Script from "next/script";
 
 // console.log(homePageData);
 // const header = homePageData.header;
@@ -31,15 +31,12 @@ import { notFound } from "next/navigation";
 // const personalLoan = homePageData.personalLoanSection;
 // const testimonialsData = homePageData.testimonialSection;
 
-
 const getCMSPageBySlug = async () => {
   try {
     const response = await fetch(
-      process.env.NEXT_PUBLIC_API_URL +
-      endpoints.get_cms_page +
-      "/home",
+      process.env.NEXT_PUBLIC_API_URL + endpoints.get_cms_page + "/home",
       {
-        cache: 'no-store',
+        cache: "no-store",
       }
     );
 
@@ -49,7 +46,6 @@ const getCMSPageBySlug = async () => {
       notFound();
     }
     return data;
-
   } catch (error) {
     console.log("API call failed: ", error);
     notFound();
@@ -57,22 +53,15 @@ const getCMSPageBySlug = async () => {
   }
 };
 
-
 export async function generateMetadata() {
   const res = await getCMSPageBySlug();
   const data = res?.data?.pageData?.seoSetting;
   const isProduction = process.env.NEXT_PUBLIC_ENVIRONMENT === "production";
   const canonicalURL = "https://www.rapidmoney.in/";
 
-  const title =
-    isProduction && data?.meta_title
-      ? data.meta_title
-      : defaultSEO.home.title;
+  const title = "Rapid Money - Instant Personal Loans Online | Quick Approval in Minutes";
 
-  const description =
-    isProduction && data?.meta_description
-      ? data.meta_description
-      : defaultSEO.home.description;
+  const description = `Rapid Money helps you access the best personal loan options from trusted lenders. Check eligibility, explore offers, and apply online in minutes with ease.`;
 
   const featureImage =
     data?.feature_image?.[0]?.url || defaultSEO.home.featureImage;
@@ -80,16 +69,20 @@ export async function generateMetadata() {
   return {
     title,
     description,
-    robots: "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
+    robots:
+      "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
     alternates: {
       canonical: canonicalURL,
     },
     other: {
       "google-site-verification": "twL_GolMQqEgollqmMmpUNK8CAqnO1iN1NgPXT9jbVE",
+    keywords:
+      "Rapid Money, RapidMoney, Rapid Money Personal Loans, Rapid Money Loan",
     },
     openGraph: {
       title,
       description,
+      url: "https://www.rapidmoney.in/",
       siteName: defaultSEO.defaultSiteName,
       locale: defaultSEO.defaultLocale,
       type: defaultSEO.defaultType,
@@ -110,7 +103,6 @@ export async function generateMetadata() {
 }
 
 export default async function Home() {
-
   const response = await getCMSPageBySlug();
   // console.log(response);
 
@@ -130,6 +122,48 @@ export default async function Home() {
     //   <PromoSection data={promo} />
     // </>
     <>
+      <Script id="main-schema" type="application/ld+json">
+        {`
+ { "@context": "https://schema.org",
+ "@type": "Organization",
+ "name": "Rapid Money",
+ "legalName" : "MoneyTime Technology Solutions Private Limited",
+ "url": "https://www.rapidmoney.in/",
+ "logo": "https://www.rapidmoney.in/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fdark_rapid_money_logo.004d553a.png&w=640&q=75",
+ "description": "Access instant, affordable personal loans anytime with RapidMoney. Transparent terms, fast approval, flexible repayment—see what you qualify for now.",
+ "foundingDate": "2025",
+ "founders": [
+ {
+ "@type": "Person",
+ "name": "Chintan Panchmatiya"
+ },
+ {
+ "@type": "Person",
+ "name": "Hemali Bhatt"
+ } ],
+ "address": {
+ "@type": "PostalAddress",
+ "streetAddress": "Swami Vivekananda Rd",
+ "extendedAddress": "902, 9th Floor, Shubhjyoti Building, Datta Park, Borivali West",
+ "addressLocality": "Mumbai",
+ "addressRegion": "Maharashtra",
+ "postalCode": "400092",
+ "addressCountry": "India"
+ },
+ "contactPoint": {
+ "@type": "ContactPoint",
+ "contactType": "customer support",
+ "email": "support@rapidmoney.com"
+ },
+ "sameAs": [ 
+ "https://www.linkedin.com/company/rapidmoney",
+ "https://x.com/Rapidmoney2025",
+ "https://x.com/Rapidmoney2025",
+ "https://www.instagram.com/officialrapidmoney",
+ "https://www.facebook.com/rapidmoney"
+ ]}
+`}
+      </Script>
       <Suspense fallback={<Loading />}>
         <DynamicHead isDark={true} />
 
@@ -144,6 +178,5 @@ export default async function Home() {
         <PromoSection />
       </Suspense>
     </>
-
   );
 }

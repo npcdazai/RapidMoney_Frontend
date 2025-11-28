@@ -14,24 +14,23 @@ import DynamicHead from "@/components/head/dynamicHead";
 import defaultSEO from "@/constants/defaultSEO";
 import { notFound } from "next/navigation";
 import Breadcrumb from "@/components/BreadCrumb";
+import Script from "next/script";
 
 const getCMSPageBySlug = async () => {
   try {
     const response = await fetch(
-      process.env.NEXT_PUBLIC_API_URL +
-      endpoints.get_cms_page +
-      "/product",
-       {
-        cache: 'no-store',
+      process.env.NEXT_PUBLIC_API_URL + endpoints.get_cms_page + "/product",
+      {
+        cache: "no-store",
       }
     );
 
-     const data = await response.json();
- 
-     if (!data?.data?.pageData) {
-       notFound();
-     }
-     return data;;
+    const data = await response.json();
+
+    if (!data?.data?.pageData) {
+      notFound();
+    }
+    return data;
   } catch (error) {
     console.log("API call failed: ", error);
     notFound();
@@ -61,7 +60,8 @@ export async function generateMetadata() {
   return {
     title,
     description,
-    robots: "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
+    robots:
+      "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
     alternates: {
       canonical: canonicalURL,
     },
@@ -87,33 +87,48 @@ export async function generateMetadata() {
   };
 }
 
-
 export default async function page() {
   const response = await getCMSPageBySlug();
-  console.log(response)
-
+  console.log(response);
 
   // const header = homePageData.header;
   // const promo = homePageData.promoSection;
   // const heroSection = homePageData.heroSection;
   // const repaymentData = productPageData.repaymentSection
 
-
   return (
     <>
+      <Script id="product-schema" type="application/ld+json">
+        {`
+{
+  "@context": "https://schema.org",
+  "@type": "FinancialProduct",
+  "name": "Instant Personal Loan",
+  "description": "Explore RapidMoney's digital loan offerings tailored for your needs. Quick disbursal, flexible repayment, and 100% online application process.",
+  "brand": {
+    "@type": "Organization",
+    "name": "Rapid Money",
+    "url": "https://www.rapidmoney.in/"
+  },
+  "url": "https://www.rapidmoney.in/product"
+  }
+}
+`}
+      </Script>
       <Suspense fallback={<Loading />}>
         {/* <Header isDark={true} data={header} /> */}
-      <DynamicHead isDark={true} />
+        <DynamicHead isDark={true} />
 
-      <GlobalHeroSection data={response?.data?.pageData?.heroSection} />
-     <Breadcrumb/>
-      <ProductRepayment data={response?.data?.pageData?.repaymentData} />
-      <ProductTermLoans data={response?.data?.pageData?.productTermLoanSection} /> 
-      <ProductInstantAccess data={response?.data?.pageData?.instantAccess} />
-      <ProductFAQ data={response?.data?.pageData?.faqSection} />
-      <PromoSection />
+        <GlobalHeroSection data={response?.data?.pageData?.heroSection} />
+        <Breadcrumb />
+        <ProductRepayment data={response?.data?.pageData?.repaymentData} />
+        <ProductTermLoans
+          data={response?.data?.pageData?.productTermLoanSection}
+        />
+        <ProductInstantAccess data={response?.data?.pageData?.instantAccess} />
+        <ProductFAQ data={response?.data?.pageData?.faqSection} />
+        <PromoSection />
       </Suspense>
-
 
       {/* <GlobalHeroSection data={heroSection} />
       <ProductRepayment data={repaymentData} />
