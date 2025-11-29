@@ -210,11 +210,11 @@ const ContactUs = ({ data }) => {
                   {" "}
                   <RiPhoneLine size={24} style={{ color: "black" }} />
                   <a
-                    href={`tel:${data.email}`}
+                    href="tel:8097880793"
                     className="font-16 hover:underline break-all"
                     style={{ color: "#7DC802" }}
                   >
-                    8097880793
+                    +91 8097880793
                   </a>
                 </div>
               </div>

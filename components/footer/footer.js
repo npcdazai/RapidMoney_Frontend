@@ -167,7 +167,7 @@ const Footer = async () => {
             <div className="flex items-center gap-2">
               <RiPhoneLine size={24} style={{ color: "#7DC802" }} />
               <a href="tel:8097880793" className={styles.footerPhone}>
-                8097880793
+                +91 8097880793
               </a>
             </div>
           </Col>
