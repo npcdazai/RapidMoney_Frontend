@@ -4,7 +4,7 @@ import React from 'react';
 
 export default function ContentCard({ title, description, imageSrc, imageAlt }) {
   return (
-    <div className="bg-[#AFAFB214] rounded-xl p-8 flex flex-col h-full group hover:shadow-lg transition-all duration-500">
+    <div className="bg-[#AFAFB214] rounded-xl p-12 flex flex-col h-full group hover:shadow-lg transition-all duration-500">
       <div className="animate-pulse transition-transform group-hover:scale-110">
         <Image
           src={imageSrc}

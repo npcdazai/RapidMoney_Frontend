@@ -97,6 +97,8 @@ export default async function page() {
     <>
       <Script id="about-schema" type="application/ld+json">
         {`
+        
+{
   "@context": "https://schema.org",
   "@graph": [
     {
@@ -153,13 +155,13 @@ export default async function page() {
       "jobTitle": "AVP- Operations",
               "image": "https://www.rapidmoney.in/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Famit.c4afe92a.png&w=1080&q=75",
       "url": "https://www.rapidmoney.in/about-us",
-       "worksFor": {
+      "worksFor": {
         "@type": "Organization",
         "name": "Rapid Money"
       }
     }
   ]
-`}
+}`}
       </Script>
       <Suspense fallback={<Loading />}>
         {/* <Header data={header} /> */}

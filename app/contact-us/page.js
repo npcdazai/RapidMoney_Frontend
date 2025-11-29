@@ -108,7 +108,7 @@ export default async function page() {
   "url": "https://www.rapidmoney.in/contact-us",
   "sameAs": [
     "https://www.linkedin.com/company/rapidmoney",
-    "https://x.com/Rapidmoney2025",
+    "https://www.youtube.com/channel/UCUR-xUhGJHyrf_u84fDeD6Q",
     "https://x.com/Rapidmoney2025",
     "https://www.instagram.com/officialrapidmoney",
     "https://www.facebook.com/rapidmoney"

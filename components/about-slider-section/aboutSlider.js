@@ -13,7 +13,7 @@ const AboutSlider = ({ data = [] }) => {
   const fadeInRef = useScrollFadeIn();
   // console.log(data);
   return (
-    <section ref={fadeInRef} className="mx-auto my-20">
+    <section ref={fadeInRef} className="mx-auto my-20 max-w-7xl">
       <Swiper
         modules={[Autoplay]}
         spaceBetween={30}
@@ -26,9 +26,9 @@ const AboutSlider = ({ data = [] }) => {
         breakpoints={{
           320: { slidesPerView: 1 },
           640: { slidesPerView: 2 },
-          768: { slidesPerView: 2.2 },
+          768: { slidesPerView: 2 },
           1024: { slidesPerView: 3 },
-          1280: { slidesPerView: 3.5 },
+          1280: { slidesPerView: 3 },
         }}
       >
         {data?.contentSliderBlocks?.map((item, idx) => (
