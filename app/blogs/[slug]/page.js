@@ -9,6 +9,7 @@ import Loading from "@/app/loading";
 import DynamicHead from "@/components/head/dynamicHead";
 import defaultSEO from "@/constants/defaultSEO";
 import { notFound } from "next/navigation";
+import Breadcrumb from "@/components/BreadCrumb";
 
 const header = homePageData.header;
 const promo = homePageData.promoSection;
@@ -124,6 +125,7 @@ const Page = async ({ params }) => {
     <>
       <Suspense fallback={<Loading />}>
         {/* <DynamicHead /> */}
+        <Breadcrumb/>
         <BlogDetails data={response?.data} />
         <PromoSection />
       </Suspense>
