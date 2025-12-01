@@ -14,6 +14,7 @@ const GlobalHeroSection = ({ data }) => {
   return (
     <section className={`${styles.section} dark-bg flex items-center pt-[150px] sm:pt-[200px] mt-[-100px]`}>
       <div className="container mx-auto relative">
+        
         <Row gutter={[32, 32]} align="">
           <Col xs={24} lg={24} xl={8}>
             <div className="flex flex-col gap-[20px] mt-0 lg:mt-10">
