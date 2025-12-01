@@ -8,6 +8,7 @@ import Loading from "../loading";
 import PromoSection from "@/components/promo-section/promoWrapper";
 import defaultSEO from "@/constants/defaultSEO";
 import endpoints from "@/constants/endpoints";
+import Breadcrumb from "@/components/BreadCrumb";
 
 const header = homePageData.header;
 
@@ -79,6 +80,7 @@ export default function page() {
       {/* <Header data={header} /> */}
       <Suspense fallback={<Loading />}>
         {/* <DynamicHead /> */}
+        <Breadcrumb/>
         <BlogListing />
         <PromoSection />
       </Suspense>
