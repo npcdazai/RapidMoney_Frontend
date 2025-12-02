@@ -189,7 +189,7 @@ const ContactUs = ({ data }) => {
                     src={personImage}
                     width={120}
                     height={200}
-                    alt="person"
+                    alt="Contact Rapid Money"
                     className={styles.personImage}
                   />
                 </span>

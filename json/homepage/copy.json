@@ -30,7 +30,7 @@
                 "option": [
                     {
                         "label": "Personal Loan",
-                        "link": "/products/personal"
+                        "link": "/instant-personal-loan/personal"
                     }
                 ],
                 "type": "dropdown"
