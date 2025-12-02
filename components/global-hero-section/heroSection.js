@@ -10,6 +10,7 @@ import styles from "./hero-section.module.scss";
 import { RiArrowRightLine } from "react-icons/ri";
 import { RiCheckLine } from "react-icons/ri";
 
+
 const GlobalHeroSection = ({ data }) => {
   return (
     <section className={`${styles.section} dark-bg flex items-center pt-[150px] sm:pt-[200px] mt-[-100px]`}>
