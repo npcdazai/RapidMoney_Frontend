@@ -54,7 +54,7 @@ export default function ProductInstantAccess({ data }) {
 
             <Image
               src={Util1}
-              alt="Rapid Money"
+              alt="Get Instant Access to Cash"
               className={`max-w-full hidden sm:block h-auto absolute -top-16 right-0 z-10  `}
               priority
             />

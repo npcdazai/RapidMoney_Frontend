@@ -54,7 +54,7 @@ const GlobalHeroSection = ({ data }) => {
               <Image
                 src={data?.image?.[0]?.url}
                 // src={productImage}
-                alt="Hero"
+                alt="Apply for Instant Personal Loan"
                 width={450}
                 height={600}
                 className={`object-cover`}

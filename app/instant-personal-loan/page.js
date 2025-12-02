@@ -44,15 +44,9 @@ export async function generateMetadata() {
   const isProduction = process.env.NEXT_PUBLIC_ENVIRONMENT === "production";
   const canonicalURL = "https://www.rapidmoney.in/product";
 
-  const title =
-    isProduction && data?.meta_title
-      ? data?.meta_title
-      : defaultSEO?.product?.title;
+  const title = "Apply Personal Loan Online in India at Low Interest | Rapid Money";
 
-  const description =
-    isProduction && data?.meta_description
-      ? data?.meta_description
-      : defaultSEO?.product?.description;
+  const description = "Apply online personal loan in India with low interest and instant approval. Check personal loan eligibility and get instant cash loan online from Rapid Money.";
 
   const featureImage =
     data?.feature_image?.[0]?.url || defaultSEO?.product?.featureImage;
@@ -65,9 +59,14 @@ export async function generateMetadata() {
     alternates: {
       canonical: canonicalURL,
     },
+    other: {
+    keywords:
+      "Rapid Money, RapidMoney, Rapid Money Personal Loans, Rapid Money Loan",
+    },
     openGraph: {
       title,
       description,
+      url: "https://www.rapidmoney.in/",
       siteName: defaultSEO.defaultSiteName,
       locale: defaultSEO.defaultLocale,
       type: defaultSEO.defaultType,

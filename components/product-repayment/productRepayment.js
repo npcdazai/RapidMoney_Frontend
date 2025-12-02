@@ -130,7 +130,7 @@ export default function productRepayment({ data }) {
                 src={data?.image?.[0]?.url}
                 // src={moneyImage}
                 // ref={imageRef}
-                alt="Gold Coins"
+                alt="Personal Loan"
                 width={450}
                 height={400}
                 className="object-contain w-full max-w-[900px] h-full max-h-[400px] top-19"
