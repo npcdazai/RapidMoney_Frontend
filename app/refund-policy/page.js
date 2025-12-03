@@ -38,13 +38,11 @@ export async function generateMetadata() {
   const isProduction = process.env.NEXT_PUBLIC_ENVIRONMENT === "production";
   const canonicalURL = "https://www.rapidmoney.in/refund-policy";
 
-  const title =
-    isProduction && data?.meta_title
+  const title = data?.meta_title
       ? data.meta_title
       : defaultSEO.refund_policy.title;
 
-  const description =
-    isProduction && data?.meta_description
+  const description = data?.meta_description
       ? data.meta_description
       : defaultSEO.refund_policy.description;
 

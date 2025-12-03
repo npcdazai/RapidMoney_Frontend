@@ -33,7 +33,7 @@ const getCMSPageBySlug = async () => {
     return data;
   } catch (error) {
     console.log("API call failed: ", error);
-    notFound(); 
+    notFound();
     // return null;
   }
 };
@@ -44,15 +44,13 @@ export async function generateMetadata() {
   const isProduction = process.env.NEXT_PUBLIC_ENVIRONMENT === "production";
   const canonicalURL = "https://www.rapidmoney.in/lending-partners";
 
-  const title =
-    isProduction && data?.meta_title
-      ? data.meta_title
-      : defaultSEO?.lending_partner?.title;
+  const title = data?.meta_title
+    ? data.meta_title
+    : defaultSEO?.lending_partner?.title;
 
-  const description =
-    isProduction && data?.meta_description
-      ? data.meta_description
-      : defaultSEO?.lending_partner?.description;
+  const description = data?.meta_description
+    ? data.meta_description
+    : defaultSEO?.lending_partner?.description;
 
   const featureImage =
     data?.feature_image?.[0]?.url || defaultSEO?.lending_partner?.featureImage;
@@ -99,9 +97,9 @@ export default async function page() {
         {/* <Header data={header} /> */}
         <DynamicHead />
         {/* <LendingPartners data={partnerData} /> */}
-        <Breadcrumb/>
+        <Breadcrumb />
         <LendingPartners data={response?.data?.pageData?.partners} />
-        <PromoSection  />
+        <PromoSection />
       </Suspense>
     </>
   )
