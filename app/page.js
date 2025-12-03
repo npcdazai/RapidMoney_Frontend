@@ -64,8 +64,6 @@ export async function generateMetadata() {
       ? data.meta_title
       : defaultSEO.home.title;
 
-      console.log(data?.meta_title , "HOMEI")
-
 
   const description =
     isProduction && data?.meta_description
