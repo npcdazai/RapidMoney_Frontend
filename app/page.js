@@ -59,16 +59,14 @@ export async function generateMetadata() {
   const isProduction = process.env.NEXT_PUBLIC_ENVIRONMENT === "production";
   const canonicalURL = "";
 
-  const title =
-    isProduction && data?.meta_title
-      ? data.meta_title
-      : defaultSEO.home.title;
+  const title = data?.meta_title
+    ? data.meta_title
+    : defaultSEO.home.title;
 
 
-  const description =
-    isProduction && data?.meta_description
-      ? data.meta_description
-      : defaultSEO.home.description;
+  const description = data?.meta_description
+    ? data.meta_description
+    : defaultSEO.home.description;
 
   const featureImage =
     data?.feature_image?.[0]?.url || defaultSEO.home.featureImage;
