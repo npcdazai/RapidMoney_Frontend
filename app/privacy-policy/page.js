@@ -44,7 +44,7 @@ export async function generateMetadata() {
 
   const title = data?.meta_title
       ? data.meta_title
-      : data.meta_title;
+      : defaultSEO.meta_title;
 
   const description =
     data?.meta_description

@@ -44,15 +44,14 @@ export async function generateMetadata() {
   const isProduction = process.env.NEXT_PUBLIC_ENVIRONMENT === "production";
   const canonicalURL = "https://www.rapidmoney.in/product";
 
-  const title =
-    isProduction && data?.meta_title
-      ? data?.meta_title
-      : defaultSEO?.product?.title;
+  const title = data?.meta_title
+    ? data?.meta_title
+    : defaultSEO?.product?.title;
 
-  const description =
-    isProduction && data?.meta_description
-      ? data?.meta_description
-      : defaultSEO?.product?.description;
+
+  const description = data?.meta_description
+    ? data?.meta_description
+    : defaultSEO?.product?.description;
 
   const featureImage =
     data?.feature_image?.[0]?.url || defaultSEO?.product?.featureImage;
