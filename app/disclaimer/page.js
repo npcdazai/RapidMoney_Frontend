@@ -41,15 +41,9 @@ export async function generateMetadata() {
   const isProduction = process.env.NEXT_PUBLIC_ENVIRONMENT === "production";
   const canonicalURL = "https://www.rapidmoney.in/disclaimer";
 
-  const title =
-    isProduction && data?.meta_title
-      ? data.meta_title
-      : defaultSEO.disclaimer.title;
+  const title = "Disclaimer | Terms of Use & Liability Notice | Rapid Money";
 
-  const description =
-    isProduction && data?.meta_description
-      ? data.meta_description
-      : defaultSEO.disclaimer.description;
+  const description ="Read the official Disclaimer of Rapid Money to understand terms, liability, and usage guidelines before accessing our personal loan services.";
 
   const featureImage =
     data?.feature_image?.[0]?.url || defaultSEO.disclaimer.featureImage;
@@ -61,9 +55,13 @@ export async function generateMetadata() {
     alternates: {
       canonical: canonicalURL,
     },
+    other:{
+      keywords:"Rapid Money disclaimer, financial service disclaimer"
+    },
     openGraph: {
       title,
       description,
+      url:"https://www.rapidmoney.in/disclaimer",
       siteName: defaultSEO.defaultSiteName,
       locale: defaultSEO.defaultLocale,
       type: defaultSEO.defaultType,

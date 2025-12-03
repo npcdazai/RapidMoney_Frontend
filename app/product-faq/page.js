@@ -11,11 +11,11 @@ import { notFound } from "next/navigation";
 import Script from "next/script";
 
 export default async function page({ respone }) {
+  console.log(respone?.data?.pageData?.faqSection)
   return (
     <>
-      <Script id="product-schema" type="application/ld+json">
-        {`
-{
+      <Script id="productFAQ-schema" type="application/ld+json">
+        {`{
   "@context": "https://schema.org",
   "@type": "FAQPage",
   "mainEntity": [{
@@ -82,12 +82,9 @@ export default async function page({ respone }) {
       "text": "Currently, Rapid Money doesn't accept joint loan applications."
     }
   }]
-}
-
-`}
+}`}
       </Script>
       <Suspense fallback={<Loading />}>
-        
         <ProductFAQ data={respone?.data?.pageData?.faqSection} />
       </Suspense>
     </>

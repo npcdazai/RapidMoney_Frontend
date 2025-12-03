@@ -27,17 +27,11 @@ async function getBlogSEO() {
 export async function generateMetadata() {
   const data = await getBlogSEO();
   const isProduction = process.env.NEXT_PUBLIC_ENVIRONMENT === "production";
-  const canonicalURL = `${process.env.NEXT_PUBLIC_SITE_URL}/blogs`;
+  const canonicalURL = `https://www.rapidmoney.in/blogs`;
 
-  const title =
-    isProduction && data?.meta_title
-      ? data.meta_title
-      : defaultSEO.blog.title;
+  const title = "Expert Personal Loan Tips & Finance Guides | Rapid Money Blog";
 
-  const description =
-    isProduction && data?.meta_description
-      ? data.meta_description
-      : defaultSEO.blog.description;
+  const description = "Explore the Rapid Money Blog for personal loan tips, finance guides, and money-saving advice to help you make smarter financial decisions.";
 
   const featureImage =
     data?.feature_image?.[0]?.url || defaultSEO.blog.featureImage;
@@ -48,11 +42,15 @@ export async function generateMetadata() {
     description,
     robots: "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
     alternates: {
-      canonical: isProduction ? canonicalURL : undefined,
+      canonical: canonicalURL,
+    },
+    other: {
+      keywords:"Rapid Money Blog, Personal Loan Tips, Finance Guides, personal finance insights"
     },
     openGraph: {
       title,
       description,
+      url:"https://www.rapidmoney.in/blogs",
       siteName: defaultSEO.defaultSiteName,
       locale: defaultSEO.defaultLocale,
       type: defaultSEO.defaultType,

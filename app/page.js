@@ -3,7 +3,7 @@
 import PromoSection from "@/components/promo-section/promoWrapper";
 // import Image from "next/image";
 // import homePageData from "@/json/homepage/home.json";
-import FaqSection from "@/components/faq/faq-section";
+
 import NewsSection from "@/components/news-section/news-section";
 import PartnersSection from "@/components/partner-section/partnerSection";
 import Benefits from "@/components/our-benefits-section/ourBenefits";
@@ -18,6 +18,8 @@ import DynamicHead from "@/components/head/dynamicHead";
 import defaultSEO from "@/constants/defaultSEO";
 import { notFound } from "next/navigation";
 import Script from "next/script";
+import FaqSection from "@/app/faqs/page";
+import ProductFAQ from "@/components/product-faq/productFAQ";
 
 // console.log(homePageData);
 // const header = homePageData.header;
@@ -59,7 +61,8 @@ export async function generateMetadata() {
   const isProduction = process.env.NEXT_PUBLIC_ENVIRONMENT === "production";
   const canonicalURL = "https://www.rapidmoney.in/";
 
-  const title = "Rapid Money - Instant Personal Loans Online | Quick Approval in Minutes";
+  const title =
+    "Rapid Money - Instant Personal Loans Online | Quick Approval in Minutes";
 
   const description = `Rapid Money helps you access the best personal loan options from trusted lenders. Check eligibility, explore offers, and apply online in minutes with ease.`;
 
@@ -76,8 +79,8 @@ export async function generateMetadata() {
     },
     other: {
       "google-site-verification": "twL_GolMQqEgollqmMmpUNK8CAqnO1iN1NgPXT9jbVE",
-    keywords:
-      "Rapid Money, RapidMoney, Rapid Money Personal Loans, Rapid Money Loan",
+      keywords:
+        "Rapid Money, RapidMoney, Rapid Money Personal Loans, Rapid Money Loan",
     },
     openGraph: {
       title,
@@ -104,7 +107,7 @@ export async function generateMetadata() {
 
 export default async function Home() {
   const response = await getCMSPageBySlug();
-  // console.log(response);
+  // console.log(response , "HOME FAQ" );
 
   return (
     // <>
@@ -172,9 +175,7 @@ export default async function Home() {
         <PersonalLoan data={response?.data?.pageData?.personalLoanSection} />
         <LoanStep data={response?.data?.pageData?.loanStep} />
         <PartnersSection data={response?.data?.pageData?.partnerSection} />
-        {/* <NewsSection data={response?.data?.pageData?.newsSection} /> */}
-        {/* <FaqSection data={faqSteps} /> */}
-        <FaqSection data={response?.data?.pageData?.faqSection} />
+        <FaqSection  respone={response}/>
         <PromoSection />
       </Suspense>
     </>

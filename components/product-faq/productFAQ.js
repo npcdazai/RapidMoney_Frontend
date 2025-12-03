@@ -45,6 +45,7 @@ import { RiArrowDropDownLine } from "react-icons/ri";
 //   },
 // ];
 export default function ProductFAQ({data}) {
+
   return (
     <section className={`bg-white py-[100px] container px-4 ${styles.section}`}>
       <h2 className="font-40 text-black font-bold text-center mb-11">{data?.title}</h2>

@@ -43,15 +43,9 @@ export async function generateMetadata() {
   const isProduction = process.env.NEXT_PUBLIC_ENVIRONMENT === "production";
   const canonicalURL = "https://www.rapidmoney.in/term-conditions";
 
-  const title =
-    isProduction && data?.meta_title
-      ? data.meta_title
-      : defaultSEO.terms_conditions.title;
+  const title ="Terms & Conditions | Secure & Transparent Policies | Rapid Money";
 
-  const description =
-    isProduction && data?.meta_description
-      ? data.meta_description
-      : defaultSEO.terms_conditions.description;
+  const description ="Read the Terms & Conditions of Rapid Money to understand our policies, safety practices, and customer protection standards before applying for a loan.";
 
   const featureImage =
     data?.feature_image?.[0]?.url || defaultSEO.terms_conditions.featureImage;
@@ -63,9 +57,13 @@ export async function generateMetadata() {
     alternates: {
       canonical: canonicalURL,
     },
+    others:{
+      keywords:"Rapid Money terms and conditions, terms and conditions"
+    },
     openGraph: {
       title,
       description,
+      url:"https://www.rapidmoney.in/term-conditions",
       siteName: defaultSEO.defaultSiteName,
       locale: defaultSEO.defaultLocale,
       type: defaultSEO.defaultType,

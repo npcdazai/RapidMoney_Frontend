@@ -179,7 +179,7 @@ import rapidMoneyLogo from "./assets/rapid_money.png";
 
 gsap.registerPlugin(ScrollTrigger);
 
-const FaqSection = ({ data }) => {
+const FaqSection = ({data}) => {
   const titleRef = useRef(null);
   const panelRefs = useRef([]);
   panelRefs.current = [];
@@ -298,5 +298,4 @@ const FaqSection = ({ data }) => {
     </section>
   );
 };
-
 export default FaqSection;

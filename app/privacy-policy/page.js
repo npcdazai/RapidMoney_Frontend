@@ -42,15 +42,9 @@ export async function generateMetadata() {
   const isProduction = process.env.NEXT_PUBLIC_ENVIRONMENT === "production";
   const canonicalURL = "https://www.rapidmoney.in/privacy-policy";
 
-  const title =
-    isProduction && data?.meta_title
-      ? data.meta_title
-      : defaultSEO.privacy_policy.title;
+  const title = "Privacy Policy | How Rapid Money Protects Your Data & Security";
 
-  const description =
-    isProduction && data?.meta_description
-      ? data.meta_description
-      : defaultSEO.privacy_policy.description;
+  const description ="Learn how Rapid Money collects, uses, and safeguards your personal data. Read our transparent privacy policy to stay informed and protected.";
 
   const featureImage =
     data?.feature_image?.[0]?.url || defaultSEO.privacy_policy.featureImage;
@@ -62,9 +56,13 @@ export async function generateMetadata() {
     alternates: {
       canonical: canonicalURL,
     },
+    other:{
+      keywords:"rapid money privacy policy, data protection rapid money"
+    },
     openGraph: {
       title,
       description,
+      url:"https://www.rapidmoney.in/privacy-policy",
       siteName: defaultSEO.defaultSiteName,
       locale: defaultSEO.defaultLocale,
       type: defaultSEO.defaultType,

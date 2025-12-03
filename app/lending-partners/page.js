@@ -44,15 +44,9 @@ export async function generateMetadata() {
   const isProduction = process.env.NEXT_PUBLIC_ENVIRONMENT === "production";
   const canonicalURL = "https://www.rapidmoney.in/lending-partners";
 
-  const title =
-    isProduction && data?.meta_title
-      ? data.meta_title
-      : defaultSEO?.lending_partner?.title;
+  const title = "Lending Partners | Trusted NBFC Loan Providers – Rapid Money";
 
-  const description =
-    isProduction && data?.meta_description
-      ? data.meta_description
-      : defaultSEO?.lending_partner?.description;
+  const description ="Explore trusted NBFC lending partners working with Rapid Money to offer fast, secure and hassle-free personal loans across India. Check our partners today.";
 
   const featureImage =
     data?.feature_image?.[0]?.url || defaultSEO?.lending_partner?.featureImage;
@@ -64,9 +58,13 @@ export async function generateMetadata() {
     alternates: {
       canonical: canonicalURL,
     },
+    other:{
+      keywords:"NBFC Lending Partners, Digital Loan Partners, Personal Loan Providers India"
+    },
     openGraph: {
       title,
       description,
+      url:"https://www.rapidmoney.in/lending-partners",
       siteName: defaultSEO.defaultSiteName,
       locale: defaultSEO.defaultLocale,
       type: defaultSEO.defaultType,
