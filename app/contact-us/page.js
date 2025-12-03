@@ -41,9 +41,15 @@ export async function generateMetadata() {
   const isProduction = process.env.NEXT_PUBLIC_ENVIRONMENT === "production";
   const canonicalURL = "https://www.rapidmoney.in/contact-us";
 
-  const title = "Contact Rapid Money for Personal Loan Enquiry & Support";
+  const title =
+    isProduction && data?.meta_title
+      ? data.meta_title
+      : data.meta_title;
 
-  const description = "Reach Rapid Money for personal loan enquiry or support at support@rapidmoney.com or call +91 8097880793. We're here to help you with quick loan assistance.";
+  const description =
+    isProduction && data?.meta_description
+      ? data.meta_description
+      : data.meta_description;
 
   const featureImage =
     data?.feature_image?.[0]?.url || defaultSEO.contact.featureImage;
@@ -56,14 +62,9 @@ export async function generateMetadata() {
     alternates: {
       canonical: canonicalURL,
     },
-    other: {
-    keywords:
-      "contact us, contact Rapid Money, Contact number Rapid Money",
-    },
     openGraph: {
       title,
       description,
-      url: "https://www.rapidmoney.in/contact-us",
       siteName: defaultSEO.defaultSiteName,
       locale: defaultSEO.defaultLocale,
       type: defaultSEO.defaultType,

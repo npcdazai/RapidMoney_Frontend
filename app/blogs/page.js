@@ -29,9 +29,13 @@ export async function generateMetadata() {
   const isProduction = process.env.NEXT_PUBLIC_ENVIRONMENT === "production";
   const canonicalURL = `https://www.rapidmoney.in/blogs`;
 
-  const title = "Expert Personal Loan Tips & Finance Guides | Rapid Money Blog";
+  const title = data?.meta_title
+    ? data.meta_title
+    : defaultSEO.blog.title;
 
-  const description = "Explore the Rapid Money Blog for personal loan tips, finance guides, and money-saving advice to help you make smarter financial decisions.";
+  const description = data?.meta_description
+    ? data.meta_description
+    : defaultSEO.blog.description;
 
   const featureImage =
     data?.feature_image?.[0]?.url || defaultSEO.blog.featureImage;
@@ -78,7 +82,7 @@ export default function page() {
       {/* <Header data={header} /> */}
       <Suspense fallback={<Loading />}>
         {/* <DynamicHead /> */}
-        <Breadcrumb/>
+        <Breadcrumb />
         <BlogListing />
         <PromoSection />
       </Suspense>

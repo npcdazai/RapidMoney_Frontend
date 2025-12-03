@@ -14,12 +14,76 @@ import Script from "next/script";
 const header = homePageData.header;
 const faqSteps = faqData?.faqSteps;
 
+const getCMSPageBySlug = async () => {
+  try {
+    const response = await fetch(
+      process.env.NEXT_PUBLIC_API_URL + endpoints.get_cms_page + "/faq",
+      {
+        cache: "no-store",
+      }
+    );
 
-export default async function page({respone}) {
+    const data = await response.json();
 
+    if (!data?.data?.pageData) {
+      notFound();
+    }
+    return data;
+  } catch (error) {
+    console.log("API call failed: ", error);
+    notFound();
+    // return null;
+  }
+};
 
-  console.log(respone, "FETCHED AT FAQ COMP")
-  
+export async function generateMetadata() {
+  const res = await getCMSPageBySlug();
+  const data = res?.data?.pageData?.seoSetting;
+  const isProduction = process.env.NEXT_PUBLIC_ENVIRONMENT === "production";
+  const canonicalURL = `${process.env.NEXT_PUBLIC_SITE_URL}/faqs`;
+
+  const title = data?.meta_title ? data.meta_title : defaultSEO.faq.title;
+
+  const description = data?.meta_description
+    ? data.meta_description
+    : defaultSEO.faq.description;
+
+  const featureImage =
+    data?.feature_image?.[0]?.url || defaultSEO.faq.featureImage;
+
+  return {
+    title,
+    description,
+    robots:
+      "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
+    alternates: {
+      canonical: isProduction ? canonicalURL : undefined,
+    },
+    openGraph: {
+      title,
+      description,
+      siteName: defaultSEO.defaultSiteName,
+      locale: defaultSEO.defaultLocale,
+      type: defaultSEO.defaultType,
+      images: [
+        {
+          url: featureImage,
+          alt: title,
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description,
+      images: [featureImage],
+    },
+  };
+}
+
+export default async function page() {
+  const response = await getCMSPageBySlug();
+  console.log(response);
 
 return (
     <>

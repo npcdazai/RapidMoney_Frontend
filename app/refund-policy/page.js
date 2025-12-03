@@ -38,9 +38,13 @@ export async function generateMetadata() {
   const isProduction = process.env.NEXT_PUBLIC_ENVIRONMENT === "production";
   const canonicalURL = "https://www.rapidmoney.in/refund-policy";
 
-  const title = "Refund Policy | Secure & Transparent Guidelines | Rapid Money";
+  const title = data?.meta_title
+      ? data.meta_title
+      : defaultSEO.refund_policy.title;
 
-  const description = "Read the secure and transparent refund policy of Rapid Money. Understand our terms, conditions, and customer-friendly guidelines for a smooth experience.";
+  const description = data?.meta_description
+      ? data.meta_description
+      : defaultSEO.refund_policy.description;
 
   const featureImage =
     data?.feature_image?.[0]?.url || defaultSEO.refund_policy.featureImage;

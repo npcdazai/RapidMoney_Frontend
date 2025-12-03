@@ -45,10 +45,12 @@ export async function generateMetadata() {
   const isProduction = process.env.NEXT_PUBLIC_ENVIRONMENT === "production";
   const canonicalURL = "https://www.rapidmoney.in/about-us";
 
-  const title = "About Rapid Money – Trusted NBFC Loan Provider & Best Online Loan Company";
+  const title = data?.meta_title ? data.meta_title : defaultSEO.about.title;
 
-  const description =
-    "Learn about Rapid Money, a trusted NBFC loan provider offering fast and secure online personal loans. Discover why we’re the best loan company online.";
+
+  const description = data?.meta_description
+    ? data.meta_description
+    : defaultSEO.about.description;
 
   const featureImage =
     data?.feature_image?.[0]?.url || defaultSEO.about.featureImage;
@@ -61,14 +63,9 @@ export async function generateMetadata() {
     alternates: {
       canonical: canonicalURL,
     },
-    other: {
-    keywords:
-      "about us, about Rapid Money",
-    },
     openGraph: {
       title,
       description,
-      url: "https://www.rapidmoney.in/about-us",
       siteName: defaultSEO.defaultSiteName,
       locale: defaultSEO.defaultLocale,
       type: defaultSEO.defaultType,

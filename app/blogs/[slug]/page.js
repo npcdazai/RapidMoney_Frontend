@@ -69,12 +69,8 @@ export async function generateMetadata({ params }) {
 
   return {
     metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL),
-    title: isProduction
-      ? seo_setting?.meta_title || defaultSEO?.blog?.title
-      : defaultSEO?.blog?.title,
-    description: isProduction
-      ? seo_setting?.meta_description || defaultSEO?.blog?.description
-      : defaultSEO?.blog?.description,
+    title: seo_setting?.meta_title || defaultSEO?.blog?.title,
+    description: seo_setting?.meta_description || defaultSEO?.blog?.description,
     robots: "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
     alternates: {
       canonical: isProduction ? canonicalURL : undefined,
@@ -105,10 +101,8 @@ export async function generateMetadata({ params }) {
     },
     twitter: {
       card: "summary_large_image",
-      title: isProduction ? seo_setting?.meta_title || defaultSEO?.blog?.title : undefined,
-      description: isProduction
-        ? seo_setting?.meta_description || defaultSEO?.product?.description
-        : undefined,
+      title: seo_setting?.meta_title || defaultSEO?.blog?.title,
+      description: seo_setting?.meta_description || defaultSEO?.product?.description,
       images: isProduction ? [featureImage] : [],
     },
   };
@@ -125,7 +119,7 @@ const Page = async ({ params }) => {
     <>
       <Suspense fallback={<Loading />}>
         {/* <DynamicHead /> */}
-        <Breadcrumb/>
+        <Breadcrumb />
         <BlogDetails data={response?.data} />
         <PromoSection />
       </Suspense>
