@@ -19,7 +19,7 @@ const getCMSPageBySlug = async () => {
       process.env.NEXT_PUBLIC_API_URL +
       endpoints.get_cms_page +
       "/privacy-policy",
-     {
+      {
         cache: 'no-store',
       }
     );
@@ -42,15 +42,17 @@ export async function generateMetadata() {
   const isProduction = process.env.NEXT_PUBLIC_ENVIRONMENT === "production";
   const canonicalURL = "https://www.rapidmoney.in/privacy-policy";
 
-  const title =
-    isProduction && data?.meta_title
+  const title = data?.meta_title
       ? data.meta_title
-      : defaultSEO.privacy_policy.title;
+      : data.meta_title;
 
   const description =
-    isProduction && data?.meta_description
+    data?.meta_description
       ? data.meta_description
       : defaultSEO.privacy_policy.description;
+
+
+  console.log(title, "JJ")
 
   const featureImage =
     data?.feature_image?.[0]?.url || defaultSEO.privacy_policy.featureImage;
@@ -96,9 +98,9 @@ export default async function Home() {
       <Suspense fallback={<Loading />}>
         {/* <Header data={header} /> */}
         <DynamicHead />
-       
-          <Breadcrumb/>
-        
+
+        <Breadcrumb />
+
         <PrivacyPolicy data={response?.data?.pageData?.privacySection} />
         {/* <PrivacyPolicy data={privacyData} /> */}
       </Suspense>

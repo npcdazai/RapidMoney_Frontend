@@ -44,13 +44,12 @@ export async function generateMetadata() {
   const title =
     isProduction && data?.meta_title
       ? data.meta_title
-      : defaultSEO.contact.title;
-
+      : data.meta_title;
 
   const description =
     isProduction && data?.meta_description
       ? data.meta_description
-      : defaultSEO.contact.description;
+      : data.meta_description;
 
   const featureImage =
     data?.feature_image?.[0]?.url || defaultSEO.contact.featureImage;
