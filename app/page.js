@@ -57,11 +57,20 @@ export async function generateMetadata() {
   const res = await getCMSPageBySlug();
   const data = res?.data?.pageData?.seoSetting;
   const isProduction = process.env.NEXT_PUBLIC_ENVIRONMENT === "production";
-  const canonicalURL = "https://www.rapidmoney.in/";
+  const canonicalURL = "";
 
-  const title = "Rapid Money - Instant Personal Loans Online | Quick Approval in Minutes";
+  const title =
+    isProduction && data?.meta_title
+      ? data.meta_title
+      : defaultSEO.home.title;
 
-  const description = `Rapid Money helps you access the best personal loan options from trusted lenders. Check eligibility, explore offers, and apply online in minutes with ease.`;
+      console.log(data?.meta_title , "HOMEI")
+
+
+  const description =
+    isProduction && data?.meta_description
+      ? data.meta_description
+      : defaultSEO.home.description;
 
   const featureImage =
     data?.feature_image?.[0]?.url || defaultSEO.home.featureImage;
@@ -69,20 +78,16 @@ export async function generateMetadata() {
   return {
     title,
     description,
-    robots:
-      "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
+    robots: "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
     alternates: {
-      canonical: canonicalURL,
+      canonical: isProduction ? canonicalURL : undefined,
     },
     other: {
       "google-site-verification": "twL_GolMQqEgollqmMmpUNK8CAqnO1iN1NgPXT9jbVE",
-    keywords:
-      "Rapid Money, RapidMoney, Rapid Money Personal Loans, Rapid Money Loan",
     },
     openGraph: {
       title,
       description,
-      url: "https://www.rapidmoney.in/",
       siteName: defaultSEO.defaultSiteName,
       locale: defaultSEO.defaultLocale,
       type: defaultSEO.defaultType,
@@ -172,7 +177,7 @@ export default async function Home() {
         <PersonalLoan data={response?.data?.pageData?.personalLoanSection} />
         <LoanStep data={response?.data?.pageData?.loanStep} />
         <PartnersSection data={response?.data?.pageData?.partnerSection} />
-        <NewsSection data={response?.data?.pageData?.newsSection} /> 
+        <NewsSection data={response?.data?.pageData?.newsSection} />
         {/* <FaqSection data={faqSteps} /> */}
         <FaqSection data={response?.data?.pageData?.faqSection} />
         <PromoSection />

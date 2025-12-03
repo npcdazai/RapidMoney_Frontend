@@ -46,7 +46,6 @@ export async function generateMetadata() {
       ? data.meta_title
       : defaultSEO.contact.title;
 
-      console.log(data?.meta_title, "HELLO")
 
   const description =
     isProduction && data?.meta_description
