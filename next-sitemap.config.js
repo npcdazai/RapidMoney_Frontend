@@ -6,5 +6,5 @@ module.exports = {
   generateIndexSitemap: true,
   outDir: './public', // ✅ explicitly write inside /public
   exclude: ['/api/*', '/admin/*'],
-
+  
 };

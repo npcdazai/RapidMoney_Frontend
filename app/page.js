@@ -18,8 +18,8 @@ import DynamicHead from "@/components/head/dynamicHead";
 import defaultSEO from "@/constants/defaultSEO";
 import { notFound } from "next/navigation";
 import Script from "next/script";
-import FaqSection from "@/app/faqs/page";
-import ProductFAQ from "@/components/product-faq/productFAQ";
+import FaqSection from "@/components/faqs/faq-section";
+
 
 // console.log(homePageData);
 // const header = homePageData.header;
@@ -59,7 +59,7 @@ export async function generateMetadata() {
   const res = await getCMSPageBySlug();
   const data = res?.data?.pageData?.seoSetting;
   const isProduction = process.env.NEXT_PUBLIC_ENVIRONMENT === "production";
-  const canonicalURL = "";
+  const canonicalURL = "https://www.rapidmoney.in/";
 
   const title = data?.meta_title
     ? data.meta_title
@@ -78,7 +78,7 @@ export async function generateMetadata() {
     description,
     robots: "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
     alternates: {
-      canonical: isProduction ? canonicalURL : undefined,
+      canonical: canonicalURL,
     },
     other: {
       "google-site-verification": "twL_GolMQqEgollqmMmpUNK8CAqnO1iN1NgPXT9jbVE",
@@ -89,7 +89,7 @@ export async function generateMetadata() {
       title,
       description,
       siteName: defaultSEO.defaultSiteName,
-        url: "https://www.rapidmoney.in/",
+      url: "https://www.rapidmoney.in/",
       locale: defaultSEO.defaultLocale,
       type: defaultSEO.defaultType,
       images: [
@@ -112,7 +112,7 @@ export default async function Home() {
 
   const response = await getCMSPageBySlug();
 
-  // console.log(response , "HOME FAQ" );
+  console.log(response , "HOME FAQ" );
 
   return (
     // <>
@@ -401,8 +401,8 @@ export default async function Home() {
         <PartnersSection data={response?.data?.pageData?.partnerSection} />
         <NewsSection data={response?.data?.pageData?.newsSection} />
         {/* <FaqSection data={faqSteps} /> */}
-        <FaqSection respone={response} />
-        
+       
+         <FaqSection data={response?.data?.pageData?.faqSection} />
         <PromoSection />
       </Suspense>
     </>

@@ -15,6 +15,20 @@ const nextConfig = {
       },
     ],
   },
+  async redirects() {
+    return [
+      {
+        source: '/products', 
+        destination: '/instant-personal-loan',
+        permanent: true,
+      },
+       {
+        source: '/product', 
+        destination: '/instant-personal-loan',
+        permanent: true,
+      },
+    ];
+  },
 };
 
 export default nextConfig;

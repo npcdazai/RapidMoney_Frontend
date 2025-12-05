@@ -180,6 +180,7 @@ import rapidMoneyLogo from "./assets/rapid_money.png";
 gsap.registerPlugin(ScrollTrigger);
 
 const FaqSection = ({data}) => {
+  console.log(data, "where is data")
   const titleRef = useRef(null);
   const panelRefs = useRef([]);
   panelRefs.current = [];
@@ -233,7 +234,9 @@ const FaqSection = ({data}) => {
           {data?.title}
         </h2>
         <Row>
-          <Col span={24} offset={0} lg={{ offset: 4, span: 16 }}>
+          <Col span={24} offset={0} lg={{ offset: 2, span: 20 }}>
+          {/* <Col span={24} offset={0} lg={{ offset: 0, span: 24 }}> */}
+
             <Tabs
               defaultActiveKey="0"
               tabPosition="top"
