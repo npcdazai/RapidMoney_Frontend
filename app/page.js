@@ -55,6 +55,7 @@ console.log(data?.data?.pageData?.faqSection, "data")
   }
 };
 
+
 export async function generateMetadata() {
   const res = await getCMSPageBySlug();
   const data = res?.data?.pageData?.seoSetting;
