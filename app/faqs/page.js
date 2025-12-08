@@ -1,10 +1,7 @@
-
-
-
 import React, { Suspense } from "react";
 import homePageData from "@/json/homepage/home.json";
 import faqData from "@/json/faqs/faqs.json";
-import FaqSection from "@/components/faqs/faq-section";   // ✅ FIXED IMPORT
+import FaqSection from "@/components/faqs/faq-section";   
 import endpoints from "@/constants/endpoints";
 import Loading from "../loading";
 import DynamicHead from "@/components/head/dynamicHead";
@@ -37,8 +34,6 @@ export default async function Page() {
       <Suspense fallback={<Loading />}>
         <DynamicHead />
         <Breadcrumb />
-
-        {/* ✅ Correct Prop Name & Correct Data */}
         <FaqSection data={response?.data?.pageData?.faqSection} />
       </Suspense>
     </>
