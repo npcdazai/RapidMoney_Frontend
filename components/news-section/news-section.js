@@ -23,6 +23,9 @@ const NewsSection = ({ data }) => {
   const cardsRef = useRef([]);
   cardsRef.current = [];
 
+  console.log("NewsSection data:", data);
+  console.log("relatedBlogsData:", data?.relatedBlogsData);
+
   useEffect(() => {
     // Animate title
     gsap.fromTo(
@@ -105,7 +108,7 @@ const NewsSection = ({ data }) => {
         </div>
 
         <Row gutter={[24, 32]} justify={Array.isArray(data?.relatedBlogsData) && data.relatedBlogsData.length > 1 ? "start" : "center"}>
-          {data?.relatedBlogsData?.map((item, idx) => (
+          {Array.isArray(data?.relatedBlogsData) && data.relatedBlogsData.map((item, idx) => (
             <Col
               key={idx}
               xs={24}
@@ -115,10 +118,10 @@ const NewsSection = ({ data }) => {
               ref={(el) => (cardsRef.current[idx] = el)}
             >
               <div className="flex flex-col gap-4 h-full group">
-                <Link href={`/blogs/${item?.slug}`} className="h-auto">
+                <Link href={`/blogs/${item?.seo?.slug || item?.slug}`} className="h-auto">
                   <div className="overflow-hidden w-full rounded-3xl ">
                     <Image
-                      src={item?.image}
+                      src={item?.featuredImg?.[0]?.url || item?.image}
                       alt={item?.title}
                       width={500}
                       height={300}
@@ -128,17 +131,17 @@ const NewsSection = ({ data }) => {
                 </Link>
 
                 <p className="font-14 font-weight-semibold purple-color">
-                  {item?.authorName} • {dayjs(item?.date).format("DD MMM YYYY")}
+                  {[item?.author?.firstName, item?.author?.lastName].filter(Boolean).join(" ") || item?.authorName} • {dayjs(item?.createdAt || item?.date).format("DD MMM YYYY")}
                 </p>
 
-                <Link href={`/blogs/${item?.slug}`}>
+                <Link href={`/blogs/${item?.seo?.slug || item?.slug}`}>
                   <h3 className="font-24 font-weight-bold dark-color">
                     {item?.title.length > 38 ? `${item.title.slice(0, 52)}....` : item.title}
                   </h3>
                 </Link>
 
                 <Link
-                  href={`/blogs/${item?.slug}`}
+                  href={`/blogs/${item?.seo?.slug || item?.slug}`}
                   className="font-18 font-weight-medium dark-color flex items-end gap-2 group hover:!text-[#79CA00] transition-colors duration-300  flex-1"
                 >
                   <div className="flex items-center gap-2">

@@ -43,7 +43,7 @@ const getCMSPageBySlug = async () => {
     );
 
     const data = await response.json();
-console.log(data?.data?.pageData?.faqSection, "data")
+    console.log(data?.data?.pageData?.faqSection, "data")
     if (!data?.data?.pageData) {
       notFound();
     }
@@ -52,6 +52,24 @@ console.log(data?.data?.pageData?.faqSection, "data")
     console.log("API call failed: ", error);
     notFound();
     // return null;
+  }
+};
+
+const getDynamicBlogs = async () => {
+  try {
+    const response = await fetch(
+      process.env.NEXT_PUBLIC_API_URL + endpoints.get_blogs,
+      {
+        cache: "no-store",
+      }
+    );
+
+    const data = await response.json();
+    console.log("Blogs API Response:", data);
+    return data;
+  } catch (error) {
+    console.log("Blog API call failed: ", error);
+    return { data: [] };
   }
 };
 
@@ -112,8 +130,9 @@ export async function generateMetadata() {
 export default async function Home() {
 
   const response = await getCMSPageBySlug();
+  const blogsResponse = await getDynamicBlogs();
 
-  console.log(response , "HOME FAQ" );
+  console.log(response, "HOME FAQ");
 
   return (
     // <>
@@ -400,10 +419,13 @@ export default async function Home() {
         <PersonalLoan data={response?.data?.pageData?.personalLoanSection} />
         <LoanStep data={response?.data?.pageData?.loanStep} />
         <PartnersSection data={response?.data?.pageData?.partnerSection} />
-        <NewsSection data={response?.data?.pageData?.newsSection} />
+        <NewsSection data={{
+          ...response?.data?.pageData?.newsSection,
+          relatedBlogsData: blogsResponse?.data?.data || []
+        }} />
         {/* <FaqSection data={faqSteps} /> */}
-       
-         <FaqSection data={response?.data?.pageData?.faqSection} />
+
+        <FaqSection data={response?.data?.pageData?.faqSection} />
         <PromoSection />
       </Suspense>
     </>
