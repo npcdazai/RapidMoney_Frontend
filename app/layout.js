@@ -48,13 +48,27 @@ gtag('config', 'G-GTC8M3645P');`}
               y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
           })(window, document, "clarity", "script", "tx6a4smv3h");`}
         </Script>
+        <Script id="fb-pixel" strategy="afterInteractive">
+          {`
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '1387501912545283');
+    fbq('track', 'PageView');
+  `}
+        </Script>
         <UserProvider>
           <AntdRegistry>
             <ConfigProvider theme={antdConfig}>
               {/* <Header /> */}
               {/* <main className="min-h-[200px] py-8"> */}
               {children}
-              <ScrollToTop/>
+              <ScrollToTop />
               {/* </main> */}
               <Footer />
               {/* <AppLayout>
