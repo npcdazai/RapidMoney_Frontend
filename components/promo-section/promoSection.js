@@ -23,7 +23,7 @@ const PromoSection = () => {
 
   const { promoSection, promoLoading } = useContext(UserContext);
 
-  const data = promoSection ? promoSection : []
+  const data = promoSection ?? null;
 
   // console.log(promoSection);
 
@@ -50,7 +50,7 @@ const PromoSection = () => {
       duration: 2,
       repeat: -1,
       yoyo: true,
-      ease: "sine.inOut"
+      ease: "sine.inOut",
     });
 
     // if (curveRef.current) {
@@ -70,8 +70,6 @@ const PromoSection = () => {
     //     ease: "elastic.out(1.4, 0.25)", // stronger spring effect
     //   });
     // }
-
-
   }, []);
 
   // console.log(data);
@@ -86,7 +84,9 @@ const PromoSection = () => {
               className="flex flex-col gap-5 max-w-[550px] relative z-10"
               ref={textRef}
             >
-              <h2 className={`${styles.promoHeading} font-40 light-color font-weight-bold`}>
+              <h2
+                className={`${styles.promoHeading} font-40 light-color font-weight-bold`}
+              >
                 {data?.title}
               </h2>
               {/* <Link href={"/"}>
@@ -103,15 +103,15 @@ const PromoSection = () => {
               ref={imageRef}
               className={`flex justify-center sm:justify-end ${styles.bannerImageBkl}`}
             >
-              <Image
-                // src={bannerImage}
-                src={data?.image?.[0]?.url}
-                alt={"Join Rapid Money for instant personal loans"}
-                width={1200}
-                height={600}
-                className="max-w-[1000px] w-full h-auto object-cover"
-              // priority
-              />
+              {data?.image?.[0]?.url && (
+                <Image
+                  src={data.image[0].url}
+                  alt="Join Rapid Money for instant personal loans"
+                  width={1200}
+                  height={600}
+                  className="max-w-[1000px] w-full h-auto object-cover"
+                />
+              )}
 
               <div className={styles.curvePattern}>
                 <Image
@@ -125,12 +125,11 @@ const PromoSection = () => {
                     left: "53.06%",
                     top: 0,
                     zIndex: -1,
-                    pointerEvents: "none"
+                    pointerEvents: "none",
                   }}
                   draggable={false}
-                // priority
+                  // priority
                 />
-
               </div>
             </div>
           </div>

@@ -24,6 +24,11 @@
         "option": []
       },
       {
+        "label": "EMI Calculator",
+        "link": "/emi-calculator",
+        "type": "link"
+      },
+      {
         "label": "Blogs",
         "link": "/blogs",
         "type": "link"

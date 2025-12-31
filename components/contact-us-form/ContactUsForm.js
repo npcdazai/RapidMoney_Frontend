@@ -4,7 +4,7 @@ import { Col, Form, Input, Row, Alert } from "antd";
 import styles from "./contact-form.module.scss";
 import Image from "next/image";
 import personImage from "./assets/personImage.png";
-import { RiMailLine, RiMapPinLine, RiPhoneLine } from "react-icons/ri";
+import { RiMailLine, RiMapPinLine } from "react-icons/ri";
 
 const ContactUs = ({ data }) => {
   const [form] = Form.useForm();
@@ -156,13 +156,21 @@ const ContactUs = ({ data }) => {
                   />
                 </Form.Item>
                 <Form.Item>
-                  <button
+                  {/* <button
                     htmlType="submit"
                     className="apply-btn apply-btn-green max-w-[140px] w-full"
                     disabled={loading}
                   >
                     {loading ? "Sending..." : "Submit"}
-                  </button>
+                  </button> */}
+                  <button
+  type="submit"
+  className="apply-btn apply-btn-green max-w-[140px] w-full"
+  disabled={loading}
+>
+  {loading ? "Sending..." : "Submit"}
+</button>
+
                 </Form.Item>
               </Form>
             </div>
@@ -206,7 +214,7 @@ const ContactUs = ({ data }) => {
                     {data.email}
                   </a>
                 </div>
-                <div className="flex items-center gap-2 ">
+                {/* <div className="flex items-center gap-2 ">
                   {" "}
                   <RiPhoneLine size={24} style={{ color: "black" }} />
                   <a
@@ -216,12 +224,13 @@ const ContactUs = ({ data }) => {
                   >
                     +91 8097880793
                   </a>
-                </div>
+                </div> */}
               </div>
             </div>
           </Col>
         </Row>
       </section>
+      
     </>
   );
 };

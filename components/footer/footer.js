@@ -10,11 +10,11 @@ import youtube from "./assets/youtube.svg";
 import instagram from "./assets/instagram.svg";
 import facebook from "./assets/facebook.svg";
 // import google from './assets/google-logo.svg';
-import ratingStar from "./assets/rating_star.svg";
+// import ratingStar from "./assets/rating_star.svg";
 import emailIcon from "./assets/email.svg";
 import footerLogo from "./assets/dark_rapid_money_logo.png";
 import endpoints from "@/constants/endpoints";
-import { RiPhoneLine } from "react-icons/ri";
+// import { RiPhoneLine } from "react-icons/ri";
 
 const getCMSPageBySlug = async () => {
   try {
@@ -164,12 +164,12 @@ const Footer = async () => {
                 </a>
               </span>
             </div>
-            <div className="flex items-center gap-2">
+            {/* <div className="flex items-center gap-2">
               <RiPhoneLine size={24} style={{ color: "#7DC802" }} />
               <a href="tel:8097880793" className={styles.footerPhone}>
                 +91 8097880793
               </a>
-            </div>
+            </div> */}
           </Col>
         </Row>
       </div>
