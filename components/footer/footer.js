@@ -3,14 +3,13 @@ import Link from "next/link";
 import Image from "next/image";
 import { Button, Col, Divider, Row } from "antd";
 import styles from "./footer.module.scss";
-
 import linkedin from "./assets/linkedin.svg";
 import twitter from "./assets/twitter.svg";
 import youtube from "./assets/youtube.svg";
 import instagram from "./assets/instagram.svg";
 import facebook from "./assets/facebook.svg";
 // import google from './assets/google-logo.svg';
-// import ratingStar from "./assets/rating_star.svg";
+// import ratingStar from "./assets/rating_star.svg"; 
 import emailIcon from "./assets/email.svg";
 import footerLogo from "./assets/dark_rapid_money_logo.png";
 import endpoints from "@/constants/endpoints";
@@ -28,7 +27,7 @@ const getCMSPageBySlug = async () => {
   } catch (error) {
     console.log("API call failed: ", error);
     return null;
-  }
+  }  
 };
 
 const Footer = async () => {
