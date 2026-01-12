@@ -5,7 +5,7 @@ import { RiArrowRightLine } from "react-icons/ri";
 import dayjs from 'dayjs';
 
 export default function BlogCard({ item }) {
-  // console.log("BlogCard item:", item);
+  console.log("BlogCard item:", item?.publishedAt , item?.updatedAt);
   return (
     <div className="flex flex-col gap-4 h-full group">
       <Link href={"/blogs/" + item?.seo?.slug} className="h-auto">
@@ -21,7 +21,7 @@ export default function BlogCard({ item }) {
       </Link>
 
       <p className="font-14 font-weight-semibold purple-color">
-        {[item?.author?.firstName, item?.author?.lastName].join(" ")} • {dayjs(item?.createdAt).format('DD MMM YYYY')}
+        {[item?.author?.firstName, item?.author?.lastName].join(" ")} • {dayjs(item?.updatedAt).format('DD MMM YYYY')}
       </p>
 
       {/* Title */}

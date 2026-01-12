@@ -71,7 +71,7 @@ const BlogDetails = ({ data }) => {
           <span className="font-weight-medium font-18 text-[#737373]">
             {" "}
             {[data?.author?.firstName, data?.author?.lastName].join(" ")} •{" "}
-            {dayjs(data?.createdAt).format("DD MMM YYYY")}
+            {dayjs(data?.publishedAt || data?.updatedAt).format("DD MMM YYYY")}
           </span>
         </div>
 

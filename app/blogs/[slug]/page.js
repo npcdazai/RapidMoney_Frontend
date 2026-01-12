@@ -27,7 +27,7 @@ const getBlog = async (slug) => {
 
     // console.log("Response from APIs:", response.json()?.status, process.env.NEXT_PUBLIC_API_URL +
     //     endpoints.get_blogs_by_slug +
-    //     `/${slug}`);
+    //     `/${slug}`);\
     const data = await response.json();
     // console.log(data?.data, "data from API");
 
