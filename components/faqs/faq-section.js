@@ -282,11 +282,10 @@ const FaqSection = ({data}) => {
                         </div>
                       ),
                       children: (
-                        <div className="flex justify-between items-center gap-10">
-                          <p className="font-14 text-[rgba(33, 33, 33, 0.8)]">
-                            {q.answer}
-                          </p>
-                        </div>
+                        <div
+                          className={`${styles.faqAnswerContent} font-14 text-[rgba(33,33,33,0.8)]`}
+                          dangerouslySetInnerHTML={{ __html: q.answer }}
+                        />
                       ),
                       className: `${styles.faqCollapsePanel} w-full`
                     })) : []}

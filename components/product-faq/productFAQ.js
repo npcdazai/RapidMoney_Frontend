@@ -77,9 +77,10 @@ export default function ProductFAQ({data}) {
               </div>
             ),
             children: (
-              <p className="font-14 text-[rgba(33, 33, 33, 0.8)]">
-                {faq?.answer}
-              </p>
+              <div
+                className={`${styles.faqAnswerContent} font-14 text-[rgba(33,33,33,0.8)]`}
+                dangerouslySetInnerHTML={{ __html: faq?.answer }}
+              />
             ),
             className: `${styles.faqCollapsePanel} w-full`
           })) || []}
