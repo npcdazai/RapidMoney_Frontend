@@ -55,16 +55,14 @@ export async function generateMetadata({ params }) {
   }
 
   const seo_setting = {
-    meta_title: response?.data?.seo_setting?.meta_title,
-    meta_description: response?.data?.seo_setting?.meta_description,
+    meta_title: response?.data?.seo?.title,
+    meta_description: response?.data?.seo?.metaDesc,
   };
-
-  const isProduction = process.env.NEXT_PUBLIC_ENVIRONMENT === "production";
 
   let canonicalURL = `${process.env.NEXT_PUBLIC_SITE_URL}/blogs/${resolvedParams.slug}`;
 
   const featureImage =
-    response?.data?.feature_image?.[0]?.url ||
+    response?.data?.featuredImg?.[0]?.url ||
     defaultSEO?.blog?.featureImage;
 
   return {
@@ -73,24 +71,18 @@ export async function generateMetadata({ params }) {
     description: seo_setting?.meta_description || defaultSEO?.blog?.description,
     robots: "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
     alternates: {
-      canonical: isProduction ? canonicalURL : undefined,
+      canonical: canonicalURL,
     },
     keywords: response?.data?.tags,
     openGraph: {
-      title: isProduction
-        ? seo_setting?.meta_title || defaultSEO?.blog?.title
-        : defaultSEO?.product?.title,
-      description: isProduction
-        ? seo_setting?.meta_description || defaultSEO?.product?.description
-        : defaultSEO?.product?.description,
-      canonical: isProduction ? canonicalURL : undefined,
+      title: seo_setting?.meta_title || defaultSEO?.blog?.title,
+      description: seo_setting?.meta_description || defaultSEO?.blog?.description,
+      url: canonicalURL,
       siteName: defaultSEO?.defaultSiteName,
       images: [
         {
-          url: isProduction ? featureImage : undefined,
-          // width: 1200,
-          // height: 630,
-          alt: isProduction ? seo_setting?.meta_title || defaultSEO?.blog?.title : undefined,
+          url: featureImage,
+          alt: seo_setting?.meta_title || defaultSEO?.blog?.title,
         },
       ],
       locale: defaultSEO?.defaultLocale,
@@ -102,8 +94,8 @@ export async function generateMetadata({ params }) {
     twitter: {
       card: "summary_large_image",
       title: seo_setting?.meta_title || defaultSEO?.blog?.title,
-      description: seo_setting?.meta_description || defaultSEO?.product?.description,
-      images: isProduction ? [featureImage] : [],
+      description: seo_setting?.meta_description || defaultSEO?.blog?.description,
+      images: [featureImage],
     },
   };
 }
