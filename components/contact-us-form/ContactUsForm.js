@@ -5,6 +5,7 @@ import styles from "./contact-form.module.scss";
 import Image from "next/image";
 import personImage from "./assets/personImage.png";
 import { RiMailLine, RiMapPinLine } from "react-icons/ri";
+import { GiPoliceOfficerHead } from "react-icons/gi";
 
 const ContactUs = ({ data }) => {
   const [form] = Form.useForm();
@@ -164,12 +165,12 @@ const ContactUs = ({ data }) => {
                     {loading ? "Sending..." : "Submit"}
                   </button> */}
                   <button
-  type="submit"
-  className="apply-btn apply-btn-green max-w-[140px] w-full"
-  disabled={loading}
->
-  {loading ? "Sending..." : "Submit"}
-</button>
+                    type="submit"
+                    className="apply-btn apply-btn-green max-w-[140px] w-full"
+                    disabled={loading}
+                  >
+                    {loading ? "Sending..." : "Submit"}
+                  </button>
 
                 </Form.Item>
               </Form>
@@ -202,35 +203,55 @@ const ContactUs = ({ data }) => {
                   />
                 </span>
               </div>
-              <div className="flex flex-col p-4 border rounded-[10px] border-[var(--border-color)] gap-4 w-full">
-                <div className="flex items-center gap-2 ">
-                  {" "}
-                  <RiMailLine size={24} style={{ color: "black" }} />
+              <div className="w-full max-w-xl rounded-2xl border border-gray-200 bg-[#fff] p-6 shadow-sm space-y-3">
+
+                {/* Grievance Officer */}
+                <div className="flex items-start gap-4">
+                  <GiPoliceOfficerHead
+                    size={26}
+                    className="mt-1 text-[#5FB000]"
+                  />
+                  <div>
+                    <p className="text-sm text-gray-500 font-medium">
+                      Grievance Officer
+                    </p>
+                    <p className="text-[16px] font-semibold text-[#5FB000]">
+                      Avinash Babulal Dhivar
+                    </p>
+                  </div>
+                </div>
+
+                <hr className="border-gray-200" />
+                <div className="flex items-center gap-4">
+                  <RiMailLine size={22} className="text-gray-600" />
                   <a
-                    href={`mailto:${data.email}`}
-                    className="font-16 hover:underline break-all"
-                    style={{ color: "#7DC802" }}
+                    href="mailto:avinash.dhivar@rapidmoney.inn"
+                    className="text-[15px] font-medium text-blue-600 hover:text-blue-700 hover:underline transition"
                   >
-                    {data.email}
+                    avinash.dhivar@rapidmoney.in
                   </a>
                 </div>
-                {/* <div className="flex items-center gap-2 ">
-                  {" "}
-                  <RiPhoneLine size={24} style={{ color: "black" }} />
+
+                {/* Email 1 */}
+                <div className="flex items-center gap-4">
+                  <RiMailLine size={22} className="text-gray-600" />
                   <a
-                    href="tel:8097880793"
-                    className="font-16 hover:underline break-all"
-                    style={{ color: "#7DC802" }}
+                    href="mailto:support@rapidmoney.com"
+                    className="text-[15px] font-medium text-blue-600 hover:text-blue-700 hover:underline transition"
                   >
-                    +91 8097880793
+                    support@rapidmoney.com
                   </a>
-                </div> */}
+                </div>
+
+                {/* Email 2 */}
+
               </div>
+
             </div>
           </Col>
         </Row>
       </section>
-      
+
     </>
   );
 };
