@@ -213,7 +213,7 @@ const ContactUs = ({ data }) => {
                   />
                   <div>
                     <p className="text-sm text-gray-500 font-medium">
-                      Grievance Officer
+                      Grievance Redressal Officer
                     </p>
                     <p className="text-[16px] font-semibold text-[#5FB000]">
                       Avinash Babulal Dhivar
