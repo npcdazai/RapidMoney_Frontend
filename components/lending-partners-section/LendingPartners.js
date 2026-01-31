@@ -156,15 +156,15 @@ const LendingPartners = ({ data }) => {
                   </div>
                 )}
 
-                <div className="grid lg:grid-cols-2 gap-5">
-                  {["delhiOffice", "registeredOffice"].map((officeKey) => {
+                <div className="grid gap-5">
+                  {["delhiOffice"].map((officeKey) => {
                     const office = partner[officeKey];
                     if (!office) return null;
 
                     return (
                       <div
                         key={officeKey}
-                        className="bg-white p-7 rounded-3xl space-y-6 h-fit"
+                        className="bg-white p-7 rounded-3xl space-y-6 h-fit "
                       >
                         <div className="flex items-start gap-3">
                           <div className="flex-shrink-0 flex items-center justify-center w-8 h-8">
