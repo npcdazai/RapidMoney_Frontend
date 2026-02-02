@@ -260,7 +260,7 @@ const LendingPartners = ({ data }) => {
                   <td className="px-6 py-4 text-gray-700">Portfolio 1</td>
                   <td className="px-6 py-4 text-gray-700">
                     {/* value here */}
-                    Rs.45,93,090
+                    Rs.96,44,592
                   </td>
                 </tr>
               </tbody>
