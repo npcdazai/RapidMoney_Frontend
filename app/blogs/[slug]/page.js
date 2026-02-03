@@ -59,7 +59,7 @@ export async function generateMetadata({ params }) {
     meta_description: response?.data?.seo?.metaDesc,
   };
 
-  let canonicalURL = `${process.env.NEXT_PUBLIC_SITE_URL}/blogs/${resolvedParams.slug}`;
+  let canonicalURL = `https://www.rapidmoney.in/blogs/${resolvedParams.slug}`;
 
   const featureImage =
     response?.data?.featuredImg?.[0]?.url ||
