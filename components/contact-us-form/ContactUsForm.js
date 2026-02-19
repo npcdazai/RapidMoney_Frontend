@@ -1,6 +1,6 @@
 "use client";
 import React, { useState } from "react";
-import { Col, Form, Input, Row, Alert } from "antd";
+import { Col, Form, Input, Row, Alert, Checkbox } from "antd";
 import styles from "./contact-form.module.scss";
 import Image from "next/image";
 import personImage from "./assets/personImage.png";
@@ -155,6 +155,39 @@ const ContactUs = ({ data }) => {
                     size="large"
                     disabled={loading}
                   />
+                </Form.Item>
+
+
+                <Form.Item>
+                  <span className="text-xs text-gray-600">
+                    By clicking Submit, you agree to our{" "}
+                    <a href="/term-conditions" style={{ color: "#1890ff" }}>
+                      Terms of Service
+                    </a>{" "}
+                    and that you have read our{" "}
+                    <a href="/privacy-policy" style={{ color: "#1890ff" }}>
+                      Privacy Policy
+                    </a>.
+                  </span>
+                </Form.Item>
+
+                <Form.Item
+                  name="consent"
+                  valuePropName="checked"
+                  rules={[
+                    {
+                      validator: (_, value) =>
+                        value
+                          ? Promise.resolve()
+                          : Promise.reject(new Error("Please provide your consent")),
+                    },
+                  ]}
+                >
+                  <Checkbox>
+                    <span className="text-xs">
+                      I hereby authorize to send notifications on SMS/Messages/Promotional/Informational messages
+                    </span>
+                  </Checkbox>
                 </Form.Item>
                 <Form.Item>
                   {/* <button
