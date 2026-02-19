@@ -148,7 +148,13 @@ const ContactUs = ({ data }) => {
                     disabled={loading}
                   />
                 </Form.Item>
-                <Form.Item label="Message" name="message">
+                <Form.Item
+                  label="Message"
+                  name="message"
+                  rules={[
+                    { required: true, message: "Please enter your message" },
+                  ]}
+                >
                   <Input.TextArea
                     rows={4}
                     placeholder="Enter your Message"
@@ -185,7 +191,7 @@ const ContactUs = ({ data }) => {
                 >
                   <Checkbox>
                     <span className="text-xs">
-                      I hereby authorize to send notifications on SMS/Messages/Promotional/Informational messages
+                      I hereby authorise to receive calls, SMS, WhatsApp,RCS and email communications (including promotional messages) from RapidMoney regarding its products and services.F
                     </span>
                   </Checkbox>
                 </Form.Item>
