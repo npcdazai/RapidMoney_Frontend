@@ -191,7 +191,7 @@ const ContactUs = ({ data }) => {
                 >
                   <Checkbox>
                     <span className="text-xs">
-                      I hereby authorise to receive calls, SMS, WhatsApp,RCS and email communications (including promotional messages) from RapidMoney regarding its products and services.F
+                      I hereby authorise to receive calls, SMS, WhatsApp,RCS and email communications (including promotional messages) from RapidMoney regarding its products and services.
                     </span>
                   </Checkbox>
                 </Form.Item>
