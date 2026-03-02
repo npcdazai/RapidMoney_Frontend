@@ -31,7 +31,7 @@ export default async function Page() {
 
   return (
     <>
-      <Script id="contact-schema" type="application/ld+json">
+      <Script id="faqs-schema" type="application/ld+json">
         {`
 {
   "@context": "https://schema.org",
