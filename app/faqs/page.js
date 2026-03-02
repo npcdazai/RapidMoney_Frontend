@@ -290,8 +290,6 @@ export default async function Page() {
     }
   }]
 }
-
-
 `}
       </Script>
 
