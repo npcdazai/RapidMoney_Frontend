@@ -8,6 +8,7 @@ import DynamicHead from "@/components/head/dynamicHead";
 import defaultSEO from "@/constants/defaultSEO";
 import { notFound } from "next/navigation";
 import Breadcrumb from "@/components/BreadCrumb";
+import Script from "next/script";
 
 const getCMSPageBySlug = async () => {
   try {
