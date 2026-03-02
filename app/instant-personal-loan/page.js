@@ -114,7 +114,7 @@ export default async function page() {
     "name": "Rapid Money",
     "url": "https://www.rapidmoney.in/"
   },
-  "url": "https://www.rapidmoney.in/product"
+  "url": "https://www.rapidmoney.in/instant-personal-loan"
   }
 }
 `}

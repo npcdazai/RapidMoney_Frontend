@@ -93,27 +93,44 @@ export default async function page() {
         {`
 {
   "@context": "https://schema.org",
-  "@type": "LocalBusiness",
-  "name": "Rapid Money",
-  "image": "https://www.rapidmoney.in/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Flight_rapid_money_logo.ca23ec80.png&w=640&q=75",
-  "email": "support@rapidmoney.com",
-  "address": {
+  "@type": "FinancialService",
+  "name": "RapidMoney",
+  "url": "https://www.rapidmoney.in/contact-us",
+  "logo": "https://www.rapidmoney.in/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Flight_rapid_money_logo.ca23ec80.png&w=640&q=75",
+  "description": "Reach Rapid Money for personal loan enquiry or support at support@rapidmoney.in. We're here to help you with quick loan assistance.",
+    "address": {
     "@type": "PostalAddress",
-    "streetAddress": "902, 9th Floor, Shubhjyoti Building, Swami Vivekananda Rd, Datta Park, Borivali West",
+    "streetAddress": "Shubhjivan Arcade, A-902, Swami Vivekananda Rd, near Borivali Station, opp. Moksh Plaza, Mhatre Wadi, Borivali West",
     "addressLocality": "Mumbai",
     "addressRegion": "Maharashtra",
     "postalCode": "400092",
     "addressCountry": "IN"
   },
-  "url": "https://www.rapidmoney.in/contact-us",
+  "contactPoint": [
+    {
+      "@type": "ContactPoint",
+      "contactType": "customer support",
+      "email": "support@rapidmoney.in",
+      "areaServed": "IN",
+      "availableLanguage": ["English"]
+    },
+    {
+      "@type": "ContactPoint",
+      "contactType": "customer support",
+      "email": "avinash.dhivar@rapidmoney.in",
+      "areaServed": "IN",
+      "availableLanguage": ["English"]
+    }
+  ],
   "sameAs": [
     "https://www.linkedin.com/company/rapidmoney",
-    "https://www.youtube.com/channel/UCUR-xUhGJHyrf_u84fDeD6Q",
     "https://x.com/Rapidmoney2025",
+    "https://www.youtube.com/channel/UCUR-xUhGJHyrf_u84fDeD6Q",
     "https://www.instagram.com/officialrapidmoney",
     "https://www.facebook.com/rapidmoney"
   ]
 }
+
 `}
       </Script>
       {/* <ContactUs /> */}
