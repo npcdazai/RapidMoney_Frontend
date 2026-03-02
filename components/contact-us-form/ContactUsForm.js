@@ -264,7 +264,7 @@ const ContactUs = ({ data }) => {
                 <div className="flex items-center gap-4">
                   <RiMailLine size={22} className="text-gray-600" />
                   <a
-                    href="mailto:avinash.dhivar@rapidmoney.inn"
+                    href="mailto:avinash.dhivar@rapidmoney.in"
                     className="text-[15px] font-medium text-blue-600 hover:text-blue-700 hover:underline transition"
                   >
                     avinash.dhivar@rapidmoney.in
@@ -275,10 +275,10 @@ const ContactUs = ({ data }) => {
                 <div className="flex items-center gap-4">
                   <RiMailLine size={22} className="text-gray-600" />
                   <a
-                    href="mailto:support@rapidmoney.com"
+                    href="mailto:support@rapidmoney.in"
                     className="text-[15px] font-medium text-blue-600 hover:text-blue-700 hover:underline transition"
                   >
-                    support@rapidmoney.com
+                    support@rapidmoney.in
                   </a>
                 </div>
 
