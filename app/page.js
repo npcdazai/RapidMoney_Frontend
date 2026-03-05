@@ -19,6 +19,7 @@ import defaultSEO from "@/constants/defaultSEO";
 import { notFound } from "next/navigation";
 import Script from "next/script";
 import FaqSection from "@/components/faqs/faq-section";
+import { getStructuredDataScripts, schemaToJsonLd } from "@/utils/structuredData";
 
 
 // console.log(homePageData);
@@ -131,6 +132,8 @@ export default async function Home() {
 
   const response = await getCMSPageBySlug();
   const blogsResponse = await getDynamicBlogs();
+  const pageData = response?.data?.pageData || {};
+  const uploadedSchemas = getStructuredDataScripts(pageData?.schemaData);
 
   console.log(response, "HOME FAQ");
 
@@ -150,7 +153,19 @@ export default async function Home() {
     //   <PromoSection data={promo} />
     // </>
     <>
-      <Script id="main-schema" type="application/ld+json">
+      {uploadedSchemas.length ? (
+        uploadedSchemas.map((schema, index) => (
+          <Script
+            key={`home-schema-${index + 1}`}
+            id={`home-schema-${index + 1}`}
+            type="application/ld+json"
+          >
+            {schemaToJsonLd(schema)}
+          </Script>
+        ))
+      ) : (
+        <>
+          <Script id="main-schema" type="application/ld+json">
         {`
  { "@context": "https://schema.org",
  "@type": "Organization",
@@ -191,8 +206,8 @@ export default async function Home() {
  "https://www.facebook.com/rapidmoney"
  ]}
 `}
-      </Script>
-      <Script id="FAQ-schema" type="application/ld+json">
+          </Script>
+          <Script id="FAQ-schema" type="application/ld+json">
         {`
     {
   "@context": "https://schema.org",
@@ -410,7 +425,9 @@ export default async function Home() {
   }]
 }
     `}
-      </Script>
+          </Script>
+        </>
+      )}
       <Suspense fallback={<Loading />}>
         <DynamicHead isDark={true} />
 

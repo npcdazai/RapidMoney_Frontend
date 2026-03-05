@@ -11,6 +11,7 @@ import defaultSEO from "@/constants/defaultSEO";
 import { notFound } from "next/navigation";
 import Breadcrumb from "@/components/BreadCrumb";
 import Script from "next/script";
+import { getStructuredDataScripts, schemaToJsonLd } from "@/utils/structuredData";
 
 const header = homePageData.header;
 
@@ -86,11 +87,24 @@ export async function generateMetadata() {
 
 export default async function page() {
   const response = await getCMSPageBySlug();
+  const pageData = response?.data?.pageData || {};
+  const uploadedSchemas = getStructuredDataScripts(pageData?.schemaData);
   console.log(response);
   return (
     <>
-      <Script id="contact-schema" type="application/ld+json">
-        {`
+      {uploadedSchemas.length ? (
+        uploadedSchemas.map((schema, index) => (
+          <Script
+            key={`contact-schema-${index + 1}`}
+            id={`contact-schema-${index + 1}`}
+            type="application/ld+json"
+          >
+            {schemaToJsonLd(schema)}
+          </Script>
+        ))
+      ) : (
+        <Script id="contact-schema" type="application/ld+json">
+          {`
 {
   "@context": "https://schema.org",
   "@type": "FinancialService",
@@ -132,7 +146,8 @@ export default async function page() {
 }
 
 `}
-      </Script>
+        </Script>
+      )}
       {/* <ContactUs /> */}
       <Suspense fallback={<Loading />}>
         {/* <Header data={header} /> */}

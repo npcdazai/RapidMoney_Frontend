@@ -9,19 +9,39 @@ import PromoSection from "@/components/promo-section/promoWrapper";
 import defaultSEO from "@/constants/defaultSEO";
 import endpoints from "@/constants/endpoints";
 import Breadcrumb from "@/components/BreadCrumb";
+import Script from "next/script";
+import { getStructuredDataScripts, schemaToJsonLd } from "@/utils/structuredData";
 
 const header = homePageData.header;
 
-async function getBlogSEO() {
+async function getBlogPagePayload() {
   try {
-    const api = requests();
-    // Adjust this endpoint to fetch only SEO data if possible
-    const response = await api.get(endpoints.get_blogs_seo || endpoints.get_blogs);
-    // Adjust the path to your actual SEO data
-    return response?.data?.pageData?.seoSetting || {};
+    const cmsResponse = await fetch(
+      process.env.NEXT_PUBLIC_API_URL + endpoints.get_cms_page + "/blogs",
+      { cache: "no-store" }
+    );
+    const cmsData = await cmsResponse.json();
+    if (cmsData?.data?.pageData) {
+      return cmsData.data;
+    }
+  } catch (e) {}
+
+  try {
+    const response = await fetch(
+      process.env.NEXT_PUBLIC_API_URL +
+        (endpoints.get_blogs_seo || endpoints.get_blogs),
+      { cache: "no-store" }
+    );
+    const data = await response.json();
+    return data?.data || {};
   } catch (e) {
     return {};
   }
+}
+
+async function getBlogSEO() {
+  const pagePayload = await getBlogPagePayload();
+  return pagePayload?.pageData?.seoSetting || {};
 }
 
 export async function generateMetadata() {
@@ -76,9 +96,25 @@ export async function generateMetadata() {
 
 
 
-export default function page() {
+export default async function page() {
+  const pagePayload = await getBlogPagePayload();
+  const schemaCandidate =
+    pagePayload?.pageData?.schemaData ||
+    pagePayload?.pageData?.seoSetting?.schemaData;
+  const uploadedSchemas = getStructuredDataScripts(schemaCandidate);
+
   return (
     <>
+      {uploadedSchemas.map((schema, index) => (
+        <Script
+          key={`blogs-schema-${index + 1}`}
+          id={`blogs-schema-${index + 1}`}
+          type="application/ld+json"
+        >
+          {schemaToJsonLd(schema)}
+        </Script>
+      ))}
+
       {/* <Header data={header} /> */}
       <Suspense fallback={<Loading />}>
         {/* <DynamicHead /> */}

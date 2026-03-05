@@ -35,7 +35,7 @@ const GlobalHeroSection = ({ data }) => {
                 }
               </div>
 
-              <Link href="https://web.rapidmoney.in/borrower/login" className="z-10">
+              <Link href="https://web.rapidmoney.in/borrower/login?utm_source=Website&utm_extsource=Organic&utm_medium=Web" className="z-10">
                 <button
                   className={`apply-btn apply-btn-dark flex gap-2 font-16 font-weight-medium`}
                 >

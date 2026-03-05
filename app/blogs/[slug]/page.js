@@ -10,6 +10,8 @@ import DynamicHead from "@/components/head/dynamicHead";
 import defaultSEO from "@/constants/defaultSEO";
 import { notFound } from "next/navigation";
 import Breadcrumb from "@/components/BreadCrumb";
+import Script from "next/script";
+import { getStructuredDataScripts, schemaToJsonLd } from "@/utils/structuredData";
 
 const header = homePageData.header;
 const promo = homePageData.promoSection;
@@ -103,12 +105,23 @@ export async function generateMetadata({ params }) {
 const Page = async ({ params }) => {
   const { slug } = await params;
 
-  console.log("Slug from params:", slug);
-
   const response = await getBlog(slug);
+  const schemaCandidate =
+    response?.data?.seo?.schemaData || response?.data?.schemaData;
+  const uploadedSchemas = getStructuredDataScripts(schemaCandidate);
 
   return (
     <>
+      {uploadedSchemas.map((schema, index) => (
+        <Script
+          key={`blog-details-schema-${index + 1}`}
+          id={`blog-details-schema-${index + 1}`}
+          type="application/ld+json"
+        >
+          {schemaToJsonLd(schema)}
+        </Script>
+      ))}
+
       <Suspense fallback={<Loading />}>
         {/* <DynamicHead /> */}
         <Breadcrumb />

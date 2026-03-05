@@ -15,6 +15,7 @@ import defaultSEO from "@/constants/defaultSEO";
 import { notFound } from "next/navigation";
 import Breadcrumb from "@/components/BreadCrumb";
 import Script from "next/script";
+import { getStructuredDataScripts, schemaToJsonLd } from "@/utils/structuredData";
 
 export const dynamic = "force-dynamic";
 
@@ -87,6 +88,8 @@ export async function generateMetadata() {
 
 export default async function page() {
   const response = await getCMSPageBySlug();
+  const pageData = response?.data?.pageData || {};
+  const uploadedSchemas = getStructuredDataScripts(pageData?.schemaData);
   console.log(response);
 
   // const header = homePageData.header;
@@ -94,8 +97,19 @@ export default async function page() {
 
   return (
     <>
-      <Script id="about-schema" type="application/ld+json">
-        {`
+      {uploadedSchemas.length ? (
+        uploadedSchemas.map((schema, index) => (
+          <Script
+            key={`about-schema-${index + 1}`}
+            id={`about-schema-${index + 1}`}
+            type="application/ld+json"
+          >
+            {schemaToJsonLd(schema)}
+          </Script>
+        ))
+      ) : (
+        <Script id="about-schema" type="application/ld+json">
+          {`
         
 {
   "@context": "https://schema.org",
@@ -161,7 +175,8 @@ export default async function page() {
     }
   ]
 }`}
-      </Script>
+        </Script>
+      )}
       <Suspense fallback={<Loading />}>
         {/* <Header data={header} /> */}
         <DynamicHead />

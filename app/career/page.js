@@ -10,6 +10,8 @@ import { Suspense } from "react";
 import DynamicHead from "@/components/head/dynamicHead";
 import defaultSEO from "@/constants/defaultSEO";
 import { notFound } from "next/navigation";
+import Script from "next/script";
+import { getStructuredDataScripts, schemaToJsonLd } from "@/utils/structuredData";
 
 // const career = careerData.careerHeroSection
 // const lifeRapidData = careerData.lifeAtRapidMoney
@@ -91,9 +93,20 @@ export async function generateMetadata() {
 
 export default async function CareerPage() {
   const response = await getCMSPageBySlug();
+  const pageData = response?.data?.pageData || {};
+  const uploadedSchemas = getStructuredDataScripts(pageData?.schemaData);
   // console.log(response)
   return (
     <>
+      {uploadedSchemas.map((schema, index) => (
+        <Script
+          key={`career-schema-${index + 1}`}
+          id={`career-schema-${index + 1}`}
+          type="application/ld+json"
+        >
+          {schemaToJsonLd(schema)}
+        </Script>
+      ))}
       <Suspense fallback={<Loading />}>
         {/* <Header data={header} /> */}
         <DynamicHead />

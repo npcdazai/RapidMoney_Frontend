@@ -15,6 +15,7 @@ import defaultSEO from "@/constants/defaultSEO";
 import { notFound } from "next/navigation";
 import Breadcrumb from "@/components/BreadCrumb";
 import Script from "next/script";
+import { getStructuredDataScripts, schemaToJsonLd } from "@/utils/structuredData";
 
 const getCMSPageBySlug = async () => {
   try {
@@ -93,6 +94,8 @@ export async function generateMetadata() {
 
 export default async function page() {
   const response = await getCMSPageBySlug();
+  const pageData = response?.data?.pageData || {};
+  const uploadedSchemas = getStructuredDataScripts(pageData?.schemaData);
   console.log(response);
 
   // const header = homePageData.header;
@@ -102,8 +105,20 @@ export default async function page() {
 
   return (
     <>
-      <Script id="product-schema" type="application/ld+json">
-        {`
+      {uploadedSchemas.length ? (
+        uploadedSchemas.map((schema, index) => (
+          <Script
+            key={`product-schema-${index + 1}`}
+            id={`product-schema-${index + 1}`}
+            type="application/ld+json"
+          >
+            {schemaToJsonLd(schema)}
+          </Script>
+        ))
+      ) : (
+        <>
+          <Script id="product-schema" type="application/ld+json">
+            {`
 {
   "@context": "https://schema.org",
   "@type": "FinancialProduct",
@@ -118,9 +133,9 @@ export default async function page() {
   }
 }
 `}
-      </Script>
-       <Script id="productFAQ-schema" type="application/ld+json">
-        {`{
+          </Script>
+          <Script id="productFAQ-schema" type="application/ld+json">
+            {`{
   "@context": "https://schema.org",
   "@type": "FAQPage",
   "mainEntity": [{
@@ -188,7 +203,9 @@ export default async function page() {
     }
   }]
 }`}
-      </Script>
+          </Script>
+        </>
+      )}
       <Suspense fallback={<Loading />}>
         {/* <Header isDark={true} data={header} /> */}
         <DynamicHead isDark={true} />
