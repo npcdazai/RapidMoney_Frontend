@@ -438,7 +438,7 @@ export default async function Home() {
         <PartnersSection data={response?.data?.pageData?.partnerSection} />
         <NewsSection data={{
           ...response?.data?.pageData?.newsSection,
-          relatedBlogsData: blogsResponse?.data?.data || []
+          relatedBlogsData: (blogsResponse?.data?.data || []).slice(0, 3)
         }} />
         {/* <FaqSection data={faqSteps} /> */}
 

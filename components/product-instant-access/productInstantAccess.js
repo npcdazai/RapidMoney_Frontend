@@ -20,7 +20,7 @@ export default function ProductInstantAccess({ data }) {
               dangerouslySetInnerHTML={{ __html: data?.description }}
             />
 
-            {/* <Link href={"#"}>
+            <Link href={"https://play.google.com/store/apps/details?id=com.rapid_money&hl=en_IN"} target="_blank">
               <button
                 // type="default
                 className={`apply-btn apply-btn-light flex item-center gap-3 mt-8`}
@@ -39,7 +39,7 @@ export default function ProductInstantAccess({ data }) {
                   alt="playstore"
                 ></Image>
               </button>
-            </Link> */}
+            </Link>
           </div>
           <div className="w-full text-center lg:text-left lg:w-1/2 relative">
             <Image

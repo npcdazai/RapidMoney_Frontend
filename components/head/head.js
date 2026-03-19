@@ -151,7 +151,7 @@ const Header = ({ isDark = false, data }) => {
                   {data?.cta?.applyLabel}
                 </button>
               </Link>
-              {/* <Link href={"#"}>
+              <Link href={"https://play.google.com/store/apps/details?id=com.rapid_money&hl=en_IN"  } target="_blank">
                 <button
                   // type="default
                   className={`apply-btn ${isDark && showHeader && isAtTop ? "apply-btn-dark" : "apply-btn-light"
@@ -164,7 +164,7 @@ const Header = ({ isDark = false, data }) => {
                   </span>
                   <Image
                     src={isDark && showHeader && isAtTop ? darkIphone : lightIphone}
-                    width={24}
+               j     width={24}
                     height={24}
                     alt="iphone"
                   ></Image>
@@ -175,7 +175,7 @@ const Header = ({ isDark = false, data }) => {
                     alt="playstore"
                   ></Image>
                 </button>
-              </Link> */}
+              </Link> 
             </div>
             <button
               className="xl:hidden text-white"

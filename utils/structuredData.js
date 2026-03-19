@@ -16,6 +16,22 @@ export const htmlToPlainText = (input = "") => {
   return decoded.replace(/\s+/g, " ").trim();
 };
 
+const extractJsonLdBlocks = (rawValue = "") => {
+  const text = String(rawValue || "").trim();
+  if (!text) return [];
+
+  const scriptRegex = /<script\b[^>]*>([\s\S]*?)<\/script>/gi;
+  const blocks = [];
+  let match = null;
+
+  while ((match = scriptRegex.exec(text)) !== null) {
+    const inner = String(match?.[1] || "").trim();
+    if (inner) blocks.push(inner);
+  }
+
+  return blocks;
+};
+
 const parseSchemaCandidate = (schemaCandidate) => {
   if (!schemaCandidate) return null;
 
@@ -24,6 +40,16 @@ const parseSchemaCandidate = (schemaCandidate) => {
   }
 
   if (typeof schemaCandidate === "string") {
+    const jsonLdBlocks = extractJsonLdBlocks(schemaCandidate);
+    if (jsonLdBlocks.length) {
+      try {
+        const parsedBlocks = jsonLdBlocks.map((block) => JSON.parse(block));
+        return parsedBlocks.length === 1 ? parsedBlocks[0] : parsedBlocks;
+      } catch (error) {
+        return null;
+      }
+    }
+
     try {
       return JSON.parse(schemaCandidate);
     } catch (error) {
