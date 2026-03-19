@@ -300,7 +300,7 @@ import { RiCheckLine } from "react-icons/ri";
 
 const data = [
   ["Bureau Score", "650 to 900"],
-  ["Age", "21 years to 58 years"],
+  ["Age", "25 years to 58 years"],
   ["Tenure", "Upto 6 Months"],
   ["Income-NTH", "20,000/-"],
   ["Banking Norms", "3 Months"],
