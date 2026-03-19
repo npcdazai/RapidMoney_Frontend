@@ -162,12 +162,12 @@ const Header = ({ isDark = false, data }) => {
                       data?.cta?.downloadLabel
                     }
                   </span>
-                  <Image
+                  {/* <Image
                     src={isDark && showHeader && isAtTop ? darkIphone : lightIphone}
                j     width={24}
                     height={24}
                     alt="iphone"
-                  ></Image>
+                  ></Image> */}
                   <Image
                     src={playStore}
                     width={24}

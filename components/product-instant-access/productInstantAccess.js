@@ -26,12 +26,12 @@ export default function ProductInstantAccess({ data }) {
                 className={`apply-btn apply-btn-light flex item-center gap-3 mt-8`}
               >
                 <span>{ data?.downloadButtonLabel}</span>
-                <Image
+                {/* <Image
                   src={lightIphone}
                   width={24}
                   height={24}
                   alt="iphone"
-                ></Image>
+                ></Image> */}
                 <Image
                   src={playStore}
                   width={24}
