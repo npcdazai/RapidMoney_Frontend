@@ -257,7 +257,7 @@ const LendingPartners = ({ data }) => {
 
               <tbody>
                 <tr className="text-center border-t text-sm border-gray-200 hover:bg-gray-50 transition">
-                  <td className="px-6 py-4 text-gray-700">Portfolio 1</td>
+                  <td className="px-6 py-4 text-gray-700">As on 30th April 2026</td>
                   <td className="px-6 py-4 text-gray-700">
                     {/* value here */}
                     {/* Rs.1,91,14,886.00 */}
