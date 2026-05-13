@@ -142,7 +142,7 @@ const LendingPartners = ({ data }) => {
               >
                 {partner.title}
               </h1>
- 
+
               <div className="bg-[#afafb214] p-7 rounded-3xl">
                 {/* Logo */}
                 {partner.logo?.[0]?.url && (
@@ -212,10 +212,10 @@ const LendingPartners = ({ data }) => {
                                         info.key === "email"
                                           ? `mailto:${info.value}`
                                           : info.key === "phone"
-                                          ? `tel:${info.value}`
-                                          : info.value?.startsWith("http")
-                                          ? info.value
-                                          : `https://${info.value}`
+                                            ? `tel:${info.value}`
+                                            : info.value?.startsWith("http")
+                                              ? info.value
+                                              : `https://${info.value}`
                                       }
                                       className="font-16 underline text-[#00000099] break-all"
                                       target="_blank"
@@ -247,7 +247,7 @@ const LendingPartners = ({ data }) => {
               <thead className="bg-[#f8f8f8]">
                 <tr>
                   <th className="text-center px-6 py-4 text-md font-semibold text-gray-700 border-b border-gray-200">
-                    As on 30th April 2026
+                    Total no. of Portfolios
                   </th>
                   <th className="text-center px-6 py-4 text-md font-semibold text-gray-700 border-b border-gray-200">
                     Outstanding portfolio amount in which DLG has been offered
@@ -257,7 +257,13 @@ const LendingPartners = ({ data }) => {
 
               <tbody>
                 <tr className="text-center border-t text-sm border-gray-200 hover:bg-gray-50 transition">
-                  <td className="px-6 py-4 text-gray-700">Portfolio 1</td>
+                  <td className="px-6 py-4 text-gray-700">
+                    Portfolio 1
+                    <br />
+                    <span className="text-xs text-gray-500">
+                      (As on 30th April 2026)
+                    </span>
+                  </td>{" "}
                   <td className="px-6 py-4 text-gray-700">
                     {/* value here */}
                     {/* Rs.1,91,14,886.00 */}
