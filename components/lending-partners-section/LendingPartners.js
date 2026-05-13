@@ -247,7 +247,7 @@ const LendingPartners = ({ data }) => {
               <thead className="bg-[#f8f8f8]">
                 <tr>
                   <th className="text-center px-6 py-4 text-md font-semibold text-gray-700 border-b border-gray-200">
-                    Total no. of portfolios
+                    As on 30th April 2026
                   </th>
                   <th className="text-center px-6 py-4 text-md font-semibold text-gray-700 border-b border-gray-200">
                     Outstanding portfolio amount in which DLG has been offered
@@ -257,7 +257,7 @@ const LendingPartners = ({ data }) => {
 
               <tbody>
                 <tr className="text-center border-t text-sm border-gray-200 hover:bg-gray-50 transition">
-                  <td className="px-6 py-4 text-gray-700">As on 30th April 2026</td>
+                  <td className="px-6 py-4 text-gray-700">Portfolio 1</td>
                   <td className="px-6 py-4 text-gray-700">
                     {/* value here */}
                     {/* Rs.1,91,14,886.00 */}
