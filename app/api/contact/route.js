@@ -119,15 +119,17 @@ async function sendContactEmail(formData) {
         "Thank you for reaching out! Your message has been successfully sent.\nOur team will get back to you within 24–48 hours.",
     };
   } catch (error) {
-    console.error("Detailed SMTP Error:", {
+    const smtpDetails = {
       message: error.message,
       code: error.code,
       command: error.command,
       response: error.response,
       responseCode: error.responseCode,
-    });
+    };
+    console.log("[SMTP_DEBUG] SMTP send failed:", JSON.stringify(smtpDetails, null, 2));
+    console.error("[SMTP_DEBUG] SMTP send failed (stderr):", smtpDetails);
     throw new Error(
-      `Something went wrong! \nWe couldn't send your message right now. Please try again in a few minutes`
+      `[SMTP_DEBUG] code=${error.code || "?"} responseCode=${error.responseCode || "?"} command=${error.command || "?"} response=${error.response || error.message || "?"}`
     );
   }
 }
