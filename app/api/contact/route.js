@@ -9,13 +9,13 @@ const corsHeaders = {
   "Access-Control-Allow-Headers": "Content-Type, Authorization",
 };
 
-const SMTP_ENDPOINT = process.env.NEXT_PUBLIC_SMTP_ENDPOINT;
-const SMTP_USERNAME = process.env.NEXT_PUBLIC_SMTP_USERNAME;
-const SMTP_PASSWORD = process.env.NEXT_PUBLIC_SMTP_PASSWORD;
+const SMTP_ENDPOINT = process.env.SMTP_ENDPOINT;
+const SMTP_USERNAME = process.env.SMTP_USERNAME;
+const SMTP_PASSWORD = process.env.SMTP_PASSWORD;
 const CONTACT_EMAIL_RECIPIENT =
-  process.env.NEXT_PUBLIC_CONTACT_EMAIL_RECIPIENT || "support@rapidmoney.in";
+  process.env.CONTACT_EMAIL_RECIPIENT || "support@rapidmoney.in";
 const CONTACT_EMAIL_FROM =
-  process.env.NEXT_PUBLIC_CONTACT_EMAIL_FROM || "support@rapidmoney.in";
+  process.env.CONTACT_EMAIL_FROM || "support@rapidmoney.in";
 
 async function sendContactEmail(formData) {
   const { fullName, email, mobileNumber, message } = formData;
