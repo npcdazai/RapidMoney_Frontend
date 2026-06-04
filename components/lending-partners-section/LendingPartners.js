@@ -261,13 +261,13 @@ const LendingPartners = ({ data }) => {
                     Portfolio 1
                     <br />
                     <span className="text-xs text-gray-500">
-                      (As on 30th April 2026)
+                      (As on 31st May 2026)
                     </span>
                   </td>{" "}
                   <td className="px-6 py-4 text-gray-700">
                     {/* value here */}
                     {/* Rs.1,91,14,886.00 */}
-                    Rs.46,674,260
+                    Rs.64,710,874
                   </td>
                 </tr>
               </tbody>
