@@ -81,26 +81,6 @@ async function sendContactEmail(formData) {
         `,
   };
 
-  // Thank you email to user
-  const thankYouMailOptions = {
-    from: CONTACT_EMAIL_FROM,
-    to: email,
-    subject: "Thank You for Contacting Rapid Money",
-    html: `
-            <div style="font-family: Arial, sans-serif; line-height: 1.6; max-width: 600px; margin: 0 auto;">
-                <h2 style="color: #333;">Thank You for Reaching Out!</h2>
-                <p>Dear ${fullName},</p>
-                <p>We have received your message and appreciate you taking the time to contact us.</p>
-                <p>Our support team will review your inquiry and get back to you within 24–48 hours.</p>
-                <hr style="border: none; border-top: 1px solid #eee; margin: 20px 0;" />
-                <h3 style="color: #555;">Your Message:</h3>
-                <p style="background: #f9f9f9; padding: 15px; border-left: 3px solid #007bff;">${message || "No message provided."}</p>
-                <hr style="border: none; border-top: 1px solid #eee; margin: 20px 0;" />
-                <p style="color: #666; font-size: 0.9em;">Best regards,<br/><strong>Rapid Money Support Team</strong></p>
-            </div>
-        `,
-  };
-
   try {
     // Verify connection
     await transporter.verify();
@@ -109,10 +89,6 @@ async function sendContactEmail(formData) {
     // Send notification email to support (self-to-self)
     const infoSupport = await transporter.sendMail(mailOptions);
     console.log("Support notification sent successfully:", infoSupport.messageId);
-
-    // Send thank you email to user
-    const infoUser = await transporter.sendMail(thankYouMailOptions);
-    console.log("Thank you email sent to user:", infoUser.messageId);
 
     return {
       message:

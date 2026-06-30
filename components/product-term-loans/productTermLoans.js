@@ -299,15 +299,15 @@ import { RiShieldCheckLine } from "react-icons/ri";
 import { RiCheckLine } from "react-icons/ri";
 
 const data = [
-  ["Bureau Score", "650 to 900"],
+  // ["Bureau Score", "650 to 900"],
   ["Age", "25 years to 58 years"],
-  ["Tenure", "Upto 6 Months"],
-  ["Income-NTH", "20,000/-"],
-  ["Banking Norms", "3 Months"],
+  ["Tenure", "Up to 40 Days"],
+  ["Income", "20,000/-"],
+  // ["Banking Norms", "3 Months"],
   ["ABB to EMI Ratio", "1"],
-  ["Loan Amount", "Rs 5000 to Rs 50000"],
+  ["Loan Amount", "Rs 5000 to Rs 15000"],
   ["ROI (Per Day)", "0.1% to 0.15%"],
-  ["Processing Fees", "5 to 15% Excluding GST"],
+  ["Processing Fees", "15.0% plus applicable taxes"],
 ];
 
 export default function ProductTermLoans() {
