@@ -345,7 +345,7 @@ export default function ProductTermLoans() {
               <div>
                 <div className="font-18 font-bold">Proof of Address</div>
                 <span className="font-14 font-normal text-[#000000CC]">
-                  Aadhar, Utility Bill, Bank/ Home Loan Statement, Rent
+                  Aadhar Card
                   Agreement
                 </span>
               </div>
@@ -381,14 +381,14 @@ export default function ProductTermLoans() {
               <span className="bg-[#4D43FE1C] text-[#6379F9] inline-flex justify-center items-center w-7 h-7 rounded-full">
                 <RiCheckLine size={18} />
               </span>{" "}
-              21 years of age and above
+              22 years of age and above
             </div>
-            <div className="flex gap-3 items-center">
+            {/* <div className="flex gap-3 items-center">
               <span className="bg-[#4D43FE1C] text-[#6379F9] inline-flex justify-center items-center w-7 h-7 rounded-full">
                 <RiCheckLine size={18} />
               </span>{" "}
               Minimum salary: ₹20,000/month
-            </div>
+            </div> */}
             <div className="flex gap-3 items-center">
               <span className="bg-[#4D43FE1C] text-[#6379F9] inline-flex justify-center items-center w-7 h-7 rounded-full">
                 <RiCheckLine size={18} />

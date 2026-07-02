@@ -213,9 +213,8 @@ export default async function page() {
         <GlobalHeroSection data={response?.data?.pageData?.heroSection} />
         <Breadcrumb />
         <ProductRepayment data={response?.data?.pageData?.repaymentData} />
-        <ProductTermLoans
-          data={response?.data?.pageData?.productTermLoanSection}
-        />
+        {/* Content is hardcoded in the component (not CMS-driven). Edit values in components/product-term-loans/productTermLoans.js */}
+        <ProductTermLoans />
         <ProductInstantAccess data={response?.data?.pageData?.instantAccess} />
         <ProductFAQ respone={response} />
         <PromoSection />
