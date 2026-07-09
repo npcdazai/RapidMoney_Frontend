@@ -134,7 +134,12 @@ const LendingPartners = ({ data }) => {
     <>
       <section className={`${styles.section} pt-28`}>
         <div className="container mx-auto">
-          {data?.map((partner, i) => (
+          {data?.map((partner, i) => {
+            const isRuloans = JSON.stringify(partner)
+              .toLowerCase()
+              .match(/ruloans|rfspl/);
+
+            return (
             <div key={i} className="mb-14">
               <h1
                 className="text-4xl font-bold text-center pb-12"
@@ -233,48 +238,58 @@ const LendingPartners = ({ data }) => {
                   })}
                 </div>
               </div>
+
+              {/* DLG Disclosure Section — shown below Ruloans */}
+              {isRuloans && (
+                <div className="mt-6 bg-[#afafb214] p-7 rounded-3xl">
+                  <div className="flex items-center gap-3 mb-6">
+                    <span className="inline-block w-1.5 h-7 rounded-full bg-lime-500" />
+                    <h3 className="text-2xl font-bold text-gray-900">
+                      DLG Disclosure
+                    </h3>
+                  </div>
+
+                  <div className="overflow-x-auto bg-white rounded-2xl shadow-sm">
+                    <table className="w-full border-collapse">
+                      <thead>
+                        <tr className="bg-[#f8f8f8]">
+                          <th className="text-center px-6 py-5 text-base font-semibold text-gray-800 border-b border-gray-200">
+                            Total no. of Portfolios
+                          </th>
+                          <th className="text-center px-6 py-5 text-base font-semibold text-gray-800 border-b border-l border-gray-200">
+                            Outstanding portfolio amount in which DLG has been
+                            offered
+                          </th>
+                        </tr>
+                      </thead>
+
+                      <tbody>
+                        <tr className="text-center hover:bg-gray-50 transition-colors">
+                          <td className="px-6 py-6 text-gray-700">
+                            <span className="font-medium text-gray-900">
+                              Portfolio 1
+                            </span>
+                            <br />
+                            <span className="text-xs text-gray-500">
+                              (As on 31st May 2026)
+                            </span>
+                          </td>
+                          <td className="px-6 py-6 border-l border-gray-200">
+                            <span className="text-lg font-semibold text-gray-900">
+                              Rs.64,710,874
+                            </span>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              )}
             </div>
-          ))}
+            );
+          })}
         </div>
       </section>
-      {/* DLG Disclosure Section */}
-      <div className="mt-2">
-        <div className="w-full max-w-6xl mx-auto bg-white rounded-3xl pb-10">
-          <h3 className="text-2xl font-bold mb-4">DLG Disclosure</h3>
-
-          <div className="overflow-x-auto">
-            <table className="w-full border border-gray-200 rounded-xl overflow-hidden">
-              <thead className="bg-[#f8f8f8]">
-                <tr>
-                  <th className="text-center px-6 py-4 text-md font-semibold text-gray-700 border-b border-gray-200">
-                    Total no. of Portfolios
-                  </th>
-                  <th className="text-center px-6 py-4 text-md font-semibold text-gray-700 border-b border-gray-200">
-                    Outstanding portfolio amount in which DLG has been offered
-                  </th>
-                </tr>
-              </thead>
-
-              <tbody>
-                <tr className="text-center border-t text-sm border-gray-200 hover:bg-gray-50 transition">
-                  <td className="px-6 py-4 text-gray-700">
-                    Portfolio 1
-                    <br />
-                    <span className="text-xs text-gray-500">
-                      (As on 31st May 2026)
-                    </span>
-                  </td>{" "}
-                  <td className="px-6 py-4 text-gray-700">
-                    {/* value here */}
-                    {/* Rs.1,91,14,886.00 */}
-                    Rs.64,710,874
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
-      </div>
     </>
   );
 };
