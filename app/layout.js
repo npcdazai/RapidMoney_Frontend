@@ -15,6 +15,7 @@ import Footer from "@/components/footer/footer";
 import AppLayout from "@/components/layout/AppLayout";
 import Script from "next/script";
 import ScrollToTop from "@/components/ScrollToTop";
+import StickyApplyStrip from "@/components/StickyApplyStrip";
 
 const notoSans = Noto_Sans({
   subsets: ["latin"],
@@ -69,6 +70,7 @@ gtag('config', 'G-GTC8M3645P');`}
               {/* <main className="min-h-[200px] py-8"> */}
               {children}
               <ScrollToTop />
+              <StickyApplyStrip />
               {/* </main> */}
               <Footer />
               {/* <AppLayout>
