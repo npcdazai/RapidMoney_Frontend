@@ -3,7 +3,6 @@ import styles from "./refund-policy.module.scss"
 
 export default function RefundPolicy({ data }) {
     if (!data) return null;
-    console.log(data)
     return (
         <section className={`container mx-auto  pb-120 ${styles.section}`}>
             <h1 className={`py-15 sm:py-20 font-40 font-weight-bold text-center`}>

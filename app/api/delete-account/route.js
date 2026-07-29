@@ -56,13 +56,6 @@ async function sendContactEmail(formData) {
     },
   });
 
-  console.log("Attempting to send email with config:", {
-    host: SMTP_ENDPOINT,
-    port: 587,
-    from: CONTACT_EMAIL_FROM,
-    to: CONTACT_EMAIL_RECIPIENT,
-  });
-
   const mailOptions = {
     from: CONTACT_EMAIL_FROM,
     to: CONTACT_EMAIL_RECIPIENT,
@@ -84,11 +77,9 @@ async function sendContactEmail(formData) {
   try {
     // Verify connection
     await transporter.verify();
-    console.log("SMTP connection verified successfully");
 
     // Send email
-    const info = await transporter.sendMail(mailOptions);
-    console.log("Message sent successfully:", info.messageId);
+    await transporter.sendMail(mailOptions);
     return {
       message:
         "Thank you for reaching out! Your message has been successfully sent.\nOur team will get back to you within 24–48 hours.",
@@ -109,17 +100,7 @@ async function sendContactEmail(formData) {
 
 export async function POST(request) {
   try {
-    // Log environment variables status (without exposing values)
-    console.log("SMTP Configuration Check:", {
-      hasEndpoint: !!SMTP_ENDPOINT,
-      hasUsername: !!SMTP_USERNAME,
-      hasPassword: !!SMTP_PASSWORD,
-      recipient: CONTACT_EMAIL_RECIPIENT,
-      from: CONTACT_EMAIL_FROM,
-    });
-
     const formData = await request.json();
-    console.log("Received form data:", formData);
 
     if (!formData.fullName || !formData.email || !formData.mobileNumber) {
       return NextResponse.json(

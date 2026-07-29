@@ -12,7 +12,6 @@ const DeleteMyAccountForm = ({ data }) => {
   const [messageApi, contextHolder] = message.useMessage();
 
   const onFinish = async (values) => {
-    console.log("Form submitted:", values);
     setLoading(true);
 
     // Show loading message
@@ -60,7 +59,6 @@ const DeleteMyAccountForm = ({ data }) => {
     }
   };
 
-  console.log(data);
 
   return (
     <>

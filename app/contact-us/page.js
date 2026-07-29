@@ -30,7 +30,7 @@ const getCMSPageBySlug = async () => {
     }
     return data;
   } catch (error) {
-    console.log("API call failed: ", error);
+    console.error("API call failed: ", error);
     notFound();
     // return null;
   }
@@ -89,7 +89,6 @@ export default async function page() {
   const response = await getCMSPageBySlug();
   const pageData = response?.data?.pageData || {};
   const uploadedSchemas = getStructuredDataScripts(pageData?.schemaData);
-  console.log(response);
   return (
     <>
       {uploadedSchemas.length ? (

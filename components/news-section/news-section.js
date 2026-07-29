@@ -23,8 +23,6 @@ const NewsSection = ({ data }) => {
   const cardsRef = useRef([]);
   cardsRef.current = [];
 
-  console.log("NewsSection data:", data);
-  console.log("relatedBlogsData:", data?.relatedBlogsData);
 
   useEffect(() => {
     // Animate title

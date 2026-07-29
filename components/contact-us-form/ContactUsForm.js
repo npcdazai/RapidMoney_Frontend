@@ -13,7 +13,6 @@ const ContactUs = ({ data }) => {
   const [alertInfo, setAlertInfo] = useState(null);
 
   const onFinish = async (values) => {
-    console.log("Form submitted:", values);
     setLoading(true);
     setAlertInfo({ type: "info", message: "Sending your message..." });
 
@@ -60,7 +59,6 @@ const ContactUs = ({ data }) => {
     }
   };
 
-  console.log(data);
 
   return (
     <>

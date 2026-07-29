@@ -8,7 +8,6 @@ import Link from "next/link";
 import styles from "./product-instant.module.scss";
 
 export default function ProductInstantAccess({ data }) {
-  console.log(data);
 
   return (
     <section className="bg-[#0573DB] lg:mt-48">

@@ -56,13 +56,6 @@ async function sendContactEmail(formData) {
     },
   });
 
-  console.log("Attempting to send email with config:", {
-    host: SMTP_ENDPOINT,
-    port: 587,
-    from: CONTACT_EMAIL_FROM,
-    to: CONTACT_EMAIL_RECIPIENT,
-  });
-
   const mailOptions = {
     from: CONTACT_EMAIL_FROM,
     to: CONTACT_EMAIL_RECIPIENT,
@@ -84,11 +77,9 @@ async function sendContactEmail(formData) {
   try {
     // Verify connection
     await transporter.verify();
-    console.log("SMTP connection verified successfully");
 
     // Send notification email to support (self-to-self)
-    const infoSupport = await transporter.sendMail(mailOptions);
-    console.log("Support notification sent successfully:", infoSupport.messageId);
+    await transporter.sendMail(mailOptions);
 
     return {
       message:
@@ -102,8 +93,7 @@ async function sendContactEmail(formData) {
       response: error.response,
       responseCode: error.responseCode,
     };
-    console.log("[SMTP_DEBUG] SMTP send failed:", JSON.stringify(smtpDetails, null, 2));
-    console.error("[SMTP_DEBUG] SMTP send failed (stderr):", smtpDetails);
+    console.error("[SMTP_DEBUG] SMTP send failed:", smtpDetails);
     throw new Error(
       `[SMTP_DEBUG] code=${error.code || "?"} responseCode=${error.responseCode || "?"} command=${error.command || "?"} response=${error.response || error.message || "?"}`
     );
@@ -112,17 +102,7 @@ async function sendContactEmail(formData) {
 
 export async function POST(request) {
   try {
-    // Log environment variables status (without exposing values)
-    console.log("SMTP Configuration Check:", {
-      hasEndpoint: !!SMTP_ENDPOINT,
-      hasUsername: !!SMTP_USERNAME,
-      hasPassword: !!SMTP_PASSWORD,
-      recipient: CONTACT_EMAIL_RECIPIENT,
-      from: CONTACT_EMAIL_FROM,
-    });
-
     const formData = await request.json();
-    console.log("Received form data:", formData);
 
     if (!formData.fullName || !formData.email || !formData.mobileNumber) {
       return NextResponse.json(

@@ -4,7 +4,6 @@ import { FaCheck } from "react-icons/fa6";
 import styles from "./term-condition.module.scss";
 
 function TermCondition({ data }) {
-  console.log(data?.sections)
   return (
     <section className={`container mx-auto pb-120 ${styles.section}`}>
       {/* <div className="mb-7"> */}

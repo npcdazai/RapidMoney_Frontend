@@ -34,7 +34,6 @@ const JobOpening = ({ data }) => {
   // Pagination logic
   const paginatedJobs = jobs.slice((currentPage - 1) * pageSize, currentPage * pageSize);
 
-  console.log(data);
 
   return (
     <section className={`${styles.section} pb-120 pt-60`}>

@@ -73,7 +73,7 @@ export default function OtpForm({ setStep }) {
 
                     <Form.Item >
                         <div className={styles.consentCheckbox}>
-                            <Checkbox onChange={() => console.log("first")}>I hereby consent to receive loan related communication from MoneyTime Technology Solutions Pvt. Ltd. or its authorized representatives via Call, SMS, Email, RCS & Voice over Internet Protocol (VolP) including WhatsApp.</Checkbox>
+                            <Checkbox>I hereby consent to receive loan related communication from MoneyTime Technology Solutions Pvt. Ltd. or its authorized representatives via Call, SMS, Email, RCS & Voice over Internet Protocol (VolP) including WhatsApp.</Checkbox>
                         </div>
                     </Form.Item>
                 </div>

@@ -180,7 +180,6 @@ import rapidMoneyLogo from "./assets/rapid_money.png";
 gsap.registerPlugin(ScrollTrigger);
 
 const FaqSection = ({data}) => {
-  console.log(data, "where is data")
   const titleRef = useRef(null);
   const panelRefs = useRef([]);
   panelRefs.current = [];

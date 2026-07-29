@@ -32,7 +32,7 @@ const getCMSPageBySlug = async () => {
     }
     return data;
   } catch (error) {
-    console.log("API call failed: ", error);
+    console.error("API call failed: ", error);
     notFound();
     // return null;
   }
@@ -54,7 +54,6 @@ export async function generateMetadata() {
       : defaultSEO.privacy_policy.description;
 
 
-  console.log(title, "JJ")
 
   const featureImage =
     data?.feature_image?.[0]?.url || defaultSEO.privacy_policy.featureImage;
@@ -98,7 +97,6 @@ export default async function Home() {
   const response = await getCMSPageBySlug();
   const pageData = response?.data?.pageData || {};
   const uploadedSchemas = getStructuredDataScripts(pageData?.schemaData);
-  console.log(response?.data?.pageData)
 
 
   return (

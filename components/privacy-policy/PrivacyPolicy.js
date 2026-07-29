@@ -56,7 +56,6 @@ import styles from './privacy-policy.module.scss';
 const PrivacyPolicy = ({ data }) => {
   if (!data) return null;
 
-  console.log(data)
 
   return (
     <section className={`container mx-auto pb-120 ${styles.section}`}>

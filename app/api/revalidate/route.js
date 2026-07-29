@@ -5,8 +5,6 @@ export async function POST(request) {
   
     const { secret, path, type } = body;
 
-    console.log("Revalidate API called:", { secret, path, type });
-
     if (secret !== process.env.NEXT_PUBLIC_REVALIDATE_SECRET) {
       return new Response(JSON.stringify({ message: "Invalid token" }), {
         status: 401,

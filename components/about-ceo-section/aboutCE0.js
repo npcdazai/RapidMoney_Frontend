@@ -13,7 +13,6 @@ export default function AboutCEO({ data }) {
   const imageRef = useScrollFadeInOnce(100);
 
   if (!data) return null;
-  console.log(data)
 
   return (
     <section className="bg-black lg:mt-52">

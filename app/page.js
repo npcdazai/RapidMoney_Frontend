@@ -44,13 +44,12 @@ const getCMSPageBySlug = async () => {
     );
 
     const data = await response.json();
-    console.log(data?.data?.pageData?.faqSection, "data")
     if (!data?.data?.pageData) {
       notFound();
     }
     return data;
   } catch (error) {
-    console.log("API call failed: ", error);
+    console.error("API call failed: ", error);
     notFound();
     // return null;
   }
@@ -66,10 +65,9 @@ const getDynamicBlogs = async () => {
     );
 
     const data = await response.json();
-    console.log("Blogs API Response:", data);
     return data;
   } catch (error) {
-    console.log("Blog API call failed: ", error);
+    console.error("Blog API call failed: ", error);
     return { data: [] };
   }
 };
@@ -134,8 +132,6 @@ export default async function Home() {
   const blogsResponse = await getDynamicBlogs();
   const pageData = response?.data?.pageData || {};
   const uploadedSchemas = getStructuredDataScripts(pageData?.schemaData);
-
-  console.log(response, "HOME FAQ");
 
   return (
     // <>

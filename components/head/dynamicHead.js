@@ -18,7 +18,7 @@ const getCMSPageBySlug = async () => {
 
     return await response.json();
   } catch (error) {
-    console.log("API call failed: ", error);
+    console.error("API call failed: ", error);
     return null;
   }
 };
