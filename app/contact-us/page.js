@@ -36,6 +36,8 @@ const getCMSPageBySlug = async () => {
   }
 };
 
+
+
 export async function generateMetadata() {
   const res = await getCMSPageBySlug();
   const data = res?.data?.pageData?.seoSetting;
