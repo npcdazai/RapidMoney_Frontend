@@ -44,10 +44,10 @@
     "wow.js": "^1.2.2"
   },
   "devDependencies": {
-    "@eslint/eslintrc": "^0.1.0",
+    "@eslint/eslintrc": "^3.3.6",
     "@tailwindcss/postcss": "^4.1.11",
-    "eslint": "^10.8.0",
-    "eslint-config-next": "^0.2.4"
+    "eslint": "^9.39.5",
+    "eslint-config-next": "^15.5.22"
   },
   "overrides": {
     "postcss": "^8.5.24",

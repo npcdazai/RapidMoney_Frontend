@@ -13,6 +13,16 @@ const nextConfig = {
         hostname: "web-backend.rapidmoney.in",
         pathname: "/uploads/**",
       },
+      {
+        protocol: "https",
+        hostname: "rapidmoney.in",
+        pathname: "/uploads/**",
+      },
+      {
+        protocol: "https",
+        hostname: "www.rapidmoney.in",
+        pathname: "/uploads/**",
+      },
     ],
   },
   async redirects() {

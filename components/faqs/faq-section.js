@@ -275,14 +275,12 @@ const FaqSection = ({data}) => {
                       key: (i + 1).toString(),
                       label: (
                         <div className="flex justify-between items-center w-full">
-                          <span className="font-18 font-weight-medium">
-                            {q.question}
-                          </span>
+                          <span>{q.question}</span>
                         </div>
                       ),
                       children: (
                         <div
-                          className={`${styles.faqAnswerContent} font-14 text-[rgba(33,33,33,0.8)]`}
+                          className={styles.faqAnswerContent}
                           dangerouslySetInnerHTML={{ __html: q.answer }}
                         />
                       ),

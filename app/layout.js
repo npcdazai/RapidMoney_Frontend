@@ -21,6 +21,11 @@ const notoSans = Noto_Sans({
   subsets: ["latin"],
 });
 
+// The root layout renders <Footer />, and every page renders <DynamicHead />,
+// both of which fetch CMS content with `cache: "no-store"`. Nothing under this
+// layout can be prerendered, so opt every route out of static generation.
+export const dynamic = "force-dynamic";
+
 export const metadata = {
   title: "Rapid-Money",
   description:
