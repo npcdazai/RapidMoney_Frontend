@@ -271,12 +271,12 @@ const LendingPartners = ({ data }) => {
                             </span>
                             <br />
                             <span className="text-xs text-gray-500">
-                              (as on 30th June 2026)
+                              (as on 31st July 2026)
                             </span>
                           </td>
                           <td className="px-6 py-6 border-l border-gray-200">
                             <span className="text-lg font-semibold text-gray-900">
-                              ₹9,15,20,406 
+                              ₹10,81,77,677
                             </span>
                           </td>
                         </tr>
@@ -285,6 +285,8 @@ const LendingPartners = ({ data }) => {
                   </div>
                 </div>
               )}
+
+              
             </div>
             );
           })}
