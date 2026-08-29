@@ -124,6 +124,30 @@ const iconMap = {
   address: RiMapPinLine,
 };
 
+// DLG disclosure figures per lending partner — update the amount/asOn each period.
+const dlgDisclosures = [
+  {
+    match: /ruloans|rfspl/,
+    rows: [
+      {
+        portfolio: "Portfolio 1",
+        asOn: "as on 31st July 2026",
+        amount: "₹10,81,77,677",
+      },
+    ],
+  },
+  {
+    match: /fintree/,
+    rows: [
+      {
+        portfolio: "Portfolio 1",
+        asOn: "as on 31st July 2026",
+        amount: "₹1,98,90,000",
+      },
+    ],
+  },
+];
+
 const LendingPartners = ({ data }) => {
   const titleRef = useScrollFadeIn();
   const logoRef = useScrollFadeIn();
@@ -135,9 +159,10 @@ const LendingPartners = ({ data }) => {
       <section className={`${styles.section} pt-28`}>
         <div className="container mx-auto">
           {data?.map((partner, i) => {
-            const isRuloans = JSON.stringify(partner)
-              .toLowerCase()
-              .match(/ruloans|rfspl/);
+            const partnerText = JSON.stringify(partner).toLowerCase();
+            const dlg = dlgDisclosures.find(({ match }) =>
+              partnerText.match(match)
+            );
 
             return (
             <div key={i} className="mb-14">
@@ -239,8 +264,8 @@ const LendingPartners = ({ data }) => {
                 </div>
               </div>
 
-              {/* DLG Disclosure Section — shown below Ruloans */}
-              {isRuloans && (
+              {/* DLG Disclosure Section — shown below partners with DLG figures */}
+              {dlg && (
                 <div className="mt-6 bg-[#afafb214] p-7 rounded-3xl">
                   <div className="flex items-center gap-3 mb-6">
                     <span className="inline-block w-1.5 h-7 rounded-full bg-lime-500" />
@@ -264,22 +289,27 @@ const LendingPartners = ({ data }) => {
                       </thead>
 
                       <tbody>
-                        <tr className="text-center hover:bg-gray-50 transition-colors">
-                          <td className="px-6 py-6 text-gray-700">
-                            <span className="font-medium text-gray-900">
-                              Portfolio 1
-                            </span>
-                            <br />
-                            <span className="text-xs text-gray-500">
-                              (as on 31st July 2026)
-                            </span>
-                          </td>
-                          <td className="px-6 py-6 border-l border-gray-200">
-                            <span className="text-lg font-semibold text-gray-900">
-                              ₹10,81,77,677
-                            </span>
-                          </td>
-                        </tr>
+                        {dlg.rows.map((row, rowIndex) => (
+                          <tr
+                            key={rowIndex}
+                            className="text-center hover:bg-gray-50 transition-colors"
+                          >
+                            <td className="px-6 py-6 text-gray-700">
+                              <span className="font-medium text-gray-900">
+                                {row.portfolio}
+                              </span>
+                              <br />
+                              <span className="text-xs text-gray-500">
+                                ({row.asOn})
+                              </span>
+                            </td>
+                            <td className="px-6 py-6 border-l border-gray-200">
+                              <span className="text-lg font-semibold text-gray-900">
+                                {row.amount}
+                              </span>
+                            </td>
+                          </tr>
+                        ))}
                       </tbody>
                     </table>
                   </div>
