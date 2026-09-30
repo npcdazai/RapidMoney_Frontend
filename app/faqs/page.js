@@ -3,6 +3,7 @@ import FaqSection from "@/components/faqs/faq-section";
 import endpoints from "@/constants/endpoints";
 import Loading from "../loading";
 import DynamicHead from "@/components/head/dynamicHead";
+import defaultSEO from "@/constants/defaultSEO";
 import { notFound } from "next/navigation";
 import Breadcrumb from "@/components/BreadCrumb";
 import Script from "next/script";
@@ -12,28 +13,98 @@ import {
   schemaToJsonLd,
 } from "@/utils/structuredData";
 
-const getCMSPageBySlug = async () => {
+async function getFaqPagePayload() {
   try {
-    const response = await fetch(
+    const cmsResponse = await fetch(
       process.env.NEXT_PUBLIC_API_URL + endpoints.get_cms_page + "/faq",
       { cache: "no-store" }
     );
+    const cmsData = await cmsResponse.json();
+    if (cmsData?.data?.pageData) {
+      return cmsData.data;
+    }
+  } catch (e) {}
 
-    const data = await response.json();
-    if (!data?.data?.pageData) notFound();
+  try {
+    const cmsResponse = await fetch(
+      process.env.NEXT_PUBLIC_API_URL + endpoints.get_cms_page + "/faqs",
+      { cache: "no-store" }
+    );
+    const cmsData = await cmsResponse.json();
+    if (cmsData?.data?.pageData) {
+      return cmsData.data;
+    }
+  } catch (e) {}
 
-    return data;
-  } catch (error) {
-    console.error("API call failed: ", error);
-    notFound();
-  }
-};
+  return null;
+}
+
+async function getFaqSEO() {
+  const pagePayload = await getFaqPagePayload();
+  return pagePayload?.pageData?.seoSetting || {};
+}
+
+export async function generateMetadata() {
+  const data = await getFaqSEO();
+  const canonicalURL = "https://www.rapidmoney.in/faqs";
+
+  const title = data?.meta_title ? data.meta_title : defaultSEO.faq.title;
+
+  const description = data?.meta_description
+    ? data.meta_description
+    : defaultSEO.faq.description;
+
+  const featureImage =
+    data?.feature_image?.[0]?.url || defaultSEO.faq.featureImage;
+
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://www.rapidmoney.in";
+
+  return {
+    metadataBase: new URL(siteUrl),
+    title,
+    description,
+    robots: "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
+    alternates: {
+      canonical: canonicalURL,
+    },
+    other: {
+      keywords:
+        data?.meta_keywords ||
+        "Rapid Money FAQs, Personal Loan Questions, Loan Eligibility FAQ, RapidMoney Help Center",
+    },
+    openGraph: {
+      title,
+      description,
+      url: canonicalURL,
+      siteName: defaultSEO.defaultSiteName,
+      locale: defaultSEO.defaultLocale,
+      type: defaultSEO.defaultType,
+      images: [
+        {
+          url: featureImage,
+          alt: title,
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description,
+      images: [featureImage],
+    },
+  };
+}
 
 export default async function Page() {
-  const response = await getCMSPageBySlug();
-  const pageData = response?.data?.pageData || {};
+  const pagePayload = await getFaqPagePayload();
+  if (!pagePayload?.pageData) {
+    notFound();
+  }
 
-  const uploadedSchemas = getStructuredDataScripts(pageData?.schemaData);
+  const pageData = pagePayload.pageData || {};
+  const schemaCandidate =
+    pageData?.schemaData || pageData?.seoSetting?.schemaData;
+  const uploadedSchemas = getStructuredDataScripts(schemaCandidate);
   const fallbackFaqSchema = buildFaqSchemaFromStepSections(pageData?.faqSection);
   const schemasToRender = uploadedSchemas.length
     ? uploadedSchemas
@@ -56,7 +127,7 @@ export default async function Page() {
       <Suspense fallback={<Loading />}>
         <DynamicHead />
         <Breadcrumb />
-        <FaqSection data={response?.data?.pageData?.faqSection} />
+        <FaqSection data={pageData?.faqSection} />
       </Suspense>
     </>
   );
