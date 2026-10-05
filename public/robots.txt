@@ -10,7 +10,6 @@ Allow: /
 Disallow: /user-deletion
 Disallow: /jackpots/
 Disallow: /index.php
-Disallow: /_next/
 
 User-agent: GPTBot
 Allow: /
