@@ -8,10 +8,10 @@ import { RiArrowLeftLine, RiArrowRightLine } from "react-icons/ri";
 import dayjs from "dayjs";
 import BlogCategory from "@/components/blog-details-section/BlogCategoy";
 import BlogShare from "@/components/blog-details-section/BlogShare";
-import DOMPurify from "dompurify";
+import DOMPurify from "isomorphic-dompurify";
 
 const decodeHTMLEntities = (text) => {
-  if (typeof window === "undefined") return text; 
+  if (typeof window === "undefined") return text;
 
   const textArea = document.createElement("textarea");
   textArea.innerHTML = text;
@@ -19,7 +19,7 @@ const decodeHTMLEntities = (text) => {
 };
 
 const BlogDetails = ({ data }) => {
-   const decodedHTML = decodeHTMLEntities(data?.description);
+  const decodedHTML = decodeHTMLEntities(data?.description);
   const sanitizedHTML = DOMPurify.sanitize(decodedHTML, {
     ADD_TAGS: ["iframe"],
     ADD_ATTR: [
@@ -43,7 +43,7 @@ const BlogDetails = ({ data }) => {
       const videoId = videoIdMatch ? videoIdMatch[1] : null;
 
       if (!videoId) {
-        return match; 
+        return match;
       }
 
       const srcdocContent = `
@@ -100,7 +100,7 @@ const BlogDetails = ({ data }) => {
 
             <div className="pb-11">
               <div
-              className={styles.blogContent}
+                className={styles.blogContent}
                 dangerouslySetInnerHTML={{
                   __html: htmlWithLazyIframes || data?.description || "",
                 }}

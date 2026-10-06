@@ -28,15 +28,25 @@ const nextConfig = {
   async redirects() {
     return [
       {
-        source: '/products', 
+        source: '/products',
         destination: '/instant-personal-loan',
         permanent: true,
       },
-       {
-        source: '/product', 
+      {
+        source: '/product',
         destination: '/instant-personal-loan',
         permanent: true,
       },
+      {
+        source: '/index.php',
+        destination: '/',
+        permanent: true,
+      },
+      {
+        source: '/how-to-get-a-personal-loan-for-self-employed-without-income-proof',
+        destination: '/blogs/how-to-get-a-personal-loan-for-self-employed-without-income-proof',
+        permanent: true,
+      }
     ];
   },
 };

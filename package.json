@@ -27,6 +27,7 @@
     "dompurify": "^3.4.12",
     "framer-motion": "^12.23.26",
     "gsap": "^3.13.0",
+    "isomorphic-dompurify": "^4.4.0",
     "js-cookie": "^3.0.8",
     "lottie-react": "^2.4.1",
     "lucide-react": "^0.555.0",

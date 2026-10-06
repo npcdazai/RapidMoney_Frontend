@@ -66,6 +66,7 @@ export async function generateMetadata() {
     openGraph: {
       title,
       description,
+      url: canonicalURL,
       siteName: defaultSEO.defaultSiteName,
       locale: defaultSEO.defaultLocale,
       type: defaultSEO.defaultType,
