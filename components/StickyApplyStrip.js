@@ -16,11 +16,10 @@ export default function StickyApplyStrip() {
 
   return (
     <div
-      className={`fixed inset-x-0 bottom-0 z-50 px-3 pb-3 sm:px-5 sm:pb-5 transition-all duration-500 ease-out ${
-        showStrip
+      className={`fixed inset-x-0 bottom-0 z-50 px-3 pb-3 sm:px-5 sm:pb-5 transition-all duration-500 ease-out ${showStrip
           ? "translate-y-0 opacity-100"
           : "translate-y-8 opacity-0 pointer-events-none"
-      }`}
+        }`}
     >
       <div className="container mx-auto">
         <div className="relative overflow-hidden rounded-2xl border border-white/10 bg-gradient-to-r from-[#111827] via-[#1a1a1a] to-[#111827] px-5 py-4 shadow-[0_10px_40px_rgba(0,0,0,0.35)] backdrop-blur">
@@ -39,7 +38,7 @@ export default function StickyApplyStrip() {
                 </p>
                 <p className="m-0 text-base font-bold text-white sm:text-lg">
                   Get a Personal Loan up to{" "}
-                  <span className="text-[#8ee01b]">₹15,000</span>
+                  <span className="text-[#8ee01b]">₹20,000</span>
                 </p>
               </div>
             </div>
