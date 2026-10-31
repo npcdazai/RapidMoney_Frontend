@@ -16,6 +16,35 @@ import { notFound } from "next/navigation";
 import Breadcrumb from "@/components/BreadCrumb";
 import Script from "next/script";
 import { getStructuredDataScripts, schemaToJsonLd } from "@/utils/structuredData";
+import LoanContentSections from "@/components/loan-landing/LoanContentSections";
+import { instantPersonalLoanContent } from "@/constants/instantPersonalLoanContent";
+
+const fallbackFinancialProductSchema = {
+  "@context": "https://schema.org",
+  "@type": "FinancialProduct",
+  name: "Instant Personal Loan",
+  description:
+    "Explore RapidMoney's digital loan offerings tailored for your needs. Quick disbursal, flexible repayment, and 100% online application process.",
+  brand: {
+    "@type": "Organization",
+    name: "Rapid Money",
+    url: "https://www.rapidmoney.in/",
+  },
+  url: "https://www.rapidmoney.in/instant-personal-loan",
+};
+
+const fallbackFaqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: instantPersonalLoanContent.faqs.map((faq) => ({
+    "@type": "Question",
+    name: faq.q,
+    acceptedAnswer: {
+      "@type": "Answer",
+      text: faq.a,
+    },
+  })),
+};
 
 const getCMSPageBySlug = async () => {
   try {
@@ -117,91 +146,10 @@ export default async function page() {
       ) : (
         <>
           <Script id="product-schema" type="application/ld+json">
-            {`
-{
-  "@context": "https://schema.org",
-  "@type": "FinancialProduct",
-  "name": "Instant Personal Loan",
-  "description": "Explore RapidMoney's digital loan offerings tailored for your needs. Quick disbursal, flexible repayment, and 100% online application process.",
-  "brand": {
-    "@type": "Organization",
-    "name": "Rapid Money",
-    "url": "https://www.rapidmoney.in/"
-  },
-  "url": "https://www.rapidmoney.in/instant-personal-loan"
-  }
-}
-`}
+            {schemaToJsonLd(fallbackFinancialProductSchema)}
           </Script>
           <Script id="productFAQ-schema" type="application/ld+json">
-            {`{
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [{
-    "@type": "Question",
-    "name": "What is an instant personal loan?",
-    "acceptedAnswer": {
-      "@type": "Answer",
-      "text": "An instant personal loan provides quick access to funds through a completely digital process. You receive money directly in your bank account after online approval without visiting any branch."
-    }
-  },{
-    "@type": "Question",
-    "name": "How does a personal loan work?",
-    "acceptedAnswer": {
-      "@type": "Answer",
-      "text": "You receive an approved amount upfront and repay it through fixed monthly installments. The EMI includes principal and interest portions based on your chosen loan tenure and applicable rate."
-    }
-  },{
-    "@type": "Question",
-    "name": "How quickly can I receive funds from an instant personal loan?",
-    "acceptedAnswer": {
-      "@type": "Answer",
-      "text": "The loan amount transfers to your registered bank account within a few working hours after final approval and document verification."
-    }
-  },{
-    "@type": "Question",
-    "name": "How does Rapid Money ensure the security of my information?",
-    "acceptedAnswer": {
-      "@type": "Answer",
-      "text": "We use encryption, secure servers and multiple authentication layers to protect your data. Our systems comply with guidelines for financial information security."
-    }
-  },{
-    "@type": "Question",
-    "name": "What is the minimum income requirement for a personal loan?",
-    "acceptedAnswer": {
-      "@type": "Answer",
-      "text": "Individuals need a minimum monthly income of above ₹ 20,000. On the other hand, we do not provide personal loans to self-employed individuals."
-    }
-  },{
-    "@type": "Question",
-    "name": "What is the minimum income requirement for a personal loan?",
-    "acceptedAnswer": {
-      "@type": "Answer",
-      "text": "Individuals need a minimum monthly income of above ₹ 20,000. On the other hand, we do not provide personal loans to self-employed individuals."
-    }
-  },{
-    "@type": "Question",
-    "name": "Are there fees for early repayment of loans?",
-    "acceptedAnswer": {
-      "@type": "Answer",
-      "text": "A foreclosure charge may apply if you close your loan too soon."
-    }
-  },{
-    "@type": "Question",
-    "name": "What is the typical repayment tenure for personal loans?",
-    "acceptedAnswer": {
-      "@type": "Answer",
-      "text": "What is the typical repayment tenure for personal loans?"
-    }
-  },{
-    "@type": "Question",
-    "name": "Can I apply for a personal loan jointly with my spouse?",
-    "acceptedAnswer": {
-      "@type": "Answer",
-      "text": "Currently, Rapid Money doesn't accept joint loan applications."
-    }
-  }]
-}`}
+            {schemaToJsonLd(fallbackFaqSchema)}
           </Script>
         </>
       )}
@@ -215,6 +163,9 @@ export default async function page() {
         {/* Content is hardcoded in the component (not CMS-driven). Edit values in components/product-term-loans/productTermLoans.js */}
         <ProductTermLoans />
         <ProductInstantAccess data={response?.data?.pageData?.instantAccess} />
+        <div className="container mx-auto px-4 max-w-5xl">
+          <LoanContentSections page={instantPersonalLoanContent} />
+        </div>
         <ProductFAQ respone={response} />
         <PromoSection />
       </Suspense>

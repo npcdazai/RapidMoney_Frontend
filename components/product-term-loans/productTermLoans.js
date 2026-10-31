@@ -305,7 +305,7 @@ const data = [
   ["Income", "20,000/-"],
   // ["Banking Norms", "3 Months"],
   ["ABB to EMI Ratio", "1"],
-  ["Loan Amount", "Rs 5000 to Rs 15000"],
+  ["Loan Amount", "Rs 5000 to Rs 20000"],
   ["ROI (Per Day)", "0.1% to 0.15%"],
   ["Processing Fees", "15.0% plus applicable taxes"],
 ];

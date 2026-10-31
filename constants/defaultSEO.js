@@ -19,9 +19,9 @@ const defaultSEO = {
     },
 
     product: {
-        title: "Our Loan Products – Fast, Secure, and Flexible",
+        title: "Instant Personal Loan Online up to ₹20,000 - Apply Now | RapidMoney",
         description:
-            "Explore RapidMoney's digital loan offerings tailored for your needs. Quick disbursal, flexible repayment, and 100% online application process.",
+            "Apply for an instant personal loan online up to ₹20,000. No paperwork, 100% digital process & fast approval. Check eligibility & apply now with RapidMoney!",
         featureImage: "/images/rapidmoney-logo.png",
     },
 
@@ -54,9 +54,9 @@ const defaultSEO = {
     },
 
     faq: {
-        title: "RapidMoney FAQs – Personal Loan Help Center",
+        title: "RapidMoney FAQs: Answers to Frequently Asked Questions",
         description:
-            "Have questions? Explore common answers about loan eligibility, application steps, interest rates, repayment terms, and more.",
+            "Find clear answers to RapidMoney FAQs. Get help on loans, eligibility, repayments and common questions—all explained simply.",
         featureImage: "/images/rapidmoney-logo.png",
     },
 

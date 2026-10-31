@@ -1,5 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  htmlLimitedBots: /.*/,
   images: {
     remotePatterns: [
       {
@@ -27,6 +28,22 @@ const nextConfig = {
   },
   async redirects() {
     return [
+      {
+        source: '/:path*',
+        has: [
+          {
+            type: 'host',
+            value: 'rapidmoney.in',
+          },
+        ],
+        destination: 'https://www.rapidmoney.in/:path*',
+        permanent: true,
+      },
+      {
+        source: '/emi-calculator',
+        destination: '/personal-loan-emi-calculator',
+        permanent: true,
+      },
       {
         source: '/products',
         destination: '/instant-personal-loan',

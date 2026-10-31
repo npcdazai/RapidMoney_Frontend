@@ -39,18 +39,10 @@ const getCMSPageBySlug = async () => {
 export async function generateMetadata() {
   const res = await getCMSPageBySlug();
   const data = res?.data?.pageData?.seoSetting;
-  const isProduction = process.env.NEXT_PUBLIC_ENVIRONMENT === "production";
   const canonicalURL = "https://www.rapidmoney.in/contact-us";
 
-  const title =
-    isProduction && data?.meta_title
-      ? data.meta_title
-      : data.meta_title;
-
-  const description =
-    isProduction && data?.meta_description
-      ? data.meta_description
-      : data.meta_description;
+  const title = data?.meta_title || defaultSEO.contact.title;
+  const description = data?.meta_description || defaultSEO.contact.description;
 
   const featureImage =
     data?.feature_image?.[0]?.url || defaultSEO.contact.featureImage;

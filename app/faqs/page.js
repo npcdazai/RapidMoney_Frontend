@@ -14,6 +14,9 @@ import {
 } from "@/utils/structuredData";
 
 async function getFaqPagePayload() {
+  let faqData = null;
+  let faqsData = null;
+
   try {
     const cmsResponse = await fetch(
       process.env.NEXT_PUBLIC_API_URL + endpoints.get_cms_page + "/faq",
@@ -21,7 +24,7 @@ async function getFaqPagePayload() {
     );
     const cmsData = await cmsResponse.json();
     if (cmsData?.data?.pageData) {
-      return cmsData.data;
+      faqData = cmsData.data;
     }
   } catch (e) {}
 
@@ -32,11 +35,23 @@ async function getFaqPagePayload() {
     );
     const cmsData = await cmsResponse.json();
     if (cmsData?.data?.pageData) {
-      return cmsData.data;
+      faqsData = cmsData.data;
     }
   } catch (e) {}
 
-  return null;
+  if (faqData && faqsData) {
+    const faqHasTitle = Boolean(faqData.pageData?.seoSetting?.meta_title);
+    const faqsHasTitle = Boolean(faqsData.pageData?.seoSetting?.meta_title);
+
+    if (faqHasTitle && !faqsHasTitle) return faqData;
+    if (!faqHasTitle && faqsHasTitle) return faqsData;
+
+    const faqTime = new Date(faqData.updatedAt || 0).getTime();
+    const faqsTime = new Date(faqsData.updatedAt || 0).getTime();
+    return faqsTime > faqTime ? faqsData : faqData;
+  }
+
+  return faqData || faqsData || null;
 }
 
 async function getFaqSEO() {
@@ -70,7 +85,7 @@ export async function generateMetadata() {
     other: {
       keywords:
         data?.meta_keywords ||
-        "Rapid Money FAQs, Personal Loan Questions, Loan Eligibility FAQ, RapidMoney Help Center",
+        "Rapid FAQs, FAQs, frequently asked questions",
     },
     openGraph: {
       title,

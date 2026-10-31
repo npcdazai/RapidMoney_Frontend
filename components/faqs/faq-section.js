@@ -226,11 +226,11 @@ const FaqSection = ({ data }) => {
   return (
     <section className={`w-full ${styles.section} pt-120 pb-120`}>
       <div className="container mx-auto px-4">
-        <h1
+                <h1
           ref={titleRef}
           className="text-center font-48 font-weight-bold dark-color md:pb-[55px] pb-[25px]"
         >
-          {data?.title}
+          {data?.title || "FAQs"}
         </h1>
         <Row>
           <Col span={24} offset={0} lg={{ offset: 2, span: 20 }}>
