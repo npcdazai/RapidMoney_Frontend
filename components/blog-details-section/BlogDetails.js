@@ -1,4 +1,5 @@
 "use client";
+import React, { useEffect, useRef } from "react";
 import { Row, Col, Divider, Avatar } from "antd";
 import Image from "next/image";
 import styles from "./blog-details.module.scss";
@@ -10,18 +11,177 @@ import BlogCategory from "@/components/blog-details-section/BlogCategoy";
 import BlogShare from "@/components/blog-details-section/BlogShare";
 import DOMPurify from "isomorphic-dompurify";
 
-const decodeHTMLEntities = (text) => {
-  if (typeof window === "undefined") return text;
+function decodeQuillCodeBlocks(html) {
+  if (!html) return "";
 
-  const textArea = document.createElement("textarea");
-  textArea.innerHTML = text;
-  return textArea.value;
-};
+  let result = "";
+
+  // 1. Convert Quill 2 ql-code-block-container blocks into rendered markup
+  if (html.includes("ql-code-block")) {
+    const containerMarker = '<div class="ql-code-block-container"';
+    let startIndex = html.indexOf(containerMarker);
+    let currentIndex = 0;
+
+    while (startIndex !== -1) {
+      result += html.slice(currentIndex, startIndex);
+
+      let openTagEnd = html.indexOf(">", startIndex);
+      if (openTagEnd === -1) break;
+
+      let depth = 1;
+      let pos = openTagEnd + 1;
+
+      while (depth > 0 && pos < html.length) {
+        const nextOpen = html.indexOf("<div", pos);
+        const nextClose = html.indexOf("</div>", pos);
+
+        if (nextClose === -1) break;
+
+        if (nextOpen !== -1 && nextOpen < nextClose) {
+          depth++;
+          pos = nextOpen + 4;
+        } else {
+          depth--;
+          if (depth === 0) {
+            pos = nextClose + 6;
+            break;
+          }
+          pos = nextClose + 6;
+        }
+      }
+
+      const containerInner = html.slice(openTagEnd + 1, pos - 6);
+
+      const lines = [];
+      const lineRegex =
+        /<div[^>]*class="[^"]*ql-code-block[^"]*"[^>]*>([\s\S]*?)<\/div>/gi;
+      let match;
+      while ((match = lineRegex.exec(containerInner)) !== null) {
+        lines.push(match[1]);
+      }
+
+      const joined = (lines.length > 0 ? lines.join("\n") : containerInner)
+        .replace(/&lt;/g, "<")
+        .replace(/&gt;/g, ">")
+        .replace(/&quot;/g, '"')
+        .replace(/&#39;/g, "'")
+        .replace(/&amp;/g, "&");
+
+      // If the code block contains HTML/CSS/scripts, render it as real HTML
+      if (/<[a-z!][\s\S]*>/i.test(joined)) {
+        if (/<script\b[^>]*>[\s\S]*?<\/script>/i.test(joined)) {
+          const transformed = joined.replace(
+            /<script\b([^>]*)>([\s\S]*?)<\/script>/gi,
+            (sMatch) =>
+              `<div class="rendered-blog-embed" data-embed-code="${encodeURIComponent(
+                sMatch
+              )}"></div>`
+          );
+          result += transformed;
+        } else {
+          result += joined;
+        }
+      } else {
+        result += `<pre class="ql-syntax"><code>${joined
+          .replace(/</g, "&lt;")
+          .replace(/>/g, "&gt;")}</code></pre>`;
+      }
+
+      currentIndex = pos;
+      startIndex = html.indexOf(containerMarker, currentIndex);
+    }
+
+    result += html.slice(currentIndex);
+  } else {
+    result = html;
+  }
+
+  // 2. Also decode Quill 1 pre.ql-syntax containing HTML / scripts
+  result = result.replace(
+    /<pre[^>]*class="[^"]*ql-syntax[^"]*"[^>]*>([\s\S]*?)<\/pre>/gi,
+    (match, innerContent) => {
+      const decoded = innerContent
+        .replace(/&lt;/g, "<")
+        .replace(/&gt;/g, ">")
+        .replace(/&quot;/g, '"')
+        .replace(/&#39;/g, "'")
+        .replace(/&amp;/g, "&");
+
+      if (/<[a-z!][\s\S]*>/i.test(decoded)) {
+        if (/<script\b[^>]*>[\s\S]*?<\/script>/i.test(decoded)) {
+          return decoded.replace(
+            /<script\b([^>]*)>([\s\S]*?)<\/script>/gi,
+            (sMatch) =>
+              `<div class="rendered-blog-embed" data-embed-code="${encodeURIComponent(
+                sMatch
+              )}"></div>`
+          );
+        }
+        return decoded;
+      }
+      return match;
+    }
+  );
+
+  // 3. Convert .blog-embed-wrapper with data-embed-code into rendered embed containers
+  result = result.replace(
+    /<div[^>]*class="[^"]*blog-embed-wrapper[^"]*"[^>]*data-embed-code="([^"]+)"[^>]*>[\s\S]*?<\/div>/gi,
+    (match, encodedCode) => {
+      return `<div class="rendered-blog-embed" data-embed-code="${encodedCode}"></div>`;
+    }
+  );
+
+  // 4. Convert any escaped <script> tags: &lt;script...&gt;...&lt;/script&gt;
+  result = result.replace(
+    /&lt;script\b([^&]*)&gt;([\s\S]*?)&lt;\/script&gt;/gi,
+    (match, attrs, code) => {
+      const decodedAttrs = attrs
+        .replace(/&quot;/g, '"')
+        .replace(/&#39;/g, "'")
+        .replace(/&amp;/g, "&");
+      const decodedCode = code
+        .replace(/&lt;/g, "<")
+        .replace(/&gt;/g, ">")
+        .replace(/&quot;/g, '"')
+        .replace(/&#39;/g, "'")
+        .replace(/&amp;/g, "&");
+      const fullScript = `<script${decodedAttrs}>${decodedCode}</script>`;
+      return `<div class="rendered-blog-embed" data-embed-code="${encodeURIComponent(
+        fullScript
+      )}"></div>`;
+    }
+  );
+
+  // 5. Convert any raw <script> tags to embed containers so DOMPurify won't delete them
+  result = result.replace(
+    /<script\b([^>]*)>([\s\S]*?)<\/script>/gi,
+    (match) => {
+      return `<div class="rendered-blog-embed" data-embed-code="${encodeURIComponent(
+        match
+      )}"></div>`;
+    }
+  );
+
+  return result;
+}
 
 const BlogDetails = ({ data }) => {
-  const decodedHTML = decodeHTMLEntities(data?.description);
-  const sanitizedHTML = DOMPurify.sanitize(decodedHTML, {
-    ADD_TAGS: ["iframe"],
+  const contentRef = useRef(null);
+
+  const processedContent = decodeQuillCodeBlocks(data?.description);
+
+  const sanitizedHTML = DOMPurify.sanitize(processedContent, {
+    ADD_TAGS: [
+      "iframe",
+      "blockquote",
+      "style",
+      "table",
+      "thead",
+      "tbody",
+      "tr",
+      "th",
+      "td",
+    ],
     ADD_ATTR: [
       "allow",
       "allowfullscreen",
@@ -33,6 +193,11 @@ const BlogDetails = ({ data }) => {
       "src",
       "title",
       "loading",
+      "data-embed-code",
+      "data-embedded-script",
+      "target",
+      "style",
+      "class",
     ],
   });
 
@@ -57,11 +222,104 @@ const BlogDetails = ({ data }) => {
           <img src="https://img.youtube.com/vi/${videoId}/hqdefault.jpg" alt="Video Thumbnail">
           <span>▶</span>
         </a>
-      `.replace(/\n\s+/g, " "); // Minify the srcdoc content
+      `.replace(/\n\s+/g, " ");
 
-      return `<iframe ${before} src="${src}" srcdoc='${srcdocContent}' loading="lazy" style="max-width:560px; width:100%;  border-radius:20px" ${after}></iframe>`;
+      return `<iframe ${before} src="${src}" srcdoc='${srcdocContent}' loading="lazy" style="max-width:560px; width:100%; border-radius:20px" ${after}></iframe>`;
     }
   );
+
+  // Client-side script execution and embed activation
+  useEffect(() => {
+    if (!contentRef.current) return;
+
+    // 1. Process all .rendered-blog-embed containers
+    const embedContainers = contentRef.current.querySelectorAll(
+      ".rendered-blog-embed, [data-embed-code]"
+    );
+
+    embedContainers.forEach((container) => {
+      if (container.dataset.initialized === "true") return;
+      container.dataset.initialized = "true";
+
+      const encodedCode = container.getAttribute("data-embed-code");
+      if (!encodedCode) return;
+
+      let code = "";
+      try {
+        code = decodeURIComponent(encodedCode);
+      } catch (e) {
+        code = encodedCode;
+      }
+
+      if (!code) return;
+
+      // Parse code into HTML elements and executable scripts
+      const tempDiv = document.createElement("div");
+      tempDiv.innerHTML = code;
+
+      const scripts = [];
+      Array.from(tempDiv.childNodes).forEach((child) => {
+        if (child.nodeName && child.nodeName.toLowerCase() === "script") {
+          scripts.push(child);
+        } else {
+          container.appendChild(child.cloneNode(true));
+        }
+      });
+
+      // Execute extracted scripts by creating fresh script tags
+      scripts.forEach((oldScript) => {
+        const newScript = document.createElement("script");
+        Array.from(oldScript.attributes).forEach((attr) => {
+          newScript.setAttribute(attr.name, attr.value);
+        });
+
+        if (oldScript.src) {
+          newScript.async = true;
+        } else {
+          newScript.text = oldScript.text || oldScript.textContent || "";
+        }
+
+        container.appendChild(newScript);
+      });
+
+      // Notify common third-party widgets if present
+      if (typeof window !== "undefined") {
+        if (
+          window.twttr &&
+          window.twttr.widgets &&
+          typeof window.twttr.widgets.load === "function"
+        ) {
+          window.twttr.widgets.load(container);
+        }
+        if (
+          window.instgrm &&
+          window.instgrm.Embeds &&
+          typeof window.instgrm.Embeds.process === "function"
+        ) {
+          window.instgrm.Embeds.process();
+        }
+      }
+    });
+
+    // 2. Also execute any direct script tags that might exist in the blog content
+    const directScripts = contentRef.current.querySelectorAll(
+      "script:not([data-executed='true'])"
+    );
+    directScripts.forEach((oldScript) => {
+      oldScript.setAttribute("data-executed", "true");
+      const newScript = document.createElement("script");
+      Array.from(oldScript.attributes).forEach((attr) => {
+        newScript.setAttribute(attr.name, attr.value);
+      });
+      if (oldScript.src) {
+        newScript.async = true;
+      } else {
+        newScript.text = oldScript.text || oldScript.textContent || "";
+      }
+      oldScript.parentNode.replaceChild(newScript, oldScript);
+    });
+  }, [htmlWithLazyIframes]);
+
   return (
     <section className={`${styles.section} pt-120 pb-120`}>
       <div className="container mx-auto">
@@ -88,21 +346,12 @@ const BlogDetails = ({ data }) => {
               />
             </div>
 
-            {/* Content Loop */}
-            {/* {data?.content?.map((item, idx) => (
-              <div key={idx} className="pb-11">
-                <h2 className="font-24 dark-color font-weight-bold pb-5">
-                  {item?.heading}
-                </h2>
-                <p className="font-16 dark-color">{item?.paragraph}</p>
-              </div>
-            ))} */}
-
             <div className="pb-11">
               <div
+                ref={contentRef}
                 className={styles.blogContent}
                 dangerouslySetInnerHTML={{
-                  __html: htmlWithLazyIframes || data?.description || "",
+                  __html: htmlWithLazyIframes || "",
                 }}
               ></div>
             </div>
@@ -115,28 +364,6 @@ const BlogDetails = ({ data }) => {
 
             {data?.title ? (
               <div className="flex gap-6 pt-10">
-                {/* <span className="font-24">Share On</span> */}
-                {/* <div className="flex items-center gap-3 flex-wrap">
-                {socialLinks?.map((link, idx) => {
-                  return (
-                    <Link
-                      key={idx}
-                      href={link.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      aria-label={link.platform}
-                    >
-                      <Image
-                        src={socialIcons[link.icon]}
-                        alt={link.platform}
-                        width={24}
-                        height={24}
-                        className="hover:scale-110 transition-transform"
-                      />
-                    </Link>
-                  );
-                })}
-              </div> */}
                 <BlogShare title={data?.title} />
               </div>
             ) : null}
@@ -165,9 +392,7 @@ const BlogDetails = ({ data }) => {
                   </div>
                 </div>
                 <div>
-                  <span className="dark-color font-14">
-                    {data?.author?.bio}
-                  </span>
+                  <span className="dark-color font-14">{data?.author?.bio}</span>
                 </div>
               </div>
 

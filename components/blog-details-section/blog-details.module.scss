@@ -185,6 +185,19 @@
     margin: 1em 0;
     font-style: italic;
   }
+
+  // ✅ Embedded script & widget containers
+  :global(.rendered-blog-embed) {
+    margin: 1.5rem auto;
+    max-width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    overflow-x: auto;
+
+    iframe {
+      margin: 0 auto;
+    }
+  }
 }
-
-

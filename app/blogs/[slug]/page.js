@@ -10,7 +10,6 @@ import DynamicHead from "@/components/head/dynamicHead";
 import defaultSEO from "@/constants/defaultSEO";
 import { notFound } from "next/navigation";
 import Breadcrumb from "@/components/BreadCrumb";
-import Script from "next/script";
 import { getStructuredDataScripts, schemaToJsonLd } from "@/utils/structuredData";
 
 const header = homePageData.header;
@@ -27,26 +26,21 @@ const getBlog = async (slug) => {
       }
     );
 
-    // console.log("Response from APIs:", response.json()?.status, process.env.NEXT_PUBLIC_API_URL +
-    //     endpoints.get_blogs_by_slug +
-    //     `/${slug}`);\
     const data = await response.json();
-    // console.log(data?.data, "data from API");
 
     if (!data?.data) {
       notFound();
     }
 
-    return data
+    return data;
   } catch (error) {
     console.error("API call failed: ", error);
     notFound();
-    // return null;
   }
 };
 
 export async function generateMetadata({ params }) {
-  const resolvedParams = await params; // Await params if it's a Promise
+  const resolvedParams = await params;
   const response = await getBlog(resolvedParams.slug);
 
   if (!response || !response.data) {
@@ -113,13 +107,11 @@ const Page = async ({ params }) => {
   return (
     <>
       {uploadedSchemas.map((schema, index) => (
-        <Script
+        <script
           key={`blog-details-schema-${index + 1}`}
-          id={`blog-details-schema-${index + 1}`}
           type="application/ld+json"
-        >
-          {schemaToJsonLd(schema)}
-        </Script>
+          dangerouslySetInnerHTML={{ __html: schemaToJsonLd(schema) }}
+        />
       ))}
 
       <Suspense fallback={<Loading />}>
@@ -131,4 +123,5 @@ const Page = async ({ params }) => {
     </>
   );
 };
+
 export default Page;
