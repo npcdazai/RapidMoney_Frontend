@@ -78,7 +78,7 @@ export const instantPersonalLoanContent = {
             "calculatorAfter": true
         },
         {
-            "heading": "5. How do you apply for an instant personal loan",
+            "heading": "How do you apply for an instant personal loan",
             "content": [
                 {
                     "p": "It's easy to apply for a RapidMoney loan, and it only takes a few minutes:"
@@ -98,7 +98,7 @@ export const instantPersonalLoanContent = {
             ]
         },
         {
-            "heading": "6. Features of an Instant Personal Loan",
+            "heading": "Features of an Instant Personal Loan",
             "content": [
                 {
                     "p": "The instant personal loan from RapidMoney is meant to be easy and clear:"
@@ -121,7 +121,7 @@ export const instantPersonalLoanContent = {
             ]
         },
         {
-            "heading": "7. Eligibility Criteria",
+            "heading": "Eligibility Criteria",
             "content": [
                 {
                     "p": "If you meet the following requirements, you can apply for a RapidMoney instant personal loan:"
