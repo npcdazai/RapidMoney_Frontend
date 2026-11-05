@@ -140,152 +140,152 @@ const LendingPartners = ({ data }) => {
               .match(/ruloans|rfspl/);
 
             return (
-            <div key={i} className="mb-14">
-              <h1
-                className="text-4xl font-bold text-center pb-12"
-                ref={titleRef}
-              >
-                {partner.title}
-              </h1>
+              <div key={i} className="mb-14">
+                <h1
+                  className="text-4xl font-bold text-center pb-12"
+                  ref={titleRef}
+                >
+                  {partner.title}
+                </h1>
 
-              <div className="bg-[#afafb214] p-7 rounded-3xl">
-                {/* Logo */}
-                {partner.logo?.[0]?.url && (
-                  <div className="pb-8" ref={logoRef}>
-                    <Image
-                      src={partner.logo[0].url}
-                      alt={partner.logo[0].alt_name || "Partner Logo"}
-                      width={150}
-                      height={50}
-                    />
+                <div className="bg-[#afafb214] p-7 rounded-3xl">
+                  {/* Logo */}
+                  {partner.logo?.[0]?.url && (
+                    <div className="pb-8" ref={logoRef}>
+                      <Image
+                        src={partner.logo[0].url}
+                        alt={partner.logo[0].alt_name || "Partner Logo"}
+                        width={150}
+                        height={50}
+                      />
+                    </div>
+                  )}
+
+                  <div className="grid gap-5">
+                    {["delhiOffice"].map((officeKey) => {
+                      const office = partner[officeKey];
+                      if (!office) return null;
+
+                      return (
+                        <div
+                          key={officeKey}
+                          className="bg-white p-7 rounded-3xl space-y-6 h-fit "
+                        >
+                          <div className="flex items-start gap-3">
+                            <div className="flex-shrink-0 flex items-center justify-center w-8 h-8">
+                              {iconMap.address && (
+                                <RiMapPinLine
+                                  size={24}
+                                  className="text-lime-600 mt-1"
+                                />
+                              )}
+                            </div>
+                            <div>
+                              <h4 className="text-lg font-semibold">
+                                {office.address?.label}
+                              </h4>
+                              <p className="text-gray-700 mt-1">
+                                {office.address?.value}
+                              </p>
+                            </div>
+                          </div>
+
+                          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            {Object.entries(office)
+                              .filter(([key]) => key !== "address")
+                              .map(([key, info], index) => {
+                                const Icon = iconMap[info.key];
+                                return (
+                                  <div
+                                    key={index}
+                                    className="flex items-start gap-3"
+                                  >
+                                    <div className="flex-shrink-0 flex items-center justify-center w-8 h-8">
+                                      {Icon && (
+                                        <Icon
+                                          size={24}
+                                          className="text-lime-600"
+                                        />
+                                      )}
+                                    </div>
+                                    <div className="flex flex-col justify-center">
+                                      <h4 className="font-medium text-base">
+                                        {info.label}
+                                      </h4>
+                                      <a
+                                        href={
+                                          info.key === "email"
+                                            ? `mailto:${info.value}`
+                                            : info.key === "phone"
+                                              ? `tel:${info.value}`
+                                              : info.value?.startsWith("http")
+                                                ? info.value
+                                                : `https://${info.value}`
+                                        }
+                                        className="font-16 underline text-[#00000099] break-all"
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                      >
+                                        {info.value}
+                                      </a>
+                                    </div>
+                                  </div>
+                                );
+                              })}
+                          </div>
+                        </div>
+                      );
+                    })}
+                  </div>
+                </div>
+
+                {/* DLG Disclosure Section — shown below Ruloans */}
+                {isRuloans && (
+                  <div className="mt-6 bg-[#afafb214] p-7 rounded-3xl">
+                    <div className="flex items-center gap-3 mb-6">
+                      <span className="inline-block w-1.5 h-7 rounded-full bg-lime-500" />
+                      <h3 className="text-2xl font-bold text-gray-900">
+                        DLG Disclosure
+                      </h3>
+                    </div>
+
+                    <div className="overflow-x-auto bg-white rounded-2xl shadow-sm">
+                      <table className="w-full border-collapse">
+                        <thead>
+                          <tr className="bg-[#f8f8f8]">
+                            <th className="text-center px-6 py-5 text-base font-semibold text-gray-800 border-b border-gray-200">
+                              Total no. of Portfolios
+                            </th>
+                            <th className="text-center px-6 py-5 text-base font-semibold text-gray-800 border-b border-l border-gray-200">
+                              Outstanding portfolio amount in which DLG has been
+                              offered
+                            </th>
+                          </tr>
+                        </thead>
+
+                        <tbody>
+                          <tr className="text-center hover:bg-gray-50 transition-colors">
+                            <td className="px-6 py-6 text-gray-700">
+                              <span className="font-medium text-gray-900">
+                                Portfolio 1
+                              </span>
+                              <br />
+                              <span className="text-xs text-gray-500">
+                                (as on 31st October 2026)
+                              </span>
+                            </td>
+                            <td className="px-6 py-6 border-l border-gray-200">
+                              <span className="text-lg font-semibold text-gray-900">
+                                ₹10,03,19,581
+                              </span>
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
                   </div>
                 )}
-
-                <div className="grid gap-5">
-                  {["delhiOffice"].map((officeKey) => {
-                    const office = partner[officeKey];
-                    if (!office) return null;
-
-                    return (
-                      <div
-                        key={officeKey}
-                        className="bg-white p-7 rounded-3xl space-y-6 h-fit "
-                      >
-                        <div className="flex items-start gap-3">
-                          <div className="flex-shrink-0 flex items-center justify-center w-8 h-8">
-                            {iconMap.address && (
-                              <RiMapPinLine
-                                size={24}
-                                className="text-lime-600 mt-1"
-                              />
-                            )}
-                          </div>
-                          <div>
-                            <h4 className="text-lg font-semibold">
-                              {office.address?.label}
-                            </h4>
-                            <p className="text-gray-700 mt-1">
-                              {office.address?.value}
-                            </p>
-                          </div>
-                        </div>
-
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                          {Object.entries(office)
-                            .filter(([key]) => key !== "address")
-                            .map(([key, info], index) => {
-                              const Icon = iconMap[info.key];
-                              return (
-                                <div
-                                  key={index}
-                                  className="flex items-start gap-3"
-                                >
-                                  <div className="flex-shrink-0 flex items-center justify-center w-8 h-8">
-                                    {Icon && (
-                                      <Icon
-                                        size={24}
-                                        className="text-lime-600"
-                                      />
-                                    )}
-                                  </div>
-                                  <div className="flex flex-col justify-center">
-                                    <h4 className="font-medium text-base">
-                                      {info.label}
-                                    </h4>
-                                    <a
-                                      href={
-                                        info.key === "email"
-                                          ? `mailto:${info.value}`
-                                          : info.key === "phone"
-                                            ? `tel:${info.value}`
-                                            : info.value?.startsWith("http")
-                                              ? info.value
-                                              : `https://${info.value}`
-                                      }
-                                      className="font-16 underline text-[#00000099] break-all"
-                                      target="_blank"
-                                      rel="noopener noreferrer"
-                                    >
-                                      {info.value}
-                                    </a>
-                                  </div>
-                                </div>
-                              );
-                            })}
-                        </div>
-                      </div>
-                    );
-                  })}
-                </div>
               </div>
-
-              {/* DLG Disclosure Section — shown below Ruloans */}
-              {isRuloans && (
-                <div className="mt-6 bg-[#afafb214] p-7 rounded-3xl">
-                  <div className="flex items-center gap-3 mb-6">
-                    <span className="inline-block w-1.5 h-7 rounded-full bg-lime-500" />
-                    <h3 className="text-2xl font-bold text-gray-900">
-                      DLG Disclosure
-                    </h3>
-                  </div>
-
-                  <div className="overflow-x-auto bg-white rounded-2xl shadow-sm">
-                    <table className="w-full border-collapse">
-                      <thead>
-                        <tr className="bg-[#f8f8f8]">
-                          <th className="text-center px-6 py-5 text-base font-semibold text-gray-800 border-b border-gray-200">
-                            Total no. of Portfolios
-                          </th>
-                          <th className="text-center px-6 py-5 text-base font-semibold text-gray-800 border-b border-l border-gray-200">
-                            Outstanding portfolio amount in which DLG has been
-                            offered
-                          </th>
-                        </tr>
-                      </thead>
-
-                      <tbody>
-                        <tr className="text-center hover:bg-gray-50 transition-colors">
-                          <td className="px-6 py-6 text-gray-700">
-                            <span className="font-medium text-gray-900">
-                              Portfolio 1
-                            </span>
-                            <br />
-                            <span className="text-xs text-gray-500">
-                              (as on 30th June 2026)
-                            </span>
-                          </td>
-                          <td className="px-6 py-6 border-l border-gray-200">
-                            <span className="text-lg font-semibold text-gray-900">
-                              ₹9,15,20,406 
-                            </span>
-                          </td>
-                        </tr>
-                      </tbody>
-                    </table>
-                  </div>
-                </div>
-              )}
-            </div>
             );
           })}
         </div>
