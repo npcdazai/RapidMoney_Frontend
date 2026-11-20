@@ -182,8 +182,8 @@ export default async function Home() {
  } ],
  "address": {
  "@type": "PostalAddress",
- "streetAddress": "Swami Vivekananda Rd",
- "extendedAddress": "902, 9th Floor, Shubhjyoti Building, Datta Park, Borivali West",
+ "streetAddress": "Office No. 902, Shubhjivan Arcade, S.V. Road, Opp Moksh Plaza",
+ "extendedAddress": "Borivali West",
  "addressLocality": "Mumbai",
  "addressRegion": "Maharashtra",
  "postalCode": "400092",
@@ -192,7 +192,7 @@ export default async function Home() {
  "contactPoint": {
  "@type": "ContactPoint",
  "contactType": "customer support",
- "email": "support@rapidmoney.com"
+ "email": "support@rapidmoney.in"
  },
  "sameAs": [ 
  "https://www.linkedin.com/company/rapidmoney",

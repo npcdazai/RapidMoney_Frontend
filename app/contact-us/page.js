@@ -106,7 +106,7 @@ export default async function page() {
   "description": "Reach Rapid Money for personal loan enquiry or support at support@rapidmoney.in. We're here to help you with quick loan assistance.",
     "address": {
     "@type": "PostalAddress",
-    "streetAddress": "Shubhjivan Arcade, A-902, Swami Vivekananda Rd, near Borivali Station, opp. Moksh Plaza, Mhatre Wadi, Borivali West",
+    "streetAddress": "Office No. 902, Shubhjivan Arcade, S.V. Road, Opp Moksh Plaza, Borivali West",
     "addressLocality": "Mumbai",
     "addressRegion": "Maharashtra",
     "postalCode": "400092",

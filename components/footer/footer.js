@@ -75,9 +75,8 @@ const Footer = async () => {
                 </Link>
               </div>
               <p className="text-gray-300 text-[16px]   pt-2">
-                Shubhjivan Arcade, A-902, Swami Vivekananda Rd, near Borivali
-                Station, opp. Moksh Plaza, Mhatre Wadi, Borivali West, Mumbai,
-                Maharashtra 400092
+                Office No. 902, Shubhjivan Arcade, S.V. Road, Opp Moksh Plaza,
+                Borivali West, Mumbai - 400092, Maharashtra, India
               </p>
               <div className="flex items-center gap-3 flex-wrap pt-6 xl:pt-[100px]">
                 {socialData.map((link, idx) => {

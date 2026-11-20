@@ -23,15 +23,10 @@ const getCMSPageBySlug = async () => {
       }
     );
     const data = await response.json();
-
-    if (!data?.data?.pageData) {
-      notFound();
-    }
     return data;
   } catch (error) {
     console.error("API call failed: ", error);
-    notFound();
-    // return null;
+    return null;
   }
 };
 
@@ -40,8 +35,8 @@ export async function generateMetadata() {
   const data = res?.data?.pageData?.seoSetting;
   const canonicalURL = "https://www.rapidmoney.in/delete-my-account";
 
-  const title = data?.meta_title || defaultSEO.contact.title;
-  const description = data?.meta_description || defaultSEO.contact.description;
+  const title = "Delete Account | RapidMoney";
+  const description = "Request deletion of your RapidMoney account and associated personal data in accordance with our data safety and privacy policies.";
 
   const featureImage =
     data?.feature_image?.[0]?.url || defaultSEO.contact.featureImage;
@@ -94,7 +89,7 @@ export default async function page() {
       {/* <ContactUs /> */}
       <Suspense fallback={<Loading />}>
         <DynamicHead />
-        <DeleteMyAccountForm data={response?.data?.pageData?.contactSection} />
+        <DeleteMyAccountForm data={response?.data?.pageData?.contactSection || {}} />
       </Suspense>
     </>
   );

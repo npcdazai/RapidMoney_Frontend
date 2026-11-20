@@ -48,7 +48,7 @@ const DeleteMyAccountForm = ({ data }) => {
       form.resetFields();
     } catch (error) {
       console.error("Error submitting form:", error);
-      
+
       // Error message
       messageApi.error({
         content: error.message || "Failed to submit deletion request. Please try again.",
@@ -64,14 +64,46 @@ const DeleteMyAccountForm = ({ data }) => {
     <>
       {contextHolder}
       <section className="container mx-auto pt-[80px] pb-60">
-        <div className=" w-full text-center">
-          <div className="mx-auto">
-            <h1 className="font-bold text-4xl pb-6 ">Delete My Account</h1>
-            <span className="block font-40 font-weight-bold">
-              {data.description}
-            </span>
-          </div>
+        <div className="w-full text-center max-w-3xl mx-auto pb-8">
+          <h1 className="font-bold text-4xl pb-4">Delete RapidMoney Account</h1>
+          <p className="text-gray-600 text-base">
+            {data?.description || "Request permanent deletion of your RapidMoney account and associated personal data."}
+          </p>
         </div>
+
+        <Row gutter={[32, 32]} justify="center">
+          <Col
+            xs={{ span: 24, offset: 0 }}
+            lg={{ span: 20, offset: 0 }}
+          >
+            <div className="bg-[#f8fafc] border border-gray-200 rounded-2xl p-6 mb-8 text-sm text-gray-700 leading-relaxed">
+              <h3 className="font-bold text-base text-gray-900 pb-2">
+                Account Deletion &amp; Regulatory Data Retention Policy
+              </h3>
+              <p className="pb-3">
+                In compliance with Google Play Developer Policies, RBI Digital Lending Guidelines, and applicable Indian data protection regulations, you have the right to request deletion of your RapidMoney account and personal information.
+              </p>
+              <ul className="list-disc pl-5 space-y-2">
+                <li>
+                  <strong>Processing Timeline:</strong> Deletion requests are verified and processed within <strong>thirty (30) days</strong> of submission.
+                </li>
+                <li>
+                  <strong>Data Deleted:</strong> Your account profile, login credentials, authentication tokens, marketing preferences, and device identifiers will be permanently removed from our active databases.
+                </li>
+                <li>
+                  <strong>Statutory Retention Requirements:</strong> If you have availed a loan through the RapidMoney platform, certain records (including loan application data, sanction letters, repayment transactions, and KYC verification records) are legally mandated to be retained for a minimum of <strong>8 years</strong> under the Prevention of Money Laundering Act (PMLA), 2002 and Reserve Bank of India (RBI) regulations. Such records will be securely archived and retained strictly for regulatory compliance and audit purposes.
+                </li>
+                <li>
+                  <strong>Active Loans:</strong> Accounts with active, outstanding loan balances cannot be deleted until all pending dues are fully settled.
+                </li>
+                <li>
+                  <strong>Alternative Submission:</strong> You may also submit your deletion request by sending an email from your registered email ID to our Grievance Officer at <a href="mailto:support@rapidmoney.in" className="text-lime-600 underline font-medium">support@rapidmoney.in</a> along with your registered mobile number.
+                </li>
+              </ul>
+            </div>
+          </Col>
+        </Row>
+
         <Row gutter={[32, 32]} justify="center">
           <Col
             xs={{ span: 24, offset: 0 }}
