@@ -1,8 +1,9 @@
+
 import Link from "next/link";
 import { RiArrowRightLine } from "react-icons/ri";
 import EmiCalculatorWidget from "@/components/personal-loan-emi-calculator/EmiCalculatorWidget";
 import { buildApplyUrl } from "./applyUrl";
-
+import React from "react";
 export default function LoanContentSections({ page }) {
   if (!page?.sections || !Array.isArray(page.sections)) {
     return null;
@@ -35,6 +36,30 @@ export default function LoanContentSections({ page }) {
                 }
 
                 if (block.p) {
+                  const linkText = block.link?.text;
+
+                  if (linkText && block.p.includes(linkText)) {
+                    const parts = block.p.split(linkText);
+
+                    return (
+                      <p key={bIndex} className="text-gray-700 leading-relaxed">
+                        {parts.map((part, i) => (
+                          <React.Fragment key={i}>
+                            {part}
+                            {i < parts.length - 1 && (
+                              <Link
+                                href={block.link.href}
+                                className="text-[#77CB02] font-semibold underline hover:text-[#5da000]"
+                              >
+                                {linkText}
+                              </Link>
+                            )}
+                          </React.Fragment>
+                        ))}
+                      </p>
+                    );
+                  }
+
                   return (
                     <p key={bIndex} className="text-gray-700 leading-relaxed">
                       {block.p}
@@ -59,9 +84,30 @@ export default function LoanContentSections({ page }) {
                       key={bIndex}
                       className="list-disc list-inside space-y-1.5 text-gray-700 pl-2"
                     >
-                      {block.ul.map((item, i) => (
-                        <li key={i}>{item}</li>
-                      ))}
+                      {block.ul.map((item, i) => {
+                        const linkText = block.link?.text;
+
+                        if (linkText && item.includes(linkText)) {
+                          const parts = item.split(linkText);
+
+                          return (
+                            <li key={i}>
+                              {parts[0]}
+                              <Link
+                                href={block.link.href}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="text-[#77CB02] font-semibold underline hover:text-[#5da000]"
+                              >
+                                {linkText}
+                              </Link>
+                              {parts.slice(1).join(linkText)}
+                            </li>
+                          );
+                        }
+
+                        return <li key={i}>{item}</li>;
+                      })}
                     </ul>
                   );
                 }
@@ -83,7 +129,7 @@ export default function LoanContentSections({ page }) {
       })}
 
       {/* Trailing Call-to-Action Box */}
-      <div className="mt-10 sm:mt-12 rounded-2xl border border-gray-200 bg-gray-50/70 p-6 sm:p-8 flex justify-center sm:justify-start">
+      <div className="mt-10 sm:mt-12 rounded-2xl border border-gray-200 bg-gray-50/70 p-6 sm:p-8 flex justify-center">
         <Link
           href={applyUrl}
           target="_blank"
@@ -97,4 +143,3 @@ export default function LoanContentSections({ page }) {
     </>
   );
 }
-

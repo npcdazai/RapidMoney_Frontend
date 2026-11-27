@@ -1,3 +1,4 @@
+
 import React from "react";
 import Link from "next/link";
 import { RiArrowRightLine } from "react-icons/ri";
@@ -13,7 +14,7 @@ function getBreadcrumbName(h1) {
   return parts[0].trim();
 }
 
-export default function LoanLandingPage({ page }) {
+export default function LoanLandingPage({ page, isAmountPage = false }) {
   if (!page) return null;
 
   const applyUrl = buildApplyUrl(page.slug);
@@ -40,17 +41,17 @@ export default function LoanLandingPage({ page }) {
   const faqSchema =
     page.faqs && Array.isArray(page.faqs) && page.faqs.length > 0
       ? {
-          "@context": "https://schema.org",
-          "@type": "FAQPage",
-          mainEntity: page.faqs.map((item) => ({
-            "@type": "Question",
-            name: item.question || item.q,
-            acceptedAnswer: {
-              "@type": "Answer",
-              text: item.answer || item.a,
-            },
-          })),
-        }
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        mainEntity: page.faqs.map((item) => ({
+          "@type": "Question",
+          name: item.question || item.q,
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: item.answer || item.a,
+          },
+        })),
+      }
       : null;
 
   const introParagraphs = Array.isArray(page.intro)
@@ -61,13 +62,13 @@ export default function LoanLandingPage({ page }) {
 
   return (
     <>
-      {/* Structured Data Scripts */}
       {faqSchema && (
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: schemaToJsonLd(faqSchema) }}
         />
       )}
+
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: schemaToJsonLd(breadcrumbSchema) }}
@@ -80,16 +81,60 @@ export default function LoanLandingPage({ page }) {
             {page.h1}
           </h1>
 
-          {introParagraphs.map((para, idx) => (
-            <p
-              key={idx}
-              className="text-base sm:text-lg text-gray-700 leading-relaxed"
-            >
-              {para}
-            </p>
+          {introParagraphs.map((item, idx) => (
+            <div key={idx}>
+              {typeof item === "string" ? (
+                <p className="text-base sm:text-lg text-gray-700 leading-relaxed">
+                  {item}
+                </p>
+              ) : item?.text ? (
+                <p className="text-base sm:text-lg text-gray-700 leading-relaxed">
+                  {item.text.split(item.link?.text || "").map((part, i, arr) => (
+                    <React.Fragment key={i}>
+                      {part}
+                      {i < arr.length - 1 && (
+                        <Link
+                          href={item.link.href}
+                          className="text-[#77CB02] font-semibold underline hover:text-[#5da000]"
+                        >
+                          {item.link.text}
+                        </Link>
+                      )}
+                    </React.Fragment>
+                  ))}
+                </p>
+              ) : item?.ul ? (
+                <ul className="mt-4 space-y-2 text-base sm:text-lg text-gray-700 list-disc list-inside text-left max-w-3xl mr-auto ml-0">
+                  {item.ul.map((point, pointIdx) => {
+                    const linkText = item.link?.text;
+
+                    if (linkText && point.includes(linkText)) {
+                      const parts = point.split(linkText);
+
+                      return (
+                        <li key={pointIdx}>
+                          {parts[0]}
+                          <Link
+                            href={item.link.href}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-[#77CB02] font-semibold underline hover:text-[#5da000]"
+                          >
+                            {linkText}
+                          </Link>
+                          {parts.slice(1).join(linkText)}
+                        </li>
+                      );
+                    }
+
+                    return <li key={pointIdx}>{point}</li>;
+                  })}
+                </ul>
+              ) : null}
+            </div>
           ))}
 
-          <div className="pt-2">
+          <div className="pt-2 flex justify-center">
             <Link
               href={applyUrl}
               target="_blank"
@@ -102,13 +147,21 @@ export default function LoanLandingPage({ page }) {
           </div>
         </div>
 
-        {/* Sections with optional calculator placement & trailing CTA */}
+        {/* Divider only for amount-based pages */}
+        {isAmountPage && (
+          <div className="mt-8 sm:mt-10 mb-8 sm:mb-10">
+            <div className="h-1 w-20 rounded-full bg-[#77CB02] mx-auto mb-4" />
+            <div className="h-px w-full bg-gradient-to-r from-transparent via-gray-300 to-transparent" />
+          </div>
+        )}
+
+        {/* Main Content */}
         <LoanContentSections page={page} />
 
-        {/* FAQ Accordion */}
+        {/* FAQ */}
         <LoanFaq heading={page.faqHeading} faqs={page.faqs} />
 
-        {/* Related Loan Cross-links */}
+        {/* Existing Related Loans */}
         <RelatedLoans currentSlug={page.slug} />
       </main>
     </>
